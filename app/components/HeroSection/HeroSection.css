@@ -1,0 +1,147 @@
+/* ============================================
+   HERO SECTION STYLES
+   ============================================ */
+
+/* Gradient wave behind the name "ANGIE DUONG" */
+.heroGradientWave {
+  background: linear-gradient(90deg, #9E2FFF 0%, #FF798B 100%);
+  clip-path: polygon(0 30%, 100% 10%, 100% 70%, 0 90%);
+  transform: translateY(20%);
+}
+
+/* Character illustration positioning */
+.heroCharacterImage {
+  margin-top: -0.5rem;
+}
+
+/* "Hi there! I'm" greeting text container */
+.heroGreetingContainer {
+  position: relative;
+  z-index: 30;
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+
+.heroGreetingText {
+  color: white;
+  font-size: 1.25rem;
+  font-weight: 300;
+}
+
+@media (min-width: 768px) {
+  .heroGreetingText {
+    font-size: 1.5rem;
+  }
+}
+
+/* Name "ANGIE DUONG" container */
+.heroNameContainer {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  margin-bottom: 0;
+}
+
+.heroNameText {
+  font-size: 3.75rem;
+  font-weight: 700;
+  color: white;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  margin-bottom: 0;
+}
+
+@media (min-width: 768px) {
+  .heroNameText {
+    font-size: 5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .heroNameText {
+    font-size: 6rem;
+  }
+}
+
+/* Portfolio Banner - scrolling text line */
+.heroPortfolioBanner {
+  position: relative;
+  z-index: 30;
+  width: 100%;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  overflow: hidden;
+  background-color: black;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.heroPortfolioScrollContainer {
+  display: flex;
+  white-space: nowrap;
+  animation: scroll 20s linear infinite;
+}
+
+.heroPortfolioScrollContainer:hover {
+  animation-play-state: paused;
+}
+
+.heroPortfolioInnerContainer {
+  display: flex;
+  gap: 2rem;
+}
+
+.heroPortfolioText {
+  color: white;
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+@media (min-width: 768px) {
+  .heroPortfolioText {
+    font-size: 1.5rem;
+  }
+}
+
+/* Intro card with description text */
+.heroIntroCardContainer {
+  position: relative;
+  z-index: 10;
+  max-width: 64rem;
+  margin: 2rem auto 0;
+}
+
+.heroIntroCard {
+  background-color: rgba(88, 28, 135, 0.4);
+  backdrop-filter: blur(12px);
+  border-radius: 1.5rem;
+  padding: 2rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+@media (min-width: 768px) {
+  .heroIntroCard {
+    padding: 3rem;
+  }
+}
+
+.heroIntroText {
+  color: white;
+  font-size: 1.125rem;
+  text-align: center;
+  line-height: 1.75;
+}
+
+@media (min-width: 768px) {
+  .heroIntroText {
+    font-size: 1.25rem;
+  }
+}
+
+.heroIntroHighlightText {
+  background: linear-gradient(to right, #9E2FFF, #FF798B);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 700;
+}

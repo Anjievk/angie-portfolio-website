@@ -1,0 +1,75 @@
+/* Projects page styles */
+.projectsSection {
+  padding-top: 8rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  padding-bottom: 5rem;
+}
+
+.projectsContainer {
+  max-width: 72rem;
+  margin: 0 auto;
+}
+
+.projectsTitle {
+  font-size: 3.75rem;
+  font-weight: 700;
+  margin-bottom: 3rem;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .projectsTitle {
+    font-size: 6rem;
+  }
+}
+
+.projectsGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .projectsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .projectsGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.projectCard {
+  background-color: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(12px);
+  border-radius: 1.5rem;
+  padding: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: background-color 0.3s;
+}
+
+.projectCard:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.projectImagePlaceholder {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 1rem;
+  height: 12rem;
+  margin-bottom: 1rem;
+}
+
+.projectTitle {
+  color: white;
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.projectDescription {
+  color: rgba(209, 213, 219, 1);
+  font-size: 0.875rem;
+}

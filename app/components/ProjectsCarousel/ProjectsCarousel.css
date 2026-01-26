@@ -1,0 +1,173 @@
+/* ============================================
+   PROJECTS CAROUSEL STYLES
+   ============================================ */
+
+/* Main carousel section */
+.projectsCarouselSection {
+  position: relative;
+  padding: 5rem 2rem;
+}
+
+.projectsCarouselContainer {
+  max-width: 80rem;
+  margin: 0 auto;
+}
+
+/* Section title */
+.projectsCarouselTitleContainer {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.projectsCarouselTitle {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+@media (min-width: 768px) {
+  .projectsCarouselTitle {
+    font-size: 4.5rem;
+  }
+}
+
+.projectsCarouselTitleGradient {
+  background: linear-gradient(to right, #9E2FFF, #FF798B);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.projectsCarouselSubtitle {
+  color: rgb(209, 213, 219);
+  font-size: 1.125rem;
+}
+
+/* Carousel controls */
+.projectsCarouselControls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.projectsCarouselArrowButton {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 0.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  background-color: rgba(88, 28, 135, 0.4);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s;
+  z-index: 10;
+}
+
+.projectsCarouselArrowButton:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.projectsCarouselArrowIcon {
+  width: 1.5rem;
+  height: 1.5rem;
+  color: white;
+}
+
+.projectsCarouselPageIndicator {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.875rem;
+  min-width: 3rem;
+  text-align: center;
+}
+
+.projectsCarouselViewAllButton {
+  margin-left: 2rem;
+  padding: 1rem 2rem;
+  border-radius: 9999px;
+  background-color: white;
+  color: rgb(88, 28, 135);
+  font-weight: 700;
+  transition: background-color 0.3s;
+  z-index: 10;
+}
+
+.projectsCarouselViewAllButton:hover {
+  background-color: rgb(243, 232, 255);
+}
+
+/* Project cards container */
+.projectsCarouselCardsContainer {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 80rem;
+  height: 20rem;
+  margin: 0 auto 2rem;
+}
+
+.projectsCarouselCard {
+  position: absolute;
+  transition: all 0.5s ease-in-out;
+}
+
+/* Project card mask effects */
+.projectsCarouselCardMaskLeft {
+  mask-image: linear-gradient(to right, transparent, white);
+  -webkit-mask-image: linear-gradient(to right, transparent, white);
+}
+
+.projectsCarouselCardMaskRight {
+  mask-image: linear-gradient(to left, transparent, white);
+  -webkit-mask-image: linear-gradient(to left, transparent, white);
+}
+
+.projectsCarouselCardMaskNone {
+  mask-image: none;
+  -webkit-mask-image: none;
+}
+
+.projectsCarouselCardItem {
+  border-radius: 1.5rem;
+  width: 20rem;
+  height: 16rem;
+}
+
+.projectsCarouselCardActive {
+  background-color: white;
+}
+
+.projectsCarouselCardInactive {
+  background-color: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(4px);
+}
+
+/* Project details below carousel */
+.projectsCarouselDetailsContainer {
+  max-width: 42rem;
+  margin: 0 auto;
+}
+
+.projectsCarouselCategory {
+  color: rgb(196, 181, 253);
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.5rem;
+}
+
+.projectsCarouselProjectTitle {
+  color: white;
+  font-size: 1.875rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.projectsCarouselProjectDescription {
+  color: rgb(209, 213, 219);
+  font-size: 1.125rem;
+}

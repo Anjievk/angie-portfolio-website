@@ -1,0 +1,123 @@
+/* ============================================
+   NAVBAR STYLES
+   ============================================ */
+
+/* Main navigation bar */
+.navbarContainer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.5rem 2rem;
+  margin-top: 1.5rem;
+}
+
+/* Logo link */
+.navbarLogoLink {
+  display: flex;
+  align-items: center;
+}
+
+.navbarLogo {
+  width: 2.5rem;
+  height: 2.5rem;
+}
+
+/* Navigation links container */
+.navbarLinksContainer {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+/* Individual navigation link */
+.navbarLink {
+  color: white;
+  transition: color 0.3s;
+}
+
+.navbarLink:hover {
+  color: rgb(196, 181, 253);
+}
+
+/* Theme toggle button */
+.navbarThemeToggle {
+  position: relative;
+  width: 5rem;
+  height: 2.25rem;
+  border-radius: 9999px;
+  background-color: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 0.5rem;
+  transition: background-color 0.3s;
+}
+
+.navbarThemeToggle:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+/* Sun icon (left side) */
+.navbarSunIcon {
+  width: 1.25rem;
+  height: 1.25rem;
+  transition: opacity 0.3s;
+}
+
+.navbarSunIconActive {
+  opacity: 1;
+  color: white;
+}
+
+.navbarSunIconInactive {
+  opacity: 0.4;
+  color: rgb(156, 163, 175);
+}
+
+/* Moon icon (right side) */
+.navbarMoonIcon {
+  width: 1.25rem;
+  height: 1.25rem;
+  transition: all 0.3s;
+}
+
+.navbarMoonIconActive {
+  opacity: 1;
+  color: white;
+  filter: drop-shadow(0 0 4px rgba(255, 121, 139, 0.8));
+}
+
+.navbarMoonIconInactive {
+  opacity: 0.4;
+  color: rgb(156, 163, 175);
+  filter: none;
+}
+
+/* Theme toggle indicator (sliding button) */
+.navbarToggleIndicator {
+  position: absolute;
+  top: 0.25rem;
+  bottom: 0.25rem;
+  width: 1.75rem;
+  border-radius: 9999px;
+  transition: all 0.3s;
+}
+
+.navbarToggleIndicatorDark {
+  background: linear-gradient(to right, #FF798B, #9E2FFF);
+  right: 0.25rem;
+  box-shadow: 0 0 12px rgba(255, 121, 139, 0.6), 0 0 6px rgba(158, 47, 255, 0.4);
+}
+
+.navbarToggleIndicatorLight {
+  background-color: rgba(255, 255, 255, 0.3);
+  left: 0.25rem;
+  box-shadow: none;
+}
