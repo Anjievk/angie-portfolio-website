@@ -2,17 +2,21 @@
    HERO SECTION STYLES
    ============================================ */
 
+
+section {
+  padding-top: 25vh;
+}
 /* Gradient wave behind the name "ANGIE DUONG" */
-.heroGradientWave {
+/* .heroGradientWave {
   background: linear-gradient(90deg, #9E2FFF 0%, #FF798B 100%);
   clip-path: polygon(0 30%, 100% 10%, 100% 70%, 0 90%);
   transform: translateY(20%);
-}
+} */
 
 /* Character illustration positioning */
-.heroCharacterImage {
+/* .heroCharacterImage {
   margin-top: -0.5rem;
-}
+} */
 
 /* "Hi there! I'm" greeting text container */
 .heroGreetingContainer {
@@ -43,8 +47,8 @@
 }
 
 .heroNameText {
-  font-size: 3.75rem;
-  font-weight: 700;
+  font-size: 5rem;
+  font-weight: 900;
   color: white;
   letter-spacing: -0.02em;
   line-height: 1;
@@ -71,7 +75,7 @@
   margin-top: 2rem;
   margin-bottom: 2rem;
   overflow: hidden;
-  background-color: black;
+  background-color: rgb(19, 0, 36);
   padding-top: 1rem;
   padding-bottom: 1rem;
 }

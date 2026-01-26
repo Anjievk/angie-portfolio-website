@@ -22,7 +22,7 @@ export default function HeroSection() {
         </div>
         
         <h1 className="heroNameText">
-          ANGIE DUONG
+          ANGIE<br></br> DUONG
         </h1>
       </div>
 
