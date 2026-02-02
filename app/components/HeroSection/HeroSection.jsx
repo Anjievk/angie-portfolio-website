@@ -4,6 +4,28 @@ import Image from 'next/image';
 import Link from 'next/link';
 import './HeroSection.css';
 
+const TOOLTIP_DATA = {
+  uxui: ['Figma', 'FigJam', 'WordPress'],
+  productDesigner: ['Photoshop', 'Illustrator', 'InDesign', 'Procreate', 'Premiere Pro', 'After Effects'],
+  frontend: ['HTML', 'CSS', 'JavaScript', 'Node.js', 'Next.js'],
+};
+
+function HighlightWithTooltip({ children, tools, id }) {
+  return (
+    <span className="heroIntroHighlightWrap">
+      <span className="heroIntroHighlightText">{children}</span>
+      <span className="heroIntroTooltip" role="tooltip" id={id}>
+        {tools.map((tool, i) => (
+          <span key={tool} className="heroIntroTooltipItem">
+            {tool}
+            {i < tools.length - 1 && <span className="heroIntroTooltipSep"> · </span>}
+          </span>
+        ))}
+      </span>
+    </span>
+  );
+}
+
 export default function HeroSection() {
   return (
     <section className="relative flex flex-col items-center justify-center px-8 pt-32 pb-20 overflow-hidden min-h-[80vh]">
@@ -44,11 +66,16 @@ export default function HeroSection() {
       <div className="heroPortfolioBanner">
         <div className="heroPortfolioScrollContainer">
           <div className="heroPortfolioInnerContainer">
-            {Array.from({ length: 20 }).map((_, i) => (
-              <span key={i} className="heroPortfolioText">
-                Portfolio
-              </span>
-            ))}
+            {/* Banner text loop copies */}
+            {[1, 2, 3, 4].flatMap((copy) =>
+              ['UX/UI Design', 'Graphic Design', 'Branding Design', 'Digital Artist', 'Front-end Develop'].map(
+                (text, i) => (
+                  <span key={`${copy}-${i}`} className="heroPortfolioText">
+                    {text}
+                  </span>
+                )
+              )
+            )}
           </div>
         </div>
       </div>
@@ -57,9 +84,16 @@ export default function HeroSection() {
       <div className="heroIntroCardContainer">
         <div className="heroIntroCard">
           <p className="heroIntroText">
-            A <span className="heroIntroHighlightText">UI/UX & Product Designer</span> with{' '}
-            <span className="heroIntroHighlightText">Frontend Development Skills</span>, creating user-centered, visually polished, and scalable digital products.
+            A <HighlightWithTooltip tools={TOOLTIP_DATA.uxui} id="tooltip-uxui">UX/UI</HighlightWithTooltip>
+            {' & '}
+            <HighlightWithTooltip tools={TOOLTIP_DATA.productDesigner} id="tooltip-product">Product Designer</HighlightWithTooltip>
+            {' with '}
+            <HighlightWithTooltip tools={TOOLTIP_DATA.frontend} id="tooltip-frontend">Frontend Development Skills</HighlightWithTooltip>
+            , creating user-centered, visually polished, and scalable digital products.
           </p>
+          <Link href="/about" className="heroAboutMeButton">
+            ABOUT ME
+          </Link>
         </div>
       </div>
     </section>

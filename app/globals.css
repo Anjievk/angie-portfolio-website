@@ -31,13 +31,13 @@ html {
   scroll-behavior: smooth;
 }
 
-/* Animated scroll for portfolio banner */
+/* Animated scroll for portfolio banner - 4 copies = move 25% for seamless loop */
 @keyframes scroll {
   0% {
     transform: translateX(0);
   }
   100% {
-    transform: translateX(-50%);
+    transform: translateX(-25%);
   }
 }
 

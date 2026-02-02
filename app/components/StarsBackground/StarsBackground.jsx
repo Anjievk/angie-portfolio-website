@@ -26,14 +26,14 @@ export default function StarsBackground() {
         return;
       }
       
-      // Find where Portfolio banner starts
-      const portfolioBanner = headerSection.querySelector('.bg-black');
+      // Find where Portfolio banner starts - stars end right before it
+      const portfolioBanner = headerSection.querySelector('.heroPortfolioBanner');
       let headerHeight;
       
       if (portfolioBanner) {
         const portfolioRect = portfolioBanner.getBoundingClientRect();
         const headerRect = headerSection.getBoundingClientRect();
-        headerHeight = portfolioRect.bottom - headerRect.top;
+        headerHeight = Math.max(100, portfolioRect.top - headerRect.top);
       } else {
         // Fallback: use header section height
         const headerRect = headerSection.getBoundingClientRect();
@@ -48,53 +48,57 @@ export default function StarsBackground() {
     window.addEventListener('resize', updateCanvasSize);
 
     const stars = [];
+    let startTime = performance.now();
 
-    // Create stars only in header area
-    const numStars = 25;
+    // Create stars evenly across background (grid + jitter)
+    const cols = 6;
+    const rows = 5;
     const createStars = () => {
       stars.length = 0; // Clear existing stars
-      for (let i = 0; i < numStars; i++) {
-        stars.push({
-          x: Math.random() * canvas.width,
-          y: Math.random() * canvas.height,
-          size: Math.random() * 3 + 3,
-          vx: (Math.random() - 0.5) * 0.3,
-          vy: (Math.random() - 0.5) * 0.3,
-          opacity: Math.random() * 0.4 + 0.6,
-        });
+      const cellW = canvas.width / cols;
+      const cellH = canvas.height / rows;
+      const jitter = 0.4; // 0 = strict grid, 1 = full random within cell
+
+      for (let row = 0; row < rows; row++) {
+        for (let col = 0; col < cols; col++) {
+          const baseX = (col + 0.5) * cellW;
+          const baseY = (row + 0.5) * cellH;
+          const x = baseX + (Math.random() - 0.5) * cellW * jitter;
+          const y = baseY + (Math.random() - 0.5) * cellH * jitter;
+
+          stars.push({
+            x,
+            y,
+            size: Math.random() * 14 + 3,
+            vx: (Math.random() - 0.5) * 0.18,
+            vy: (Math.random() - 0.5) * 0.18,
+            baseOpacity: Math.random() * 0.25 + 0.35,
+            phase: Math.random() * Math.PI * 2,
+            sparkleSpeed: 0.0003 + Math.random() * 0.0006,
+          });
+        }
       }
     };
 
     createStars();
 
-    // Function to draw four-pointed rounded star
+    // Function to draw four-pointed star: vertically elongated, rounded points, pinched sides
     const drawStar = (x, y, size, opacity) => {
       ctx.save();
       ctx.translate(x, y);
+      ctx.scale(1, 1.5);
       
       const radius = size;
-      const roundness = radius * 0.3;
+      const roundness = radius * 0.26;
       
       ctx.beginPath();
-      
-      // Create four-pointed star with rounded points
-      // Start from top point
       ctx.moveTo(0, -radius);
-      
-      // Top-right curve
       ctx.quadraticCurveTo(roundness, -roundness, radius, 0);
-      
-      // Right-bottom curve
       ctx.quadraticCurveTo(roundness, roundness, 0, radius);
-      
-      // Bottom-left curve
       ctx.quadraticCurveTo(-roundness, roundness, -radius, 0);
-      
-      // Left-top curve
       ctx.quadraticCurveTo(-roundness, -roundness, 0, -radius);
-      
       ctx.closePath();
-      ctx.fillStyle = `rgba(255, 255, 255, ${opacity})`;
+      ctx.fillStyle = `rgba(195, 185, 215, ${opacity})`;
       ctx.fill();
       
       ctx.restore();
@@ -102,20 +106,22 @@ export default function StarsBackground() {
 
     const animate = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
+      const time = performance.now() - startTime;
 
       stars.forEach((star) => {
-        // Update position
         star.x += star.vx;
         star.y += star.vy;
 
-        // Wrap around edges (only within header area)
         if (star.x < 0) star.x = canvas.width;
         if (star.x > canvas.width) star.x = 0;
         if (star.y < 0) star.y = canvas.height;
         if (star.y > canvas.height) star.y = 0;
 
-        // Draw four-pointed rounded star
-        drawStar(star.x, star.y, star.size, star.opacity);
+        // Sparkle: pulse opacity between 30% and 100% of base
+        const sparkle = 0.35 + 0.65 * (Math.sin(time * star.sparkleSpeed + star.phase) + 1) / 2;
+        const opacity = star.baseOpacity * sparkle;
+
+        drawStar(star.x, star.y, star.size, opacity);
       });
 
       requestAnimationFrame(animate);

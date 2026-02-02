@@ -1,123 +1,237 @@
 /* ============================================
-   NAVBAR STYLES
+   NAVBAR STYLES – Đặc sắc, glassmorphism khi scroll
    ============================================ */
 
-/* Main navigation bar */
 .navbarContainer {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   z-index: 50;
+  padding: 1rem 1.5rem 0;
+  transition: padding 0.35s ease;
+}
+
+.navbarContainerScrolled {
+  padding: 0.5rem 1.5rem 0;
+}
+
+/* Ở top: không bar, chỉ logo + link */
+.navbarInner {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1.5rem 2rem;
-  margin-top: 1.5rem;
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: 0.75rem 1.25rem;
+  border-radius: 9999px;
+  background: transparent;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  border: 1px solid transparent;
+  box-shadow: none;
+  transition: background 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease,
+    backdrop-filter 0.35s ease;
 }
 
-/* Logo link */
+/* Khi kéo xuống: bar glassmorphism */
+.navbarContainerScrolled .navbarInner {
+  background: rgba(42, 6, 73, 0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.navbarGlowLine {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  width: 60%;
+  max-width: 20rem;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 121, 139, 0.4) 20%,
+    rgba(158, 47, 255, 0.5) 50%,
+    rgba(255, 121, 139, 0.4) 80%,
+    transparent
+  );
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+
+.navbarContainerScrolled .navbarGlowLine {
+  opacity: 1;
+}
+
+/* Logo – không frame */
 .navbarLogoLink {
   display: flex;
   align-items: center;
+  text-decoration: none;
+  transition: transform 0.25s ease;
+}
+
+.navbarLogoLink:hover {
+  transform: scale(1.05);
+}
+
+.navbarLogoLink:focus-visible {
+  outline: 2px solid rgba(255, 121, 139, 0.8);
+  outline-offset: 4px;
 }
 
 .navbarLogo {
   width: 2.5rem;
   height: 2.5rem;
+  object-fit: contain;
 }
 
-/* Navigation links container */
 .navbarLinksContainer {
   display: flex;
   align-items: center;
   gap: 2rem;
 }
 
-/* Individual navigation link */
 .navbarLink {
-  color: white;
-  transition: color 0.3s;
+  position: relative;
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 0.9375rem;
+  font-weight: 500;
+  text-decoration: none;
+  border-radius: 9999px;
+  transition: color 0.25s ease;
 }
 
 .navbarLink:hover {
-  color: rgb(196, 181, 253);
+  color: #fff;
 }
 
-/* Theme toggle button */
+.navbarLink:focus-visible {
+  outline: 2px solid rgba(255, 121, 139, 0.6);
+  outline-offset: 2px;
+}
+
+.navbarLinkText {
+  position: relative;
+  z-index: 1;
+}
+
+.navbarLinkLine {
+  position: absolute;
+  left: 1rem;
+  right: 1rem;
+  bottom: 0.35rem;
+  height: 2px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, #ff798b, #9e2fff);
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 0.9;
+}
+
+.navbarLink:hover .navbarLinkLine,
+.navbarLinkActive .navbarLinkLine {
+  transform: scaleX(1);
+}
+
+.navbarLinkActive {
+  color: #fff;
+}
+
+.navbarLinkActive .navbarLinkLine {
+  box-shadow: 0 0 10px rgba(255, 121, 139, 0.5);
+}
+
 .navbarThemeToggle {
   position: relative;
   width: 5rem;
   height: 2.25rem;
+  margin-left: 0.5rem;
   border-radius: 9999px;
-  background-color: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.06);
   backdrop-filter: blur(4px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.12);
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0 0.5rem;
-  transition: background-color 0.3s;
+  cursor: pointer;
+  transition: background 0.25s ease, border-color 0.25s ease;
 }
 
 .navbarThemeToggle:hover {
-  background-color: rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.18);
 }
 
-/* Sun icon (left side) */
+.navbarThemeToggle:focus-visible {
+  outline: 2px solid rgba(255, 121, 139, 0.6);
+  outline-offset: 2px;
+}
+
 .navbarSunIcon {
-  width: 1.25rem;
-  height: 1.25rem;
-  transition: opacity 0.3s;
+  width: 1.2rem;
+  height: 1.2rem;
+  transition: opacity 0.3s ease;
 }
 
 .navbarSunIconActive {
   opacity: 1;
-  color: white;
+  color: #fff;
 }
 
 .navbarSunIconInactive {
   opacity: 0.4;
-  color: rgb(156, 163, 175);
+  color: rgba(255, 255, 255, 0.5);
 }
 
-/* Moon icon (right side) */
 .navbarMoonIcon {
-  width: 1.25rem;
-  height: 1.25rem;
-  transition: all 0.3s;
+  width: 1.2rem;
+  height: 1.2rem;
+  transition: opacity 0.3s ease, filter 0.3s ease;
 }
 
 .navbarMoonIconActive {
   opacity: 1;
-  color: white;
-  filter: drop-shadow(0 0 4px rgba(255, 121, 139, 0.8));
+  color: #fff;
+  filter: drop-shadow(0 0 6px rgba(255, 121, 139, 0.7));
 }
 
 .navbarMoonIconInactive {
   opacity: 0.4;
-  color: rgb(156, 163, 175);
+  color: rgba(255, 255, 255, 0.5);
   filter: none;
 }
 
-/* Theme toggle indicator (sliding button) */
 .navbarToggleIndicator {
   position: absolute;
   top: 0.25rem;
   bottom: 0.25rem;
   width: 1.75rem;
   border-radius: 9999px;
-  transition: all 0.3s;
+  transition: left 0.35s cubic-bezier(0.4, 0, 0.2, 1), right 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 0.3s ease;
 }
 
 .navbarToggleIndicatorDark {
-  background: linear-gradient(to right, #FF798B, #9E2FFF);
+  background: linear-gradient(135deg, #ff798b, #9e2fff);
   right: 0.25rem;
-  box-shadow: 0 0 12px rgba(255, 121, 139, 0.6), 0 0 6px rgba(158, 47, 255, 0.4);
+  left: auto;
+  box-shadow: 0 0 14px rgba(255, 121, 139, 0.5), 0 0 8px rgba(158, 47, 255, 0.35);
 }
 
 .navbarToggleIndicatorLight {
-  background-color: rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.25);
   left: 0.25rem;
-  box-shadow: none;
+  right: auto;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
