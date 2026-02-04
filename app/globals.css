@@ -1,5 +1,22 @@
 @import "tailwindcss";
 
+/* Local Alan Sans – heavier weights for hero name (Google Fonts only loads up to 700) */
+@font-face {
+  font-family: 'Alan Sans';
+  src: url('/fonts/AlanSans-ExtraBold.ttf') format('truetype');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Alan Sans';
+  src: url('/fonts/AlanSans-Black.ttf') format('truetype');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   --background: #2A0649;
   --foreground: #ffffff;
@@ -31,7 +48,7 @@ html {
   scroll-behavior: smooth;
 }
 
-/* Animated scroll for portfolio banner - 4 copies = move 25% for seamless loop */
+/* Animated scroll for portfolio banner */
 @keyframes scroll {
   0% {
     transform: translateX(0);

@@ -4,7 +4,7 @@
 
 
 section {
-  padding-top: 25vh;
+  padding-top: 12vh;
 }
 /* Gradient wave behind the name "ANGIE DUONG" */
 /* .heroGradientWave {
@@ -13,10 +13,38 @@ section {
   transform: translateY(20%);
 } */
 
-/* Character illustration positioning */
-/* .heroCharacterImage {
-  margin-top: -0.5rem;
-} */
+/* Character illustration – in front of gradient shape */
+.heroCharacterContainer {
+  position: relative;
+  z-index: 20;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  margin-top: 1rem;
+  margin-bottom: -120px;
+  min-height: 200px;
+  pointer-events: none;
+}
+
+.heroCharacterImage {
+  display: block;
+  width: auto;
+  max-width: 280px;
+  height: auto;
+  max-height: 340px;
+  object-fit: contain;
+  object-position: center bottom;
+}
+
+@media (min-width: 768px) {
+  .heroCharacterContainer {
+    margin-bottom: -140px;
+  }
+  .heroCharacterImage {
+    max-width: 320px;
+    max-height: 400px;
+  }
+}
 
 /* "Hi there! I'm" greeting text container */
 .heroGreetingContainer {
@@ -47,12 +75,18 @@ section {
 }
 
 .heroNameText {
-  font-size: 5rem;
+  font-family: 'Alan Sans', sans-serif;
+  font-size: 6rem;
   font-weight: 900;
   color: white;
   letter-spacing: -0.02em;
   line-height: 1;
   margin-bottom: 0;
+  -webkit-text-stroke: 0.5px white;
+  paint-order: stroke fill;
+  text-shadow:
+    1px 1px 0 rgba(0, 0, 0, 0.15),
+    2px 2px 4px rgba(0, 0, 0, 0.12);
 }
 
 @media (min-width: 768px) {
@@ -67,20 +101,54 @@ section {
   }
 }
 
-/* Portfolio Banner - scrolling text line */
+/* Portfolio Banner: gradient wave on top, dark bar with text below (compact so rolling line is in view) */
 .heroPortfolioBanner {
   position: relative;
   z-index: 30;
   width: 100%;
-  margin-top: 2rem;
-  margin-bottom: 2rem;
-  overflow: hidden;
+  margin-top: 0;
+  margin-bottom: 0;
+  overflow-y: visible;
+}
+
+/* 1. Gradient wave – lower so more of "DUONG" is visible */
+.heroPortfolioCurveBlock {
+  position: relative;
+  left: 50%;
+  width: 120%;
+  max-width: none;
+  min-width: 100%;
+  height: 420px;
+  min-height: 360px;
+  margin-top: -155px;
+  margin-bottom: -70px;
+  margin-left: 0;
+  transform: translateX(-50%);
+  pointer-events: none;
+  overflow: visible;
+  z-index: 1;
+}
+
+.heroPortfolioBellCurveSvg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* 2. Dark bar (roller line) – sits on top of gradient shape */
+.heroPortfolioDarkBar {
+  position: relative;
+  z-index: 10;
+  width: 100%;
   background-color: rgb(19, 0, 36);
-  padding-top: 0.75rem;
-  padding-bottom: 0.75rem;
+  padding-top: 0.1875rem;
+  padding-bottom: 0.1875rem;
+  overflow-x: hidden;
 }
 
 .heroPortfolioScrollContainer {
+  position: relative;
+  z-index: 10;
   display: flex;
   white-space: nowrap;
   animation: scroll 28s linear infinite;

@@ -1,6 +1,5 @@
 'use client';
 
-import Image from 'next/image';
 import Link from 'next/link';
 import './HeroSection.css';
 
@@ -28,7 +27,7 @@ function HighlightWithTooltip({ children, tools, id }) {
 
 export default function HeroSection() {
   return (
-    <section className="relative flex flex-col items-center justify-center px-8 pt-32 pb-20 overflow-hidden min-h-[80vh]">
+    <section className="relative flex flex-col items-center justify-center px-8 pt-16 pb-20 overflow-x-hidden overflow-y-visible min-h-[80vh]">
       {/* Header area - from top to Portfolio banner */}
       <div className="relative w-full">
       {/* Text Content - "Hi there! I'm" */}
@@ -36,46 +35,84 @@ export default function HeroSection() {
         <p className="heroGreetingText">Hi there! I&apos;m</p>
       </div>
 
-      {/* Name with Gradient Wave Behind - under the picture */}
+      {/* Name */}
       <div className="heroNameContainer">
-        {/* Gradient Wave - positioned behind the name */}
-        <div className="absolute inset-0 flex items-center justify-center">
-          <div className="w-full max-w-5xl h-96 heroGradientWave" />
-        </div>
-        
         <h1 className="heroNameText">
           ANGIE<br></br> DUONG
         </h1>
       </div>
 
-      {/* Character Illustration - on top layer, positioned so head touches bottom of DUONG */}
-      <div className="relative z-30 mb-8 heroCharacterImage">
-        <Image
+      {/* Character illustration – in front of gradient shape */}
+      <div className="heroCharacterContainer">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
           src="/Angie-drawing.png"
-          alt="Angie"
-          width={200}
-          height={200}
-          className="w-auto h-[180px] md:h-[220px] object-contain"
-          priority
+          alt="Character illustration"
+          className="heroCharacterImage"
         />
       </div>
 
       </div>
 
-      {/* Portfolio Banner - end of header area */}
+      {/* Gradient shape (behind character) + roller line */}
       <div className="heroPortfolioBanner">
-        <div className="heroPortfolioScrollContainer">
-          <div className="heroPortfolioInnerContainer">
-            {/* Banner text loop copies */}
-            {[1, 2, 3, 4].flatMap((copy) =>
-              ['UX/UI Design', 'Graphic Design', 'Branding Design', 'Digital Artist', 'Front-end Develop'].map(
-                (text, i) => (
-                  <span key={`${copy}-${i}`} className="heroPortfolioText">
-                    {text}
-                  </span>
+        {/* 1. Curve block – banner image clipped to bell shape, gradient on top for tint */}
+        <div className="heroPortfolioCurveBlock" aria-hidden="true">
+          <svg className="heroPortfolioBellCurveSvg" viewBox="0 0 1564 433" fill="none" preserveAspectRatio="none">
+            <defs>
+              <clipPath id="heroBellClipPath">
+                <path d="M61.6001 370.6C451.387 314.998 603.6 61.6 783.6 61.6C963.6 61.6 1154.22 351.998 1501.6 370.6H61.6001Z" />
+              </clipPath>
+              <filter id="heroBellFilter" x="0" y="0" width="1563.2" height="432.2" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+                <feFlood floodOpacity="0" result="BackgroundImageFix" />
+                <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+                <feOffset />
+                <feGaussianBlur stdDeviation="30.8" />
+                <feComposite in2="hardAlpha" operator="out" />
+                <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0" />
+                <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_480_356" />
+                <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_480_356" result="shape" />
+              </filter>
+              <linearGradient id="heroBellGradient" x1="61.6001" y1="216.1" x2="1501.6" y2="216.1" gradientUnits="userSpaceOnUse">
+                <stop stopColor="#9E2FFF" />
+                <stop offset="0.365385" stopColor="#CD51C5" />
+                <stop offset="1" stopColor="#FF798B" />
+              </linearGradient>
+            </defs>
+            {/* Gradient shape (behind the image) + shadow */}
+            <g filter="url(#heroBellFilter)">
+              <path
+                d="M61.6001 370.6C451.387 314.998 603.6 61.6 783.6 61.6C963.6 61.6 1154.22 351.998 1501.6 370.6H61.6001Z"
+                fill="url(#heroBellGradient)"
+                
+              />
+            </g>
+            {/* Banner image clipped to bell shape – rendered ABOVE the gradient */}
+            <image
+              href="/Banner-image.png"
+              x="420"
+              y="-250"
+              width="700"
+              height="700"
+              preserveAspectRatio="xMidYMid slice"
+              clipPath="url(#heroBellClipPath)"
+            />
+          </svg>
+        </div>
+        {/* 2. Dark bar – below the wave, contains only the skill labels */}
+        <div className="heroPortfolioDarkBar">
+          <div className="heroPortfolioScrollContainer">
+            <div className="heroPortfolioInnerContainer">
+              {[1, 2, 3, 4].flatMap((copy) =>
+                ['UX/UI Design', 'Graphic Design', 'Branding Design', 'Digital Artist', 'Front-end Dev'].map(
+                  (text, i) => (
+                    <span key={`${copy}-${i}`} className="heroPortfolioText">
+                      {text}
+                    </span>
+                  )
                 )
-              )
-            )}
+              )}
+            </div>
           </div>
         </div>
       </div>
