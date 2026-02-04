@@ -1,26 +1,17 @@
 'use client';
 
-import Link from 'next/link';
+import { Fragment } from 'react';
+import HeroIntroCard from '../HeroIntroCard/HeroIntroCard';
 import './HeroSection.css';
 
-const TOOLTIP_DATA = {
-  uxui: ['Figma', 'FigJam', 'WordPress'],
-  productDesigner: ['Photoshop', 'Illustrator', 'InDesign', 'Procreate', 'Premiere Pro', 'After Effects'],
-  frontend: ['HTML', 'CSS', 'JavaScript', 'Node.js', 'Next.js'],
-};
+const skills = ['UX/UI Design', 'Graphic Design', 'Branding Design', 'Digital Artist', 'Front-end Dev'];
 
-function HighlightWithTooltip({ children, tools, id }) {
+function StarIcon({ className }) {
   return (
-    <span className="heroIntroHighlightWrap">
-      <span className="heroIntroHighlightText">{children}</span>
-      <span className="heroIntroTooltip" role="tooltip" id={id}>
-        {tools.map((tool, i) => (
-          <span key={tool} className="heroIntroTooltipItem">
-            {tool}
-            {i < tools.length - 1 && <span className="heroIntroTooltipSep"> · </span>}
-          </span>
-        ))}
-      </span>
+    <span className={className} aria-hidden="true">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+      </svg>
     </span>
   );
 }
@@ -58,7 +49,7 @@ export default function HeroSection() {
       <div className="heroPortfolioBanner">
         {/* 1. Curve block – banner image clipped to bell shape, gradient on top for tint */}
         <div className="heroPortfolioCurveBlock" aria-hidden="true">
-          <svg className="heroPortfolioBellCurveSvg" viewBox="0 0 1564 433" fill="none" preserveAspectRatio="none">
+          <svg className="heroPortfolioBellCurveSvg" viewBox="0 0 1564 433" fill="none" preserveAspectRatio="xMidYMid slice">
             <defs>
               <clipPath id="heroBellClipPath">
                 <path d="M61.6001 370.6C451.387 314.998 603.6 61.6 783.6 61.6C963.6 61.6 1154.22 351.998 1501.6 370.6H61.6001Z" />
@@ -104,35 +95,19 @@ export default function HeroSection() {
           <div className="heroPortfolioScrollContainer">
             <div className="heroPortfolioInnerContainer">
               {[1, 2, 3, 4].flatMap((copy) =>
-                ['UX/UI Design', 'Graphic Design', 'Branding Design', 'Digital Artist', 'Front-end Dev'].map(
-                  (text, i) => (
-                    <span key={`${copy}-${i}`} className="heroPortfolioText">
-                      {text}
-                    </span>
-                  )
-                )
+                skills.map((text, i) => (
+                  <Fragment key={`${copy}-${i}`}>
+                    <span className="heroPortfolioText">{text}</span>
+                    <StarIcon className="heroPortfolioStar" />
+                  </Fragment>
+                ))
               )}
             </div>
           </div>
         </div>
       </div>
 
-      {/* Intro Card */}
-      <div className="heroIntroCardContainer">
-        <div className="heroIntroCard">
-          <p className="heroIntroText">
-            A <HighlightWithTooltip tools={TOOLTIP_DATA.uxui} id="tooltip-uxui">UX/UI</HighlightWithTooltip>
-            {' & '}
-            <HighlightWithTooltip tools={TOOLTIP_DATA.productDesigner} id="tooltip-product">Product Designer</HighlightWithTooltip>
-            {' with '}
-            <HighlightWithTooltip tools={TOOLTIP_DATA.frontend} id="tooltip-frontend">Frontend Development Skills</HighlightWithTooltip>
-            , creating user-centered, visually polished, and scalable digital products.
-          </p>
-          <Link href="/about" className="heroAboutMeButton">
-            ABOUT ME
-          </Link>
-        </div>
-      </div>
+      <HeroIntroCard />
     </section>
   );
 }

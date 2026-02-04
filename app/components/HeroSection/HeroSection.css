@@ -2,7 +2,6 @@
    HERO SECTION STYLES
    ============================================ */
 
-
 section {
   padding-top: 12vh;
 }
@@ -51,7 +50,8 @@ section {
   position: relative;
   z-index: 30;
   text-align: center;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.25rem;
+  padding-top: 3.5rem;
 }
 
 .heroGreetingText {
@@ -76,13 +76,13 @@ section {
 
 .heroNameText {
   font-family: 'Alan Sans', sans-serif;
-  font-size: 6rem;
+  font-size: 8rem;
   font-weight: 900;
   color: white;
-  letter-spacing: -0.02em;
-  line-height: 1;
+  letter-spacing: -0.0015em;
+  line-height: 0.8;
   margin-bottom: 0;
-  -webkit-text-stroke: 0.5px white;
+
   paint-order: stroke fill;
   text-shadow:
     1px 1px 0 rgba(0, 0, 0, 0.15),
@@ -91,13 +91,13 @@ section {
 
 @media (min-width: 768px) {
   .heroNameText {
-    font-size: 5rem;
+    font-size: 7rem;
   }
 }
 
 @media (min-width: 1024px) {
   .heroNameText {
-    font-size: 6rem;
+    font-size: 8rem;
   }
 }
 
@@ -111,17 +111,19 @@ section {
   overflow-y: visible;
 }
 
-/* 1. Gradient wave – lower so more of "DUONG" is visible */
+/* 1. Gradient wave – aspect ratio from viewBox (1564×433) to avoid squishing on zoom/resize */
 .heroPortfolioCurveBlock {
   position: relative;
   left: 50%;
-  width: 120%;
-  max-width: none;
+  width: 100%;
+  max-width: 100%;
   min-width: 100%;
-  height: 420px;
-  min-height: 360px;
-  margin-top: -155px;
-  margin-bottom: -70px;
+  aspect-ratio: 1564 / 433;
+  height: auto;
+  min-height: 220px;
+  max-height: min(420px, 45vw);
+  margin-top: -145px;
+  margin-bottom: -60px;
   margin-left: 0;
   transform: translateX(-50%);
   pointer-events: none;
@@ -133,6 +135,33 @@ section {
   width: 100%;
   height: 100%;
   display: block;
+  object-fit: cover;
+}
+
+@media (min-width: 640px) {
+  .heroPortfolioCurveBlock {
+    width: 115%;
+    max-height: min(420px, 50vw);
+    min-height: 280px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .heroPortfolioCurveBlock {
+    width: 120%;
+    max-height: 420px;
+    min-height: 360px;
+  }
+}
+
+/* Infinite horizontal scroll: move by 25% of content = one full repeat (4 copies) */
+@keyframes heroScroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-25%);
+  }
 }
 
 /* 2. Dark bar (roller line) – sits on top of gradient shape */
@@ -143,7 +172,23 @@ section {
   background-color: rgb(19, 0, 36);
   padding-top: 0.1875rem;
   padding-bottom: 0.1875rem;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
   overflow-x: hidden;
+}
+
+@media (min-width: 768px) {
+  .heroPortfolioDarkBar {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .heroPortfolioDarkBar {
+    padding-left: 4rem;
+    padding-right: 4rem;
+  }
 }
 
 .heroPortfolioScrollContainer {
@@ -151,22 +196,88 @@ section {
   z-index: 10;
   display: flex;
   white-space: nowrap;
-  animation: scroll 28s linear infinite;
+  overflow-x: hidden;
+  /* Fade edges so text doesn’t look cut off on any screen size */
+  mask-image: linear-gradient(
+    to right,
+    transparent 0,
+    black 2rem,
+    black calc(100% - 2rem),
+    transparent 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0,
+    black 2rem,
+    black calc(100% - 2rem),
+    transparent 100%
+  );
 }
 
-.heroPortfolioScrollContainer:hover {
+@media (min-width: 768px) {
+  .heroPortfolioScrollContainer {
+    mask-image: linear-gradient(
+      to right,
+      transparent 0,
+      black 4rem,
+      black calc(100% - 4rem),
+      transparent 100%
+    );
+    -webkit-mask-image: linear-gradient(
+      to right,
+      transparent 0,
+      black 4rem,
+      black calc(100% - 4rem),
+      transparent 100%
+    );
+  }
+}
+
+.heroPortfolioScrollContainer:hover .heroPortfolioInnerContainer {
   animation-play-state: paused;
 }
 
 .heroPortfolioInnerContainer {
   display: flex;
-  gap: 5rem;
+  align-items: center;
+  gap: 0;
+  padding-right: 0;
+  flex-shrink: 0;
+  animation: heroScroll 42s linear infinite;
 }
 
 .heroPortfolioText {
   color: white;
   font-size: 1rem;
   font-weight: 700;
+  white-space: nowrap;
+}
+
+.heroPortfolioStar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-left: 2.5rem;
+  margin-right: 2.5rem;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.heroPortfolioStar svg {
+  width: 0.875rem;
+  height: 0.875rem;
+  display: block;
+}
+
+@media (min-width: 768px) {
+  .heroPortfolioStar {
+    margin-left: 3rem;
+    margin-right: 3rem;
+  }
+  .heroPortfolioStar svg {
+    width: 1rem;
+    height: 1rem;
+  }
 }
 
 @media (min-width: 768px) {
@@ -175,140 +286,3 @@ section {
   }
 }
 
-/* Intro card with description text */
-.heroIntroCardContainer {
-  position: relative;
-  z-index: 10;
-  max-width: 80rem;
-  margin: 2rem auto 0;
-  width: 90%;
-}
-
-.heroIntroCard {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background: rgba(255, 255, 255, 0.12);
-  backdrop-filter: blur(24px) saturate(180%);
-  -webkit-backdrop-filter: blur(24px) saturate(180%);
-  border-radius: 2rem;
-  padding: 4rem 2.5rem;
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.15);
-}
-
-@media (min-width: 768px) {
-  .heroIntroCard {
-    padding: 5rem 5rem;
-    border-radius: 2.5rem;
-  }
-}
-
-.heroIntroText {
-  color: white;
-  font-size: 1.5rem;
-  text-align: center;
-  line-height: 1.9;
-  letter-spacing: 0.01em;
-}
-
-@media (min-width: 768px) {
-  .heroIntroText {
-    font-size: 2rem;
-    line-height: 2;
-  }
-}
-
-/* Wrapper for highlight + tooltip */
-.heroIntroHighlightWrap {
-  position: relative;
-  display: inline-block;
-  cursor: default;
-}
-
-.heroIntroHighlightText {
-  background: linear-gradient(to right, #9E2FFF, #FF798B);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  font-weight: 700;
-}
-
-/* Tooltip on hover - centered above the highlight text */
-.heroIntroTooltip {
-  position: absolute;
-  left: 50%;
-  bottom: 100%;
-  transform: translateX(-50%) translateY(0.5rem) scale(0.96);
-  padding: 0.6rem 1rem;
-  margin-bottom: 0.5rem;
-  background: linear-gradient(135deg, rgba(54, 23, 101, 0.97) 0%, rgba(30, 10, 55, 0.97) 100%);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(158, 47, 255, 0.35);
-  border-radius: 0.75rem;
-  color: rgba(255, 255, 255, 0.98);
-  font-size: 0.8125rem;
-  font-weight: 500;
-  letter-spacing: 0.02em;
-  white-space: nowrap;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35rem;
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.25s ease, visibility 0.25s ease, transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
-  pointer-events: none;
-  z-index: 50;
-  box-shadow:
-    0 8px 24px rgba(0, 0, 0, 0.35),
-    0 0 0 1px rgba(255, 255, 255, 0.06) inset,
-    0 0 20px rgba(158, 47, 255, 0.15);
-}
-
-.heroIntroHighlightWrap:hover .heroIntroTooltip {
-  opacity: 1;
-  visibility: visible;
-  transform: translateX(-50%) translateY(0) scale(1);
-}
-
-/* Small arrow pointing down to the highlight */
-.heroIntroTooltip::after {
-  content: '';
-  position: absolute;
-  left: 50%;
-  bottom: -5px;
-  transform: translateX(-50%);
-  border-left: 6px solid transparent;
-  border-right: 6px solid transparent;
-  border-top: 6px solid rgba(54, 23, 101, 0.97);
-  filter: drop-shadow(0 1px 0 rgba(158, 47, 255, 0.3));
-}
-
-.heroIntroTooltipSep {
-  color: rgba(255, 255, 255, 0.5);
-  font-weight: 400;
-  user-select: none;
-}
-
-/* ABOUT ME button - pill shape, solid dark purple, white border */
-.heroAboutMeButton {
-  display: inline-block;
-  margin-top: 2rem;
-  padding: 0.875rem 2.5rem;
-  color: #ffffff;
-  font-size: 0.875rem;
-  font-weight: 600;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  text-decoration: none;
-  background: rgb(42, 6, 73);
-  border: 1px solid #ffffff;
-  border-radius: 9999px;
-  transition: background 0.2s ease, border-color 0.2s ease;
-}
-
-.heroAboutMeButton:hover {
-  background: rgb(54, 12, 90);
-  border-color: #ffffff;
-}
