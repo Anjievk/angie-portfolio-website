@@ -2,7 +2,7 @@
    PROJECTS CAROUSEL STYLES
    ============================================ */
 
-/* Main carousel section */
+/* Main carousel section – dark purple gradient */
 .projectsCarouselSection {
   position: relative;
   padding: 5rem 2rem;
@@ -13,16 +13,20 @@
   margin: 0 auto;
 }
 
-/* Section title */
+.projectsCarouselInner {
+  position: relative;
+}
+
+/* Section title – noticeable title-to-subtitle, larger space to carousel */
 .projectsCarouselTitleContainer {
   text-align: center;
-  margin-bottom: 3rem;
+  margin-bottom: 0.25rem;
 }
 
 .projectsCarouselTitle {
   font-size: 3rem;
   font-weight: 700;
-  margin-bottom: 1rem;
+
 }
 
 @media (min-width: 768px) {
@@ -32,70 +36,16 @@
 }
 
 .projectsCarouselTitleGradient {
-  background: linear-gradient(to right, #9E2FFF, #FF798B);
+  background: linear-gradient(to right, #9E2FFF, #e879f9, #FF798B);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 20px rgba(158, 47, 255, 0.35)) drop-shadow(0 0 40px rgba(255, 121, 139, 0.2));
 }
 
 .projectsCarouselSubtitle {
-  color: rgb(209, 213, 219);
+  color: rgba(255, 255, 255, 0.75);
   font-size: 1.125rem;
-}
-
-/* Carousel controls */
-.projectsCarouselControls {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
-  margin-bottom: 2rem;
-}
-
-.projectsCarouselArrowButton {
-  width: 3rem;
-  height: 3rem;
-  border-radius: 0.5rem;
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  background-color: rgba(88, 28, 135, 0.4);
-  backdrop-filter: blur(4px);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background-color 0.3s;
-  z-index: 10;
-}
-
-.projectsCarouselArrowButton:hover {
-  background-color: rgba(255, 255, 255, 0.1);
-}
-
-.projectsCarouselArrowIcon {
-  width: 1.5rem;
-  height: 1.5rem;
-  color: white;
-}
-
-.projectsCarouselPageIndicator {
-  color: rgba(255, 255, 255, 0.7);
-  font-size: 0.875rem;
-  min-width: 3rem;
-  text-align: center;
-}
-
-.projectsCarouselViewAllButton {
-  margin-left: 2rem;
-  padding: 1rem 2rem;
-  border-radius: 9999px;
-  background-color: white;
-  color: rgb(88, 28, 135);
-  font-weight: 700;
-  transition: background-color 0.3s;
-  z-index: 10;
-}
-
-.projectsCarouselViewAllButton:hover {
-  background-color: rgb(243, 232, 255);
 }
 
 /* Project cards container */
@@ -106,24 +56,24 @@
   justify-content: center;
   width: 100%;
   max-width: 80rem;
-  height: 20rem;
-  margin: 0 auto 2rem;
+  height: 32rem;
+  margin: 0 auto ;
 }
 
 .projectsCarouselCard {
   position: absolute;
-  transition: all 0.5s ease-in-out;
+  transition: transform 0.5s ease, opacity 0.5s ease;
 }
 
 /* Project card mask effects */
 .projectsCarouselCardMaskLeft {
-  mask-image: linear-gradient(to right, transparent, white);
-  -webkit-mask-image: linear-gradient(to right, transparent, white);
+  mask-image: linear-gradient(to right, transparent 20%, white 70%);
+  -webkit-mask-image: linear-gradient(to right, transparent 20%, white 70%);
 }
 
 .projectsCarouselCardMaskRight {
-  mask-image: linear-gradient(to left, transparent, white);
-  -webkit-mask-image: linear-gradient(to left, transparent, white);
+  mask-image: linear-gradient(to left, transparent 20%, white 70%);
+  -webkit-mask-image: linear-gradient(to left, transparent 20%, white 70%);
 }
 
 .projectsCarouselCardMaskNone {
@@ -132,42 +82,268 @@
 }
 
 .projectsCarouselCardItem {
-  border-radius: 1.5rem;
-  width: 20rem;
-  height: 16rem;
+  border-radius: 1rem;
+  width: 22rem;
+  height: 26rem;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
+/* Active card – teal-blue with headline */
 .projectsCarouselCardActive {
-  background-color: white;
+  background: linear-gradient(165deg, #0d9488 0%, #14b8a6 50%, #2dd4bf 100%);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
 }
 
-.projectsCarouselCardInactive {
-  background-color: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(4px);
+.projectsCarouselCardActiveInner {
+  padding: 0;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  min-height: 0;
 }
 
-/* Project details below carousel */
-.projectsCarouselDetailsContainer {
-  max-width: 42rem;
+/* Full-frame image – fills entire card */
+.projectsCarouselCardImageWrap {
+  position: absolute;
+  inset: 0;
+  border-radius: 1rem;
+  overflow: hidden;
+}
+
+.projectsCarouselCardImageWrap .projectsCarouselCardImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 1rem;
+}
+
+.projectsCarouselCardHeadlineOverlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 1rem 1.25rem;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.75), transparent);
+  z-index: 2;
+}
+
+.projectsCarouselCardHeadline {
+  font-size: 0.875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: rgba(255, 255, 255, 0.95);
+  line-height: 1.3;
+  margin: 1rem 1.5rem 0;
+}
+
+.projectsCarouselCardHeadlineOverlay {
+  margin: 0;
+}
+
+.projectsCarouselCardPlaceholder {
+  flex: 1;
+  min-height: 16rem;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 0.75rem;
+  overflow: hidden;
+  position: relative;
+  margin: 1rem 1.5rem;
+}
+
+.projectsCarouselCardPlaceholder .projectsCarouselCardImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 0.75rem;
+}
+
+/* Inactive left – show prev project image when available */
+.projectsCarouselCardInactiveLeft {
+  background: rgba(30, 10, 46, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 0;
+  overflow: hidden;
+}
+
+.projectsCarouselCardPrevImageWrap {
+  position: absolute;
+  inset: 0;
+  border-radius: 1rem;
+  overflow: hidden;
+}
+
+.projectsCarouselCardPrevImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 1rem;
+  opacity: 0.9;
+}
+
+/* Inactive right – show next project image when available */
+.projectsCarouselCardInactiveRight {
+  background: rgba(30, 10, 46, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 0;
+  overflow: hidden;
+}
+
+.projectsCarouselCardNextImageWrap {
+  position: absolute;
+  inset: 0;
+  border-radius: 1rem;
+  overflow: hidden;
+}
+
+.projectsCarouselCardNextImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 1rem;
+  opacity: 0.92;
+}
+
+.projectsCarouselCardStacked {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding: 1.25rem;
+}
+
+.projectsCarouselCardStackedBox {
+  width: 80%;
+  max-width: 10rem;
+  height: 4rem;
+  border-radius: 0.5rem;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Bottom row: details left, nav + VIEW ALL right – clear horizontal gap */
+.projectsCarouselBottomRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  flex-wrap: wrap;
+  max-width: 56rem;
   margin: 0 auto;
 }
 
+.projectsCarouselDetailsContainer {
+  flex: 1;
+  min-width: 0;
+  max-width: 24rem;
+}
+
 .projectsCarouselCategory {
-  color: rgb(196, 181, 253);
   font-size: 0.875rem;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0;
+  background: linear-gradient(to right, #9E2FFF, #e879f9, #FF798B);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .projectsCarouselProjectTitle {
   color: white;
   font-size: 1.875rem;
   font-weight: 700;
-  margin-bottom: 1rem;
+  margin-bottom: 0.25rem;
 }
 
 .projectsCarouselProjectDescription {
-  color: rgb(209, 213, 219);
-  font-size: 1.125rem;
+  color: rgba(209, 213, 219, 0.9);
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+/* Carousel controls – right side, clear gap between pill and VIEW ALL */
+.projectsCarouselControls {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-shrink: 0;
+}
+
+/* Single pill: left arrow | 2/5 | right arrow – same height as VIEW ALL */
+.projectsCarouselSliderPill {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  height: 2.75rem;
+  padding: 0 0.75rem;
+  min-width: 8rem;
+  border-radius: 9999px;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  background: rgba(217, 217, 217, 0.06);
+  color: white;
+  box-sizing: border-box;
+}
+
+.projectsCarouselSliderPill .projectsCarouselArrowButton {
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: 50%;
+  border: none;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s;
+  color: white;
+}
+
+.projectsCarouselSliderPill .projectsCarouselArrowButton:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.projectsCarouselSliderPill .projectsCarouselArrowIcon {
+  width: 1rem;
+  height: 1rem;
+  color: white;
+}
+
+.projectsCarouselSliderPill .projectsCarouselPageIndicator {
+  color: white;
+  font-size: 0.875rem;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+/* VIEW ALL – solid white capsule, black text (same height as slider pill) */
+.projectsCarouselViewAllButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 2.75rem;
+  padding: 0 1.25rem;
+  border-radius: 9999px;
+  background: white;
+  color: #1e0a2e;
+  font-weight: 700;
+  font-size: 0.875rem;
+  letter-spacing: 0.05em;
+  text-decoration: none;
+  transition: opacity 0.2s, transform 0.2s;
+  box-sizing: border-box;
+}
+
+.projectsCarouselViewAllButton:hover {
+  opacity: 0.92;
+  transform: scale(1.02);
 }

@@ -1,6 +1,6 @@
 'use client';
 
-import { Fragment } from 'react';
+import { Fragment, useEffect, useState } from 'react';
 import HeroIntroCard from '../HeroIntroCard/HeroIntroCard';
 import './HeroSection.css';
 
@@ -17,8 +17,17 @@ function StarIcon({ className }) {
 }
 
 export default function HeroSection() {
+  const [hasLoaded, setHasLoaded] = useState(false);
+
+  useEffect(() => {
+    const t = requestAnimationFrame(() => {
+      requestAnimationFrame(() => setHasLoaded(true));
+    });
+    return () => cancelAnimationFrame(t);
+  }, []);
+
   return (
-    <section className="relative flex flex-col items-center justify-center px-8 pt-16 pb-20 overflow-x-hidden overflow-y-visible min-h-[80vh]">
+    <section className={`relative flex flex-col items-center justify-center px-8 pt-16 pb-20 overflow-x-hidden overflow-y-visible min-h-[80vh] heroSectionReveal ${hasLoaded ? 'heroSectionReveal--visible' : ''}`}>
       {/* Header area - from top to Portfolio banner */}
       <div className="relative w-full">
       {/* Text Content - "Hi there! I'm" */}

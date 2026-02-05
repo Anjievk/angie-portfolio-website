@@ -1,0 +1,46 @@
+/* Scroll reveal – hidden by default, animate in when visible */
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition:
+    opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.scroll-reveal.scroll-reveal--visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Variants */
+.scroll-reveal--fade {
+  transform: none;
+}
+
+.scroll-reveal--fade.scroll-reveal--visible {
+  transform: none;
+}
+
+.scroll-reveal--fadeLeft {
+  transform: translateX(-32px);
+}
+
+.scroll-reveal--fadeLeft.scroll-reveal--visible {
+  transform: translateX(0);
+}
+
+.scroll-reveal--fadeRight {
+  transform: translateX(32px);
+}
+
+.scroll-reveal--fadeRight.scroll-reveal--visible {
+  transform: translateX(0);
+}
+
+.scroll-reveal--scale {
+  transform: scale(0.95);
+}
+
+.scroll-reveal--scale.scroll-reveal--visible {
+  transform: scale(1);
+}

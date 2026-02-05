@@ -1,5 +1,6 @@
 'use client';
 
+import ScrollReveal from '../ScrollReveal/ScrollReveal';
 import './LetsConnect.css';
 
 export default function LetsConnect() {
@@ -14,19 +15,22 @@ export default function LetsConnect() {
     <section className="letsConnectSection">
       <div className="letsConnectContainer">
         {/* Section Title */}
-        <div className="letsConnectTitle">
-          <div className="letsConnectTitleWrapper">
-            <div className="letsConnectTitleLine"></div>
-            <h2 className="letsConnectTitleText">
-              <span className="bg-gradient-to-r from-[#9E2FFF] to-[#FF798B] bg-clip-text text-transparent">
-                Let&apos;s Connect!
-              </span>
-            </h2>
-            <div className="letsConnectTitleLine"></div>
+        <ScrollReveal animation="fadeUp" delay={0}>
+          <div className="letsConnectTitle">
+            <div className="letsConnectTitleWrapper">
+              <div className="letsConnectTitleLine"></div>
+              <h2 className="letsConnectTitleText">
+                <span className="bg-gradient-to-r from-[#9E2FFF] to-[#FF798B] bg-clip-text text-transparent">
+                  Let&apos;s Connect!
+                </span>
+              </h2>
+              <div className="letsConnectTitleLine"></div>
+            </div>
           </div>
-        </div>
+        </ScrollReveal>
 
         {/* Contact Links Container */}
+        <ScrollReveal animation="fadeUp" delay={100}>
         <div className="letsConnectContactLinksContainer">
           {links.map((link, index) => (
             <div key={link.label}>
@@ -49,6 +53,7 @@ export default function LetsConnect() {
             </div>
           ))}
         </div>
+        </ScrollReveal>
       </div>
     </section>
   );

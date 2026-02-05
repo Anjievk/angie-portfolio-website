@@ -1,4 +1,5 @@
 import "./globals.css";
+import GSAPInit from "./components/GSAPInit/GSAPInit";
 
 export const metadata = {
   title: "Angie Duong - Portfolio",
@@ -16,7 +17,10 @@ export default function RootLayout({ children }) {
           rel="stylesheet"
         />
       </head>
-      <body>{children}</body>
+      <body>
+        <GSAPInit />
+        {children}
+      </body>
     </html>
   );
 }
