@@ -1,102 +1,246 @@
 /* ============================================
-   LETS CONNECT SECTION STYLES
+   READY TO BRING YOUR IDEA TO LIFE + FOOTER
+   CTA block, gradient "idea to life", tags (drop animation), footer with SVG curve
    ============================================ */
 
-/* Main section container */
-.letsConnectSection {
+.readyFooterSection {
   position: relative;
-  padding: 5rem 2rem;
+  padding: 0 0 0;
+  background: transparent;
+  overflow: hidden;
 }
 
-/* Content container */
-.letsConnectContainer {
-  max-width: 64rem;
+/* ----- CTA block ----- */
+.readyCtaBlock {
+  text-align: center;
+  padding: 4rem 1.5rem 3rem;
+  max-width: 48rem;
   margin: 0 auto;
 }
 
-/* Title section */
-.letsConnectTitle {
-  text-align: center;
-  margin-bottom: 4rem;
+.readyHeadline {
+  font-family: 'Alan Sans', sans-serif;
+  font-weight: 800;
+  font-size: clamp(2rem, 6vw, 3.5rem);
+  line-height: 1.15;
+  color: #ffffff;
+  margin: 0 0 1rem;
+  letter-spacing: -0.02em;
 }
 
-/* Title wrapper with decorative lines */
-.letsConnectTitleWrapper {
+.readyHeadlineGradient {
+  display: inline-block;
+  background: linear-gradient(90deg, #e91e8c 0%, #9c27b0 50%, #7c3aed 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.readySubheadline {
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  color: rgba(255, 255, 255, 0.9);
+  margin: 0 0 2rem;
+  font-weight: 500;
+}
+
+.readyCtaButton {
+  display: inline-block;
+  padding: 0.875rem 2rem;
+  font-family: 'Alan Sans', sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  color: #ffffff;
+  text-decoration: none;
+  border-radius: 9999px;
+  background: linear-gradient(90deg, #7c3aed 0%, #9c27b0 50%, #e91e8c 100%);
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.readyCtaButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(156, 39, 176, 0.4);
+}
+
+/* ----- Tags above footer (oval, on curve) ----- */
+.readyTagsWrap {
+  position: relative;
+  min-height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 0 2rem;
+}
+
+.readyTagsCurve {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem 1rem;
+  max-width: 90vw;
+}
+
+.readyTag {
+  display: inline-block;
+  padding: 0.4rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  border-radius: 9999px;
+  white-space: nowrap;
+}
+
+@media (min-width: 768px) {
+  .readyTagsCurve {
+    gap: 0.5rem 1.25rem;
+  }
+  .readyTag {
+    padding: 0.5rem 1.25rem;
+    font-size: 0.9375rem;
+  }
+}
+
+/* ----- Footer with SVG curve ----- */
+.readyFooter {
+  position: relative;
+  margin-top: 0;
+  min-height: 420px;
+}
+
+.readyFooterSvgWrap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.readyFooterCurve {
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+}
+
+.readyFooterInner {
+  position: relative;
+  z-index: 1;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 6rem 1.5rem 3rem 1.5rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto auto auto;
+  gap: 2rem;
+  align-items: start;
+}
+
+@media (min-width: 768px) {
+  .readyFooterInner {
+    grid-template-columns: 1fr auto 1fr;
+    grid-template-rows: 1fr;
+    align-items: center;
+    padding: 5rem 2rem 3rem;
+    min-height: 380px;
+  }
+}
+
+/* Logo + cite (bottom-left on desktop) */
+.readyFooterBrand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+@media (min-width: 768px) {
+  .readyFooterBrand {
+    align-items: flex-start;
+  }
+}
+
+.readyFooterLogo {
+  display: inline-block;
+  line-height: 0;
+}
+
+.readyFooterLogoImg {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+}
+
+.readyFooterCite {
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.9);
+  margin: 0;
+}
+
+/* Let's Connect (center) */
+.readyFooterConnect {
+  text-align: center;
+}
+
+.readyFooterConnectTitle {
+  font-family: 'Alan Sans', sans-serif;
+  font-weight: 700;
+  font-size: 1.25rem;
+  color: #ffffff;
+  margin: 0 0 1rem;
+}
+
+.readyFooterSocialIcons {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 1rem;
-  margin-bottom: 1rem;
 }
 
-/* Decorative line on sides of title */
-.letsConnectTitleLine {
-  flex: 1;
-  height: 1px;
-  background-color: rgba(255, 255, 255, 0.3);
-}
-
-/* Title text */
-.letsConnectTitleText {
-  font-size: 3rem;
-  font-weight: 700;
-}
-
-@media (min-width: 768px) {
-  .letsConnectTitleText {
-    font-size: 4.5rem;
-  }
-}
-
-/* Contact links container with border */
-.letsConnectContactLinksContainer {
-  background: transparent;
-  border: 2px solid white;
-  border-radius: 1.5rem;
-  padding: 2rem;
-}
-
-@media (min-width: 768px) {
-  .letsConnectContactLinksContainer {
-    padding: 3rem;
-  }
-}
-
-/* Individual contact link */
-.letsConnectContactLink {
+.readyFooterSocialIcon {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 1.5rem 0;
-  transition: opacity 0.3s;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  border-radius: 50%;
+  color: #ffffff;
+  transition: background 0.2s, color 0.2s;
 }
 
-.letsConnectContactLink:hover {
-  opacity: 0.8;
+.readyFooterSocialIcon:hover {
+  background: rgba(255, 255, 255, 0.15);
+  color: #ffffff;
 }
 
-/* Contact link label text */
-.letsConnectContactLinkLabel {
-  color: white;
-  font-size: 1.25rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
+/* Footer nav (right on desktop) */
+.readyFooterNav {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
 }
 
-/* Contact link arrow icon */
-.letsConnectContactLinkArrow {
-  color: white;
-  font-size: 1.5rem;
-  transition: transform 0.3s;
+@media (min-width: 768px) {
+  .readyFooterNav {
+    align-items: flex-end;
+    justify-self: end;
+  }
 }
 
-.letsConnectContactLink:hover .letsConnectContactLinkArrow {
-  transform: translateX(0.5rem);
+.readyFooterNavLink {
+  font-family: 'Alan Sans', sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  color: #ffffff;
+  text-decoration: none;
+  transition: opacity 0.2s;
 }
 
-/* Divider between contact links */
-.letsConnectContactLinkDivider {
-  height: 1px;
-  background-color: rgba(255, 255, 255, 0.3);
+.readyFooterNavLink:hover {
+  opacity: 0.85;
 }
