@@ -1,15 +1,11 @@
 /* ============================================
-   BLUR SPOT GLOW – component tái sử dụng
-   Dùng làm background glow (2 vệt mờ).
-   Parent cần: position: relative.
-   Màu mặc định: #A836F1 (trái), #FA758F (phải).
-   Override màu qua props hoặc CSS (--blur-spot-left-rgb, --blur-spot-right-rgb).
+   BLUR SPOT GLOW
    ============================================ */
 
 .blurSpotGlow {
   position: absolute;
   inset: 0;
-  z-index: 0;
+  z-index: 10;
   pointer-events: none;
   --blur-spot-left-rgb: 168, 54, 241;
   --blur-spot-right-rgb: 250, 117, 143;
@@ -21,7 +17,6 @@
   pointer-events: none;
 }
 
-/* Vị trí: "at X% Y%" = tâm glow (X=ngang 0=trái 100=phải, Y=dọc 0=trên 100=dưới). translateY = đẩy lên/xuống. */
 .blurSpotGlowSpotBottomLeft {
   background: radial-gradient(
     ellipse 45% 120% at -8% 100%,
@@ -32,12 +27,12 @@
     transparent 100%
   );
   filter: blur(55px);
-  transform: translateY(20%); /* đẩy xuống: tăng %; đẩy lên: giảm hoặc dùng số âm */
+  transform: translateY(20%); 
 }
 
 .blurSpotGlowSpotTopRight {
   background: radial-gradient(
-    ellipse 42% 110% at 108% 0%, /* at X% Y% = tâm (108% = lệch phải, 0% = sát đỉnh) */
+    ellipse 42% 110% at 108% 0%,
     rgba(var(--blur-spot-right-rgb), 0.9) 0%,
     rgba(var(--blur-spot-right-rgb), 0.6) 38%,
     rgba(var(--blur-spot-right-rgb), 0.22) 60%,
@@ -45,5 +40,5 @@
     transparent 100%
   );
   filter: blur(55px);
-  transform: translateY(-20%); /* đẩy lên: số âm; đẩy xuống: số dương */
+  transform: translateY(-20%); 
 }

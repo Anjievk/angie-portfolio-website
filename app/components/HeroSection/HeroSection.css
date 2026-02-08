@@ -12,46 +12,13 @@ section {
   transform: translateY(20%);
 } */
 
-/* Character illustration – in front of gradient shape */
-.heroCharacterContainer {
-  position: relative;
-  z-index: 20;
-  display: flex;
-  justify-content: center;
-  align-items: flex-end;
-  margin-top: 1rem;
-  margin-bottom: -120px;
-  min-height: 200px;
-  pointer-events: none;
-}
-
-.heroCharacterImage {
-  display: block;
-  width: auto;
-  max-width: 280px;
-  height: auto;
-  max-height: 340px;
-  object-fit: contain;
-  object-position: center bottom;
-}
-
-@media (min-width: 768px) {
-  .heroCharacterContainer {
-    margin-bottom: -140px;
-  }
-  .heroCharacterImage {
-    max-width: 320px;
-    max-height: 400px;
-  }
-}
-
 /* "Hi there! I'm" greeting text container */
 .heroGreetingContainer {
   position: relative;
   z-index: 30;
   text-align: center;
   margin-bottom: 0.25rem;
-  padding-top: 3.5rem;
+  padding-top: 2rem;
 }
 
 .heroGreetingText {
@@ -122,7 +89,7 @@ section {
   height: auto;
   min-height: 220px;
   max-height: min(420px, 45vw);
-  margin-top: -145px;
+  margin-top: -50px;
   margin-bottom: -60px;
   margin-left: 0;
   transform: translateX(-50%);
@@ -170,10 +137,7 @@ section {
   z-index: 10;
   width: 100%;
   background-color: rgb(19, 0, 36);
-  padding-top: 0.1875rem;
-  padding-bottom: 0.1875rem;
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
+  padding: 0.65rem 1.5rem;
   overflow-x: hidden;
 }
 

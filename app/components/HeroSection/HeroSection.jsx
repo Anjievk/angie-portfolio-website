@@ -42,19 +42,9 @@ export default function HeroSection() {
         </h1>
       </div>
 
-      {/* Character illustration – in front of gradient shape */}
-      <div className="heroCharacterContainer">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src="/Angie-drawing.png"
-          alt="Character illustration"
-          className="heroCharacterImage"
-        />
       </div>
 
-      </div>
-
-      {/* Gradient shape (behind character) + roller line */}
+      {/* Gradient shape + roller line */}
       <div className="heroPortfolioBanner">
         {/* 1. Curve block – banner image clipped to bell shape, gradient on top for tint */}
         <div className="heroPortfolioCurveBlock" aria-hidden="true">

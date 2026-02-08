@@ -1,10 +1,3 @@
-/**
- * Footer SVG top curve (cubic Bézier). Path segment:
- * L0.178711 0.990723 C513.065 196.958 926.437 198.998 1439.82 0.990723 L1440.5 0.729004
- * ViewBox: 0 0 1440 507
- * All coordinates are in CONTAINER space: (0,0) = top-left of physics container.
- */
-
 const SVG_WIDTH = 1440;
 const P0 = { x: 0.178711, y: 0.990723 };
 const P1 = { x: 513.065, y: 196.958 };
@@ -23,10 +16,6 @@ function cubicBezier(t, p0, p1, p2, p3) {
   };
 }
 
-/**
- * Sample curve points in CONTAINER coordinates.
- * curveOffset: shift whole curve down (positive = lower).
- */
 function sampleCurve(worldWidth, worldHeight, curveDepth, samples, curveOffset = 0) {
   const yMin = 0.73;
   const yMax = 199;
@@ -42,15 +31,10 @@ function sampleCurve(worldWidth, worldHeight, curveDepth, samples, curveOffset =
   return points;
 }
 
-/** Export for debug overlay: curve line in container coords */
 export function getCurvePoints(containerWidth, containerHeight, curveDepth, samples = 48, curveOffset = 0) {
   return sampleCurve(containerWidth, containerHeight, curveDepth, samples, curveOffset);
 }
 
-/**
- * Returns vertices (relative to center) and center for one convex floor polygon.
- * Used with Matter.Bodies.fromVertices; concave shape may need poly-decomp.
- */
 export function getCurveFloorVertices(worldWidth, worldHeight, curveDepth = 60, samples = 32) {
   const points = sampleCurve(worldWidth, worldHeight, curveDepth, samples);
   const vertices = [
@@ -69,11 +53,6 @@ export function getCurveFloorVertices(worldWidth, worldHeight, curveDepth = 60, 
 
 const FLOOR_SEGMENT_HEIGHT = 16;
 
-/**
- * Returns floor segments so the TOP surface of each segment exactly matches the curve.
- * worldWidth, worldHeight = container dimensions from getBoundingClientRect().
- * Segment center is placed BELOW the curve by halfH so the top edge lies ON the curve.
- */
 export function getCurveFloorSegments(containerWidth, containerHeight, curveDepth, segments = 32, curveOffset = 0) {
   const points = sampleCurve(containerWidth, containerHeight, curveDepth, segments, curveOffset);
   const result = [];

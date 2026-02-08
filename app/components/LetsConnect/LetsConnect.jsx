@@ -38,10 +38,10 @@ const FOOTER_NAV = [
 ];
 
 const SOCIAL_LINKS = [
-  { label: 'Behance', href: 'https://behance.net', icon: 'behance' },
-  { label: 'LinkedIn', href: 'https://linkedin.com', icon: 'linkedin' },
-  { label: 'Email', href: 'mailto:hello@example.com', icon: 'email' },
-  { label: 'GitHub', href: 'https://github.com', icon: 'github' },
+  { label: 'Behance', href: 'https://www.behance.net/angieduong3', icon: 'behance' },
+  { label: 'LinkedIn', href: 'www.linkedin.com/in/angie-duong-vk', icon: 'linkedin' },
+  { label: 'Email', href: 'mailto:angieduong.vk@gmail.com', icon: 'email' },
+  { label: 'GitHub', href: 'https://github.com/Anjievk', icon: 'github' },
 ];
 
 function SocialIcon({ icon }) {
@@ -116,8 +116,8 @@ function initPhysics(containerEl, tagEls) {
   Matter.World.add(world, [leftWall, rightWall]);
 
   // Curve at bottom of container: depth scales with height (larger = cong hơn)
-  const curveDepth = Math.max(110, Math.min(170, height * 1.55));
-  const curveOffset = 165; // positive = move curve down (px)
+  const curveDepth = Math.max(100, Math.min(160, height * 0.88));
+  const curveOffset = 115; // positive = move curve down (px)
   const floorSegments = getCurveFloorSegments(width, height, curveDepth, 52, curveOffset);
   const floorBodies = floorSegments.map((seg) =>
     Matter.Bodies.rectangle(seg.x, seg.y, seg.width, seg.height, {
@@ -421,9 +421,9 @@ export default function LetsConnect() {
         </div>
         <div className="readyFooterInner" ref={footerInnerRef}>
           <div className="readyFooterBrand">
-            <Link href="/" className="readyFooterLogo" aria-label="Home">
+            <a href="/" className="readyFooterLogo" aria-label="Home">
               <Image src="/Logo.svg" alt="AD" width={48} height={48} className="readyFooterLogoImg" />
-            </Link>
+            </a>
             <p className="readyFooterCite">© Angie Duong | 2026</p>
           </div>
           <div className="readyFooterConnect">

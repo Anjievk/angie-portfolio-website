@@ -49,7 +49,7 @@ export default function Navbar() {
       aria-label="Main navigation"
     >
       <div className="navbarInner">
-        <Link href="/" className="navbarLogoLink" aria-label="Home">
+        <a href="/" className="navbarLogoLink" aria-label="Home">
           <Image
             src="/Logo.svg"
             alt="Logo"
@@ -57,7 +57,7 @@ export default function Navbar() {
             height={40}
             className="navbarLogo"
           />
-        </Link>
+        </a>
         <div className="navbarLinksContainer">
           {navItems.map(({ href, label }) => {
             const isActive = pathname === href;
