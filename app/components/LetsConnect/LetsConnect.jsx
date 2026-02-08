@@ -365,6 +365,20 @@ export default function LetsConnect() {
 
   return (
     <section className="readyFooterSection" aria-label="Ready to connect and footer">
+      <div className="readyCtaLineWrap" aria-hidden>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          className="readyCtaLine"
+          width="80%"
+          height="2"
+          viewBox="0 0 1275 2"
+          fill="none"
+          stroke="rgba(255, 255, 255, 0.70)"
+          strokeWidth="2"
+        >
+          <path d="M0 1C21.25 1.06667 42.5 1.13 63.75 1.19C255 1.73 446.25 2 637.5 2C828.75 2 1020 1.73 1211.25 1.19C1232.5 1.13 1253.75 1.06667 1275 1" />
+        </svg>
+      </div>
       <div className="readyCtaBlock" ref={ctaRef}>
         <h2 className="readyHeadline">
           Ready to bring your

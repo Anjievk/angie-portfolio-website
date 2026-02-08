@@ -1,0 +1,106 @@
+/* Let's Connect! card – transparent bg, thick white border, legend in gap (large / screen-sized) */
+
+.connectCardSection {
+  width: 100%;
+  padding: 4rem 5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.connectCardFieldset {
+  display: block;
+  width: 100%;
+  max-width: min(1100px, 92vw);
+  margin: 0 auto;
+  padding: 0;
+  border: 4px solid #ffffff;
+  border-radius: 3.5rem;
+  background: transparent;
+  text-align: center;
+}
+
+/* Legend sits in the top border gap; centered */
+.connectCardLegend {
+  font-family: 'Alan Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-weight: 700;
+  font-size: clamp(1.5rem, 6.5vw, 4rem);
+  color: #ffffff;
+  padding: 0 2rem;
+  margin: 0 auto;
+  display: inline-block;
+  background: transparent;
+}
+
+.connectCardContent {
+  padding: 3rem 3rem 3rem;
+  text-align: left;
+}
+
+@media (min-width: 640px) {
+  .connectCardContent {
+    padding: 4rem 5rem 4rem;
+  }
+}
+
+@media (min-width: 900px) {
+  .connectCardContent {
+    padding: 1rem 5rem 5rem;
+  }
+}
+
+.connectCardRowWrapper {
+  margin-bottom: 0;
+}
+
+.connectCardRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 1.25rem 0;
+  color: #ffffff;
+  text-decoration: none;
+  font-family: inherit;
+  font-weight: 200;
+  font-size: clamp(1rem, 2.5vw, 1.375rem);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  transition: color 0.25s ease;
+}
+
+.connectCardRow:hover {
+  color: #FF798B;
+}
+
+.connectCardRow:hover .connectCardArrow {
+  color: #FF798B;
+}
+
+.connectCardLabel {
+  flex: 1;
+}
+
+.connectCardArrow {
+  flex-shrink: 0;
+  margin-left: 1.5rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  transition: color 0.25s ease;
+}
+
+.connectCardArrowSvg {
+  width: clamp(2rem, 5vw, 3rem);
+  height: clamp(2rem, 5vw, 3rem);
+  display: block;
+}
+
+.connectCardDivider {
+  width: 100%;
+  height: 1px;
+  background: #ffffff;
+  margin: 0;
+}
+
