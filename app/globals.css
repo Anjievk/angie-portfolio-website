@@ -18,12 +18,25 @@
 }
 
 :root {
-  --background: #2A0649;
+  /* Background gradient (deep purple → blue-purple) */
+  --background-start: #2A0649;
+  --background-end: #250A65;
+  --background: linear-gradient(180deg, var(--background-start) 0%, var(--background-end) 100%);
+
+  /* Accent gradient (purple → pink) – use for text, borders, highlights */
+  --gradient-accent: linear-gradient(135deg, #9E2FFF 0%, #FF798B 100%);
+  --gradient-accent-start: #9E2FFF;
+  --gradient-accent-end: #FF798B;
+
   --foreground: #ffffff;
+
+  /* Font family */
+  --font-family: 'Alan Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
 }
 
 @theme inline {
-  --color-background: var(--background);
+  --color-background: var(--background-start);
   --color-foreground: var(--foreground);
 }
 
@@ -34,11 +47,9 @@
 }
 
 body {
-  background: linear-gradient(180deg, #2A0649 0%, #250A65 100%);
+  background: var(--background);
   color: var(--foreground);
-  font-family: 'Alan Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: var(--font-family);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;

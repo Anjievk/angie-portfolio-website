@@ -57,7 +57,7 @@
 }
 
 .introCardHighlightText {
-  background: linear-gradient(to right, #9E2FFF, #FF798B);
+  background: linear-gradient(to right, var(--gradient-accent-start), var(--gradient-accent-end));
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -71,7 +71,7 @@
   transform: translateX(-50%) translateY(0.5rem) scale(0.96);
   padding: 0.6rem 1rem;
   margin-bottom: 0.5rem;
-  background: linear-gradient(135deg, rgba(54, 23, 101, 0.97) 0%, rgba(30, 10, 55, 0.97) 100%);
+  background: linear-gradient(135deg, var(--background-start) 0%, var(--background-end) 100%);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border: 1px solid rgba(158, 47, 255, 0.35);

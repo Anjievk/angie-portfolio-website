@@ -1,3 +1,3 @@
 .mainBackground {
-  background: linear-gradient(180deg, #2A0649 0%, #250A65 100%);
+  background: var(--background);
 }

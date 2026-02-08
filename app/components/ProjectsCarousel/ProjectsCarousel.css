@@ -37,7 +37,7 @@
 }
 
 .projectsCarouselTitleGradient {
-  background: linear-gradient(to right, #9E2FFF, #e879f9, #FF798B);
+  background: linear-gradient(to right, var(--gradient-accent-start), #e879f9, var(--gradient-accent-end));
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -252,7 +252,7 @@
   text-transform: uppercase;
   letter-spacing: 0.05em;
   margin-bottom: 0;
-  background: linear-gradient(to right, #9E2FFF, #e879f9, #FF798B);
+  background: linear-gradient(to right, var(--gradient-accent-start), #e879f9, var(--gradient-accent-end));
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;

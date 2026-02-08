@@ -22,7 +22,7 @@
 
 /* Legend sits in the top border gap; centered */
 .connectCardLegend {
-  font-family: 'Alan Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: var(--font-family);
   font-weight: 700;
   font-size: clamp(1.5rem, 6.5vw, 4rem);
   color: #ffffff;
@@ -70,11 +70,11 @@
 }
 
 .connectCardRow:hover {
-  color: #FF798B;
+  color: var(--gradient-accent-end);
 }
 
 .connectCardRow:hover .connectCardArrow {
-  color: #FF798B;
+  color: var(--gradient-accent-end);
 }
 
 .connectCardLabel {
