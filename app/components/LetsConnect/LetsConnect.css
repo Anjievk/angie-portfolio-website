@@ -13,7 +13,7 @@
 /* ----- CTA block ----- */
 .readyCtaBlock {
   text-align: center;
-  padding: 4rem 1.5rem 3rem;
+  padding: 2rem 1.5rem 0.25rem;
   max-width: 48rem;
   margin: 0 auto;
 }
@@ -63,24 +63,47 @@
   box-shadow: 0 8px 24px rgba(156, 39, 176, 0.4);
 }
 
-/* ----- Tags above footer (oval, on curve) ----- */
+/* ----- Tags above footer (physics: gravity, drag, curve = footer line) ----- */
 .readyTagsWrap {
   position: relative;
-  min-height: 100px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 1rem 0 2rem;
+  z-index: 2;
+  width: 100%;
+  min-height: 120px;
+  padding: 0 0 0;
+  overflow: visible;
+  box-sizing: border-box;
+}
+
+/* After collapse (tags absolute), fixed height so clientHeight is reliable for physics */
+.readyTagsWrap[data-physics-ready],
+.readyTagsWrap[data-physics-ready="true"] {
+  height: 130px;
+  min-height: 130px;
+}
+
+/* Debug overlay: wireframe render of Matter.js bodies (see ?debug=physics) */
+.physicsDebugOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 5;
+}
+
+.physicsDebugOverlay canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
 }
 
 .readyTagsCurve {
   position: relative;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  gap: 0.75rem 1rem;
-  max-width: 90vw;
+  width: 100%;
+  height: 100%;
+  min-height: 260px;
+  /* Tags are positioned absolutely by Matter.js */
 }
 
 .readyTag {
@@ -92,6 +115,13 @@
   border: 1px solid rgba(255, 255, 255, 0.8);
   border-radius: 9999px;
   white-space: nowrap;
+  user-select: none;
+  cursor: grab;
+  touch-action: none;
+}
+
+.readyTag:active {
+  cursor: grabbing;
 }
 
 @media (min-width: 768px) {
@@ -107,6 +137,7 @@
 /* ----- Footer with SVG curve ----- */
 .readyFooter {
   position: relative;
+  z-index: 1;
   margin-top: 0;
   min-height: 420px;
 }

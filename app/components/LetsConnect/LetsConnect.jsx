@@ -1,10 +1,14 @@
 'use client';
 
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, useState } from 'react';
 import gsap from 'gsap';
 import Link from 'next/link';
 import Image from 'next/image';
+import Matter from 'matter-js';
+import { getCurveFloorSegments, getCurvePoints } from './curveFloor';
 import './LetsConnect.css';
+
+const DEBUG_PHYSICS = typeof window !== 'undefined' && window.location.search.includes('debug=physics');
 
 const TAGS = [
   'UX/UI Design',
@@ -13,8 +17,17 @@ const TAGS = [
   'Digital Artist',
   'Prototyping',
   'Wireframe',
-  'Prototyping',
-  'Digital Artist',
+  'Branding',
+  'Typography',
+  'Interaction design',
+  'HTML5',
+  'CSS3',
+  'JavaScript',
+  'Next.js',
+  'React',
+  'Bootstrap',
+  'Tailwind CSS',
+  'Character Drawing',
 ];
 
 const FOOTER_NAV = [
@@ -64,12 +77,136 @@ function SocialIcon({ icon }) {
   }
 }
 
+const PHYSICS = {
+  gravity: 0.6,
+  friction: 0.02,
+  frictionAir: 0.008,
+  restitution: 0.35,
+  wallThickness: 20,
+  curveDepth: 50,
+  spawnYOffset: -80,
+  randomForceScale: 0.015,
+};
+
+const MIN_CONTAINER_HEIGHT = 80;
+const SPAWN_Y_ABOVE_CONTAINER = -80;
+
+const FALLBACK_PHYSICS_HEIGHT = 130; // matches CSS [data-physics-ready] height
+
+function initPhysics(containerEl, tagEls) {
+  const rect = containerEl.getBoundingClientRect();
+  let width = containerEl.clientWidth || rect.width;
+  let height = containerEl.clientHeight || rect.height;
+  if (width <= 0) width = rect.width || 800;
+  if (height < MIN_CONTAINER_HEIGHT) height = FALLBACK_PHYSICS_HEIGHT;
+  if (width <= 0) return null;
+
+  if (process.env.NODE_ENV === 'development') {
+    console.log('[LetsConnect physics] init', { width, height, tagCount: tagEls.length });
+  }
+
+  const engine = Matter.Engine.create({
+    gravity: { x: 0, y: 1.4 },
+  });
+  const { world } = engine;
+
+  const wallOpts = { isStatic: true, render: { visible: false } };
+  const leftWall = Matter.Bodies.rectangle(-PHYSICS.wallThickness / 2, height / 2, PHYSICS.wallThickness, height + 100, wallOpts);
+  const rightWall = Matter.Bodies.rectangle(width + PHYSICS.wallThickness / 2, height / 2, PHYSICS.wallThickness, height + 100, wallOpts);
+  Matter.World.add(world, [leftWall, rightWall]);
+
+  // Curve at bottom of container: depth scales with height (larger = cong hơn)
+  const curveDepth = Math.max(110, Math.min(170, height * 1.55));
+  const curveOffset = 165; // positive = move curve down (px)
+  const floorSegments = getCurveFloorSegments(width, height, curveDepth, 52, curveOffset);
+  const floorBodies = floorSegments.map((seg) =>
+    Matter.Bodies.rectangle(seg.x, seg.y, seg.width, seg.height, {
+      isStatic: true,
+      angle: seg.angle,
+      render: { visible: true },
+      friction: PHYSICS.friction,
+      restitution: PHYSICS.restitution * 0.5,
+    })
+  );
+  Matter.World.add(world, floorBodies);
+
+  // Tag bodies: pill shape (rectangle with chamfer), distributed horizontally, no overlap
+  const tagBodies = [];
+  const count = tagEls.length;
+  const padding = 12;
+  const totalWidth = width - padding * 2;
+  const spacing = count > 1 ? totalWidth / (count + 1) : totalWidth / 2;
+
+  for (let i = 0; i < count; i++) {
+    const el = tagEls[i];
+    if (!el) continue;
+    const rect = el.getBoundingClientRect();
+    const w = Math.max(rect.width, 40);
+    const h = Math.max(rect.height, 24);
+    const x = padding + spacing * (i + 1) + (Math.random() - 0.5) * 16;
+    const y = SPAWN_Y_ABOVE_CONTAINER + (Math.random() - 0.5) * 20; // Above container so they fall into view
+
+    const body = Matter.Bodies.rectangle(x, y, w, h, {
+      chamfer: { radius: h / 2 },
+      friction: PHYSICS.friction,
+      frictionAir: PHYSICS.frictionAir,
+      restitution: PHYSICS.restitution,
+      density: 0.0012,
+      render: { visible: true },
+    });
+    Matter.Body.setVelocity(body, {
+      x: (Math.random() - 0.5) * PHYSICS.randomForceScale * width,
+      y: 0,
+    });
+    Matter.World.add(world, body);
+    tagBodies.push({ body, el, w, h });
+  }
+
+  let debugRender = null;
+  if (DEBUG_PHYSICS) {
+    const debugWrap = document.createElement('div');
+    debugWrap.className = 'physicsDebugOverlay';
+    debugWrap.setAttribute('aria-hidden', 'true');
+    containerEl.appendChild(debugWrap);
+    debugRender = Matter.Render.create({
+      element: debugWrap,
+      engine,
+      options: {
+        width,
+        height,
+        wireframes: true,
+        background: 'transparent',
+        wireframeBackground: 'transparent',
+        wireframeStrokeStyle: 'rgba(0,255,100,0.6)',
+        showBounds: true,
+      },
+    });
+    Matter.Render.run(debugRender);
+  }
+
+  return {
+    engine,
+    world,
+    tagBodies,
+    bounds: { width, height },
+    curveDepth,
+    floorSegments,
+    curvePoints: getCurvePoints(width, height, curveDepth, 48, curveOffset),
+    debugRender,
+  };
+}
+
 export default function LetsConnect() {
   const ctaRef = useRef(null);
   const ideaToLifeRef = useRef(null);
-  const tagRefs = useRef([]);
   const footerInnerRef = useRef(null);
+  const tagsWrapRef = useRef(null);
+  const tagRefs = useRef([]);
+  const physicsRef = useRef(null);
+  const rafRef = useRef(null);
+  const [tagsMounted, setTagsMounted] = useState(false);
 
+  // GSAP: CTA and footer only (tags are driven by physics)
   useEffect(() => {
     const ctx = gsap.context(() => {
       if (ctaRef.current) {
@@ -89,16 +226,6 @@ export default function LetsConnect() {
           ease: 'power3.out',
         });
       }
-      if (tagRefs.current.length) {
-        gsap.from(tagRefs.current, {
-          y: -60,
-          opacity: 0,
-          duration: 0.6,
-          stagger: 0.08,
-          delay: 0.4,
-          ease: 'back.out(1.2)',
-        });
-      }
       if (footerInnerRef.current) {
         gsap.from(footerInnerRef.current.children, {
           opacity: 0,
@@ -113,9 +240,131 @@ export default function LetsConnect() {
     return () => ctx.revert();
   }, []);
 
+  // Matter.js: init when tags section is mounted so refs are set
+  useEffect(() => {
+    if (!tagsMounted) return;
+    const container = tagsWrapRef.current;
+    if (!container) return;
+
+    let cleanup = () => {};
+    let cancelled = false;
+    const FIXED_DELTA = 1000 / 60; // ms per engine step
+
+    const tryInit = () => {
+      if (cancelled) return;
+      const tagEls = tagRefs.current.filter(Boolean);
+      if (tagEls.length !== TAGS.length) {
+        requestAnimationFrame(tryInit);
+        return;
+      }
+
+      // 1. Mark container ready (CSS min-height for collapsed state)
+      container.setAttribute('data-physics-ready', 'true');
+      container.style.position = 'relative';
+
+      // 2. Make all tags absolute so container collapses to min-height
+      tagEls.forEach((el) => {
+        el.style.position = 'absolute';
+        el.style.left = '0';
+        el.style.top = '0';
+        el.style.willChange = 'transform';
+        el.style.transformOrigin = 'center center';
+      });
+
+      // 3. Wait for layout (two frames so min-height/height is applied)
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          if (cancelled) return;
+          const physics = initPhysics(container, tagEls);
+        if (!physics) return;
+
+        physicsRef.current = physics;
+        const { engine } = physics;
+
+        const mouse = Matter.Mouse.create(container);
+        const mouseConstraint = Matter.MouseConstraint.create(engine, {
+          mouse,
+          constraint: { stiffness: 0.2, render: { visible: false } },
+        });
+        Matter.World.add(engine.world, mouseConstraint);
+
+        // Game loop: update engine then sync DOM
+        function tick() {
+          if (cancelled || !physicsRef.current) return;
+          Matter.Engine.update(physicsRef.current.engine, FIXED_DELTA);
+          physicsRef.current.tagBodies.forEach(({ body, el, w, h }) => {
+            if (!el || !body) return;
+            el.style.transform = `translate(${body.position.x - w / 2}px, ${body.position.y - h / 2}px) rotate(${body.angle}rad)`;
+          });
+          rafRef.current = requestAnimationFrame(tick);
+        }
+        rafRef.current = requestAnimationFrame(tick);
+
+        const resizeObserver = new ResizeObserver(() => {
+          rafRef.current && cancelAnimationFrame(rafRef.current);
+          if (physicsRef.current?.debugRender) {
+            Matter.Render.stop(physicsRef.current.debugRender);
+            physicsRef.current.debugRender.element?.remove?.();
+          }
+          Matter.World.clear(engine.world);
+          Matter.Engine.clear(engine);
+          physicsRef.current = null;
+
+          const nextTagEls = tagRefs.current.filter(Boolean);
+          if (nextTagEls.length === 0) return;
+          const next = initPhysics(container, nextTagEls);
+          if (!next) return;
+
+          physicsRef.current = next;
+          if (next.debugRender) Matter.Render.run(next.debugRender);
+          const nextMouse = Matter.Mouse.create(container);
+          const nextMouseConstraint = Matter.MouseConstraint.create(next.engine, {
+            mouse: nextMouse,
+            constraint: { stiffness: 0.2, render: { visible: false } },
+          });
+          Matter.World.add(next.engine.world, nextMouseConstraint);
+
+          function tickNext() {
+            if (!physicsRef.current) return;
+            Matter.Engine.update(physicsRef.current.engine, FIXED_DELTA);
+            physicsRef.current.tagBodies.forEach(({ body, el, w, h }) => {
+              if (!el || !body) return;
+              el.style.transform = `translate(${body.position.x - w / 2}px, ${body.position.y - h / 2}px) rotate(${body.angle}rad)`;
+            });
+            rafRef.current = requestAnimationFrame(tickNext);
+          }
+          rafRef.current = requestAnimationFrame(tickNext);
+        });
+
+        resizeObserver.observe(container);
+
+        cleanup = () => {
+          resizeObserver.disconnect();
+          rafRef.current && cancelAnimationFrame(rafRef.current);
+          if (physicsRef.current?.debugRender) {
+            Matter.Render.stop(physicsRef.current.debugRender);
+            physicsRef.current.debugRender.element?.remove?.();
+          }
+          Matter.World.clear(engine.world);
+          Matter.Engine.clear(engine);
+          physicsRef.current = null;
+        };
+        });
+      });
+    };
+
+    // Start init on next frame so layout is ready
+    const rafId = requestAnimationFrame(tryInit);
+
+    return () => {
+      cancelled = true;
+      rafId && cancelAnimationFrame(rafId);
+      cleanup();
+    };
+  }, [tagsMounted]);
+
   return (
     <section className="readyFooterSection" aria-label="Ready to connect and footer">
-      {/* CTA block */}
       <div className="readyCtaBlock" ref={ctaRef}>
         <h2 className="readyHeadline">
           Ready to bring your
@@ -130,8 +379,14 @@ export default function LetsConnect() {
         </a>
       </div>
 
-      {/* Tags above footer – drop-down animation */}
-      <div className="readyTagsWrap" aria-hidden>
+      <div
+        className="readyTagsWrap"
+        ref={(el) => {
+          tagsWrapRef.current = el;
+          if (el && !tagsMounted) setTagsMounted(true);
+        }}
+        aria-hidden
+      >
         <div className="readyTagsCurve">
           {TAGS.map((label, i) => (
             <span
@@ -145,7 +400,6 @@ export default function LetsConnect() {
         </div>
       </div>
 
-      {/* Footer with SVG curve */}
       <footer className="readyFooter" id="footer-contact">
         <div className="readyFooterSvgWrap">
           <svg
