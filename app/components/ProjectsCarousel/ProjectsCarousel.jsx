@@ -37,7 +37,7 @@ export default function ProjectsCarousel() {
               </span>
             </h2>
             <p className="projectsCarouselSubtitle">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit
+              Featured Work: See What I've Built Lately
             </p>
           </div>
         </ScrollReveal>
