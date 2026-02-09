@@ -1,30 +1,74 @@
+'use client';
+
+import Image from 'next/image';
+import Link from 'next/link';
 import Navbar from '../components/Navbar/Navbar';
-import StarsBackground from '../components/StarsBackground/StarsBackground';
+import { CATEGORIES, PROJECTS } from '../data/projects';
 import '../styles/page.css';
 import '../styles/projects.css';
+import { useState, useMemo } from 'react';
 
 export default function Projects() {
+  const [activeFilter, setActiveFilter] = useState('all');
+
+  const filteredProjects = useMemo(() => {
+    if (activeFilter === 'all') return PROJECTS;
+    return PROJECTS.filter((p) => p.category === activeFilter);
+  }, [activeFilter]);
+
   return (
     <main className="relative min-h-screen">
-      <StarsBackground />
       <div className="fixed inset-0 -z-10 mainBackground" />
       <Navbar />
       <section className="projectsSection">
         <div className="projectsContainer">
           <h1 className="projectsTitle">
-            <span className="bg-gradient-to-r from-[var(--gradient-accent-start)] to-[var(--gradient-accent-end)] bg-clip-text text-transparent">
-              Projects
-            </span>
+            <span className="projectsTitleGradient">Recent Projects</span>
           </h1>
+          <div className="projectsFilters" role="tablist" aria-label="Project categories">
+            {CATEGORIES.map((cat) => (
+              <button
+                key={cat.id}
+                type="button"
+                role="tab"
+                aria-selected={activeFilter === cat.id}
+                className={`projectsFilterBtn ${activeFilter === cat.id ? 'projectsFilterBtnActive' : ''}`}
+                onClick={() => setActiveFilter(cat.id)}
+              >
+                {cat.label}
+              </button>
+            ))}
+          </div>
           <div className="projectsGrid">
-            {[1, 2, 3, 4, 5, 6].map((i) => (
-              <div key={i} className="projectCard">
-                <div className="projectImagePlaceholder"></div>
-                <h3 className="projectTitle">Project {i}</h3>
-                <p className="projectDescription">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit
-                </p>
-              </div>
+            {filteredProjects.map((project) => (
+              <article key={project.id} className="projectCard">
+                <div className="projectCardImageWrap">
+                  <div className="projectCardImageInner">
+                    <Image
+                      src={project.image}
+                      alt=""
+                      width={400}
+                      height={225}
+                      className="projectCardImage"
+                    />
+                  </div>
+                </div>
+                <div className="projectCardContent">
+                  <h3 className="projectCardTitle">{project.title}</h3>
+                  <div className="projectCardTags">
+                    {project.tags.map((tag) => (
+                      <span key={tag} className="projectCardTag">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                  <div className="projectCardButtonWrap">
+                    <Link href={`/projects/${project.id}`} className="projectCardButton">
+                      View Project
+                    </Link>
+                  </div>
+                </div>
+              </article>
             ))}
           </div>
         </div>
