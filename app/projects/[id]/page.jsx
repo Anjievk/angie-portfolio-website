@@ -14,7 +14,10 @@ function HeroLayout({ project }) {
   const featuresRight = project.features?.filter((f) => f.side === 'right') ?? [];
 
   return (
-    <section className="projectDetailSection projectHeroSection">
+    <section
+      className="projectDetailSection projectHeroSection"
+      data-project={project.projectSlug ?? project.id}
+    >
       <div className="projectHeroContainer">
         <Link href="/projects" className="projectDetailBack">
           ← Back to Projects
@@ -24,7 +27,7 @@ function HeroLayout({ project }) {
         <div className="projectHeroBlock">
           <div className="projectHeroText">
             <h1 className="projectHeroTitle">{project.title}</h1>
-            <p className="projectHeroTagline">{project.description}</p>
+            <p className="projectHeroTagline">{project.subtitle ?? project.description}</p>
             <div className="projectHeroUnderline" aria-hidden />
           </div>
           {project.prototypeUrl && (
@@ -62,7 +65,7 @@ function HeroLayout({ project }) {
           <div className="projectHeroFeatureBannerWrap">
             <Image
               src={project.featureBannerImage}
-              alt="Tandem app overview"
+              alt={project.projectSlug === 'teatiny' ? 'TeaTiny can design' : 'Project overview'}
               width={1200}
               height={600}
               className="projectHeroFeatureBanner"

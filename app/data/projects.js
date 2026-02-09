@@ -6,15 +6,71 @@ export const CATEGORIES = [
 ];
 
 export const PROJECTS = [
-  // {
-  //   id: 1,
-  //   title: 'TeaTiny - Can Design',
-  //   tags: ['Product Design', 'Packaging'],
-  //   image: '/Teatiny-can.jpg',
-  //   category: 'graphic',
-  //   description:
-  //     'A playful beverage can design for TeaTiny, featuring cute character illustrations and distinct flavours including Sakura, Mallow, and Chamomile. The design focuses on shelf appeal and brand recognition for a young, lifestyle-oriented audience.',
-  // },
+  {
+    id: 1,
+    title: 'TeaTiny',
+    tags: ['Product Design', 'Packaging'],
+    image: '/Teatiny-can.jpg',
+    category: 'graphic',
+    description:
+      'A playful beverage can design for TeaTiny, featuring cute character illustrations and distinct flavours including Sakura, Mallow, and Chamomile. The design focuses on shelf appeal and brand recognition for a young, lifestyle-oriented audience.',
+    layout: 'hero',
+    projectSlug: 'teatiny',
+    role: 'Lead Designer (Art Direction, Layout, Visual System)',
+    timeline: '3 week',
+    industry: 'Adobe Photoshop - Adobe InDesign - Adobe Illustrator',
+    tools: 'Sakura, Mallow, and Chamomile flavours (16 fl oz / 473ml cans)',
+    subtitle: 'Premium Flower Tea Can Series',
+    featureBannerImage: '/Teatiny-can.jpg',
+    tabs: [
+      { id: 'introduction', label: 'Introduction' },
+      { id: 'achievements', label: 'Key Achievements' },
+    ],
+    quote: 'Sweetness and purity in every sip',
+    overviewTitle: 'Overview',
+    overviewParagraphs: [
+      'TeaTiny was born from a simple observation: fruit teas (like peach, strawberry, and lemon) are ubiquitous on beverage shelves, but floral teas are almost absent from can designs. Inspired by this market gap, I aimed to create a premium floral tea line with a completely different look and flavour. As someone easily drawn to cute, simple, and approachable designs on supermarket shelves, I built the entire brand world around sweetness and purity.',
+      'From the name "TeaTiny" (Tiny = small, adorable), I wanted to do a brand identity that includes friendly, rounded typography and meticulously hand-drawn floral mascots for each flavor: Chamomile, Sakura, and Mallow. Every detail aims to transform the can into a gentle invitation, promising a moment of "tiny" peace amidst the hustle and bustle of life.',
+    ],
+    designRationaleTitle: 'Design Rationale & Key Decisions',
+    designRationaleParagraph:
+      'The design strategy focused on blending sophisticated botanical appeal with approachable charm to target health-conscious consumers who appreciate both quality and design.',
+    introParagraph:
+      'TeaTiny was born from a simple observation: fruit teas (like peach, strawberry, and lemon) are ubiquitous on beverage shelves, but floral teas are almost absent from can designs. Inspired by this market gap, I aimed to create a premium floral tea line with a completely different look and flavour. As someone easily drawn to cute, simple, and approachable designs on supermarket shelves, I built the entire brand world around sweetness and purity.',
+    roleParagraph: '',
+    roleParagraphBold: [],
+    introductionPhoneImage: '',
+    keyAchievements: {
+      title: 'Design Rationale & Key Decisions',
+      subtitle: 'Blending botanical appeal with approachable charm',
+      intro:
+        'The design strategy focused on blending sophisticated botanical appeal with approachable charm to target health-conscious consumers who appreciate both quality and design.',
+      achievements: [
+        {
+          id: 'brand-identity',
+          icon: 'document',
+          title: '1. Brand Identity with a "Tiny" Personality',
+          text: 'The brand name "TeaTiny" set the creative direction. I developed custom typography that is soft, rounded, and friendly. This "cute vibe" makes the product feel welcoming and gentle, directly appealing to moments of self-care and relaxation, while maintaining a premium feel through careful letter-spacing and weight.',
+        },
+        {
+          id: 'mascots',
+          icon: 'grid',
+          title: '2. Illustrative Mascots as Flavour Heroes',
+          text: 'Instead of generic photos, each flavour is represented by a unique hand-drawn floral mascot (Sakura, Mallow, Chamomile). This illustrative approach tells a story, gives the brand a cohesive and ownable visual language, and creates an emotional, almost collectible connection with the customer. The drawings are detailed enough to feel natural but stylized to fit the cute brand world.',
+        },
+        {
+          id: 'colour-system',
+          icon: 'thumbs-up',
+          title: '3. A Cohesive Colour-Coded System',
+          text: 'Each flavour has a dedicated, soft colour theme derived from its flower (e.g., blush pink for Sakura, lavender for Mallow, sunny yellow for Chamomile). This creates an instant visual differentiation on the shelf while ensuring the entire series looks harmonious and intentionally designed as a family.',
+        },
+      ],
+      outcome: {
+        title: 'The Outcome',
+        text: 'The TeaTiny design successfully communicates premium quality and natural ingredients through a whimsical, illustrated lens. It transforms a simple tea can into a delightful object that appeals to both the eye and the desire for a pure, peaceful moment.',
+      },
+    },
+  },
   // {
   //   id: 2,
   //   title: 'ButterDeedoChee',
@@ -140,6 +196,38 @@ export const PROJECTS = [
       subtitle: 'See how it works in action!',
       figmaEmbedUrl: 'https://embed.figma.com/proto/bWGbW5Heq2LaMCX1FVoUz5/Tandem-High-fi--Copy-?page-id=7635%3A13393&node-id=7635-15682&p=f&viewport=670%2C462%2C0.06&scaling=scale-down&content-scaling=fixed&starting-point-node-id=7635%3A15728&show-proto-sidebar=1&embed-host=share',
     },
+    keyAchievements: {
+      title: 'What I learned from this project?',
+      subtitle: 'My Journey as a Lead Designer',
+      intro:
+        'Leading a project from concept to launch taught me that great design is about everything, not just the app. For me, Tandem was a journey from being a designer of interfaces to a designer of experiences. This project helped my skills grow in several key areas:',
+      achievements: [
+        {
+          id: 'strategic-brand',
+          icon: 'document',
+          title: 'Building a Complete Strategic Brand:',
+          text: 'I learned how every part of the app from app UX/UI, frontend development, blog, social media posts, brochure, business card, commercial video, and even stickers that they need to work together in order to tell one clear and compelling brand story.',
+        },
+        {
+          id: 'power-of-process',
+          icon: 'refresh',
+          title: 'The Power of Process:',
+          text: 'Iterating through six versions of our user flow proved that the best solutions aren\'t the first ideas, but it\'s the one you keep improving through feedback and testing.',
+        },
+        {
+          id: 'best-for-app',
+          icon: 'thumbs-up',
+          title: '"We want the best for the app":',
+          text: 'Partnering with another designers on the new app look and collaborating with full-stack developers on building coded app taught me a bigger lesson: effective collaboration isn\'t about always agreeing, but about aligning on a shared purpose. Our discussions were passionate, with everyone advocating strongly for their own ideas. However, I realized that beneath those differing opinions, we all shared the same fundamental goal: to create the best possible app for our users. This understanding changed how we worked. We committed to sharing ideas more openly, practicing active listening, and being willing to accept perspectives different from our own, rather than sticking rigidly to our initial concepts. This process, while sometimes challenging, ultimately led us to stronger, more well-rounded solutions that no single person could have devised alone.',
+        },
+        {
+          id: 'empathy-as-tool',
+          icon: 'grid',
+          title: 'Empathy as a Tool:',
+          text: 'Our survey-driven personas stopped us from designing for a vague "user" and instead let us solve problems for real people like tradeworkers who are struggle parents. This empathy became our most effective guide for every decision.',
+        },
+      ],
+    },
     progressOverview: {
       title: 'Tandem Progress Overview',
       subtitle:
@@ -174,39 +262,8 @@ export const PROJECTS = [
           title: 'User Personas',
           intro: 'These personas came from a survey of trade parents to guide the design process.',
           personas: [
-            {
-              id: 'alfreda',
-              name: 'Alfreda Pennysworth',
-              image: '',
-              age: 44,
-              occupation: 'Electrical Construction Worker',
-              workHours: 'Often 7 AM - 3:30 PM',
-              location: 'Coquitlam',
-              maritalStatus: 'Married (Parent with partner), mother of two (son 2 years old, daughter 4 years old)',
-              income: '$65,000 per year',
-              bio: 'Alfreda is a trade worker in Electrical Construction at Coquitlam, BC, a BCIT Electrical Foundation program graduate seeking a stable, well-paying, hands-on career. She has two children (2 and 4 years old) and a busy family life with two incomes. Her husband, Mark, is a project coordinator for a civil engineering company with very early and late hours (7:30 AM - 8:00 PM) and low flexibility. Alfreda loves her job but faces unstable work schedules (often 7:00 AM starts at various locations) and fixed childcare hours (8:30 AM - 5:30 PM) that don\'t fit.',
-              behaviours: 'Uses Excel/Google Sheets for her work schedule. Tracks daily work schedule with Apple Calendar. Reaches out to other parents for help with kids\' pick-up. Joins Facebook communities for nannies and event info. Work schedule is a mix of advance and last-minute scheduling. Struggles to balance childcare and work due to unstable shifts. Relies heavily on reviews and word of mouth for referrals.',
-              needs: 'Clear schedule display, security/protection, community for parents, last-minute/quick childcare options, easy schedule upload.',
-              mustHaves: 'One platform for managing schedule and childcare. Schedule sharing between parents. Extensive trustworthy safety features. Reliable info from trade parent communities. Easy schedule input to reduce workload.',
-              neverDos: 'Utilize AI too much. Time-consuming childcare applications (multiple daycares). Untrustworthy communities. Expensive and overpriced services.',
-              goals: 'Find easy-to-apply, quick-response childcare nearby. Discover communities that support struggling parents. Receive trustworthy childcare. Engage with supportive communities.',
-              painPoints: 'Childcare system takes too long to register, often requiring months in advance at multiple locations. Relies on family for last-minute cancellations, causing stress. Can\'t find nearby or trusted childcare with proper certification. Nanny services are too expensive.',
-              scenario: 'Alfreda has a new electrical construction project in Port Coquitlam with a start time moved to 6:30 AM for two weeks, but her daycare opens at 8:30 AM. She\'s searched, contacted relatives, and checked schedules with her husband via Google Sheets, but the situation is unresolved. She messaged other Facebook groups looking for a nanny or alternative solutions.',
-            },
-            {
-              id: 'carlson',
-              name: 'Carlson Jason',
-              image: '',
-              age: 54,
-              occupation: 'Mechanic',
-              workHours: 'Often 7 AM - 5 PM',
-              location: 'Langley',
-              maritalStatus: 'Parent with a partner - a father with 2 daughters',
-              bio: 'Carlson is a skilled mechanic with 25 years of experience. Immigrated from Poland with his family 5 years ago for a secure future in BC, Canada. Passionate about his work and providing for his kids. Finds it difficult to find childcare support without local family. Gets stressed by the confusing and slow childcare sign-up process. Prefers clear, simple, fast solutions due to limited research time. His functional English sometimes struggles with professional vocabulary due to trade experience.',
-              behaviours: 'Struggled to navigate and register children in complex childcare system after immigration. Uses internet to search for "childcare with space available now," frustrated by unclear websites. Joins Polish and trade communities for advice. Writes down names, phone numbers, and contact info from referrals.',
-              goals: 'Find childcare quickly and efficiently. Easily track childcare options. Get childcare questions answered promptly. Ensure childcare has appropriate registration and certification.',
-              painPoints: 'Childcare takes too long to sign up/register. Childcare is often full, making sign-up impossible. Lacks other resources or family support.',
-            },
+            { image: '/Tandem/Progress/persona1.jpg' },
+            { image: '/Tandem/Progress/persona2.jpg' },
           ],
         },
       },

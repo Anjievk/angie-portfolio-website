@@ -94,105 +94,21 @@ export default function ProgressTab({ project }) {
               )}
               {progress.background.userPersonas && (
                 <>
-                  <h4 className="progressCardTitle">{progress.background.userPersonas.title}</h4>
-                  <p className="progressCardText">{progress.background.userPersonas.intro}</p>
-                  <div className="progressPersonas">
+                  <div className="progressPersonasHeader">
+                    <h4 className="progressCardTitle">{progress.background.userPersonas.title}</h4>
+                    <p className="progressCardText">{progress.background.userPersonas.intro}</p>
+                  </div>
+                  <div className="progressPersonas progressPersonasImagesOnly">
                     {progress.background.userPersonas.personas?.map((p) => (
-                      <article key={p.id} className="progressPersonaCard">
+                      <article key={p.id} className="progressPersonaCard progressPersonaCardImageOnly">
                         <div className="progressPersonaImageWrap">
                           {p.image ? (
-                            <Image src={p.image} alt={p.name} width={120} height={120} className="progressPersonaImage" />
+                            <Image src={p.image} alt={p.name || 'Persona'} width={320} height={320} className="progressPersonaImage" />
                           ) : (
                             <div className="progressPlaceholder progressPlaceholderCircle" aria-hidden />
                           )}
                         </div>
-                        <h5 className="progressPersonaName">{p.name}</h5>
-                        <dl className="progressPersonaMeta">
-                          {p.age != null && (
-                            <>
-                              <dt>AGE</dt>
-                              <dd>{p.age}</dd>
-                            </>
-                          )}
-                          {p.occupation && (
-                            <>
-                              <dt>OCCUPATION</dt>
-                              <dd>{p.occupation}</dd>
-                            </>
-                          )}
-                          {p.workHours && (
-                            <>
-                              <dt>WORK HOURS</dt>
-                              <dd>{p.workHours}</dd>
-                            </>
-                          )}
-                          {p.location && (
-                            <>
-                              <dt>LOCATION</dt>
-                              <dd>{p.location}</dd>
-                            </>
-                          )}
-                          {p.maritalStatus && (
-                            <>
-                              <dt>MARITAL STATUS</dt>
-                              <dd>{p.maritalStatus}</dd>
-                            </>
-                          )}
-                          {p.income && (
-                            <>
-                              <dt>INCOME</dt>
-                              <dd>{p.income}</dd>
-                            </>
-                          )}
-                        </dl>
-                        {p.bio && (
-                          <>
-                            <h6 className="progressPersonaSub">BIO AND BACKGROUND</h6>
-                            <p className="progressCardText">{p.bio}</p>
-                          </>
-                        )}
-                        {p.behaviours && (
-                          <>
-                            <h6 className="progressPersonaSub">KEY BEHAVIOURS</h6>
-                            <p className="progressCardText">{p.behaviours}</p>
-                          </>
-                        )}
-                        {p.needs && (
-                          <>
-                            <h6 className="progressPersonaSub">KEY TASK (User needs and wants)</h6>
-                            <p className="progressCardText">{p.needs}</p>
-                          </>
-                        )}
-                        {p.mustHaves && (
-                          <>
-                            <h6 className="progressPersonaSub">MUST-HAVES</h6>
-                            <p className="progressCardText">{p.mustHaves}</p>
-                          </>
-                        )}
-                        {p.neverDos && (
-                          <>
-                            <h6 className="progressPersonaSub">NEVER DO&apos;S</h6>
-                            <p className="progressCardText">{p.neverDos}</p>
-                          </>
-                        )}
-                        {p.goals && (
-                          <>
-                            <h6 className="progressPersonaSub">GOALS AND MOTIVATIONS</h6>
-                            <p className="progressCardText">{p.goals}</p>
-                          </>
-                        )}
-                        {p.painPoints && (
-                          <>
-                            <h6 className="progressPersonaSub">PAIN POINTS AND FRUSTRATIONS</h6>
-                            <p className="progressCardText">{p.painPoints}</p>
-                          </>
-                        )}
-                        {p.scenario && (
-                          <>
-                            <h6 className="progressPersonaSub">SCENARIOS</h6>
-                            <p className="progressCardText">{p.scenario}</p>
-                          </>
-                        )}
+                        {p.name && <h5 className="progressPersonaName">{p.name}</h5>}
                       </article>
                     ))}
                   </div>
