@@ -14,18 +14,19 @@
 }
 
 .readyHeadline {
-  font-family: 'Alan Sans', sans-serif;
+  font-family: var(--font-family);
   font-weight: 800;
   font-size: clamp(2rem, 6vw, 3.5rem);
   line-height: 1.15;
-  color: #ffffff;
+  color: var(--foreground);
   margin: 0 0 1rem;
   letter-spacing: -0.02em;
 }
 
+/* "idea to life" – gradient pink (#FF798B) → purple (#9E2FFF) left to right */
 .readyHeadlineGradient {
   display: inline-block;
-  background: linear-gradient(90deg, #e91e8c 0%, #9c27b0 50%, #7c3aed 100%);
+  background: linear-gradient(to right, var(--gradient-accent-end), var(--gradient-accent-start));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -33,7 +34,7 @@
 
 .readySubheadline {
   font-size: clamp(1rem, 2vw, 1.25rem);
-  color: rgba(255, 255, 255, 0.9);
+  color: var(--foreground);
   margin: 0 0 2rem;
   font-weight: 500;
 }
@@ -41,13 +42,13 @@
 .readyCtaButton {
   display: inline-block;
   padding: 0.875rem 2rem;
-  font-family: 'Alan Sans', sans-serif;
+  font-family: var(--font-family);
   font-weight: 700;
   font-size: 1rem;
-  color: #ffffff;
+  color: var(--foreground);
   text-decoration: none;
   border-radius: 9999px;
-  background: linear-gradient(90deg, #7c3aed 0%, #9c27b0 50%, #e91e8c 100%);
+  background: linear-gradient(90deg, var(--gradient-accent-start) 0%, var(--gradient-accent-end) 100%);
   border: none;
   cursor: pointer;
   transition: transform 0.2s, box-shadow 0.2s;
@@ -55,7 +56,7 @@
 
 .readyCtaButton:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(156, 39, 176, 0.4);
+  box-shadow: 0 8px 24px rgba(158, 47, 255, 0.35);
 }
 
 /* CTA decorative line (between Lets Connect and "Ready to bring idea to life") */
@@ -121,8 +122,8 @@
   padding: 0.4rem 1rem;
   font-size: 0.875rem;
   font-weight: 500;
-  color: #ffffff;
-  border: 1px solid rgba(255, 255, 255, 0.8);
+  color: var(--foreground);
+  border: 1px solid var(--border-strong);
   border-radius: 9999px;
   white-space: nowrap;
   user-select: none;
@@ -217,7 +218,7 @@
 
 .readyFooterCite {
   font-size: 0.875rem;
-  color: rgba(255, 255, 255, 0.9);
+  color: var(--foreground-muted);
   margin: 0;
 }
 
@@ -227,10 +228,10 @@
 }
 
 .readyFooterConnectTitle {
-  font-family: 'Alan Sans', sans-serif;
+  font-family: var(--font-family);
   font-weight: 700;
   font-size: 1.25rem;
-  color: #ffffff;
+  color: var(--foreground);
   margin: 0 0 1rem;
 }
 
@@ -247,15 +248,15 @@
   justify-content: center;
   width: 44px;
   height: 44px;
-  border: 1px solid rgba(255, 255, 255, 0.9);
+  border: 1px solid var(--foreground-muted);
   border-radius: 50%;
-  color: #ffffff;
+  color: var(--foreground);
   transition: background 0.2s, color 0.2s;
 }
 
 .readyFooterSocialIcon:hover {
-  background: rgba(255, 255, 255, 0.15);
-  color: #ffffff;
+  background: var(--surface-glass-hover);
+  color: var(--foreground);
 }
 
 /* Footer nav (right on desktop) */
@@ -274,10 +275,10 @@
 }
 
 .readyFooterNavLink {
-  font-family: 'Alan Sans', sans-serif;
+  font-family: var(--font-family);
   font-weight: 700;
   font-size: 1rem;
-  color: #ffffff;
+  color: var(--foreground);
   text-decoration: none;
   transition: opacity 0.2s;
 }

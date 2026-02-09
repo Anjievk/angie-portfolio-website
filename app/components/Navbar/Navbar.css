@@ -36,12 +36,12 @@
 /* Khi kéo xuống: bar glass effect (same as theme toggle) */
 .navbarContainerScrolled .navbarInner {
   border-radius: 9999px;
-  background: rgba(255, 255, 255, 0.06);
+  background: var(--surface-glass);
   backdrop-filter: blur(4px);
   box-shadow:
     0 8px 32px rgba(0, 0, 0, 0.3),
-    inset 0 1px 0 rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+    inset 0 1px 0 var(--border-subtle);
+  border: 1px solid var(--border-muted);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -109,7 +109,7 @@
   position: relative;
   display: inline-block;
   padding: 0.5rem 1rem;
-  color: rgba(255, 255, 255, 0.85);
+  color: var(--foreground-muted);
   font-size: 0.9375rem;
   font-weight: 500;
   text-decoration: none;
@@ -118,7 +118,7 @@
 }
 
 .navbarLink:hover {
-  color: #fff;
+  color: var(--foreground);
 }
 
 .navbarLink:focus-visible {
@@ -151,7 +151,7 @@
 }
 
 .navbarLinkActive {
-  color: #fff;
+  color: var(--foreground);
 }
 
 .navbarLinkActive .navbarLinkLine {
@@ -160,62 +160,52 @@
 
 .navbarThemeToggle {
   position: relative;
-  width: 5rem;
+  width: 4.5rem;
   height: 2.25rem;
   margin-left: 0.5rem;
   border-radius: 9999px;
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(202, 202, 202, 0.497);
+  border: none;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0 0.5rem;
   cursor: pointer;
-  transition: background 0.25s ease, border-color 0.25s ease;
+  transition: background 0.25s ease;
 }
 
 .navbarThemeToggle:hover {
-  background: rgba(255, 255, 255, 0.1);
-  border-color: rgba(255, 255, 255, 0.18);
+  background: #969696a4;
 }
 
 .navbarThemeToggle:focus-visible {
-  outline: 2px solid rgba(255, 121, 139, 0.6);
+  outline: 2px solid var(--gradient-accent-end);
   outline-offset: 2px;
 }
 
-.navbarSunIcon {
-  width: 1.2rem;
-  height: 1.2rem;
-  transition: opacity 0.3s ease;
-}
-
-.navbarSunIconActive {
-  opacity: 1;
-  color: #fff;
-}
-
-.navbarSunIconInactive {
-  opacity: 0.4;
-  color: rgba(255, 255, 255, 0.5);
-}
-
+.navbarSunIcon,
 .navbarMoonIcon {
   width: 1.2rem;
   height: 1.2rem;
-  transition: opacity 0.3s ease, filter 0.3s ease;
+  transition: opacity 0.3s ease;
+  position: relative;
+  z-index: 1;
+}
+
+.navbarSunIconActive {
+  color: var(--foreground);
+}
+
+.navbarSunIconInactive {
+  color: #EEEEEE;
 }
 
 .navbarMoonIconActive {
   opacity: 1;
-  color: #fff;
-  filter: drop-shadow(0 0 6px rgba(255, 121, 139, 0.7));
 }
 
 .navbarMoonIconInactive {
-  opacity: 0.4;
-  color: rgba(255, 255, 255, 0.5);
-  filter: none;
+  color: var(--foreground-inverse-muted);
 }
 
 .navbarToggleIndicator {
@@ -224,20 +214,21 @@
   bottom: 0.25rem;
   width: 1.75rem;
   border-radius: 9999px;
+  z-index: 0;
   transition: left 0.35s cubic-bezier(0.4, 0, 0.2, 1), right 0.35s cubic-bezier(0.4, 0, 0.2, 1),
-    box-shadow 0.3s ease;
+    background 0.3s ease, box-shadow 0.3s ease;
 }
 
 .navbarToggleIndicatorDark {
-  background: var(--gradient-accent);
+  background: #4a454e;
   right: 0.25rem;
   left: auto;
-  box-shadow: 0 0 14px rgba(255, 121, 139, 0.5), 0 0 8px rgba(158, 47, 255, 0.35);
+  box-shadow: none;
 }
 
 .navbarToggleIndicatorLight {
-  background: rgba(255, 255, 255, 0.25);
+  background: linear-gradient(179deg, #FF983F 24.05%, #FFC55A 99.02%);
   left: 0.25rem;
   right: auto;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
 }

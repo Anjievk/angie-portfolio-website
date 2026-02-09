@@ -22,7 +22,7 @@ section {
 }
 
 .heroGreetingText {
-  color: white;
+  color: var(--foreground);
   font-size: 1.25rem;
   font-weight: 300;
 }
@@ -45,7 +45,7 @@ section {
   font-family: var(--font-family);
   font-size: 8rem;
   font-weight: 900;
-  color: white;
+  color: var(--foreground);
   letter-spacing: -0.0015em;
   line-height: 0.8;
   margin-bottom: 0;
@@ -211,7 +211,7 @@ section {
 }
 
 .heroPortfolioText {
-  color: white;
+  color: var(--foreground);
   font-size: 1rem;
   font-weight: 700;
   white-space: nowrap;
@@ -224,7 +224,7 @@ section {
   flex-shrink: 0;
   margin-left: 2.5rem;
   margin-right: 2.5rem;
-  color: rgba(255, 255, 255, 0.9);
+  color: var(--foreground-muted);
 }
 
 .heroPortfolioStar svg {

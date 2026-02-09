@@ -43,19 +43,19 @@
 }
 
 .galleryItem {
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: var(--surface-glass-hover);
   backdrop-filter: blur(12px);
   border-radius: 1.5rem;
   overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid var(--border-default);
   transition: background-color 0.3s;
 }
 
 .galleryItem:hover {
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: var(--border-default);
 }
 
 .galleryImagePlaceholder {
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: var(--border-default);
   height: 16rem;
 }

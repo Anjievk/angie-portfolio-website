@@ -12,7 +12,7 @@ export default function Gallery() {
       <section className="gallerySection">
         <div className="galleryContainer">
           <h1 className="galleryTitle">
-            <span className="bg-gradient-to-r from-[#9E2FFF] to-[#FF798B] bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-[var(--gradient-accent-start)] to-[var(--gradient-accent-end)] bg-clip-text text-transparent">
               Gallery
             </span>
           </h1>

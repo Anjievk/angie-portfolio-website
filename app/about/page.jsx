@@ -12,7 +12,7 @@ export default function About() {
       <section className="aboutSection">
         <div className="aboutContainer">
           <h1 className="aboutTitle">
-            <span className="bg-gradient-to-r from-[#9E2FFF] to-[#FF798B] bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-[var(--gradient-accent-start)] to-[var(--gradient-accent-end)] bg-clip-text text-transparent">
               About Me
             </span>
           </h1>

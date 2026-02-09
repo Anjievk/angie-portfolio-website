@@ -22,15 +22,36 @@
   --background-start: #2A0649;
   --background-end: #250A65;
   --background: linear-gradient(180deg, var(--background-start) 0%, var(--background-end) 100%);
+  --background-deep: rgb(19, 0, 36);
+  --background-card: rgba(30, 10, 46, 0.5);
+  --background-button-hover: rgb(54, 12, 90);
 
   /* Accent gradient (purple → pink) – use for text, borders, highlights */
   --gradient-accent: linear-gradient(135deg, #9E2FFF 0%, #FF798B 100%);
   --gradient-accent-start: #9E2FFF;
   --gradient-accent-end: #FF798B;
 
+  /* Foreground (text / UI on dark background) */
   --foreground: #ffffff;
+  --foreground-muted: rgba(255, 255, 255, 0.9);
+  --foreground-subtle: rgba(255, 255, 255, 0.25);
+  --foreground-strong: rgba(255, 255, 255, 0.95);
+  --foreground-secondary: rgba(209, 213, 219, 0.9);
 
-  /* Font family */
+  /* Foreground on light background (e.g. light theme / buttons) */
+  --foreground-on-light: #1e0a2e;
+  --foreground-inverse: #EEEEEE;
+  --foreground-inverse-muted: rgba(45, 45, 45, 0.839);
+
+  /* Glass / borders */
+  --surface-glass: rgba(255, 255, 255, 0.06);
+  --surface-glass-hover: rgba(255, 255, 255, 0.1);
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-muted: rgba(255, 255, 255, 0.12);
+  --border-default: rgba(255, 255, 255, 0.2);
+  --border-strong: rgba(255, 255, 255, 0.8);
+
+  /* Font family (Alan Sans + fallbacks) */
   --font-family: 'Alan Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
 }

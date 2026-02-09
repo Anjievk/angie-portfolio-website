@@ -28,7 +28,7 @@
   backdrop-filter: blur(12px);
   border-radius: 1.5rem;
   padding: 2rem;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid var(--border-subtle);
 }
 
 @media (min-width: 768px) {
@@ -38,7 +38,7 @@
 }
 
 .aboutText {
-  color: white;
+  color: var(--foreground);
   font-size: 1.125rem;
   line-height: 1.75;
   margin-bottom: 1.5rem;

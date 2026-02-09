@@ -64,9 +64,9 @@ export default function HeroSection() {
                 <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_480_356" result="shape" />
               </filter>
               <linearGradient id="heroBellGradient" x1="61.6001" y1="216.1" x2="1501.6" y2="216.1" gradientUnits="userSpaceOnUse">
-                <stop stopColor="#9E2FFF" />
+                <stop stopColor="var(--gradient-accent-start)" />
                 <stop offset="0.365385" stopColor="#CD51C5" />
-                <stop offset="1" stopColor="#FF798B" />
+                <stop offset="1" stopColor="var(--gradient-accent-end)" />
               </linearGradient>
             </defs>
             {/* Gradient shape (behind the image) + shadow */}

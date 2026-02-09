@@ -5,11 +5,11 @@ import ScrollReveal from '../ScrollReveal/ScrollReveal';
 import './ProjectsCarousel.css';
 
 const projects = [
-  { id: 1, category: 'Magazine Design', title: 'The Unseen Vietnam', description: 'Explore Vietnam in a unique way', image: '/vietnamese%20magazine%20mock%20up.jpg' },
+  { id: 1, category: 'App design & development', title: 'Tandem', description: 'An app for parents in the trades that helps balance work and childcare', image: '/Tandem/recent project Tandem.jpg' },
   { id: 2, category: 'App design & development', title: 'Tandem', description: 'A beautiful web application with modern UI/UX design', image: '/Tandem/tandem.jpg' },
-  { id: 3, category: 'MOBILE APP', title: 'Project Three', description: 'Mobile-first design for iOS and Android platforms' },
-  { id: 4, category: 'BRANDING', title: 'Project Four', description: 'Complete brand identity and visual design system' },
-  { id: 5, category: 'UI/UX', title: 'Project Five', description: 'User experience design for enterprise application' },
+  { id: 3, category: 'Magazine Design', title: 'The Unseen Vietnam', description: 'Explore Vietnam in a unique way', image: '/vietnamese%20magazine%20mock%20up.jpg' },
+  { id: 4, category: 'BRANDING', title: 'Project Four', description: 'Complete brand identity and visual design system', image: '/vietnamese%20magazine%20mock%20up.jpg' },
+  { id: 5, category: 'UI/UX', title: 'Project Five', description: 'User experience design for enterprise application', image: '/vietnamese%20magazine%20mock%20up.jpg' },
 ];
 
 export default function ProjectsCarousel() {

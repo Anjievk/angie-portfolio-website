@@ -12,7 +12,7 @@ export default function Projects() {
       <section className="projectsSection">
         <div className="projectsContainer">
           <h1 className="projectsTitle">
-            <span className="bg-gradient-to-r from-[#9E2FFF] to-[#FF798B] bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-[var(--gradient-accent-start)] to-[var(--gradient-accent-end)] bg-clip-text text-transparent">
               Projects
             </span>
           </h1>
