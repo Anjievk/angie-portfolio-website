@@ -152,10 +152,11 @@ export default function ProjectHeroTabbedContent({ project }) {
               <div className="projectAppInteractionContent">
                 {project.appInteraction.figmaEmbedUrl ? (
                   <iframe
-                    title="Figma prototype"
+                    title="Figma prototype – tap to interact"
                     src={project.appInteraction.figmaEmbedUrl}
                     className="projectAppInteractionFigma"
                     allowFullScreen
+                    allow="fullscreen"
                   />
                 ) : (
                   <div className="projectAppInteractionPlaceholder">

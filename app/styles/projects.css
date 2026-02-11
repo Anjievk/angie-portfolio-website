@@ -399,9 +399,9 @@
 }
 
 .projectHeroUnderline {
-  width: 4rem;
+  width: 12rem;
   height: 4px;
-  background: var(--tandem-blue);
+  background: var(--tandem-gradient);
   border-radius: 2px;
 }
 
@@ -410,13 +410,20 @@
   padding: 0.75rem 1.5rem;
   font-size: 0.9375rem;
   font-weight: 600;
-  color: var(--foreground);
-  background: rgba(50, 20, 80, 0.95);
+  background: rgba(0, 0, 0, 0.342);
   border: 1px solid var(--tandem-blue);
   border-radius: 9999px;
   text-decoration: none;
   font-family: var(--font-family);
   transition: background 0.2s, border-color 0.2s;
+}
+
+.projectHeroCtaText {
+  background: var(--tandem-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
 }
 
 .projectHeroCta:hover {
@@ -494,7 +501,7 @@
   justify-content: center;
   align-items: flex-start;
   gap: 2rem 1rem;
-  max-width: 56rem;
+  max-width: 90rem;
   margin: 0 auto;
 }
 
@@ -703,7 +710,7 @@
 }
 
 .projectHeroDetailsUnderline {
-  width: 3rem;
+  width: 12rem;
   height: 2px;
   background: var(--tandem-blue);
   border-radius: 2px;
@@ -771,7 +778,7 @@
 }
 
 .projectHeroDetailsDesignRationaleUnderline {
-  width: 4rem;
+  width: 12rem;
   height: 2px;
   background: var(--tandem-blue);
   border-radius: 2px;
@@ -902,7 +909,7 @@
 }
 
 .progressTabUnderline {
-  width: 4rem;
+  width: 12rem;
   height: 3px;
   margin: 0 auto 2rem;
   background: var(--tandem-gradient);
@@ -1358,7 +1365,7 @@
 }
 
 .projectCoreValuesUnderline {
-  width: 4rem;
+  width: 12rem;
   height: 3px;
   margin: 0 auto 1rem;
   background: var(--tandem-gradient);
@@ -1476,7 +1483,7 @@
 }
 
 .projectKeyAchievementsUnderline {
-  width: 4rem;
+  width: 12rem;
   height: 3px;
   background: var(--gradient-accent-end, #92f189);
   border-radius: 2px;
@@ -1577,8 +1584,7 @@
 
 /* ========== Key Features section ========== */
 .projectKeyFeaturesSection {
-  margin-top: 4rem;
-  padding-top: 3rem;
+  margin-top: 15rem;
 }
 
 .projectKeyFeaturesTitle {
@@ -1606,7 +1612,7 @@
 }
 
 .projectKeyFeaturesUnderline {
-  width: 4rem;
+  width: 12rem;
   height: 3px;
   margin: 0 auto 3rem;
   background: var(--tandem-gradient);
@@ -1618,7 +1624,7 @@
   grid-template-columns: 1fr;
   gap: 2rem;
   align-items: center;
-  margin-bottom: 4rem;
+  margin-bottom: -10rem;
 }
 
 .projectKeyFeatureBlock:last-child {
@@ -1646,8 +1652,8 @@
   font-size: 1.75rem;
   font-weight: 700;
   color: var(--foreground);
-  margin: 0 0 0.35rem;
-  line-height: 1.25;
+  margin: 0 0 0.2rem;
+  line-height: 1.2;
 }
 
 @media (min-width: 768px) {
@@ -1665,14 +1671,14 @@
 .projectKeyFeatureSubtitle {
   font-size: 0.9375rem;
   color: var(--foreground-muted);
-  margin: 0 0 1rem;
-  line-height: 1.4;
+  margin: 0 0 0.5rem;
+  line-height: 1.35;
 }
 
 .projectKeyFeatureDescription {
   font-size: 0.9375rem;
   color: var(--foreground-secondary);
-  line-height: 1.7;
+  line-height: 1.6;
   margin: 0;
 }
 
@@ -1682,13 +1688,13 @@
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  gap: 1.5rem;
-  min-height: 360px;
+  gap: 1rem;
+  min-height: 600px;
 }
 
 @media (min-width: 768px) {
   .projectKeyFeatureMockups {
-    min-height: 460px;
+    min-height: 700px;
   }
 }
 
@@ -1767,7 +1773,7 @@
 }
 
 .projectFinalProductUnderline {
-  width: 4rem;
+  width: 12rem;
   height: 3px;
   margin: 0 auto 2.5rem;
   background: var(--tandem-gradient);
@@ -1834,6 +1840,7 @@
   padding-bottom: 3rem;
   text-align: center;
   position: relative;
+  background: transparent;
 }
 
 .projectAppInteractionTitle {
@@ -1859,27 +1866,28 @@
 
 .projectAppInteractionContent {
   width: 100%;
-  max-width: 560px;
+  max-width: 280px;
   margin: 0 auto;
   aspect-ratio: 9 / 19;
-  min-height: 400px;
-  background: rgba(0, 0, 0, 0.2);
-  border-radius: 0.5rem;
-  overflow: hidden;
+  min-height: 320px;
   position: relative;
+  overflow: hidden;
+  border-radius: 2rem;
+  background: transparent;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
 }
 
 @media (min-width: 768px) {
   .projectAppInteractionContent {
-    max-width: 680px;
-    min-height: 480px;
+    max-width: 340px;
+    min-height: 380px;
   }
 }
 
 @media (min-width: 1024px) {
   .projectAppInteractionContent {
-    max-width: 800px;
-    min-height: 560px;
+    max-width: 400px;
+    min-height: 440px;
   }
 }
 
@@ -1890,6 +1898,8 @@
   height: 100%;
   border: none;
   display: block;
+  pointer-events: auto;
+  cursor: pointer;
 }
 
 .projectAppInteractionPlaceholder {

@@ -92,6 +92,7 @@ export const PROJECTS = [
   {
     id: 4,
     title: 'Tandem',
+    projectSlug: 'Tandem',
     tags: ['UX/UI Design', 'App Development'],
     image: '/Tandem/recent project Tandem.jpg',
     category: 'ux-ui',
@@ -104,20 +105,20 @@ export const PROJECTS = [
     industry: 'Tradeworkers Industry Support',
     tools: 'Figma - Figjam - Trello - VScode',
     prototypeUrl: '#',
-    featureBannerImage: '/Tandem/Tandem Banner.png',
+    featureBannerImage: '/Tandem/Tandem banner.png',
     tabs: [
       { id: 'introduction', label: 'Introduction' },
       { id: 'progress', label: 'Progress' },
       { id: 'achievements', label: 'Key Achievements' },
     ],
-    quote: 'Bridging the gap between work and schedule',
+    quote: 'Bridging the gap between work and childcare',
     subtitle: 'UX/UI Design for Parental Support in the Trades',
     introParagraph:
-      'As Lead and UX/UI Designer for Tandem, I helped shape an innovative application tailored for skilled tradeworkers who are parents. Tandem uses AI to help users balance work schedules and family responsibilities, offering personalized recommendations and access to reliable childcare solutions.',
+      'As the Lead and UX/UI Designer for Tandem, I led the design of an innovative application tailored for skilled tradeworkers who are parents. Tandem intelligently leverages AI to help users seamlessly balance demanding work schedules with family responsibilities. The platform delivers trusted, personalized recommendations and access to reliable childcare solutions, empowering parents to secure care with ease, thereby reducing stress and fostering a healthier work-life experience.',
     roleParagraph:
-      'As Lead and UX/UI Designer, my responsibilities included conducting user research and usability testing; developing wireframes and interactive prototypes; designing the application interface and brand identity, including promotional stickers; managing social media marketing initiatives; and contributing to front-end development to ensure design fidelity.',
+      'In this role, I was responsible for the complete design lifecycle, including: conducting user research and usability testing; developing wireframes and interactive prototypes; designing the application interface and brand identity, including promotional stickers; managing social media marketing initiatives; and contributing to front-end development to ensure design fidelity.',
     roleParagraphBold: ['Lead and UX/UI Designer', 'front-end development'],
-    introductionPhoneImage: '/Tandem/Home screen schedule.png',
+    introductionPhoneImage: '/Tandem/home-screen-schedule.png',
     coreValues: {
       title: 'Core Values',
       subtitle: 'To design a truly supportive tool, we first had to define what we stood for',
@@ -126,7 +127,7 @@ export const PROJECTS = [
           id: 'trust',
           icon: 'shield',
           title: 'Trust',
-          text: "We are committed to the highest standards of safety and data security, giving parents the confidence that their family's well-being and personal information are protected.",
+          text: "We are committed to the highest standards of safety and data security, giving parents the confidence that their family’s well-being and personal information are protected.",
           accent: 'blue',
         },
         {
@@ -156,7 +157,7 @@ export const PROJECTS = [
           description:
             'This feature required a system to simplify chaotic schedules blending work and childcare. I solved this by creating a color-coded tagging system to allow instant recognition: green for work/finance and trustworthy blue for nanny care. The current day is always visually highlighted as the primary anchor on the homepage. I structured the layout into clear zones for the calendar, agenda, and AI status, transforming a complex data mix into an intuitive, scannable interface that reduces cognitive load for busy parents.',
           layout: 'textLeft',
-          images: ['/Tandem/AI Scheduling.png'],
+          images: ['/Tandem/ai-scheduling.png'],
         },
         {
           number: '02',
@@ -165,16 +166,16 @@ export const PROJECTS = [
           description:
             'This feature was designed to transform the proactive planning of nanny care into a visually clear and controlled process. The layout centers on an interactive weekly calendar, providing an immediate overview. Dedicated input zones for child details and special notes are cleanly separated from the calendar, preventing clutter. The overall visual flow intuitively guides the parent from selecting dates → specifying needs → confirming the booking, making future planning feel manageable rather than overwhelming.',
           layout: 'phoneLeft',
-          image: '/Tandem/nanny booking.png',
+          image: '/Tandem/nanny-booking.png',
         },
         {
           number: '03',
           title: 'Secure Nanny Sharing',
           subtitle: 'Designing for clarity',
           description:
-            'This interface was designed to function as a clean, trustworthy board for discovering and joining shared nanny arrangements. I gave each shared time slot a consistent card-based layout, making it easy to scan and compare key details like cost, age group, and available spots. To build visual trust and community, each card features a clear profile section for the host parent. Important actions, such as "Request to join," are highlighted with our brand\'s action color, creating a clear path from discovery to participation. The structured layout and repeated visual patterns transform the concept of nanny sharing from a complex coordination task into a simple, browsable, and secure process.',
+            'This interface was designed to function as a clean, trustworthy board for discovering and joining shared nanny arrangements. I gave each shared time slot a consistent card-based layout, making it easy to scan and compare key details like cost, age group, and available spots. To build visual trust and community, each card features a clear profile section for the host parent. Important actions, such as "Request to join," are highlighted with our brand`s action color, creating a clear path from discovery to participation. The structured layout and repeated visual patterns transform the concept of nanny sharing from a complex coordination task into a simple, browsable, and secure process.',
           layout: 'textLeft',
-          images: ['/Tandem/Nanny sharing.png'],
+          images: ['/Tandem/Nanny-sharing.png'],
         },
       ],
     },
@@ -194,7 +195,7 @@ export const PROJECTS = [
     appInteraction: {
       title: 'App Interaction',
       subtitle: 'See how it works in action!',
-      figmaEmbedUrl: 'https://embed.figma.com/proto/bWGbW5Heq2LaMCX1FVoUz5/Tandem-High-fi--Copy-?page-id=7635%3A13393&node-id=7635-15682&p=f&viewport=670%2C462%2C0.06&scaling=scale-down&content-scaling=fixed&starting-point-node-id=7635%3A15728&show-proto-sidebar=1&embed-host=share',
+      figmaEmbedUrl: 'https://embed.figma.com/proto/bWGbW5Heq2LaMCX1FVoUz5/Tandem-High-fi?node-id=7635-15682&p=f&scaling=contain&content-scaling=fixed&page-id=7635%3A13393&starting-point-node-id=7635%3A15728&embed-host=share',
     },
     keyAchievements: {
       title: 'What I learned from this project?',
@@ -388,9 +389,13 @@ export const PROJECTS = [
   // },
 ];
 
-export function getProjectById(id) {
-  const numId = Number(id);
-  return PROJECTS.find((p) => p.id === numId) ?? null;
+export function getProjectById(idOrSlug) {
+  const numId = Number(idOrSlug);
+  if (!Number.isNaN(numId)) {
+    const byId = PROJECTS.find((p) => p.id === numId);
+    if (byId) return byId;
+  }
+  return PROJECTS.find((p) => p.projectSlug && p.projectSlug === idOrSlug) ?? null;
 }
 
 export function getCategoryLabel(categoryId) {

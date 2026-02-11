@@ -63,7 +63,7 @@ export default function Projects() {
                     ))}
                   </div>
                   <div className="projectCardButtonWrap">
-                    <Link href={`/projects/${project.id}`} className="projectCardButton">
+                    <Link href={`/projects/${project.projectSlug ?? project.id}`} className="projectCardButton">
                       View Project
                     </Link>
                   </div>

@@ -37,7 +37,7 @@ function HeroLayout({ project }) {
               rel="noopener noreferrer"
               className="projectHeroCta"
             >
-              View Hifi Prototype
+              <span className="projectHeroCtaText">View Hifi Prototype</span>
             </a>
           )}
         </div>
