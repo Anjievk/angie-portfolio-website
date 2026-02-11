@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import ProjectHeroTabs from '../ProjectHeroTabs/ProjectHeroTabs';
+import ScrollReveal from '../ScrollReveal/ScrollReveal';
 
 function CoreValuesIcon({ type, className }) {
   const base = 'projectCoreValuesIcon';
@@ -57,26 +58,40 @@ export default function ProjectHeroTabbedContent({ project }) {
       {activeTab === 'introduction' && (
         <>
           {project.coreValues && (
-            <div className="projectCoreValuesSection">
+            <ScrollReveal animation="fadeUp" delay={0}>
+            <div className="projectCoreValuesSection" data-project={project.projectSlug || ''}>
               <h2 className="projectCoreValuesTitle">{project.coreValues.title}</h2>
-              <div className="projectCoreValuesUnderline" aria-hidden />
               <p className="projectCoreValuesSubtitle">{project.coreValues.subtitle}</p>
+              <div className="projectCoreValuesUnderline" aria-hidden />
               <div className="projectCoreValuesGrid">
-                {project.coreValues.values.map((value) => (
-                  <article
-                    key={value.id}
-                    className={`projectCoreValuesCard projectCoreValuesCard${value.accent === 'green' ? 'Green' : 'Blue'}`}
-                  >
-                    <CoreValuesIcon type={value.icon} className={`projectCoreValuesCardIcon projectCoreValuesCardIcon${value.accent === 'green' ? 'Green' : 'Blue'}`} />
-                    <h3 className="projectCoreValuesCardTitle">{value.title}</h3>
-                    <p className="projectCoreValuesCardText">{value.text}</p>
-                  </article>
-                ))}
+                {project.coreValues.values.map((value) => {
+                  const isTandem = project.projectSlug === 'Tandem';
+                  const tandemIconPath = isTandem && { trust: '/Icon/Tandem/Trust.svg', balance: '/Icon/Tandem/balance.svg', support: '/Icon/Tandem/support.svg' }[value.id];
+                  return (
+                    <article
+                      key={value.id}
+                      data-value={value.id}
+                      className={`projectCoreValuesCard projectCoreValuesCard${value.accent === 'green' ? 'Green' : 'Blue'}`}
+                    >
+                      {isTandem && tandemIconPath ? (
+                        <span className="projectCoreValuesCardIcon projectCoreValuesCardIconTandem">
+                          <Image src={tandemIconPath} alt="" width={40} height={40} className="projectCoreValuesCardIconImg" />
+                        </span>
+                      ) : (
+                        <CoreValuesIcon type={value.icon} className={`projectCoreValuesCardIcon projectCoreValuesCardIcon${value.accent === 'green' ? 'Green' : 'Blue'}`} />
+                      )}
+                      <h3 className="projectCoreValuesCardTitle">{value.title}</h3>
+                      <p className="projectCoreValuesCardText">{value.text}</p>
+                    </article>
+                  );
+                })}
               </div>
             </div>
+            </ScrollReveal>
           )}
 
           {project.keyFeatures && (
+            <ScrollReveal animation="fadeUp" delay={80}>
             <div className="projectKeyFeaturesSection">
               <h2 className="projectKeyFeaturesTitle">Key Features</h2>
               <p className="projectKeyFeaturesIntro">{project.keyFeatures.intro}</p>
@@ -120,9 +135,11 @@ export default function ProjectHeroTabbedContent({ project }) {
                 </div>
               ))}
             </div>
+            </ScrollReveal>
           )}
 
           {project.finalProduct && (
+            <ScrollReveal animation="fadeUp" delay={80}>
             <div className="projectFinalProductSection">
               <h2 className="projectFinalProductTitle">{project.finalProduct.title}</h2>
               <div className="projectFinalProductUnderline" aria-hidden />
@@ -133,9 +150,10 @@ export default function ProjectHeroTabbedContent({ project }) {
                       <Image
                         src={screen.image}
                         alt={screen.label}
-                        width={280}
-                        height={560}
+                        width={400}
+                        height={800}
                         className="projectFinalProductImage"
+                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 400px"
                       />
                     ) : (
                       <div className="projectFinalProductPlaceholder" aria-hidden>
@@ -146,9 +164,11 @@ export default function ProjectHeroTabbedContent({ project }) {
                 ))}
               </div>
             </div>
+            </ScrollReveal>
           )}
 
           {project.appInteraction && (
+            <ScrollReveal animation="fadeUp" delay={80}>
             <div className="projectAppInteractionSection" data-project={project.projectSlug}>
               <h2 className="projectAppInteractionTitle">{project.appInteraction.title}</h2>
               <p className="projectAppInteractionSubtitle">{project.appInteraction.subtitle}</p>
@@ -213,6 +233,7 @@ export default function ProjectHeroTabbedContent({ project }) {
                 </div>
               </div>
             </div>
+            </ScrollReveal>
           )}
         </>
       )}

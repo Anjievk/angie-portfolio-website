@@ -2,10 +2,13 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import Navbar from '../../components/Navbar/Navbar';
+import ProjectHeroScrollEffect from '../../components/ProjectHeroScrollEffect/ProjectHeroScrollEffect';
 import ProjectHeroTabbedContent from '../../components/ProjectHeroTabbedContent/ProjectHeroTabbedContent';
 import { getProjectById, getCategoryLabel } from '../../data/projects';
 import '../../styles/page.css';
 import '../../styles/projects.css';
+
+export const dynamic = 'force-dynamic';
 
 function HeroLayout({ project }) {
   const metaRow1 = [project.role, project.team, project.timeline].filter(Boolean);
@@ -19,12 +22,13 @@ function HeroLayout({ project }) {
       data-project={project.projectSlug ?? project.id}
     >
       <div className="projectHeroContainer">
-        <Link href="/projects" className="projectDetailBack">
-          ← Back to Projects
-        </Link>
+        <div className="projectHeroSectionReveal">
+          <Link href="/projects" className="projectDetailBack">
+            ← Back to Projects
+          </Link>
 
-        {/* Hero: title, tagline, underline, CTA */}
-        <div className="projectHeroBlock">
+          {/* Hero: title, tagline, underline, CTA */}
+          <div className="projectHeroBlock">
           <div className="projectHeroText">
             <h1 className="projectHeroTitle">{project.title}</h1>
             <p className="projectHeroTagline">{project.subtitle ?? project.description}</p>
@@ -111,6 +115,8 @@ function HeroLayout({ project }) {
           )
         )}
 
+        </div>
+
         {/* Post-hero: tabs (Introduction / Progress / Key Achievements). Core Values, Key Features, Final Product, App Interaction only when Introduction tab is active. */}
         {project.tabs && (
           <ProjectHeroTabbedContent project={project} />
@@ -171,6 +177,7 @@ export default async function ProjectDetailPage({ params }) {
     <main className="relative min-h-screen">
       <div className="fixed inset-0 -z-10 mainBackground" />
       <Navbar />
+      {useHeroLayout && <ProjectHeroScrollEffect />}
       {useHeroLayout ? (
         <HeroLayout project={project} />
       ) : (

@@ -126,8 +126,8 @@ export default function ProjectHeroTabs({ project, activeTab: controlledTab, onT
                 <h2 className="projectHeroDetailsTitle">
                   {project.overviewTitle ? project.overviewTitle : project.title.toUpperCase()}
                 </h2>
-                {!project.overviewTitle && project.subtitle && (
-                  <p className="projectHeroDetailsSubtitle">{project.subtitle}</p>
+                {!project.overviewTitle && (project.overviewSubtitle ?? project.subtitle) && (
+                  <p className="projectHeroDetailsSubtitle">{project.overviewSubtitle ?? project.subtitle}</p>
                 )}
                 <div className="projectHeroDetailsUnderline" aria-hidden />
               </div>

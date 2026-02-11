@@ -112,9 +112,10 @@ export const PROJECTS = [
       { id: 'achievements', label: 'Key Achievements' },
     ],
     quote: 'Bridging the gap between work and childcare',
-    subtitle: 'UX/UI Design for Parental Support in the Trades',
+    subtitle: 'An app for parents in the trades that helps balance work and childcare.',
+    overviewSubtitle: 'UX/UI Design for Parental Support in the Trades',
     introParagraph:
-      'As the Lead and UX/UI Designer for Tandem, I led the design of an innovative application tailored for skilled tradeworkers who are parents. Tandem intelligently leverages AI to help users seamlessly balance demanding work schedules with family responsibilities. The platform delivers trusted, personalized recommendations and access to reliable childcare solutions, empowering parents to secure care with ease, thereby reducing stress and fostering a healthier work-life experience.',
+      'As the Lead and UX/UI Designer for Tandem, I led the design of an innovative application tailored for skilled tradeworkers who are parents. Tandem intelligently leverages AI to help users seamlessly balance demanding work schedules with family responsibilities. The platform delivers trusted, personalized recommendations and access to reliable childcare solutions, empowering parents to secure care with ease, thereby reducing stress and fostering a healthier work-life experience.',
     roleParagraph:
       'In this role, I was responsible for the complete design lifecycle, including: conducting user research and usability testing; developing wireframes and interactive prototypes; designing the application interface and brand identity, including promotional stickers; managing social media marketing initiatives; and contributing to front-end development to ensure design fidelity.',
     roleParagraphBold: ['Lead and UX/UI Designer', 'front-end development'],

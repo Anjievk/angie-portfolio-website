@@ -34,7 +34,7 @@ export default function HeroIntroCard() {
         <p className="introCardText">
           A <HighlightWithTooltip tools={TOOLTIP_DATA.uxui} id="tooltip-uxui">UX/UI</HighlightWithTooltip>
           {' & '}
-          <HighlightWithTooltip tools={TOOLTIP_DATA.productDesigner} id="tooltip-product">Product Designer</HighlightWithTooltip>
+          <HighlightWithTooltip tools={TOOLTIP_DATA.productDesigner} id="tooltip-product">Graphic Designer</HighlightWithTooltip>
           {' with '}
           <HighlightWithTooltip tools={TOOLTIP_DATA.frontend} id="tooltip-frontend">Frontend Development Skills</HighlightWithTooltip>
           , creating user-centered, visually polished, and scalable digital products.
