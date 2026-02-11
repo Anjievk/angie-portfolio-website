@@ -17,6 +17,7 @@ export default function Navbar() {
   const [theme, setTheme] = useState('dark');
   const [scrolled, setScrolled] = useState(false);
   const [mounted, setMounted] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     setMounted(true);
@@ -43,6 +44,25 @@ export default function Navbar() {
     document.documentElement.classList.toggle('dark', newTheme === 'dark');
   };
 
+  const closeMenu = () => setMenuOpen(false);
+
+  useEffect(() => {
+    const handleEscape = (e) => e.key === 'Escape' && closeMenu();
+    const handleResize = () => {
+      if (window.innerWidth >= 768) closeMenu();
+    };
+    if (menuOpen) {
+      document.addEventListener('keydown', handleEscape);
+      window.addEventListener('resize', handleResize);
+      document.body.style.overflow = 'hidden';
+    }
+    return () => {
+      document.removeEventListener('keydown', handleEscape);
+      window.removeEventListener('resize', handleResize);
+      document.body.style.overflow = '';
+    };
+  }, [menuOpen]);
+
   return (
     <nav
       className={`navbarContainer ${scrolled ? 'navbarContainerScrolled' : ''}`}
@@ -58,6 +78,7 @@ export default function Navbar() {
             className="navbarLogo"
           />
         </a>
+        {/* Desktop: links + theme toggle */}
         <div className="navbarLinksContainer">
           {navItems.map(({ href, label }) => {
             const isActive = pathname === href;
@@ -76,6 +97,68 @@ export default function Navbar() {
             <button
               onClick={toggleTheme}
               className="navbarThemeToggle"
+              aria-label="Toggle theme"
+            >
+              <Image
+                src="/Icon/Sun.svg"
+                alt=""
+                width={18}
+                height={18}
+                className={`navbarSunIcon ${theme === 'dark' ? 'navbarSunIconInactive' : 'navbarSunIconActive'}`}
+                aria-hidden
+              />
+              <Image
+                src="/Icon/Moon.svg"
+                alt=""
+                width={18}
+                height={18}
+                className={`navbarMoonIcon ${theme === 'dark' ? 'navbarMoonIconActive' : 'navbarMoonIconInactive'}`}
+                aria-hidden
+              />
+              <div
+                className={`navbarToggleIndicator ${theme === 'dark' ? 'navbarToggleIndicatorDark' : 'navbarToggleIndicatorLight'}`}
+              />
+            </button>
+          )}
+        </div>
+        {/* Mobile: hamburger button */}
+        <button
+          type="button"
+          className={`navbarMenuButton ${menuOpen ? 'navbarMenuButtonOpen' : ''}`}
+          onClick={() => setMenuOpen((o) => !o)}
+          aria-label={menuOpen ? 'Close menu' : 'Open menu'}
+          aria-expanded={menuOpen}
+        >
+          <span className="navbarMenuIconBar" aria-hidden />
+          <span className="navbarMenuIconBar" aria-hidden />
+          <span className="navbarMenuIconBar" aria-hidden />
+        </button>
+      </div>
+      {/* Mobile menu overlay */}
+      <div
+        className={`navbarMobileOverlay ${menuOpen ? 'navbarMobileOverlayOpen' : ''}`}
+        aria-hidden
+        onClick={closeMenu}
+      />
+      <div className={`navbarMobileMenu ${menuOpen ? 'navbarMobileMenuOpen' : ''}`}>
+        <div className="navbarMobileMenuInner">
+          {navItems.map(({ href, label }) => {
+            const isActive = pathname === href;
+            return (
+              <Link
+                key={href}
+                href={href}
+                className={`navbarMobileLink ${isActive ? 'navbarLinkActive' : ''}`}
+                onClick={closeMenu}
+              >
+                {label}
+              </Link>
+            );
+          })}
+          {mounted && (
+            <button
+              onClick={toggleTheme}
+              className="navbarThemeToggle navbarMobileThemeToggle"
               aria-label="Toggle theme"
             >
               <Image

@@ -13,6 +13,12 @@
   margin: 0 auto;
 }
 
+@media (max-width: 480px) {
+  .readyCtaBlock {
+    padding: 1.5rem 1rem 0.25rem;
+  }
+}
+
 .readyHeadline {
   font-family: var(--font-family);
   font-weight: 800;
@@ -168,6 +174,22 @@
   object-fit: fill;
 }
 
+/* Desktop: show pronounced curve, hide flatter mobile curve */
+.readyFooterCurvePathMobile {
+  display: none;
+}
+
+/* Mobile: flatter curve (ít cong hơn) */
+@media (max-width: 768px) {
+  .readyFooterCurvePathDesktop {
+    display: none;
+  }
+
+  .readyFooterCurvePathMobile {
+    display: block;
+  }
+}
+
 .readyFooterInner {
   position: relative;
   z-index: 1;
@@ -179,6 +201,13 @@
   grid-template-rows: auto auto auto;
   gap: 2rem;
   align-items: start;
+}
+
+@media (max-width: 480px) {
+  .readyFooterInner {
+    padding: 4rem 1rem 2rem 1rem;
+    gap: 1.5rem;
+  }
 }
 
 @media (min-width: 768px) {
@@ -214,6 +243,13 @@
   width: 80px;
   height: 80px;
   object-fit: contain;
+}
+
+@media (max-width: 480px) {
+  .readyFooterLogoImg {
+    width: 56px;
+    height: 56px;
+  }
 }
 
 .readyFooterCite {

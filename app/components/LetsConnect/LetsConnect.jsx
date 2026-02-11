@@ -426,8 +426,17 @@ export default function LetsConnect() {
             preserveAspectRatio="none"
             aria-hidden
           >
+            {/* Desktop: pronounced curve */}
             <path
+              className="readyFooterCurvePath readyFooterCurvePathDesktop"
               d="M1440.5 506.958H-0.5V0.730957L0.178711 0.990723C513.065 196.958 926.437 198.998 1439.82 0.990723L1440.5 0.729004V506.958Z"
+              fill="#1E0038"
+              stroke="white"
+            />
+            {/* Mobile: flatter curve (ít cong hơn) */}
+            <path
+              className="readyFooterCurvePath readyFooterCurvePathMobile"
+              d="M1440.5 506.958H-0.5V0.730957L0.178711 0.990723C513.065 105 926.437 105 1439.82 0.990723L1440.5 0.729004V506.958Z"
               fill="#1E0038"
               stroke="white"
             />

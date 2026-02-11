@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import ScrollReveal from '../ScrollReveal/ScrollReveal';
 import './ProjectsCarousel.css';
 
@@ -12,8 +12,35 @@ const projects = [
   { id: 5, category: 'UI/UX', title: 'Project Five', description: 'User experience design for enterprise application', image: '/vietnamese%20magazine%20mock%20up.jpg' },
 ];
 
+function useCarouselLayout() {
+  const [cardWidth, setCardWidth] = useState(340);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const update = () => {
+      const w = typeof window !== 'undefined' ? window.innerWidth : 1024;
+      if (w < 640) {
+        setCardWidth(280);
+        setIsMobile(true);
+      } else if (w < 768) {
+        setCardWidth(300);
+        setIsMobile(true);
+      } else {
+        setCardWidth(340);
+        setIsMobile(false);
+      }
+    };
+    update();
+    window.addEventListener('resize', update);
+    return () => window.removeEventListener('resize', update);
+  }, []);
+
+  return { cardWidth, isMobile };
+}
+
 export default function ProjectsCarousel() {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const { cardWidth } = useCarouselLayout();
 
   const goToPrevious = () => {
     setCurrentIndex((prev) => (prev === 0 ? projects.length - 1 : prev - 1));
@@ -54,7 +81,7 @@ export default function ProjectsCarousel() {
 
               const scale = isActive ? 1 : 0.78;
               const opacity = isActive ? 1 : 0.85;
-              const translateX = offset * 340;
+              const translateX = offset * cardWidth;
 
               const maskClass = isActive
                 ? 'projectsCarouselCardMaskNone'

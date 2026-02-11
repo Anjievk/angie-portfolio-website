@@ -9,6 +9,13 @@
   margin-top: -2rem;
 }
 
+@media (max-width: 640px) {
+  .projectsCarouselSection {
+    padding: 0 1rem 4rem 1rem;
+    margin-top: -1rem;
+  }
+}
+
 .projectsCarouselContainer {
   max-width: 80rem;
   margin: 0 auto;
@@ -27,7 +34,12 @@
 .projectsCarouselTitle {
   font-size: 3rem;
   font-weight: 700;
+}
 
+@media (max-width: 480px) {
+  .projectsCarouselTitle {
+    font-size: 2rem;
+  }
 }
 
 @media (min-width: 768px) {
@@ -48,6 +60,12 @@
   font-size: 1.125rem;
 }
 
+@media (max-width: 480px) {
+  .projectsCarouselSubtitle {
+    font-size: 0.9375rem;
+  }
+}
+
 /* Project cards container */
 .projectsCarouselCardsContainer {
   position: relative;
@@ -57,7 +75,19 @@
   width: 100%;
   max-width: 80rem;
   height: 32rem;
-  margin: 0 auto ;
+  margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+  .projectsCarouselCardsContainer {
+    height: 26rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .projectsCarouselCardsContainer {
+    height: 22rem;
+  }
 }
 
 .projectsCarouselCard {
@@ -88,6 +118,20 @@
   overflow: hidden;
   display: flex;
   flex-direction: column;
+}
+
+@media (max-width: 768px) {
+  .projectsCarouselCardItem {
+    width: 19rem;
+    height: 22rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .projectsCarouselCardItem {
+    width: 17.5rem;
+    height: 20rem;
+  }
 }
 
 /* Active card – teal-blue with headline */
@@ -241,10 +285,26 @@
   margin: 0 auto;
 }
 
+@media (max-width: 640px) {
+  .projectsCarouselBottomRow {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1.5rem;
+    margin-top: 1rem;
+  }
+}
+
 .projectsCarouselDetailsContainer {
   flex: 1;
   min-width: 0;
   max-width: 24rem;
+}
+
+@media (max-width: 640px) {
+  .projectsCarouselDetailsContainer {
+    max-width: 100%;
+  }
 }
 
 .projectsCarouselCategory {
@@ -265,10 +325,22 @@
   margin-bottom: 0.25rem;
 }
 
+@media (max-width: 640px) {
+  .projectsCarouselProjectTitle {
+    font-size: 1.5rem;
+  }
+}
+
 .projectsCarouselProjectDescription {
   color: rgba(209, 213, 219, 0.9);
   font-size: 1rem;
   line-height: 1.5;
+}
+
+@media (max-width: 640px) {
+  .projectsCarouselProjectDescription {
+    font-size: 0.9375rem;
+  }
 }
 
 /* Carousel controls – right side, clear gap between pill and VIEW ALL */
@@ -350,4 +422,16 @@ background: var(--surface-glass);
 .projectsCarouselViewAllButton:hover {
   opacity: 0.92;
   transform: scale(1.02);
+}
+
+@media (max-width: 640px) {
+  .projectsCarouselControls {
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .projectsCarouselSliderPill {
+    min-width: 7rem;
+  }
 }

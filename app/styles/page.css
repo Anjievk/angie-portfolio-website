@@ -1,3 +1,17 @@
 .mainBackground {
   background: var(--background);
 }
+
+/* Mobile: prevent horizontal overflow and ensure touch-friendly spacing */
+@media (max-width: 640px) {
+  main {
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+}
+
+@media (max-width: 480px) {
+  #header-section {
+    min-height: 140vh;
+  }
+}
