@@ -87,10 +87,13 @@ export default function ProjectHeroTabbedContent({ project }) {
                   className={`projectKeyFeatureBlock projectKeyFeatureBlock${feature.layout === 'phoneLeft' ? 'PhoneLeft' : 'TextLeft'}`}
                 >
                   <div className="projectKeyFeatureContent">
-                    <h3 className="projectKeyFeatureHeading">
-                      <span className="projectKeyFeatureNumber">{feature.number}</span> {feature.title}
-                    </h3>
-                    <p className="projectKeyFeatureSubtitle">{feature.subtitle}</p>
+                    <div className="projectKeyFeatureTitleGroup">
+                      <span className="projectKeyFeatureNumber" aria-hidden>{feature.number}</span>
+                      <div className="projectKeyFeatureTitleBlock">
+                        <h3 className="projectKeyFeatureHeading">{feature.title}</h3>
+                        <p className="projectKeyFeatureSubtitle">{feature.subtitle}</p>
+                      </div>
+                    </div>
                     <p className="projectKeyFeatureDescription">{feature.description}</p>
                   </div>
                   <div className="projectKeyFeatureMockups">
@@ -146,29 +149,68 @@ export default function ProjectHeroTabbedContent({ project }) {
           )}
 
           {project.appInteraction && (
-            <div className="projectAppInteractionSection">
+            <div className="projectAppInteractionSection" data-project={project.projectSlug}>
               <h2 className="projectAppInteractionTitle">{project.appInteraction.title}</h2>
               <p className="projectAppInteractionSubtitle">{project.appInteraction.subtitle}</p>
-              <div className="projectAppInteractionContent">
-                {project.appInteraction.figmaEmbedUrl ? (
-                  <iframe
-                    title="Figma prototype – tap to interact"
-                    src={project.appInteraction.figmaEmbedUrl}
-                    className="projectAppInteractionFigma"
-                    allowFullScreen
-                    allow="fullscreen"
-                  />
-                ) : (
-                  <div className="projectAppInteractionPlaceholder">
-                    <p className="projectAppInteractionPlaceholderTitle">Figma prototype</p>
-                    <p className="projectAppInteractionPlaceholderText">
-                      Add your Figma embed URL in <code>app/data/projects.js</code> under <code>appInteraction.figmaEmbedUrl</code>.
-                    </p>
-                    <p className="projectAppInteractionPlaceholderHint">
-                      In Figma: Share → Get embed code → copy the iframe <code>src</code> URL.
-                    </p>
-                  </div>
+              <div className="projectAppInteractionUnderline" aria-hidden />
+              <div className="projectAppInteractionWrap">
+                {project.projectSlug === 'Tandem' && (
+                  <>
+                    <Image
+                      src="/Icon/Tandem/circlely-arrow.svg"
+                      alt=""
+                      width={206}
+                      height={257}
+                      className="projectAppInteractionIcon projectAppInteractionIconCircleArrow"
+                      aria-hidden
+                    />
+                    <Image
+                      src="/Icon/Tandem/big-star.svg"
+                      alt=""
+                      width={109}
+                      height={102}
+                      className="projectAppInteractionIcon projectAppInteractionIconBigStar"
+                      aria-hidden
+                    />
+                    <Image
+                      src="/Icon/Tandem/small-star.svg"
+                      alt=""
+                      width={77}
+                      height={85}
+                      className="projectAppInteractionIcon projectAppInteractionIconSmallStar"
+                      aria-hidden
+                    />
+                    <Image
+                      src="/Icon/Tandem/long-arrow.svg"
+                      alt=""
+                      width={169}
+                      height={188}
+                      className="projectAppInteractionIcon projectAppInteractionIconLongArrow"
+                      aria-hidden
+                    />
+                  </>
                 )}
+                <div className="projectAppInteractionContent">
+                  {project.appInteraction.figmaEmbedUrl ? (
+                    <iframe
+                      title="Figma prototype – tap to interact"
+                      src={project.appInteraction.figmaEmbedUrl}
+                      className="projectAppInteractionFigma"
+                      allowFullScreen
+                      allow="fullscreen"
+                    />
+                  ) : (
+                    <div className="projectAppInteractionPlaceholder">
+                      <p className="projectAppInteractionPlaceholderTitle">Figma prototype</p>
+                      <p className="projectAppInteractionPlaceholderText">
+                        Add your Figma embed URL in <code>app/data/projects.js</code> under <code>appInteraction.figmaEmbedUrl</code>.
+                      </p>
+                      <p className="projectAppInteractionPlaceholderHint">
+                        In Figma: Share → Get embed code → copy the iframe <code>src</code> URL.
+                      </p>
+                    </div>
+                  )}
+                </div>
               </div>
             </div>
           )}

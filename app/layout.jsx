@@ -4,6 +4,9 @@ import GSAPInit from "./components/GSAPInit/GSAPInit";
 export const metadata = {
   title: "Angie Duong - Portfolio",
   description: "UI/UX & Product Designer with Frontend Development Skills",
+  icons: {
+    icon: "/Icon/Logo Favicon/SVG/Logo Gradient.svg",
+  },
 };
 
 export default function RootLayout({ children }) {

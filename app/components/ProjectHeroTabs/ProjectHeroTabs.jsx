@@ -103,8 +103,21 @@ export default function ProjectHeroTabs({ project, activeTab: controlledTab, onT
       {activeTab === 'introduction' && (
         <>
           <blockquote className="projectHeroQuote">
-            <span className="projectHeroQuoteMark" aria-hidden>"</span>
-            <p className="projectHeroQuoteText">{project.quote}</p>
+            {project.projectSlug === 'Tandem' ? (
+              <>
+                <img src="/Icon/quotation-left.svg" alt="" className="projectHeroQuoteMark projectHeroQuoteMarkLeft" aria-hidden />
+                <img src="/Icon/quotation-left.svg" alt="" className="projectHeroQuoteMark projectHeroQuoteMarkRight" aria-hidden />
+              </>
+            ) : (
+              <span className="projectHeroQuoteMark" aria-hidden>"</span>
+            )}
+            <p className="projectHeroQuoteText">
+              {project.projectSlug === 'Tandem' ? (
+                <>Bridging the gap between work<br />and childcare</>
+              ) : (
+                project.quote
+              )}
+            </p>
           </blockquote>
 
           <div className="projectHeroDetails">
