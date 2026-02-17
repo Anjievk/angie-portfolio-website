@@ -324,8 +324,12 @@
   background: var(--teatiny-gradient);
 }
 
+/* Chỉ dùng pill có animation; bỏ background tab active để tránh 2 lớp */
 .projectHeroSection[data-project="teatiny"] .projectHeroTabActive {
-  background: var(--teatiny-gradient);
+  background: transparent;
+}
+.projectHeroSection[data-project="teatiny"] .projectHeroTabPill {
+  background: var(--teatiny-accent);
 }
 
 .projectHeroSection[data-project="teatiny"] .projectHeroQuoteMark {
@@ -606,6 +610,7 @@
 }
 
 .projectHeroTabsBar {
+  position: relative;
   display: flex;
   justify-content: center;
   gap: 0;
@@ -620,13 +625,26 @@
   margin-right: auto;
 }
 
+/* Sliding gradient pill – runs from current tab to the one you click */
+.projectHeroTabPill {
+  position: absolute;
+  border-radius: 9999px;
+  background: var(--tandem-gradient);
+  box-shadow: 0 2px 12px rgba(50, 114, 203, 0.35);
+  pointer-events: none;
+  z-index: 0;
+  transition: left 0.35s cubic-bezier(0.4, 0, 0.2, 1), width 0.35s cubic-bezier(0.4, 0, 0.2, 1), top 0.35s cubic-bezier(0.4, 0, 0.2, 1), height 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
 .projectHeroTab {
+  position: relative;
+  z-index: 1;
   flex: 1;
   min-width: 0;
   padding: 0.6rem 1.25rem;
   font-size: 0.9375rem;
   font-weight: 600;
-  color: var(--foreground);
+  color: rgba(255, 255, 255, 0.7);
   background: transparent;
   border: none;
   border-radius: 9999px;
@@ -634,7 +652,7 @@
   font-family: var(--font-family);
   text-align: center;
   white-space: nowrap;
-  transition: color 0.2s, background 0.2s;
+  transition: color 0.3s ease;
 }
 
 .projectHeroTab:hover {
@@ -643,7 +661,34 @@
 
 .projectHeroTabActive {
   color: var(--foreground);
-  background: var(--tandem-gradient);
+}
+
+/* Tab panel: smooth enter animation when switching tabs */
+@keyframes projectHeroTabPanelEnter {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.projectHeroTabPanel {
+  animation: projectHeroTabPanelEnter 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .projectHeroTabPanel {
+    animation-duration: 0.15s;
+  }
+  .projectHeroTab {
+    transition-duration: 0.15s;
+  }
+  .projectHeroTabPill {
+    transition-duration: 0.15s;
+  }
 }
 
 .projectHeroQuote {

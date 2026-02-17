@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import Image from 'next/image';
 import ProgressTab from './ProgressTab';
 
@@ -78,6 +78,34 @@ export default function ProjectHeroTabs({ project, activeTab: controlledTab, onT
   const activeTab = isControlled ? controlledTab : internalTab;
   const setActiveTab = isControlled ? onTabChange : setInternalTab;
 
+  const barRef = useRef(null);
+  const activeTabRef = useRef(activeTab);
+  activeTabRef.current = activeTab;
+  const [pillStyle, setPillStyle] = useState(null);
+
+  useEffect(() => {
+    const bar = barRef.current;
+    if (!bar) return;
+    const measure = () => {
+      const buttons = bar.querySelectorAll('.projectHeroTab');
+      const index = tabs.findIndex((t) => t.id === activeTabRef.current);
+      const btn = buttons[index];
+      if (!btn) return;
+      const barRect = bar.getBoundingClientRect();
+      const btnRect = btn.getBoundingClientRect();
+      setPillStyle({
+        left: btnRect.left - barRect.left,
+        width: btnRect.width,
+        top: btnRect.top - barRect.top,
+        height: btnRect.height,
+      });
+    };
+    measure();
+    const ro = new ResizeObserver(measure);
+    ro.observe(bar);
+    return () => ro.disconnect();
+  }, [activeTab, tabs]);
+
   const roleParts = paragraphWithBold(
     project.roleParagraph ?? '',
     project.roleParagraphBold ?? []
@@ -85,7 +113,19 @@ export default function ProjectHeroTabs({ project, activeTab: controlledTab, onT
 
   return (
     <div className="projectHeroTabsSection">
-      <div className="projectHeroTabsBar" role="tablist" aria-label="Project sections">
+      <div ref={barRef} className="projectHeroTabsBar" role="tablist" aria-label="Project sections">
+        {pillStyle != null && (
+          <div
+            className="projectHeroTabPill"
+            aria-hidden
+            style={{
+              left: pillStyle.left,
+              width: pillStyle.width,
+              top: pillStyle.top,
+              height: pillStyle.height,
+            }}
+          />
+        )}
         {tabs.map((tab) => (
           <button
             key={tab.id}
@@ -100,25 +140,18 @@ export default function ProjectHeroTabs({ project, activeTab: controlledTab, onT
         ))}
       </div>
 
+      <div key={activeTab} className="projectHeroTabPanel">
       {activeTab === 'introduction' && (
         <>
-          <blockquote className="projectHeroQuote">
-            {project.projectSlug === 'Tandem' ? (
-              <>
-                <img src="/Icon/quotation-left.svg" alt="" className="projectHeroQuoteMark projectHeroQuoteMarkLeft" aria-hidden />
-                <img src="/Icon/quotation-left.svg" alt="" className="projectHeroQuoteMark projectHeroQuoteMarkRight" aria-hidden />
-              </>
-            ) : (
-              <span className="projectHeroQuoteMark" aria-hidden>"</span>
-            )}
-            <p className="projectHeroQuoteText">
-              {project.projectSlug === 'Tandem' ? (
-                <>Bridging the gap between work<br />and childcare</>
-              ) : (
-                project.quote
-              )}
-            </p>
-          </blockquote>
+          {project.projectSlug === 'Tandem' && (
+            <blockquote className="projectHeroQuote">
+              <img src="/Icon/quotation-left.svg" alt="" className="projectHeroQuoteMark projectHeroQuoteMarkLeft" aria-hidden />
+              <img src="/Icon/quotation-left.svg" alt="" className="projectHeroQuoteMark projectHeroQuoteMarkRight" aria-hidden />
+              <p className="projectHeroQuoteText">
+                Bridging the gap between work<br />and childcare
+              </p>
+            </blockquote>
+          )}
 
           <div className="projectHeroDetails">
             <div className="projectHeroDetailsHead">
@@ -236,6 +269,7 @@ export default function ProjectHeroTabs({ project, activeTab: controlledTab, onT
           </div>
         )
       )}
+      </div>
     </div>
   );
 }

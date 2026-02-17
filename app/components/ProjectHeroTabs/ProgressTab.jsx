@@ -18,10 +18,10 @@ function bulletWithBold(text, boldPhrases = []) {
   return parts;
 }
 
-function BulletList({ items, boldPhrases = [] }) {
+function BulletList({ items = [], boldPhrases = [] }) {
   return (
     <ul className="progressCardList">
-      {items.map((text, i) => {
+      {(items ?? []).map((text, i) => {
         const parts = bulletWithBold(text, boldPhrases);
         return (
           <li key={i}>
@@ -40,12 +40,12 @@ function BulletList({ items, boldPhrases = [] }) {
 }
 
 export default function ProgressTab({ project }) {
-  const progress = project.progressOverview;
-  if (!progress) return null;
-
   const [activeCategory, setActiveCategory] = useState('all');
-  const categories = progress.categories ?? [];
+  const progress = project?.progressOverview;
+  const categories = progress?.categories ?? [];
   const show = (id) => activeCategory === 'all' || activeCategory === id;
+
+  if (!progress) return null;
 
   return (
     <div className="progressTab">
@@ -99,8 +99,8 @@ export default function ProgressTab({ project }) {
                     <p className="progressCardText">{progress.background.userPersonas.intro}</p>
                   </div>
                   <div className="progressPersonas progressPersonasImagesOnly">
-                    {progress.background.userPersonas.personas?.map((p) => (
-                      <article key={p.id} className="progressPersonaCard progressPersonaCardImageOnly">
+                    {progress.background.userPersonas.personas?.map((p, i) => (
+                      <article key={p.id ?? `persona-${i}`} className="progressPersonaCard progressPersonaCardImageOnly">
                         <div className="progressPersonaImageWrap">
                           {p.image ? (
                             <Image src={p.image} alt={p.name || 'Persona'} width={320} height={320} className="progressPersonaImage" />

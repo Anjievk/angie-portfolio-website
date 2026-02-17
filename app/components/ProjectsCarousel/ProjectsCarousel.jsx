@@ -1,15 +1,16 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import Link from 'next/link';
 import ScrollReveal from '../ScrollReveal/ScrollReveal';
 import './ProjectsCarousel.css';
 
 const projects = [
-  { id: 1, category: 'App design & development', title: 'Tandem', description: 'An app for parents in the trades that helps balance work and childcare', image: '/Tandem/recent project Tandem.jpg' },
-  { id: 2, category: 'App design & development', title: 'Tandem', description: 'A beautiful web application with modern UI/UX design', image: '/Tandem/tandem.jpg' },
-  { id: 3, category: 'Magazine Design', title: 'The Unseen Vietnam', description: 'Explore Vietnam in a unique way', image: '/vietnamese%20magazine%20mock%20up.jpg' },
-  { id: 4, category: 'BRANDING', title: 'Project Four', description: 'Complete brand identity and visual design system', image: '/vietnamese%20magazine%20mock%20up.jpg' },
-  { id: 5, category: 'UI/UX', title: 'Project Five', description: 'User experience design for enterprise application', image: '/vietnamese%20magazine%20mock%20up.jpg' },
+  { id: 1, category: 'App design & development', title: 'Tandem', description: 'An app for parents in the trades that helps balance work and childcare', image: '/Recent-project/recent project Tandem.jpg', projectSlug: 'Tandem' },
+  { id: 2, category: 'Product Design', title: 'TeaTiny', description: 'Premium flower tea can series with playful character illustrations', image: '/Recent-project/Teatiny-can.jpg', projectSlug: 'teatiny' },
+  { id: 3, category: 'Magazine Design', title: 'The Unseen Vietnam', description: 'Explore Vietnam in a unique way', image: '/Recent-project/vietnamese magazine mock up.jpg', projectSlug: null },
+  { id: 4, category: 'Branding', title: 'Crimson & Gold', description: 'Brand identity and visual design system', image: '/Recent-project/Crimpson&gold.jpg', projectSlug: null },
+  { id: 5, category: 'UI/UX', title: 'Space Animal', description: 'User experience and visual design', image: '/Recent-project/Space-animal.jpg', projectSlug: null },
 ];
 
 function useCarouselLayout() {
@@ -112,16 +113,25 @@ export default function ProjectsCarousel() {
                       <div className="projectsCarouselCardActiveInner">
                         {project.image ? (
                           <>
-                            <div className="projectsCarouselCardImageWrap">
+                            <Link
+                              href={project.projectSlug ? `/projects/${project.projectSlug}` : '/projects'}
+                              className="projectsCarouselCardImageWrap projectsCarouselCardImageLink"
+                              aria-label={`View project: ${project.title}`}
+                            >
                               <img
                                 src={project.image}
                                 alt=""
                                 className="projectsCarouselCardImage"
                               />
-                            </div>
-                            <span className="projectsCarouselCardHeadline projectsCarouselCardHeadlineOverlay">
-                              {project.category} – {project.title}
-                            </span>
+                              <span className="projectsCarouselViewProjectOverlay">
+                                <span className="projectsCarouselOverlayHeadline">
+                                  {project.category} – {project.title}
+                                </span>
+                                <span className="projectsCarouselOverlayButton">
+                                  View Project
+                                </span>
+                              </span>
+                            </Link>
                           </>
                         ) : (
                           <>

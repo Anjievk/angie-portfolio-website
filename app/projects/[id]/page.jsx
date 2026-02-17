@@ -4,6 +4,7 @@ import { notFound } from 'next/navigation';
 import Navbar from '../../components/Navbar/Navbar';
 import ProjectHeroScrollEffect from '../../components/ProjectHeroScrollEffect/ProjectHeroScrollEffect';
 import ProjectHeroTabbedContent from '../../components/ProjectHeroTabbedContent/ProjectHeroTabbedContent';
+import ProjectSlugSetter from '../../components/ProjectSlugSetter/ProjectSlugSetter';
 import { getProjectById, getCategoryLabel } from '../../data/projects';
 import '../../styles/page.css';
 import '../../styles/projects.css';
@@ -175,6 +176,7 @@ export default async function ProjectDetailPage({ params }) {
 
   return (
     <main className="relative min-h-screen">
+      <ProjectSlugSetter projectSlug={project.projectSlug} />
       <div className="fixed inset-0 -z-10 mainBackground" />
       <Navbar />
       {useHeroLayout && <ProjectHeroScrollEffect />}
