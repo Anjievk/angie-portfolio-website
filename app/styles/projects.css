@@ -205,6 +205,19 @@
   transform: translateY(0);
 }
 
+/* Coming Soon – disabled look, no link */
+.projectCardButtonComingSoon {
+  cursor: default;
+  opacity: 0.85;
+  background: rgba(158, 47, 255, 0.2);
+  pointer-events: none;
+}
+
+.projectCardButtonComingSoon:hover {
+  opacity: 0.85;
+  transform: none;
+}
+
 /* ========== Project detail page ========== */
 .projectDetailSection {
   padding-top: 8rem;

@@ -5,6 +5,15 @@ export const CATEGORIES = [
   { id: 'motion', label: 'Motion Graphic' },
 ];
 
+/** Recent projects shown in carousel and on projects page (button = View Project or Coming Soon) */
+export const RECENT_PROJECTS = [
+  { id: 'rp-1', title: 'Tandem', tags: ['UX/UI Design', 'App Development'], image: '/Recent-project/recent project Tandem.jpg', category: 'ux-ui', description: 'An app for parents in the trades that helps balance work and childcare.', projectSlug: 'Tandem' },
+  { id: 'rp-2', title: 'TeaTiny', tags: ['Product Design', 'Packaging'], image: '/Recent-project/Teatiny-can.jpg', category: 'graphic', description: 'Premium flower tea can series with playful character illustrations.', projectSlug: 'teatiny' },
+  { id: 'rp-3', title: 'The Unseen Vietnam', tags: ['Product Design', 'Editorial'], image: '/Recent-project/vietnamese magazine mock up.jpg', category: 'graphic', description: 'Explore Vietnam in a unique way.', projectSlug: null },
+  { id: 'rp-4', title: 'Crimson & Gold', tags: ['Branding', 'Visual Design'], image: '/Recent-project/Crimpson&gold.jpg', category: 'graphic', description: 'Brand identity and visual design system.', projectSlug: null },
+  { id: 'rp-5', title: 'Space Animal', tags: ['UI/UX', 'Visual Design'], image: '/Recent-project/Space-animal.jpg', category: 'ux-ui', description: 'User experience and visual design.', projectSlug: null },
+];
+
 export const PROJECTS = [
   {
     id: 1,

@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import Navbar from '../components/Navbar/Navbar';
-import { CATEGORIES, PROJECTS } from '../data/projects';
+import { CATEGORIES, RECENT_PROJECTS } from '../data/projects';
 import '../styles/page.css';
 import '../styles/projects.css';
 import { useState, useMemo } from 'react';
@@ -12,8 +12,8 @@ export default function Projects() {
   const [activeFilter, setActiveFilter] = useState('all');
 
   const filteredProjects = useMemo(() => {
-    if (activeFilter === 'all') return PROJECTS;
-    return PROJECTS.filter((p) => p.category === activeFilter);
+    if (activeFilter === 'all') return RECENT_PROJECTS;
+    return RECENT_PROJECTS.filter((p) => p.category === activeFilter);
   }, [activeFilter]);
 
   return (
@@ -63,9 +63,15 @@ export default function Projects() {
                     ))}
                   </div>
                   <div className="projectCardButtonWrap">
-                    <Link href={`/projects/${project.projectSlug ?? project.id}`} className="projectCardButton">
-                      View Project
-                    </Link>
+                    {project.projectSlug ? (
+                      <Link href={`/projects/${project.projectSlug}`} className="projectCardButton">
+                        View Project
+                      </Link>
+                    ) : (
+                      <span className="projectCardButton projectCardButtonComingSoon" aria-disabled="true">
+                        Coming Soon
+                      </span>
+                    )}
                   </div>
                 </div>
               </article>
