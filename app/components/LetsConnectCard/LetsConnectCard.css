@@ -127,7 +127,14 @@
 .connectCardArrowSvg {
   width: clamp(2rem, 5vw, 3rem);
   height: clamp(2rem, 5vw, 3rem);
-  display: block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: clamp(2rem, 5vw, 3rem);
+}
+
+.connectCardArrowSvg .material-symbols-rounded {
+  font-size: inherit;
 }
 
 .connectCardDivider {

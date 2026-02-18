@@ -2,8 +2,6 @@ import Navbar from './components/Navbar/Navbar';
 import StarsBackground from './components/StarsBackground/StarsBackground';
 import HeroSection from './components/HeroSection/HeroSection';
 import ProjectsCarousel from './components/ProjectsCarousel/ProjectsCarousel';
-import LetsConnectCard from './components/LetsConnectCard/LetsConnectCard';
-import LetsConnect from './components/LetsConnect/LetsConnect';
 import HeroScrollEffect from './components/HeroScrollEffect/HeroScrollEffect';
 import './styles/page.css';
 
@@ -19,8 +17,6 @@ export default function Home() {
         <HeroSection />
       </div>
       <ProjectsCarousel />
-      <LetsConnectCard />
-      <LetsConnect />
     </main>
   );
 }

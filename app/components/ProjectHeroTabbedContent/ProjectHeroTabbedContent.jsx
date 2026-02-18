@@ -2,45 +2,22 @@
 
 import { useState } from 'react';
 import Image from 'next/image';
+import MaterialIcon from '../MaterialIcon/MaterialIcon';
 import ProjectHeroTabs from '../ProjectHeroTabs/ProjectHeroTabs';
 import ScrollReveal from '../ScrollReveal/ScrollReveal';
+
+const CORE_VALUES_ICON_MAP = { shield: 'shield', balance: 'balance', handshake: 'handshake' };
 
 function CoreValuesIcon({ type, className }) {
   const base = 'projectCoreValuesIcon';
   const c = className ? `${base} ${className}` : base;
-  if (type === 'shield') {
-    return (
-      <span className={c} aria-hidden>
-        <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M20 4L6 10v10c0 8 6 12 14 14 8-2 14-6 14-14V10L20 4z" fill="currentColor" fillOpacity="0.25" />
-          <path d="M17 22l5-5 2 2-7 7-4-4 2-2 2 2z" fill="currentColor" />
-        </svg>
-      </span>
-    );
-  }
-  if (type === 'balance') {
-    return (
-      <span className={c} aria-hidden>
-        <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M20 6v28M8 14h24M8 26h24" stroke="currentColor" strokeWidth="1.5" strokeOpacity="0.4" />
-          <path d="M14 14v12M26 14v12M20 6l-6 8h12L20 6z" fill="currentColor" fillOpacity="0.25" />
-          <circle cx="14" cy="28" r="2" fill="currentColor" fillOpacity="0.4" />
-          <circle cx="26" cy="28" r="2" fill="currentColor" fillOpacity="0.4" />
-        </svg>
-      </span>
-    );
-  }
-  if (type === 'handshake') {
-    return (
-      <span className={c} aria-hidden>
-        <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M14 24l4-6 4 4 4-6 4 4v8H14v-8z" fill="currentColor" fillOpacity="0.25" />
-          <path d="M18 18l-2 6 6-4 2-4M22 14l2 4-6 4-2-6" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeOpacity="0.5" />
-        </svg>
-      </span>
-    );
-  }
-  return null;
+  const symbol = CORE_VALUES_ICON_MAP[type];
+  if (!symbol) return null;
+  return (
+    <span className={c} aria-hidden>
+      <MaterialIcon icon={symbol} size={40} />
+    </span>
+  );
 }
 
 export default function ProjectHeroTabbedContent({ project }) {

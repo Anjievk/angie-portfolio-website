@@ -2,6 +2,7 @@
 
 import { useState, useRef, useEffect } from 'react';
 import Image from 'next/image';
+import MaterialIcon from '../MaterialIcon/MaterialIcon';
 import ProgressTab from './ProgressTab';
 
 function paragraphWithBold(text, boldPhrases = []) {
@@ -19,52 +20,17 @@ function paragraphWithBold(text, boldPhrases = []) {
   return parts;
 }
 
+const KEY_ACHIEVEMENT_ICON_MAP = { document: 'description', refresh: 'refresh', 'thumbs-up': 'thumb_up', grid: 'grid_view' };
+
 function KeyAchievementsIcon({ type, className }) {
   const c = className ? `projectKeyAchievementsIcon ${className}` : 'projectKeyAchievementsIcon';
-  if (type === 'document') {
-    return (
-      <span className={c} aria-hidden>
-        <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect x="8" y="6" width="20" height="26" rx="1" stroke="currentColor" strokeWidth="1.5" fill="currentColor" fillOpacity="0.15" />
-          <path d="M12 12h12M12 16h12M12 20h8" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" />
-        </svg>
-      </span>
-    );
-  }
-  if (type === 'refresh') {
-    return (
-      <span className={c} aria-hidden>
-        <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M32 20a12 12 0 11-2.5-7.2" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" fill="none" />
-          <path d="M32 8v8h-8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
-          <path d="M8 20a12 12 0 0119.2-4.8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" fill="none" />
-          <path d="M8 32v-8h8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
-        </svg>
-      </span>
-    );
-  }
-  if (type === 'thumbs-up') {
-    return (
-      <span className={c} aria-hidden>
-        <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M12 34V18M12 18c-2 0-4 1.6-4 4v8c0 2.4 2 4 4 4h14.4c2 0 3.6-1.2 4.4-2.8l4.8-9.6c.8-1.6 0-3.6-1.6-4.4V18c0-2.4-2-4-4-4h-4.8l1.2-4c.4-1.6-.4-3.2-2-3.6l-6-2c-1.6-.4-3.2.8-3.6 2.4L12 18z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" fill="currentColor" fillOpacity="0.15" />
-        </svg>
-      </span>
-    );
-  }
-  if (type === 'grid') {
-    return (
-      <span className={c} aria-hidden>
-        <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect x="8" y="8" width="10" height="10" rx="1" stroke="currentColor" strokeWidth="1.5" fill="currentColor" fillOpacity="0.15" />
-          <rect x="22" y="8" width="10" height="10" rx="1" stroke="currentColor" strokeWidth="1.5" fill="currentColor" fillOpacity="0.15" />
-          <rect x="8" y="22" width="10" height="10" rx="1" stroke="currentColor" strokeWidth="1.5" fill="currentColor" fillOpacity="0.15" />
-          <rect x="22" y="22" width="10" height="10" rx="1" stroke="currentColor" strokeWidth="1.5" fill="currentColor" fillOpacity="0.15" />
-        </svg>
-      </span>
-    );
-  }
-  return null;
+  const symbol = KEY_ACHIEVEMENT_ICON_MAP[type];
+  if (!symbol) return null;
+  return (
+    <span className={c} aria-hidden>
+      <MaterialIcon icon={symbol} size={40} />
+    </span>
+  );
 }
 
 export default function ProjectHeroTabs({ project, activeTab: controlledTab, onTabChange }) {
@@ -201,20 +167,33 @@ export default function ProjectHeroTabs({ project, activeTab: controlledTab, onT
                     <p className="projectHeroDetailsIntro">{project.designRationaleParagraph}</p>
                   </>
                 )}
-                {project.roleParagraph && (
-                  <p className="projectHeroDetailsRole">
-                    {Array.isArray(roleParts) ? (
-                      roleParts.map((part, i) =>
-                        part.bold ? (
-                          <strong key={i}>{part.text}</strong>
-                        ) : (
-                          <span key={i}>{part.text}</span>
-                        )
-                      )
+                {(project.roleBullets?.length || project.roleParagraph) && (
+                  <>
+                    <h3 className="projectHeroDetailsRoleTitle">My Role</h3>
+                    {project.roleBullets?.length ? (
+                      <ul className="projectHeroDetailsRoleList">
+                        {project.roleBullets.map((item, i) => (
+                          <li key={i} className="projectHeroDetailsRoleListItem">
+                            <strong>{item.title}:</strong> {item.text}
+                          </li>
+                        ))}
+                      </ul>
                     ) : (
-                      project.roleParagraph
+                      <p className="projectHeroDetailsRole">
+                        {Array.isArray(roleParts) ? (
+                          roleParts.map((part, i) =>
+                            part.bold ? (
+                              <strong key={i}>{part.text}</strong>
+                            ) : (
+                              <span key={i}>{part.text}</span>
+                            )
+                          )
+                        ) : (
+                          project.roleParagraph
+                        )}
+                      </p>
                     )}
-                  </p>
+                  </>
                 )}
               </div>
             </div>

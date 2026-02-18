@@ -913,6 +913,46 @@
   margin: 0;
 }
 
+.projectHeroDetailsRoleTitle {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--foreground);
+  margin: 1.5rem 0 0.25rem;
+  line-height: 1.3;
+}
+
+.projectHeroDetailsRoleList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.projectHeroDetailsRoleListItem {
+  font-size: 1rem;
+  color: var(--foreground-secondary);
+  line-height: 1.7;
+  margin: 0;
+  padding-left: 1.5rem;
+  position: relative;
+}
+
+.projectHeroDetailsRoleListItem::before {
+  content: '★';
+  position: absolute;
+  left: 0;
+  color: var(--foreground);
+  font-size: 0.75rem;
+}
+
+.projectHeroDetailsRoleListItem strong {
+  color: var(--foreground);
+  font-weight: 600;
+}
+
+.projectHeroDetailsRoleListItem + .projectHeroDetailsRoleListItem {
+  margin-top: 0.5rem;
+}
+
 .projectHeroDetailsRole strong {
   color: var(--foreground);
   font-weight: 600;
@@ -1076,15 +1116,36 @@
   border-radius: 2px;
 }
 
+/* Same-width frame for sub-nav and content (fits all tags on one line) */
+.progressTabFrame {
+  max-width: 56rem;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+}
+
+.progressTabFrameContent {
+  max-width: 56rem;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+}
+
 .progressSubNav {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 0.5rem;
   margin-bottom: 2rem;
+  padding: 0 0.25rem;
+}
+
+.progressSubNav::-webkit-scrollbar {
+  display: none;
 }
 
 .progressSubNavBtn {
+  flex-shrink: 0;
   padding: 0.5rem 1rem;
   font-size: 0.875rem;
   font-weight: 500;
@@ -1095,10 +1156,6 @@
   cursor: pointer;
   font-family: var(--font-family);
   transition: color 0.2s, background 0.2s, border-color 0.2s;
-}
-
-.progressSubNavBtn:hover {
-  border-color: rgba(255, 255, 255, 0.2);
 }
 
 .progressSubNavBtnActive {
@@ -1151,6 +1208,174 @@
   }
 }
 
+/* Background Research: stat row + personas (shared layout uses progressSectionContent + progressContentBlock) */
+.progressCoreProblemRow {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: stretch;
+  margin-bottom: 0.75rem;
+}
+
+@media (min-width: 640px) {
+  .progressCoreProblemRow {
+    flex-direction: row;
+    align-items: stretch;
+    gap: 1.5rem;
+  }
+}
+
+.progressCoreProblemRow .progressStatCallout {
+  margin: 0;
+  flex: 0 0 30%;
+  min-width: 0;
+  min-height: 6rem;
+  padding: 1.25rem 1.5rem;
+  justify-content: center;
+}
+
+.progressCoreProblemContent {
+  flex: 1 1 70%;
+  min-width: 0;
+}
+
+.progressCoreProblemContent .progressTaglineBesideStat {
+  margin: 0 0 0.5rem;
+}
+
+.progressCoreProblemContent .progressCardList {
+  margin: 0;
+  padding-left: 1.25rem;
+}
+
+.progressCoreProblemContent .progressCardListStars {
+  list-style: none;
+  padding-left: 1.5rem;
+}
+
+.progressCoreProblemContent .progressCardListStars li {
+  position: relative;
+  margin: 0.25rem 0;
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  color: var(--foreground-muted);
+}
+
+.progressCoreProblemContent .progressCardListStars li::before {
+  content: "★";
+  position: absolute;
+  left: -1.5rem;
+  color: #fff;
+  font-size: 0.75rem;
+}
+
+.progressCoreProblemContent .progressCardList li {
+  margin: 0.25rem 0;
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  color: var(--foreground-muted);
+}
+
+.progressTaglineBesideStat {
+  margin: 0;
+  flex: none;
+  min-width: 0;
+}
+
+@media (min-width: 640px) {
+  .progressTaglineBesideStat {
+    padding-top: 0.25rem;
+  }
+}
+
+.progressTargetMarketIntro {
+  font-size: 0.9375rem;
+  color: var(--foreground-muted);
+  line-height: 1.55;
+  margin: 0 0 1rem;
+}
+
+.progressKeyCardsBackground {
+  margin-top: 0;
+}
+
+.progressIdeationIntro {
+  margin-bottom: 1rem;
+}
+
+.progressKeyCardsIdeation {
+  margin-top: 0;
+}
+
+
+.progressBackgroundBlockPersonas .progressBackgroundPersonasIntro {
+  font-size: 0.9375rem;
+  color: var(--foreground-muted);
+  line-height: 1.55;
+  margin: 0 0 1rem;
+}
+
+.progressBackgroundBlockPersonas .progressPersonas {
+  margin-top: 1.25rem;
+}
+
+/* Shared aligned layout for all progress sections */
+.progressCardAligned .progressSectionContent {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  max-width: 100%;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.progressContentBlock {
+  padding: 1.5rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.progressContentBlock:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.progressContentBlock:first-child {
+  padding-top: 0;
+}
+
+.progressContentBlockNoDivider {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.progressContentBlockNoDivider .progressCardText:last-child {
+  margin-bottom: 0;
+}
+
+@media (min-width: 768px) {
+  .progressContentBlock {
+    padding: 2rem 0;
+  }
+
+  .progressContentBlock:first-child {
+    padding-top: 0;
+  }
+}
+
+.progressContentBlockTitle {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--foreground);
+  margin: 0 0 1rem;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+}
+
+.progressContentBlockTitleLarge {
+  font-size: 1.25rem;
+  margin-top: 0.25rem;
+}
+
 .progressCardTitle {
   font-size: 1.125rem;
   font-weight: 700;
@@ -1198,18 +1423,234 @@
   color: var(--foreground);
 }
 
+/* Progress: scannable blocks, stat callout, key cards, idea cards */
+.progressBlock {
+  margin-top: 1.25rem;
+}
+
+.progressBlock:first-child {
+  margin-top: 0;
+}
+
+.progressStatCallout {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1.25rem 1.5rem;
+  background: var(--tandem-gradient);
+  border-radius: 0.75rem;
+  color: #fff;
+  font-weight: 700;
+  text-align: center;
+}
+
+.progressStatNumber {
+  font-size: 2.75rem;
+  line-height: 1.1;
+  display: block;
+}
+
+.progressStatLabel {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  opacity: 0.95;
+  margin-top: 0.35rem;
+  max-width: 100%;
+  padding: 0 0.25rem;
+  box-sizing: border-box;
+}
+
+.progressTagline {
+  font-size: 0.9375rem;
+  color: var(--foreground-muted);
+  line-height: 1.5;
+  margin: 0 0 0.5rem;
+}
+
+.progressKeyCards {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.75rem;
+  margin: 0.5rem 0 0;
+}
+
+@media (min-width: 640px) {
+  .progressKeyCards {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.progressKeyCard {
+  padding: 0.875rem 1rem;
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 0.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-left: 3px solid var(--tandem-blue);
+}
+
+.progressKeyCardLabel {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--foreground);
+  display: block;
+  margin-bottom: 0.35rem;
+}
+
+.progressKeyCardText {
+  font-size: 0.875rem;
+  color: var(--foreground-muted);
+  line-height: 1.45;
+  margin: 0;
+}
+
+.progressIdeaCards {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.75rem;
+  margin: 0.75rem 0 0;
+}
+
+@media (min-width: 768px) {
+  .progressIdeaCards {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.progressIdeaCard {
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 0.5rem;
+  border-left: 3px solid var(--tandem-blue);
+}
+
+.progressIdeaCardTitle {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--foreground);
+  display: block;
+  margin-bottom: 0.35rem;
+}
+
+.progressIdeaCardText {
+  font-size: 0.8125rem;
+  color: var(--foreground-muted);
+  line-height: 1.45;
+  margin: 0;
+}
+
+.progressVersionBadge {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  margin: 0.5rem 0 0.75rem;
+  background: rgba(51, 115, 204, 0.2);
+  border: 1px solid rgba(51, 115, 204, 0.4);
+  border-radius: 9999px;
+  color: var(--foreground);
+}
+
+.progressVersionNumber {
+  font-size: 1.5rem;
+  font-weight: 800;
+  background: var(--tandem-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.progressVersionLabel {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--foreground-muted);
+}
+
+.progressSteps {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin: 0.5rem 0 1rem;
+}
+
+.progressStep {
+  flex: 1;
+  min-width: 140px;
+  padding: 0.75rem 1rem;
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 0.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.progressStepLabel {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--foreground);
+  display: block;
+  margin-bottom: 0.35rem;
+}
+
+.progressStepText {
+  font-size: 0.8125rem;
+  color: var(--foreground-muted);
+  line-height: 1.45;
+  margin: 0;
+}
+
+.progressReadMore,
+.progressExpandable {
+  margin-top: 0.5rem;
+}
+
+.progressExpandableDetail {
+  margin-top: 0.5rem;
+  padding-top: 0.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.progressReadMoreBtn {
+  margin-top: 0.5rem;
+  padding: 0.25rem 0;
+  color: var(--tandem-blue);
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.progressReadMoreBtn:hover {
+  color: #569BB9;
+}
+
+.progressReadMoreArrow {
+  font-size: 1rem;
+  line-height: 1;
+  display: block;
+}
+
+.progressPrintItem {
+  margin-bottom: 1.25rem;
+}
+
+.progressPrintItem:last-child {
+  margin-bottom: 0;
+}
+
 /* Personas */
 .progressPersonas {
   display: grid;
   grid-template-columns: 1fr;
   gap: 1.5rem;
   margin-top: 1rem;
-}
-
-@media (min-width: 768px) {
-  .progressPersonas {
-    grid-template-columns: repeat(2, 1fr);
-  }
 }
 
 .progressPersonaCard {
@@ -1280,19 +1721,27 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
-  padding: 1rem;
+  padding: 0.5rem 0;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
 }
 
 .progressPersonaCardImageOnly .progressPersonaImageWrap {
   margin-bottom: 0.75rem;
+  width: 100%;
 }
 
 .progressPersonaCardImageOnly .progressPersonaImage {
   width: 100%;
   height: auto;
   max-width: 100%;
-  object-fit: cover;
+  object-fit: contain;
   border-radius: 0.5rem;
+  display: block;
 }
 
 .progressPersonaCardImageOnly .progressPersonaName {
@@ -1303,12 +1752,83 @@
   margin: 0.75rem 0 0;
 }
 
-/* Workflow placeholders */
+/* Figma embed: white rounded container + button bottom right */
+.progressContentBlockFigma {
+  margin-top: -0.5rem;
+  padding-top: 0;
+  padding-bottom: 2rem;
+}
+
+.progressFigmaEmbedWrap {
+  position: relative;
+  width: 100%;
+  background: #f8f7fa;
+  border-radius: 1rem;
+  overflow: hidden;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+  /* Subtle dotted grid background */
+  background-image: radial-gradient(circle, rgba(0, 0, 0, 0.06) 1px, transparent 1px);
+  background-size: 16px 16px;
+  background-color: #fafafa;
+}
+
+.progressFigmaEmbed {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 800 / 450;
+  overflow: hidden;
+}
+
+.progressFigmaIframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 0;
+}
+
+.progressFigmaCtaWrap {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  z-index: 2;
+}
+
+.progressFigmaCta {
+  display: inline-block;
+  padding: 0.625rem 1.25rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #333;
+  background: #e8e8e8;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  border-radius: 0.5rem;
+  cursor: pointer;
+  text-decoration: none;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  transition: background 0.2s, color 0.2s;
+}
+
+.progressFigmaCta:hover:not(:disabled) {
+  background: #ddd;
+  color: #1a1a1a;
+}
+
+.progressFigmaCta:disabled {
+  cursor: default;
+  opacity: 0.7;
+}
+
+/* Workflow placeholders (fallback when no Figma URL) */
 .progressWorkflowGrid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 1rem;
   margin-top: 1rem;
+  padding: 1rem;
 }
 
 @media (min-width: 640px) {
@@ -1361,10 +1881,6 @@
   transition: background 0.2s, border-color 0.2s;
 }
 
-.progressCta:not(:disabled):hover {
-  background: #e5e5e5;
-}
-
 .progressCta:disabled {
   opacity: 0.6;
   cursor: default;
@@ -1382,7 +1898,77 @@
   border: 2px solid var(--foreground);
 }
 
+/* View persona details: same pill shape as design progress toggle */
+.progressCta.progressPersonaViewBtn {
+  border-radius: 9999px;
+  padding: 0.5rem 1.5rem;
+  text-align: center;
+}
+
 /* Colors swatches */
+/* Colors: intro + image + compact items */
+.progressColorsIntro {
+  font-size: 0.9375rem;
+  color: var(--foreground-muted);
+  line-height: 1.55;
+  margin: 0 0 1rem;
+}
+
+.progressColorsItems {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.progressColorsItem {
+  padding: 0.75rem 1rem;
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 0.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.progressColorsItemHead {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.35rem;
+}
+
+.progressColorsItemSwatch {
+  width: 1.25rem;
+  height: 1.25rem;
+  border-radius: 0.25rem;
+  flex-shrink: 0;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+}
+
+.progressColorsItemName {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--foreground);
+}
+
+.progressColorsItemHex {
+  font-size: 0.75rem;
+  color: var(--foreground-muted);
+  margin-left: auto;
+}
+
+.progressColorsItemLine {
+  font-size: 0.875rem;
+  color: var(--foreground-muted);
+  line-height: 1.5;
+  margin: 0;
+}
+
+.progressColorsClosing {
+  font-size: 0.9375rem;
+  color: var(--foreground-muted);
+  line-height: 1.55;
+  margin: 0;
+}
+
 .progressSwatches {
   display: flex;
   flex-wrap: wrap;
@@ -1410,6 +1996,29 @@
 }
 
 /* Typography samples */
+/* Typography: intro + image (style guide) */
+.progressTypographyIntro {
+  font-size: 0.9375rem;
+  color: var(--foreground-muted);
+  line-height: 1.55;
+  margin: 0 0 1.25rem;
+}
+
+.progressTypographyImageWrap {
+  width: 100%;
+  border-radius: 1rem;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.98);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+.progressTypographyImage {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
 .progressTypographySamples {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -1435,6 +2044,69 @@
 }
 
 /* App Design Lofi-Hifi */
+.progressAppDesignIntro {
+  margin-bottom: 0.75rem;
+}
+
+.progressAppDesignIntro:last-of-type {
+  margin-bottom: 1rem;
+}
+
+.progressAppDesignToggle {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 1.25rem;
+}
+
+.progressAppDesignToggleBtn {
+  cursor: pointer;
+  border-radius: 9999px;
+  padding: 0.5rem 1.5rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  font-family: var(--font-family);
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.progressAppDesignToggleBtnActive.progressCtaPrimary,
+.progressAppDesignToggleBtnActive.progressCtaSecondary {
+  background: linear-gradient(90deg, #9E2FFF, #FF798B);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+}
+
+.progressAppDesignToggleBtn:not(.progressAppDesignToggleBtnActive).progressCtaPrimary,
+.progressAppDesignToggleBtn:not(.progressAppDesignToggleBtnActive).progressCtaSecondary {
+  background: rgba(51, 31, 71, 0.9);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+}
+
+.progressAppDesignEmbedWrap {
+  width: 100%;
+  overflow: hidden;
+}
+
+.progressAppDesignEmbed {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 800 / 450;
+  overflow: hidden;
+}
+
+.progressAppDesignIframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
 .progressAppDesignCtas {
   display: flex;
   flex-wrap: wrap;
@@ -1463,11 +2135,39 @@
 }
 
 /* Printed: Logo, Stickers, Business Card, Brochure */
+/* Logo block: heading + paragraph + image row (Design Progress style) */
+.progressLogoBlock {
+  padding-bottom: 2rem;
+}
+
+.progressLogoTitle {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #fff;
+  margin: 0 0 0.75rem;
+  line-height: 1.3;
+}
+
+.progressLogoParagraph {
+  font-size: 0.9375rem;
+  color: rgba(255, 255, 255, 0.85);
+  line-height: 1.55;
+  margin: 0 0 1.25rem;
+}
+
 .progressLogoRow {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   gap: 1rem;
-  margin-top: 0.75rem;
+  margin-top: 0;
+}
+
+.progressLogoImage {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: contain;
 }
 
 .progressPlaceholderLogo {
@@ -1488,6 +2188,65 @@
   margin-top: 0.75rem;
 }
 
+/* Printed: Stickers + Business Card text blocks (bold white headings, paragraph) */
+.progressPrintedTextBlock {
+  padding-bottom: 1rem;
+}
+
+.progressPrintedTextBlock:has(+ .progressPrintedTextBlock) {
+  border-bottom: none;
+}
+
+.progressPrintedSectionTitle {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #fff;
+  margin: 0 0 0.5rem;
+  line-height: 1.3;
+}
+
+.progressPrintedSectionParagraph {
+  font-size: 0.9375rem;
+  color: rgba(255, 255, 255, 0.85);
+  line-height: 1.55;
+  margin: 0 0 1.25rem;
+}
+
+/* Single showcase image (stickers + business cards) in warm beige container */
+.progressPrintedShowcaseBlock {
+  padding-top: 0.5rem;
+  padding-bottom: 2rem;
+}
+
+.progressPrintedShowcase {
+  width: 100%;
+  overflow: hidden;
+}
+
+.progressPrintedShowcaseImage {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 0.75rem;
+}
+
+/* Brochure: heading + paragraph + image in white rounded container */
+.progressBrochureBlock .progressPrintedSectionParagraph {
+  margin-bottom: 1.25rem;
+}
+
+.progressBrochureShowcase {
+  width: 100%;
+  overflow: hidden;
+}
+
+.progressBrochureShowcaseImage {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 0.75rem;
+}
+
 .progressPlaceholderVideo {
   width: 100%;
   aspect-ratio: 16 / 9;
@@ -1496,11 +2255,182 @@
   margin-top: 0.75rem;
 }
 
+.progressVideoWrap {
+  width: 100%;
+  margin-top: 1rem;
+  border-radius: 0.75rem;
+  overflow: hidden;
+}
+
+.progressVideo {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 0.75rem;
+  background: #000;
+}
+
+/* Tandem Blog: two-column layout — image left, text + View Blog button right */
+.progressTandemBlogBlock {
+  padding-bottom: 2rem;
+}
+
+.progressTandemBlogLayout {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  align-items: stretch;
+}
+
+.progressTandemBlogImageCol {
+  flex: 1;
+  min-width: 0;
+}
+
+.progressTandemBlogImageWrap {
+  width: 100%;
+  border-radius: 1rem;
+  overflow: hidden;
+}
+
+.progressTandemBlogImage {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.progressTandemBlogTextCol {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  align-items: center;
+  text-align: center;
+}
+
+.progressTandemBlogParagraph {
+  font-size: 0.9375rem;
+  color: rgba(255, 255, 255, 0.85);
+  line-height: 1.55;
+  margin: 0;
+  flex: 1;
+}
+
+
+.progressTandemBlogCta {
+  margin-top: 0.25rem;
+  width: 100%;
+  border-radius: 9999px;
+  padding: 0.5rem 1.5rem;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+@media (min-width: 768px) {
+  .progressTandemBlogLayout {
+    flex-direction: row;
+    gap: 2rem;
+    align-items: center;
+  }
+
+  .progressTandemBlogImageCol {
+    flex: 1 1 55%;
+  }
+
+  .progressTandemBlogTextCol {
+    flex: 1 1 45%;
+  }
+}
+
 .progressSocialCtas {
   display: flex;
   flex-wrap: wrap;
   gap: 0.75rem;
   margin: 0.75rem 0;
+}
+
+/* Social Media: two-column layout — text + stacked buttons left, image right */
+.progressSocialMediaBlock {
+  padding-bottom: 2rem;
+}
+
+.progressSocialMediaLayout {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  align-items: stretch;
+}
+
+.progressSocialMediaTextCol {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.progressSocialMediaParagraph {
+  font-size: 0.9375rem;
+  color: rgba(255, 255, 255, 0.85);
+  line-height: 1.55;
+  margin: 0;
+}
+
+.progressSocialCtasStacked {
+  flex-direction: column;
+  align-items: stretch;
+  margin: 0;
+  gap: 0.75rem;
+  width: 100%;
+}
+
+.progressSocialCtasStacked .progressCtaSecondary,
+.progressSocialCtasStacked .progressCtaPrimary {
+  width: 100%;
+  box-sizing: border-box;
+  border-radius: 9999px;
+  padding: 0.5rem 1.5rem;
+  text-align: center;
+}
+
+.progressSocialCtasStacked .progressCtaSecondary {
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  background: transparent;
+}
+
+.progressSocialMediaImageCol {
+  flex: 1;
+  min-width: 0;
+}
+
+.progressSocialMediaImageWrap {
+  width: 100%;
+  border-radius: 1rem;
+  overflow: hidden;
+}
+
+.progressSocialMediaImage {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+@media (min-width: 768px) {
+  .progressSocialMediaLayout {
+    flex-direction: row;
+    gap: 2rem;
+    align-items: center;
+  }
+
+  .progressSocialMediaTextCol {
+    flex: 1 1 45%;
+  }
+
+  .progressSocialMediaImageCol {
+    flex: 1 1 55%;
+  }
 }
 
 /* ========== Core Values section ========== */

@@ -96,11 +96,11 @@
   display: flex;
   align-items: center;
   text-decoration: none;
-  transition: transform 0.25s ease;
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .navbarLogoLink:hover {
-  transform: scale(1.05);
+  transform: scale(1.08) rotate(-3deg);
 }
 
 .navbarLogoLink:focus-visible {
@@ -108,10 +108,34 @@
   outline-offset: 4px;
 }
 
+.navbarLogoWrap {
+  position: relative;
+  display: block;
+  width: 2.5rem;
+  height: 2.5rem;
+}
+
+.navbarLogo,
+.navbarLogoGradient {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: opacity 0.35s ease;
+}
+
+.navbarLogoGradient {
+  opacity: 0;
+}
+
+.navbarLogoLink:hover .navbarLogoGradient {
+  opacity: 1;
+}
+
 .navbarLogo {
   width: 2.5rem;
   height: 2.5rem;
-  object-fit: contain;
 }
 
 .navbarLinksContainer {

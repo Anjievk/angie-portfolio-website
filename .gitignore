@@ -39,3 +39,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# large media (exceeds GitHub 100MB limit)
+public/Tandem/Progress/promotion-video.mp4

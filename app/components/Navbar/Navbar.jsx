@@ -70,13 +70,23 @@ export default function Navbar() {
     >
       <div className="navbarInner">
         <a href="/" className="navbarLogoLink" aria-label="Home">
-          <Image
-            src="/Logo.svg"
-            alt="Logo"
-            width={40}
-            height={40}
-            className="navbarLogo"
-          />
+          <span className="navbarLogoWrap">
+            <Image
+              src="/Logo.svg"
+              alt="Logo"
+              width={40}
+              height={40}
+              className="navbarLogo"
+            />
+            <Image
+              src="/Icon/Logo Favicon/SVG/Logo Gradient.svg"
+              alt=""
+              width={40}
+              height={40}
+              className="navbarLogoGradient"
+              aria-hidden
+            />
+          </span>
         </a>
         {/* Desktop: links + theme toggle */}
         <div className="navbarLinksContainer">

@@ -48,6 +48,6 @@
   box-shadow: 0 6px 24px rgba(255, 139, 235, 0.5);
 }
 
-.scroll-to-top svg {
+.scroll-to-top .material-symbols-rounded {
   flex-shrink: 0;
 }

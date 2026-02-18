@@ -36,9 +36,10 @@
   color: var(--gradient-accent-start);
 }
 
-.under-construction__icon svg {
+.under-construction__icon .material-symbols-rounded {
   width: 100%;
   height: 100%;
+  font-size: 56px;
 }
 
 .under-construction__title {

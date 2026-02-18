@@ -5,6 +5,7 @@ import gsap from 'gsap';
 import Link from 'next/link';
 import Image from 'next/image';
 import Matter from 'matter-js';
+import MaterialIcon from '../MaterialIcon/MaterialIcon';
 import { getCurveFloorSegments, getCurvePoints } from './curveFloor';
 import './LetsConnect.css';
 
@@ -44,34 +45,46 @@ const SOCIAL_LINKS = [
   { label: 'GitHub', href: 'https://github.com/Anjievk', icon: 'github' },
 ];
 
+const ICON_SIZE = 24;
+
+function BehanceIcon() {
+  return (
+    <Image
+      src="/Tandem/behance-icon.svg"
+      alt=""
+      width={ICON_SIZE}
+      height={ICON_SIZE}
+      aria-hidden
+    />
+  );
+}
+
+function LinkedInIcon() {
+  return (
+    <svg width={ICON_SIZE} height={ICON_SIZE} viewBox="0 0 24 24" fill="currentColor" aria-hidden>
+      <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+    </svg>
+  );
+}
+
+function GitHubIcon() {
+  return (
+    <svg width={ICON_SIZE} height={ICON_SIZE} viewBox="0 0 24 24" fill="currentColor" aria-hidden>
+      <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3.003-.404 1.02.005 2.047.137 3.006.404 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
+    </svg>
+  );
+}
+
 function SocialIcon({ icon }) {
-  const size = 24;
   switch (icon) {
     case 'behance':
-      return (
-        <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" aria-hidden>
-          <path d="M22 7h-7v-2h7v2zm1.726 10c-.442 1.297-2.029 3-5.101 3-3.074 0-5.564-1.729-5.564-5.675 0-3.91 2.325-5.92 5.466-5.92 3.082 0 4.964 1.782 5.375 4.426.078.506.109 1.188.095 2.14h-8.027c.13 3.211 3.483 3.312 4.588 2.029h3.124zm-7.686-4h4.965c-.105-1.547-1.136-2.219-2.477-2.219-1.466 0-2.277.768-2.488 2.219zm-9.574 6.988h-6.466v-14.967h6.953c5.476.081 5.58 5.444 2.72 6.906 3.461 1.26 3.577 8.061-3.207 8.061zm-3.466-8.988h3.584c2.508 0 2.906-3-.312-3h-3.272v3zm3.391 3h-3.391v3.016h3.341c3.055 0 2.868-3.016.05-3.016z" />
-        </svg>
-      );
+      return <BehanceIcon />;
     case 'linkedin':
-      return (
-        <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" aria-hidden>
-          <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
-        </svg>
-      );
+      return <LinkedInIcon />;
     case 'email':
-      return (
-        <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
-          <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
-          <polyline points="22,6 12,13 2,6" />
-        </svg>
-      );
+      return <MaterialIcon icon="mail" size={ICON_SIZE} />;
     case 'github':
-      return (
-        <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" aria-hidden>
-          <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
-        </svg>
-      );
+      return <GitHubIcon />;
     default:
       return null;
   }
@@ -196,7 +209,7 @@ function initPhysics(containerEl, tagEls) {
   };
 }
 
-export default function LetsConnect() {
+export default function LetsConnect({ showFooter = true }) {
   const ctaRef = useRef(null);
   const ideaToLifeRef = useRef(null);
   const footerInnerRef = useRef(null);
@@ -388,9 +401,9 @@ export default function LetsConnect() {
           </span>
         </h2>
         <p className="readySubheadline">Let&apos;s chat about your next project.</p>
-        <a href="#footer-contact" className="readyCtaButton">
+        <Link href="/contact" className="readyCtaButton">
           Get in Touch
-        </a>
+        </Link>
       </div>
 
       <div
@@ -414,6 +427,7 @@ export default function LetsConnect() {
         </div>
       </div>
 
+      {showFooter && (
       <footer className="readyFooter" id="footer-contact">
         <div className="readyFooterSvgWrap">
           <svg
@@ -445,7 +459,17 @@ export default function LetsConnect() {
         <div className="readyFooterInner" ref={footerInnerRef}>
           <div className="readyFooterBrand">
             <a href="/" className="readyFooterLogo" aria-label="Home">
-              <Image src="/Logo.svg" alt="AD" width={48} height={48} className="readyFooterLogoImg" />
+              <span className="readyFooterLogoWrap">
+                <Image src="/Logo.svg" alt="AD" width={80} height={80} className="readyFooterLogoImg" />
+                <Image
+                  src="/Icon/Logo Favicon/SVG/Logo Gradient.svg"
+                  alt=""
+                  width={80}
+                  height={80}
+                  className="readyFooterLogoGradient"
+                  aria-hidden
+                />
+              </span>
             </a>
             <p className="readyFooterCite">© Angie Duong | 2026</p>
           </div>
@@ -475,6 +499,7 @@ export default function LetsConnect() {
           </nav>
         </div>
       </footer>
+      )}
     </section>
   );
 }

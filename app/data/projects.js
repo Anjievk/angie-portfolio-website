@@ -128,6 +128,11 @@ export const PROJECTS = [
     roleParagraph:
       'In this role, I was responsible for the complete design lifecycle, including: conducting user research and usability testing; developing wireframes and interactive prototypes; designing the application interface and brand identity, including promotional stickers; managing social media marketing initiatives; and contributing to front-end development to ensure design fidelity.',
     roleParagraphBold: ['Lead and UX/UI Designer', 'front-end development'],
+    roleBullets: [
+      { title: 'Full Design Lifecycle', text: 'User research, wireframing, prototyping, UI design' },
+      { title: 'Brand Identity', text: 'App interface, promotional stickers, social media marketing' },
+      { title: 'Development', text: 'Front-end collaboration' },
+    ],
     introductionPhoneImage: '/Tandem/home-screen-schedule.png',
     coreValues: {
       title: 'Core Values',
@@ -248,12 +253,16 @@ export const PROJECTS = [
         { id: 'background', label: 'Background Research' },
         { id: 'ideation', label: 'App ideation & Workflow' },
         { id: 'design', label: 'Design Progress' },
-        { id: 'printed', label: 'Printed Material & Commercial Ads' },
+        { id: 'printed', label: 'Printed Media Materials' },
+        { id: 'marketing', label: 'Marketing & Business Strategy' },
       ],
       background: {
         heading: 'Background Research',
         coreProblem: {
           title: 'Uncovering the Core Problem',
+          stat: '63%',
+          statLabel: 'of tradeswomen are parents',
+          tagline: "A systemic gap that forces parents to choose between livelihood and family. Tandem was conceived to bridge it.",
           bullets: [
             'The journey began with an outstanding statistic: 63% of tradeswomen are parents, and all face a critical childcare struggle. The unpredictable, demanding schedules of trade work clash directly with the rigid availability of traditional childcare, creating a daily crisis of logistics and stress for an entire community.',
             "This isn't just a scheduling problem! It's a systemic gap that forces parents to choose between their livelihood and their family. Tandem was conceived to bridge this very gap.",
@@ -262,6 +271,12 @@ export const PROJECTS = [
         },
         targetMarket: {
           title: 'Identify Target Market',
+          intro: 'The data defined a distinct and underserved demographic: parents working in the skilled trades. This segment faces unique scheduling constraints that standard childcare solutions fail to address, presenting a clear opportunity for a tailored product.',
+          cards: [
+            { label: 'Who', text: 'Parents in skilled trades (construction, electrical, plumbing).' },
+            { label: 'Core Need', text: 'Childcare that adapts to unpredictable, non-standard work hours.' },
+            { label: 'Key Value', text: 'Trust, flexibility, and community-backed reliability.' },
+          ],
           bullets: [
             'Who: Parents employed in the skilled trades (e.g., construction, electrical, plumbing).',
             'Core Need: Childcare that adapts to unpredictable, non-standard work hours.',
@@ -271,7 +286,7 @@ export const PROJECTS = [
         },
         userPersonas: {
           title: 'User Personas',
-          intro: 'These personas came from a survey of trade parents to guide the design process.',
+          intro: 'Our personas came directly from a survey of trade parents. They reflected real schedules and anxieties, giving us a clear, user-focused path for the entire design process.',
           personas: [
             { image: '/Tandem/Progress/persona1.jpg' },
             { image: '/Tandem/Progress/persona2.jpg' },
@@ -284,16 +299,26 @@ export const PROJECTS = [
           title: 'Our Ideation',
           paragraph:
             'Our ideation was driven by a single goal: to create an app that meaningfully supports trade families by solving the core challenges they face. We focused on three core ideas derived from research:',
+          cards: [
+            { label: 'Scheduling as a Foundation', text: 'Building the app around the employee\'s dynamic schedule, not fixed childcare slots.' },
+            { label: 'Community as a Lever', text: 'Enabling a parent network for sharing resources, costs, and trust.' },
+            { label: 'Simplicity as a Principle', text: 'Making every interaction from AI suggestions to booking feel easy and consistent.' },
+          ],
           bullets: [
             'Scheduling as a Foundation: Building the app around the employee\'s dynamic schedule, not fixed childcare slots.',
             'Community as a Lever: Enabling a parent network for sharing resources, costs, and trust.',
             'Simplicity as a Principle: Making every interaction from AI suggestions to booking feel easy and consistent.',
           ],
+          boldPhrases: ['Scheduling as a Foundation:', 'Community as a Lever:', 'Simplicity as a Principle:'],
         },
         appWorkflow: {
           title: 'App Workflow',
+          versionCount: 7,
+          tagline: 'We iterated through 7 versions—adding, removing, and rearranging screens until the journey from schedule to booking felt simple and buildable.',
           paragraph:
             "The final design wasn't our first try as it was our seventh. Through team discussions, design reviews, and technical checks, we worked through 7 different versions. Each time, we added, removed, and rearranged screens to make the app easier to use. We focused on the most important features and made sure the journey from adding your schedule to booking care felt simple and made sense. This careful process made sure our final design was both user-friendly and practical to build.",
+          figmaEmbedUrl: 'https://embed.figma.com/board/iI7KfeCQSYxIn95M5v4qM4/Tandem-Workflow?node-id=0-1&embed-host=share',
+          workflowViewUrl: 'https://www.figma.com/board/iI7KfeCQSYxIn95M5v4qM4/Tandem-Workflow',
         },
         workflowLabels: [
           'Version 2 User workflow',
@@ -311,8 +336,13 @@ export const PROJECTS = [
         viewWorkflowUrl: '',
         colors: {
           title: 'Colors',
-          paragraph:
-            'Our color palette reflects Trust, Balance, and Support. Blue (#3373cc) is our main color, representing calm, safety, and reliability. Green (#92f189) stands for balance and growth—we use it for work-related features and action buttons. Light blue (#68d5ff) and the gentle gradient between blue and green blend care and work into one visual theme. Together, these colors make the app feel like a supportive and trustworthy partner.',
+          intro: 'Our color palette was designed to reflect our core values of Trust, Balance, and Support.',
+          items: [
+            { name: 'Blue', hex: '#3373cc', line: 'Our main color. Calm, safety, and reliability—helping users feel secure as they manage their family\'s schedule.' },
+            { name: 'Green', hex: '#92f189', line: 'Balance and growth. We use it for work-related features and action buttons, giving a sense of control and progress.' },
+            { name: 'Light blue & gradient', hex: '#68d5ff', line: 'Light blue and the gentle gradient between blue and green blend care and work into one visual theme. Efficient and warm.' },
+          ],
+          closing: 'Together, these colors make the app feel like a supportive and trustworthy partner.',
           swatches: [
             { hex: '#3373cc', name: 'Bright Blue' },
             { hex: '#255495', name: 'Dark Blue' },
@@ -326,64 +356,66 @@ export const PROJECTS = [
           title: 'Typography',
           paragraph:
             'Alan Sans (headings) and Omnes (body) work together to make the app easy to read and navigate. The clear headings help users scan quickly, while the friendly body text makes reading details comfortable and approachable.',
-          headingFont: 'Alan Sans (Heading)',
-          bodyFont: 'Omnes (Body)',
-          samples: ['Heading (H1) Black - 40px', 'Heading (H2) Extra Bold - 32px', 'Heading (H3) Bold: 24px', 'Heading (H4) Medium: 20px', 'Body Text Regular: 16px', 'Caption: 12px', 'Label: 10px'],
+          image: '/Tandem/Progress/typo.png',
         },
         appDesign: {
           title: 'App Design (Lofi - Hifi)',
           paragraphs: [
-            'We started with rough interface sketches, focusing on user flow, layout logic, and core functionality.',
-            'In the high-fidelity phase, we rebuilt the visual interface in collaboration, prioritizing a modern, clean aesthetic and intuitive navigation, resulting in a visually appealing and highly functional product.',
+            'Our design process evolved from initial ideas to the finished interface. I started with rough interface sketches, focusing on user flow, layout logic, and core functionality.',
+            'For the high-fidelity phase, I led the redesign in collaboration with one other designer. We rebuilt the visual interface from scratch—modern, clean, intuitive—and refined every element for a coherent, user-friendly experience. The result was both visually appealing and highly functional.',
           ],
-          lofiUrl: '',
-          hifiUrl: '',
+          lofiEmbedUrl: 'https://embed.figma.com/design/bWRgTxuwvtrP8XxNSehRkL/Tandem-Mid-fi--Copy-?node-id=2533-3139&embed-host=share',
+          hifiEmbedUrl: 'https://embed.figma.com/design/bWGbW5Heq2LaMCX1FVoUz5/Tandem-High-fi?node-id=7635-13393&embed-host=share',
+          lofiViewUrl: 'https://www.figma.com/design/bWRgTxuwvtrP8XxNSehRkL/Tandem-Mid-fi--Copy-',
+          hifiViewUrl: 'https://www.figma.com/design/bWGbW5Heq2LaMCX1FVoUz5/Tandem-High-fi',
         },
       },
       printed: {
-        heading: 'Printed Material & Commercial Ads',
+        heading: 'Printed Media Materials',
         logo: {
           title: 'Logo',
           paragraph:
             "Our logo features a simple hammer. Its handle is designed to connect, symbolizing balance and partnership. We used Tandem's brand colors, blue and green, to create a clear link to trade workers and build a trustworthy brand.",
-          images: [],
+          image: '/Tandem/Progress/Logo.png',
         },
         stickers: {
           title: 'Stickers',
           paragraph:
             "I had the opportunity to explore the fun and visual side of branding by designing a sticker set for Tandem! It wasn't just about making things look cute (although they are cute!). I thought about where they would be placed: on toolboxes, work helmets, and lunch boxes. I chose durable, weather-resistant materials so they could withstand harsh working conditions. The designs combine our logo with friendly symbols related to balance and support, creating little snippets of brand joy. They're perfect for community events, app rewards, or simply as gifts, turning our users into brand ambassadors.",
-          images: [],
         },
         businessCard: {
           title: 'Business Card',
           paragraph: 'Our project included custom business cards for team member introductions and networking.',
-          image: '',
         },
+        stickersShowcaseImage: '/Tandem/Progress/stickers.jpg',
         brochure: {
           title: 'Brochure',
           paragraph: "This brochure is designed to explain the app's stories, benefits and features to our potential users and partners.",
-          image: '',
+          image: '/Tandem/Progress/brochure.jpg',
         },
-        marketing: {
-          title: 'Marketing & Business Strategy',
-          promotionVideo: {
-            title: 'Promotion Video',
-            paragraph:
-              'To reach more people, I worked on a promotion video for Tandem. We filmed and edited the shoots using Premiere Pro, crafting a video that captures the real-life challenges and relief Tandem brings to parents in the trades.',
-            videoUrl: '',
-          },
-          tandemBlog: {
-            title: 'Tandem Blog',
-            paragraph: 'Companion to the app with supportive, clean design—I created the Tandem blog to share stories and updates.',
-            blogUrl: '',
-          },
-          socialMedia: {
-            title: 'Social Media',
-            paragraph:
-              "I designed and managed Tandem's social media strategy, including visual posts and content for Facebook and Instagram to foster community and communicate brand values.",
-            facebookUrl: '',
-            instagramUrl: '',
-          },
+      },
+      marketing: {
+        heading: 'Marketing & Business Strategy',
+        promotionVideo: {
+          title: 'Promotion Video',
+          paragraph:
+            'To reach more people, I worked on a promotion video for Tandem. We filmed and edited the shoots using Premiere Pro, crafting a video that captures the real-life challenges and relief Tandem brings to parents in the trades.',
+          videoUrl: '/Tandem/Progress/promotion-video.mp4',
+        },
+        tandemBlog: {
+          title: 'Tandem Blog',
+          paragraph:
+            "To connect with parents, I helped create the Tandem blog as a companion to the app. The blog shares stories, and updates about our features. We designed it to be a supportive space that reflects our brand, with a clean layout that's easy to read and explore.",
+          blogUrl: 'https://tandem-blog.vercel.app/',
+          image: '/Tandem/Progress/tandem-blog.png',
+        },
+        socialMedia: {
+          title: 'Social Media',
+          paragraph:
+            "I also designed and managed Tandem's social media strategy. This included designing all visual posts and managing daily content on Facebook and Instagram to foster community, share user stories, and communicate brand values of support and trust to our target audience.",
+          image: '/Tandem/Progress/social-media.png',
+          facebookUrl: 'https://www.facebook.com/profile.php?id=61583428771048',
+          instagramUrl: 'https://www.instagram.com/the.tandem.app?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==',
         },
       },
     },

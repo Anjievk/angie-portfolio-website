@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import MaterialIcon from '../MaterialIcon/MaterialIcon';
 import ScrollReveal from '../ScrollReveal/ScrollReveal';
 import './ProjectsCarousel.css';
 
@@ -197,9 +198,7 @@ export default function ProjectsCarousel() {
                   className="projectsCarouselArrowButton"
                   aria-label="Previous project"
                 >
-                  <svg className="projectsCarouselArrowIcon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-                  </svg>
+                  <MaterialIcon icon="chevron_left" size={24} className="projectsCarouselArrowIcon" />
                 </button>
                 <span className="projectsCarouselPageIndicator">
                   {currentIndex + 1} / {projects.length}
@@ -209,9 +208,7 @@ export default function ProjectsCarousel() {
                   className="projectsCarouselArrowButton"
                   aria-label="Next project"
                 >
-                  <svg className="projectsCarouselArrowIcon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                  </svg>
+                  <MaterialIcon icon="chevron_right" size={24} className="projectsCarouselArrowIcon" />
                 </button>
               </div>
               <a href="/projects" className="projectsCarouselViewAllButton">

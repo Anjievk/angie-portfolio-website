@@ -237,16 +237,51 @@
 .readyFooterLogo {
   display: inline-block;
   line-height: 0;
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.readyFooterLogo:hover {
+  transform: scale(1.08) rotate(-3deg);
+}
+
+.readyFooterLogoWrap {
+  position: relative;
+  display: block;
+  width: 80px;
+  height: 80px;
+}
+
+.readyFooterLogoImg,
+.readyFooterLogoGradient {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: opacity 0.35s ease;
+}
+
+.readyFooterLogoGradient {
+  opacity: 0;
+}
+
+.readyFooterLogo:hover .readyFooterLogoGradient {
+  opacity: 1;
 }
 
 .readyFooterLogoImg {
   width: 80px;
   height: 80px;
-  object-fit: contain;
 }
 
 @media (max-width: 480px) {
-  .readyFooterLogoImg {
+  .readyFooterLogoWrap {
+    width: 56px;
+    height: 56px;
+  }
+
+  .readyFooterLogoImg,
+  .readyFooterLogoGradient {
     width: 56px;
     height: 56px;
   }
