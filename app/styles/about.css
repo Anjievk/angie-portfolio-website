@@ -14,7 +14,7 @@
 .aboutTitle {
   font-size: 3.75rem;
   font-weight: 700;
-  margin-bottom: 2rem;
+  margin-bottom: 3rem;
 }
 
 @media (min-width: 768px) {
@@ -23,27 +23,184 @@
   }
 }
 
-.aboutContent {
-  background-color: rgba(88, 28, 135, 0.4);
+/* ----- Intro: Picture + Description ----- */
+.aboutIntro {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+@media (min-width: 768px) {
+  .aboutIntro {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 3rem;
+  }
+}
+
+.aboutPhotoWrap {
+  flex-shrink: 0;
+  width: 100%;
+  max-width: 280px;
+  aspect-ratio: 1;
+  border-radius: 1.25rem;
+  overflow: hidden;
+  background: linear-gradient(135deg, var(--background-start) 0%, var(--background-end) 100%);
+  border: 1px solid var(--border-subtle);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+}
+
+@media (min-width: 768px) {
+  .aboutPhotoWrap {
+    max-width: 320px;
+  }
+}
+
+.aboutPhoto {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.aboutPhotoFallback {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, rgba(158, 47, 255, 0.25) 0%, rgba(255, 121, 139, 0.2) 100%);
+}
+
+.aboutPhotoInitials {
+  font-size: 4rem;
+  font-weight: 800;
+  color: var(--foreground);
+  opacity: 0.6;
+  letter-spacing: -0.02em;
+}
+
+.aboutDescriptionWrap {
+  flex: 1;
+}
+
+.aboutDescription {
+  color: var(--foreground);
+  font-size: 1.125rem;
+  line-height: 1.8;
+}
+
+@media (min-width: 768px) {
+  .aboutDescription {
+    font-size: 1.25rem;
+    line-height: 1.9;
+  }
+}
+
+/* ----- Block (Experience, Interests) ----- */
+.aboutBlock {
+  background: rgba(88, 28, 135, 0.4);
   backdrop-filter: blur(12px);
   border-radius: 1.5rem;
   padding: 2rem;
   border: 1px solid var(--border-subtle);
+  margin-bottom: 2rem;
+}
+
+.aboutBlock:last-child {
+  margin-bottom: 0;
 }
 
 @media (min-width: 768px) {
-  .aboutContent {
-    padding: 3rem;
+  .aboutBlock {
+    padding: 2.5rem 3rem;
   }
 }
 
-.aboutText {
+.aboutBlockTitle {
+  font-size: 1.5rem;
+  font-weight: 700;
   color: var(--foreground);
-  font-size: 1.125rem;
-  line-height: 1.75;
+  margin-bottom: 1.5rem;
+  background: linear-gradient(90deg, var(--gradient-accent-start), var(--gradient-accent-end));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ----- Experience ----- */
+.aboutExperienceList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.aboutExperienceItem {
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--border-subtle);
   margin-bottom: 1.5rem;
 }
 
-.aboutText:last-child {
+.aboutExperienceItem:last-child {
+  padding-bottom: 0;
   margin-bottom: 0;
+  border-bottom: none;
+}
+
+.aboutExperienceHeader {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 0.25rem;
+}
+
+.aboutExperienceRole {
+  font-weight: 600;
+  color: var(--foreground);
+  font-size: 1.0625rem;
+}
+
+.aboutExperiencePeriod {
+  font-size: 0.875rem;
+  color: var(--foreground-muted);
+  opacity: 0.9;
+}
+
+.aboutExperienceCompany {
+  font-size: 0.9375rem;
+  color: var(--gradient-accent-start);
+  font-weight: 500;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.aboutExperienceDescription {
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: var(--foreground-muted);
+  margin: 0;
+}
+
+/* ----- Interests ----- */
+.aboutInterests {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.aboutInterestTag {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--foreground);
+  background: var(--surface-glass);
+  border: 1px solid var(--border-subtle);
+  border-radius: 9999px;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.aboutInterestTag:hover {
+  border-color: rgba(158, 47, 255, 0.4);
+  background: rgba(158, 47, 255, 0.1);
 }
