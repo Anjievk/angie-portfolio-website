@@ -356,23 +356,212 @@
   background: var(--teatiny-gradient);
 }
 
-/* TeaTiny banner – light background so cans stand out (same as reference) */
+/* TeaTiny banner – no frame, image fills width, rounded edges */
 .projectHeroSection[data-project="teatiny"] .projectHeroFeatureBannerWrap {
-  background: #f8f6f8;
-  padding: 2rem;
+  background: transparent;
+  padding: 0;
   border-radius: 1.5rem;
+  overflow: hidden;
 }
 
 .projectHeroSection[data-project="teatiny"] .projectHeroFeatureBanner {
-  border-radius: 1rem;
+  border-radius: 1.5rem;
 }
 
 .projectHeroSection[data-project="teatiny"] .projectKeyAchievementsUnderline {
   background: var(--teatiny-gradient);
 }
 
+/* TeaTiny: light pink underlines to match reference (#FFC0CB) */
+.projectHeroSection[data-project="teatiny"] .projectHeroDetailsUnderline,
+.projectHeroSection[data-project="teatiny"] .projectHeroDetailsDesignRationaleUnderline {
+  background: #FFC0CB;
+  margin-top: 0.5rem;
+}
+
+/* TeaTiny: white text for intro content on dark purple */
+.projectHeroSection[data-project="teatiny"] .projectHeroDetailsTitle,
+.projectHeroSection[data-project="teatiny"] .projectHeroDetailsDesignRationaleTitle,
+.projectHeroSection[data-project="teatiny"] .projectHeroDetailsIntro,
+.projectHeroSection[data-project="teatiny"] .projectHeroTagline,
+.projectHeroSection[data-project="teatiny"] .projectHeroPill {
+  color: #ffffff;
+}
+
+.projectHeroSection[data-project="teatiny"] .projectHeroDetailsTitleBlock .projectHeroDetailsTitle {
+  margin-bottom: 0;
+}
+
+.projectHeroSection[data-project="teatiny"] .projectHeroDetailsHead {
+  padding-top: 2rem;
+}
+
+.projectHeroSection[data-project="teatiny"] .projectHeroDetailsIntro {
+  color: rgba(255, 255, 255, 0.95);
+}
+
+/* TeaTiny: Design Rationale title – same effect as Overview (size, underline, spacing) */
+.projectHeroSection[data-project="teatiny"] .projectHeroDetailsDesignRationaleTitle {
+  font-size: 2.5rem;
+  margin: 2rem 0 0;
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+}
+
+/* Match Overview: title-to-underline 0.25rem, underline-to-content 2rem */
+.projectHeroSection[data-project="teatiny"] .projectHeroDesignRationaleBlock .projectHeroDetailsTitleBlock {
+  margin-bottom: 2rem;
+}
+
+/* The Unseen Vietnam project – terracotta/amber gradient (editorial travel theme) */
+.projectHeroSection[data-project="the-unseen-vietnam"] {
+  --vietnam-gradient: linear-gradient(to right, #C45C2A 0%, #D47B3E 50%, #E89B5C 100%);
+  --vietnam-accent: #D47B3E;
+}
+
+.projectHeroSection[data-project="the-unseen-vietnam"] .projectHeroTitle {
+  background: var(--vietnam-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.projectHeroSection[data-project="the-unseen-vietnam"] .projectHeroUnderline {
+  background: var(--vietnam-gradient);
+}
+
+.projectHeroSection[data-project="the-unseen-vietnam"] .projectHeroTabActive {
+  background: transparent;
+}
+.projectHeroSection[data-project="the-unseen-vietnam"] .projectHeroTabPill {
+  background: var(--vietnam-accent);
+}
+
+.projectHeroSection[data-project="the-unseen-vietnam"] .projectHeroDetailsUnderline {
+  background: var(--vietnam-gradient);
+}
+
+.projectHeroSection[data-project="the-unseen-vietnam"] .projectKeyAchievementsUnderline {
+  background: var(--vietnam-gradient);
+}
+
+.projectHeroSection[data-project="the-unseen-vietnam"] .projectHeroDetailsUnderline,
+.projectHeroSection[data-project="the-unseen-vietnam"] .projectHeroDetailsDesignRationaleUnderline {
+  background: #D47B3E;
+  margin-top: 0.5rem;
+}
+
+.projectHeroSection[data-project="the-unseen-vietnam"] .projectHeroDetailsTitle,
+.projectHeroSection[data-project="the-unseen-vietnam"] .projectHeroDetailsDesignRationaleTitle,
+.projectHeroSection[data-project="the-unseen-vietnam"] .projectHeroDetailsIntro,
+.projectHeroSection[data-project="the-unseen-vietnam"] .projectHeroTagline,
+.projectHeroSection[data-project="the-unseen-vietnam"] .projectHeroPill {
+  color: #ffffff;
+}
+
+.projectHeroSection[data-project="the-unseen-vietnam"] .projectHeroDetailsTitleBlock .projectHeroDetailsTitle {
+  margin-bottom: 0;
+}
+
+.projectHeroSection[data-project="the-unseen-vietnam"] .projectHeroDetailsHead {
+  padding-top: 2rem;
+}
+
+.projectHeroSection[data-project="the-unseen-vietnam"] .projectHeroDetailsIntro {
+  color: rgba(255, 255, 255, 0.95);
+}
+
+.projectHeroSection[data-project="the-unseen-vietnam"] .projectHeroDetailsDesignRationaleTitle {
+  font-size: 2.5rem;
+  margin: 2rem 0 0;
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+}
+
+.projectHeroSection[data-project="the-unseen-vietnam"] .projectHeroDesignRationaleBlock .projectHeroDetailsTitleBlock {
+  margin-bottom: 2rem;
+}
+
+.projectHeroSection[data-project="the-unseen-vietnam"] .projectHeroDesignRationaleSubhead,
+.projectHeroSection[data-project="the-unseen-vietnam"] .projectHeroDesignRationaleChoice {
+  color: rgba(255, 255, 255, 0.95);
+}
+
+/* Crimson & Gold project – crimson/gold gradient (royal attire theme) */
+.projectHeroSection[data-project="crimson-gold"] {
+  --crimson-gold-gradient: linear-gradient(to right, #8B2942 0%, #B8453C 50%, #D4A84B 100%);
+  --crimson-gold-accent: #B8453C;
+}
+
+.projectHeroSection[data-project="crimson-gold"] .projectHeroTitle {
+  background: var(--crimson-gold-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.projectHeroSection[data-project="crimson-gold"] .projectHeroUnderline {
+  background: var(--crimson-gold-gradient);
+}
+
+.projectHeroSection[data-project="crimson-gold"] .projectHeroTabActive {
+  background: transparent;
+}
+.projectHeroSection[data-project="crimson-gold"] .projectHeroTabPill {
+  background: var(--crimson-gold-accent);
+}
+
+.projectHeroSection[data-project="crimson-gold"] .projectHeroDetailsUnderline {
+  background: var(--crimson-gold-gradient);
+}
+
+.projectHeroSection[data-project="crimson-gold"] .projectKeyAchievementsUnderline {
+  background: var(--crimson-gold-gradient);
+}
+
+.projectHeroSection[data-project="crimson-gold"] .projectHeroDetailsUnderline,
+.projectHeroSection[data-project="crimson-gold"] .projectHeroDetailsDesignRationaleUnderline {
+  background: #B8453C;
+  margin-top: 0.5rem;
+}
+
+.projectHeroSection[data-project="crimson-gold"] .projectHeroDetailsTitle,
+.projectHeroSection[data-project="crimson-gold"] .projectHeroDetailsDesignRationaleTitle,
+.projectHeroSection[data-project="crimson-gold"] .projectHeroDetailsIntro,
+.projectHeroSection[data-project="crimson-gold"] .projectHeroTagline,
+.projectHeroSection[data-project="crimson-gold"] .projectHeroPill {
+  color: #ffffff;
+}
+
+.projectHeroSection[data-project="crimson-gold"] .projectHeroDetailsTitleBlock .projectHeroDetailsTitle {
+  margin-bottom: 0;
+}
+
+.projectHeroSection[data-project="crimson-gold"] .projectHeroDetailsHead {
+  padding-top: 2rem;
+}
+
+.projectHeroSection[data-project="crimson-gold"] .projectHeroDetailsIntro {
+  color: rgba(255, 255, 255, 0.95);
+}
+
+.projectHeroSection[data-project="crimson-gold"] .projectHeroDetailsDesignRationaleTitle {
+  font-size: 2.5rem;
+  margin: 2rem 0 0;
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+}
+
+.projectHeroSection[data-project="crimson-gold"] .projectHeroDesignRationaleBlock .projectHeroDetailsTitleBlock {
+  margin-bottom: 2rem;
+}
+
+.projectHeroSection[data-project="crimson-gold"] .projectHeroIntroSketchesTitle {
+  color: #ffffff;
+}
+
 .projectHeroContainer {
-  max-width: 72rem;
+  max-width: min(1100px, 92vw);
   margin: 0 auto;
 }
 
@@ -978,8 +1167,310 @@
   margin-bottom: 1rem;
 }
 
-.projectHeroSection[data-project="teatiny"] .projectHeroDetailsDesignRationaleUnderline {
-  background: var(--teatiny-gradient);
+.projectHeroDesignRationaleSubhead {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--foreground);
+  margin: 1.5rem 0 0.5rem;
+  line-height: 1.3;
+}
+
+.projectHeroDesignRationaleChoices {
+  margin: 0.75rem 0 0 1.25rem;
+  padding: 0;
+  list-style: decimal;
+}
+
+.projectHeroDesignRationaleChoice {
+  margin-bottom: 0.75rem;
+  color: var(--foreground);
+  line-height: 1.5;
+}
+
+.projectHeroDesignRationaleChoice strong {
+  font-weight: 600;
+}
+
+.projectHeroMagazineFlipWrap {
+  margin-top: 3rem;
+  width: 100%;
+}
+
+/* TeaTiny Intro Brand Block: text left, logo + flavor pill right */
+.projectHeroIntroBrandBlock {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  align-items: flex-start;
+  margin-top: 2.5rem;
+}
+
+.projectHeroIntroBrandContent {
+  flex: 1 1 min(100%, 28rem);
+}
+
+.projectHeroIntroBrandTitle {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--foreground);
+  margin: 0 0 0.75rem;
+  line-height: 1.3;
+}
+
+.projectHeroSection[data-project="teatiny"] .projectHeroIntroBrandTitle {
+  color: #ffffff;
+}
+
+.projectHeroIntroBrandLogoWrap {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.5rem;
+}
+
+.projectHeroIntroBrandLogo {
+  width: auto;
+  height: 8rem;
+  object-fit: contain;
+}
+
+@media (min-width: 768px) {
+  .projectHeroIntroBrandLogo {
+    height: 11rem;
+  }
+}
+
+.projectHeroIntroBrandFlavor {
+  font-size: 0.875rem;
+  font-weight: 500;
+  padding: 0.35rem 1rem;
+  border-radius: 9999px;
+  background: rgba(255, 192, 203, 0.9);
+  color: #280048;
+  white-space: nowrap;
+}
+
+.projectHeroSection[data-project="teatiny"] .projectHeroIntroBrandFlavor {
+  background: #FFC0CB;
+  color: #280048;
+  border: 1px solid #E0B0C0;
+}
+
+/* TeaTiny Intro Mascots Block: white card left, text right */
+.projectHeroIntroMascotsBlock {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  align-items: flex-start;
+  margin-top: 2.5rem;
+}
+
+.projectHeroIntroMascotsCard {
+  flex-shrink: 0;
+  background: #ffffff;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+}
+
+.projectHeroIntroMascotsImage {
+  width: auto;
+  max-height: 12rem;
+  object-fit: contain;
+}
+
+.projectHeroIntroMascotsContent {
+  flex: 1 1 min(100%, 28rem);
+}
+
+.projectHeroIntroMascotsTitle {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--foreground);
+  margin: 0 0 0.75rem;
+  line-height: 1.3;
+}
+
+.projectHeroSection[data-project="teatiny"] .projectHeroIntroMascotsTitle {
+  color: #ffffff;
+}
+
+/* TeaTiny Intro Colour Block: heading, text, white block with palette */
+.projectHeroIntroColourBlock {
+  margin-top: 2.5rem;
+}
+
+.projectHeroIntroColourTitle {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--foreground);
+  margin: 0 0 0.75rem;
+  line-height: 1.3;
+}
+
+.projectHeroSection[data-project="teatiny"] .projectHeroIntroColourTitle {
+  color: #ffffff;
+}
+
+.projectHeroIntroColourBlock .projectHeroDetailsIntro {
+  margin-bottom: 1.5rem;
+}
+
+/* First Sketches block (e.g. Crimson & Gold): title + row of sketch images */
+.projectHeroIntroSketchesBlock {
+  margin-top: 2.5rem;
+}
+
+.projectHeroIntroSketchesBlock .projectHeroDetailsTitleBlock {
+  text-align: center;
+}
+
+.projectHeroIntroSketchesBlock .projectHeroDetailsUnderline {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.projectHeroIntroSketchesTitle {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--foreground);
+  margin: 0 0 0.5rem;
+  line-height: 1.3;
+}
+
+.projectHeroIntroSketchesGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
+}
+
+.projectHeroIntroSketchesCard {
+  flex: 1 1 min(100%, 14rem);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.projectHeroIntroSketchesImage {
+  width: 100%;
+  height: auto;
+  max-height: 18rem;
+  object-fit: contain;
+  display: block;
+}
+
+.projectHeroIntroColourPalette {
+  background: #ffffff;
+  border-radius: 0.5rem;
+  padding: 1.5rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.projectHeroIntroColourPaletteImage {
+  width: 100%;
+  height: auto;
+  max-height: 10rem;
+  object-fit: contain;
+  display: block;
+}
+
+/* TeaTiny Intro Outcome – LetsConnect-style: white border, legend in top, content box */
+.projectHeroIntroOutcome {
+  margin-top: 2.5rem;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.projectHeroIntroOutcomeFieldset {
+  display: block;
+  width: 100%;
+  max-width: min(56rem, 92vw);
+  margin: 0 auto;
+  padding: 0;
+  border: 2px solid #ffffff;
+  border-radius: 2.5rem;
+  background: transparent;
+  text-align: center;
+}
+
+@media (max-width: 480px) {
+  .projectHeroIntroOutcomeFieldset {
+    border-width: 1.5px;
+    border-radius: 1.5rem;
+    max-width: 90vw;
+  }
+}
+
+.projectHeroIntroOutcomeLegend {
+  font-family: var(--font-family);
+  font-weight: 700;
+  font-size: clamp(1.125rem, 4vw, 2rem);
+  color: #ffffff;
+  padding: 0 1.5rem;
+  margin: 0 auto;
+  display: inline-block;
+  background: transparent;
+}
+
+.projectHeroIntroOutcomeContent {
+  padding: 3rem 3rem 1.5rem;
+  text-align: center;
+}
+
+@media (max-width: 480px) {
+  .projectHeroIntroOutcomeContent {
+    padding: 2rem 1.5rem 1rem;
+  }
+}
+
+@media (min-width: 640px) {
+  .projectHeroIntroOutcomeContent {
+    padding: 4rem 5rem 2rem;
+  }
+}
+
+@media (min-width: 900px) {
+  .projectHeroIntroOutcomeContent {
+    padding: 1rem 5rem 2rem;
+  }
+}
+
+.projectHeroIntroOutcomeText {
+  margin: 0;
+  font-size: 1rem;
+  color: #ffffff;
+  line-height: 1.7;
+}
+
+/* Full-width footer image under Outcome */
+.projectHeroIntroFooterImageWrap {
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: 2.5rem;
+  overflow: hidden;
+  border-radius: 1.5rem;
+}
+
+.projectHeroIntroFooterImage {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 1.5rem;
 }
 
 /* Image in details section (Introduction tab) – floats right so text wraps */

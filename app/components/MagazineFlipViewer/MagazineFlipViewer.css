@@ -1,0 +1,118 @@
+/* Magazine flip viewer – Turn.js style, clean background (no wood desk) */
+.magazineFlipViewer {
+  margin: 3rem 0;
+  padding: 2rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  background: transparent;
+}
+
+.magazineFlipViewerError {
+  padding: 2rem;
+  text-align: center;
+  color: var(--foreground-muted);
+}
+
+.magazineFlipViewerLoading {
+  min-height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--foreground-muted);
+}
+
+/* react-pageflip book wrapper */
+.magazineFlipBookWrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+.magazineFlipBook {
+  background: transparent !important;
+}
+
+.magazineFlipPage {
+  background: #fff !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.magazineFlipPage .react-pdf__Page {
+  background: #fff;
+}
+
+.magazineFlipPage canvas {
+  max-width: 100%;
+  height: auto !important;
+  display: block;
+}
+
+/* Controls */
+.magazineFlipControls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.magazineFlipBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s, transform 0.2s;
+}
+
+.magazineFlipBtn:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.6);
+  transform: scale(1.05);
+}
+
+.magazineFlipBtn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.magazineFlipPageIndicator {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.9);
+  min-width: 4rem;
+  text-align: center;
+}
+
+/* Mockup image – full screen (edge to edge, full viewport) */
+.magazineFlipMockupWrap {
+  width: 100vw;
+  min-height: 100vh;
+  margin-top: 2rem;
+  margin-left: calc(-50vw + 50%);
+  margin-right: calc(-50vw + 50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.magazineFlipMockup {
+  width: 100% !important;
+  height: 100% !important;
+  min-height: 100vh;
+  display: block;
+  object-fit: cover;
+}
+

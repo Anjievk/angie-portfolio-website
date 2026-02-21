@@ -9,8 +9,8 @@ export const CATEGORIES = [
 export const RECENT_PROJECTS = [
   { id: 'rp-1', title: 'Tandem', tags: ['UX/UI Design', 'App Development'], image: '/Recent-project/recent project Tandem.jpg', category: 'ux-ui', description: 'An app for parents in the trades that helps balance work and childcare.', projectSlug: 'Tandem' },
   { id: 'rp-2', title: 'TeaTiny', tags: ['Product Design', 'Packaging'], image: '/Recent-project/Teatiny-can.jpg', category: 'graphic', description: 'Premium flower tea can series with playful character illustrations.', projectSlug: 'teatiny' },
-  { id: 'rp-3', title: 'The Unseen Vietnam', tags: ['Product Design', 'Editorial'], image: '/Recent-project/vietnamese magazine mock up.jpg', category: 'graphic', description: 'Explore Vietnam in a unique way.', projectSlug: null },
-  { id: 'rp-4', title: 'Crimson & Gold', tags: ['Branding', 'Visual Design'], image: '/Recent-project/Crimpson&gold.jpg', category: 'graphic', description: 'Brand identity and visual design system.', projectSlug: null },
+  { id: 'rp-3', title: 'The Unseen Vietnam', tags: ['Product Design', 'Editorial'], image: '/Recent-project/vietnamese magazine mock up.jpg', category: 'graphic', description: 'A 12-day luxury tour magazine from Hanoi to the Mekong Delta.', projectSlug: 'the-unseen-vietnam' },
+  { id: 'rp-4', title: 'Crimson & Gold', tags: ['Branding', 'Visual Design'], image: '/Recent-project/Crimpson&gold.jpg', category: 'graphic', description: "A visual celebration of Vietnam's royal attire from Huế.", projectSlug: 'crimson-gold' },
   { id: 'rp-5', title: 'Space Animal', tags: ['UI/UX', 'Visual Design'], image: '/Recent-project/Space-animal.jpg', category: 'ux-ui', description: 'User experience and visual design.', projectSlug: null },
 ];
 
@@ -44,6 +44,22 @@ export const PROJECTS = [
     designRationaleTitle: 'Design Rationale & Key Decisions',
     designRationaleParagraph:
       'The design strategy focused on blending sophisticated botanical appeal with approachable charm to target health-conscious consumers who appreciate both quality and design.',
+    introBrandBlock: {
+      title: '1. Brand Identity with a "Tiny" Personality',
+      text: 'The brand name "TeaTiny" set the creative direction. I developed custom typography that is soft, rounded, and friendly. This "cute vibe" makes the product feel welcoming and gentle, directly appealing to moments of self-care and relaxation, while maintaining a premium feel through careful letter-spacing and weight.',
+      flavorLabel: 'Chamomile Flavour',
+      logoPath: '/Teatiny/teatiny-title.svg',
+    },
+    introMascotsBlock: {
+      title: '2. Illustrative Mascots as Flavour Heroes',
+      text: 'Instead of generic photos, each flavour is represented by a unique hand-drawn floral mascot (Sakura, Mallow, Chamomile). This illustrative approach tells a story, gives the brand a cohesive and ownable visual language, and creates an emotional, almost collectible connection with the customer. The drawings are detailed enough to feel natural but stylized to fit the cute brand world.',
+      images: ['/Teatiny/illustrative-mascot-sketch.png'],
+    },
+    introColourBlock: {
+      title: '3. A Cohesive Colour-Coded System',
+      text: 'Each flavour has a dedicated, soft colour theme derived from its flower (e.g., blush pink for Sakura, lavender for Mallow, sunny yellow for Chamomile). This creates an instant visual differentiation on the shelf while ensuring the entire series looks harmonious and intentionally designed as a family.',
+      paletteImage: '/Teatiny/color-pallete.jpg',
+    },
     introParagraph:
       'TeaTiny was born from a simple observation: fruit teas (like peach, strawberry, and lemon) are ubiquitous on beverage shelves, but floral teas are almost absent from can designs. Inspired by this market gap, I aimed to create a premium floral tea line with a completely different look and flavour. As someone easily drawn to cute, simple, and approachable designs on supermarket shelves, I built the entire brand world around sweetness and purity.',
     roleParagraph: '',
@@ -79,6 +95,148 @@ export const PROJECTS = [
         text: 'The TeaTiny design successfully communicates premium quality and natural ingredients through a whimsical, illustrated lens. It transforms a simple tea can into a delightful object that appeals to both the eye and the desire for a pure, peaceful moment.',
       },
     },
+    introFooterImage: '/Teatiny/foreground-flowers.png',
+  },
+  {
+    id: 3,
+    title: 'The Unseen Vietnam',
+    tags: ['Product Design', 'Editorial'],
+    image: '/Recent-project/vietnamese magazine mock up.jpg',
+    category: 'graphic',
+    description:
+      'A high-concept tour magazine marketing a 12-day luxury itinerary from Hanoi to Ho Chi Minh City and the Mekong Delta—a grand narrative and practical day-by-day guide.',
+    layout: 'hero',
+    projectSlug: 'the-unseen-vietnam',
+    role: 'Lead Designer (Art Direction, Editorial Layout, Typography)',
+    timeline: '4 weeks',
+    industry: 'Editorial · Travel',
+    tools: 'Adobe InDesign · Adobe Photoshop · Adobe Illustrator',
+    subtitle: 'Luxury Tour Magazine & Itinerary Guide',
+    featureBannerImage: '/Recent-project/vietnamese magazine mock up.jpg',
+    tabs: [
+      { id: 'introduction', label: 'Introduction' },
+      { id: 'achievements', label: 'Key Achievements' },
+    ],
+    overviewTitle: 'Overview',
+    overviewParagraphs: [
+      '"The Unseen Vietnam" is a high-concept tour magazine I designed to market and detail an unprecedented luxury itinerary: a complete 12 days guided journey from Hanoi to Ho Chi Minh City and the Mekong Delta.',
+      'The challenge was not just to list destinations, but to design a reading experience that could organize two years of discovery into something beautiful, clear, and inspiring. This project was my effort to create a worthy companion for an epic adventure and a book that feels both like a grand narrative and a practical, day-by-day guide.',
+    ],
+    designRationaleBlock: {
+      title: 'Design Rationale',
+      intro:
+        'This magazine is for a special 12-day tour of Vietnam. The design had to do two main things: make the tour look amazing, and make the plan easy to understand.',
+      forTheTraveler:
+        'I made this for people who want to see more than just the main tourist spots. They want a real, local feel of Vietnam, from Hanoi to the Mekong Delta.',
+      keyDesignChoices: [
+        {
+          title: 'Clear "Day" Layout',
+          text: 'The biggest design choice was putting "DAY 1", "DAY 2", etc., in big, clear text on every page. This makes the 12-day plan super easy to follow. Readers always know exactly where they are in the journey.',
+        },
+        {
+          title: 'Clean & Spacious Look',
+          text: 'I used a simple layout with lots of space. This makes the magazine feel calm, premium, and easy to read, so the beautiful photos and stories are the main focus.',
+        },
+        {
+          title: 'Trust Through Design',
+          text: 'By showing the whole plan in a clean, organized way, the design helps people trust the tour. It shows that every day is well-planned and that they will be in good hands.',
+        },
+      ],
+    },
+    introParagraph:
+      '"The Unseen Vietnam" is a high-concept tour magazine I designed to market and detail an unprecedented luxury itinerary: a complete 12 days guided journey from Hanoi to Ho Chi Minh City and the Mekong Delta. The challenge was not just to list destinations, but to design a reading experience that could organize two years of discovery into something beautiful, clear, and inspiring. This project was my effort to create a worthy companion for an epic adventure and a book that feels both like a grand narrative and a practical, day-by-day guide.',
+    roleParagraph: '',
+    roleParagraphBold: [],
+    introductionPhoneImage: '',
+    magazinePdfUrl: '/the-unseen-vietnam/magazine.pdf',
+    magazineMockupImage: '/the-unseen-vietnam/Mockup.jpg',
+    keyAchievements: {
+      title: 'Design Rationale & Key Decisions',
+      subtitle: 'A grand narrative and a practical day-by-day guide',
+      intro:
+        'The challenge was not just to list destinations, but to design a reading experience that could organize two years of discovery into something beautiful, clear, and inspiring. Strong typographic choices, a carefully curated colour palette, and a clear grid system ensure the magazine feels both like a grand narrative and a practical companion.',
+      achievements: [
+        {
+          id: 'typography',
+          icon: 'document',
+          title: '1. Strong Typographic Hierarchy',
+          text: 'I established a clear hierarchy using contrasting typefaces for headlines, subheads, and body text. This allows readers to scan content quickly while creating visual rhythm across spreads. The typography draws inspiration from both contemporary editorial design and traditional Vietnamese visual language.',
+        },
+        {
+          id: 'photography',
+          icon: 'grid',
+          title: '2. Photography-Driven Layouts',
+          text: 'Each spread is built around strong imagery that tells a story. I used full-bleed photos, strategic cropping, and careful placement to create visual anchors and guide the reader’s eye. The photography captures authentic moments—street scenes, local life, landscapes—that feel both intimate and expansive.',
+        },
+        {
+          id: 'colour-palette',
+          icon: 'thumbs-up',
+          title: '3. Curated Colour Palette',
+          text: 'The colour system draws from Vietnam’s visual identity: warm terracottas, deep greens, and neutral tones. These colours are used consistently across the magazine to create a cohesive, premium feel while evoking the warmth and richness of the destination.',
+        },
+      ],
+    },
+  },
+  {
+    id: 5,
+    title: 'Crimson & Gold',
+    tags: ['Branding', 'Graphic Design', 'Poster Series'],
+    image: '/Recent-project/Crimpson&gold.jpg',
+    category: 'graphic',
+    description:
+      "A personal project celebrating the beauty of Vietnam's royal attire from Huế. Each poster highlights a different historical costume, set against the Imperial City's iconic backdrop.",
+    layout: 'hero',
+    projectSlug: 'crimson-gold',
+    role: 'Designer (Art Direction, Typography, Visual Design)',
+    timeline: '3 weeks',
+    industry: 'Cultural · Poster Series',
+    tools: 'Adobe InDesign · Adobe Photoshop · Adobe Illustrator',
+    subtitle: "Poster Series Celebrating Vietnam's Royal Attire",
+    featureBannerImage: '/Recent-project/Crimpson&gold.jpg',
+    tabs: [
+      { id: 'introduction', label: 'Introduction' },
+      { id: 'achievements', label: 'Key Achievements' },
+    ],
+    overviewTitle: 'Overview',
+    overviewParagraphs: [
+      "A personal project celebrating the beauty of Vietnam's royal attire from Huế. Each poster highlights a different historical costume, set against the Imperial City's iconic backdrop. I wanted to show that Vietnamese fashion is more than just the modern áo dài — it's rich, diverse, and deeply elegant.",
+      "The typography draws inspiration from old Vietnamese books, giving it a timeless feel. This series is my visual love letter to our culture and history.",
+    ],
+    introSketchesBlock: {
+      title: 'First Sketches',
+      images: ['/crimson-gold/sketch%201.png', '/crimson-gold/sketch%202.png', '/crimson-gold/sketch%203.png'],
+    },
+    introParagraph:
+      "A personal project celebrating the beauty of Vietnam's royal attire from Huế. Each poster highlights a different historical costume, set against the Imperial City's iconic backdrop. I wanted to show that Vietnamese fashion is more than just the modern áo dài — it's rich, diverse, and deeply elegant. The typography draws inspiration from old Vietnamese books, giving it a timeless feel. This series is my visual love letter to our culture and history.",
+    roleParagraph: '',
+    roleParagraphBold: [],
+    introductionPhoneImage: '',
+    keyAchievements: {
+      title: 'Design Rationale & Key Decisions',
+      subtitle: 'A visual love letter to culture and history',
+      intro:
+        "This poster series aims to celebrate the richness and diversity of Vietnamese royal fashion, moving beyond the familiar áo dài to showcase historical costumes in an elegant, timeless way.",
+      achievements: [
+        {
+          id: 'historical-costumes',
+          icon: 'document',
+          title: '1. Celebrating Royal Attire',
+          text: "Each poster highlights a different historical costume from Huế, set against the Imperial City's iconic backdrop. The design showcases that Vietnamese fashion is rich, diverse, and deeply elegant.",
+        },
+        {
+          id: 'typography',
+          icon: 'grid',
+          title: '2. Timeless Typography',
+          text: "The typography draws inspiration from old Vietnamese books, giving the series a timeless feel that honours tradition while feeling contemporary.",
+        },
+        {
+          id: 'cultural-story',
+          icon: 'thumbs-up',
+          title: '3. A Visual Love Letter',
+          text: "This series is a personal visual love letter to Vietnamese culture and history — celebrating what often goes unseen in mainstream representations of our heritage.",
+        },
+      ],
+    },
   },
   // {
   //   id: 2,
@@ -88,15 +246,6 @@ export const PROJECTS = [
   //   category: 'graphic',
   //   description:
   //     'A whimsical book project with a glowing, butterfly-inspired creature on the cover. The design captures a magical, small-world narrative with a distinctive visual identity.',
-  // },
-  // {
-  //   id: 3,
-  //   title: 'The Unseen Vietnam',
-  //   tags: ['Product Design', 'Editorial'],
-  //   image: '/vietnamese%20magazine%20mock%20up.jpg',
-  //   category: 'graphic',
-  //   description:
-  //     'An editorial magazine and brochure exploring Vietnam in a unique way. The design combines strong typography, photography, and layout to guide readers through day-by-day journeys and table of content experiences.',
   // },
   {
     id: 4,

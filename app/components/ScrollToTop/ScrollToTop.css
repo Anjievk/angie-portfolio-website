@@ -48,6 +48,26 @@
   box-shadow: 0 6px 24px rgba(255, 139, 235, 0.5);
 }
 
+/* The Unseen Vietnam: terracotta/amber gradient */
+.scroll-to-top--the-unseen-vietnam {
+  background: linear-gradient(to right, #C45C2A 0%, #D47B3E 100%);
+  box-shadow: 0 4px 20px rgba(212, 123, 62, 0.4);
+}
+
+.scroll-to-top--the-unseen-vietnam.scroll-to-top--visible:hover {
+  box-shadow: 0 6px 24px rgba(212, 123, 62, 0.5);
+}
+
+/* Crimson & Gold: crimson/gold gradient */
+.scroll-to-top--crimson-gold {
+  background: linear-gradient(to right, #8B2942 0%, #B8453C 50%, #D4A84B 100%);
+  box-shadow: 0 4px 20px rgba(184, 69, 60, 0.4);
+}
+
+.scroll-to-top--crimson-gold.scroll-to-top--visible:hover {
+  box-shadow: 0 6px 24px rgba(184, 69, 60, 0.5);
+}
+
 .scroll-to-top .material-symbols-rounded {
   flex-shrink: 0;
 }

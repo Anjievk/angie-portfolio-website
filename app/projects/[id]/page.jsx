@@ -70,7 +70,7 @@ function HeroLayout({ project }) {
           <div className="projectHeroFeatureBannerWrap">
             <Image
               src={project.featureBannerImage}
-              alt={project.projectSlug === 'teatiny' ? 'TeaTiny can design' : 'Project overview'}
+              alt={project.projectSlug === 'teatiny' ? 'TeaTiny can design' : project.projectSlug === 'the-unseen-vietnam' ? 'The Unseen Vietnam magazine mock up' : project.projectSlug === 'crimson-gold' ? 'Crimson & Gold poster series' : 'Project overview'}
               width={1200}
               height={600}
               className="projectHeroFeatureBanner"
@@ -175,7 +175,7 @@ export default async function ProjectDetailPage({ params }) {
   const useHeroLayout = project.layout === 'hero';
 
   return (
-    <main className="relative min-h-screen">
+    <main className="relative min-h-screen" data-project-slug={project.projectSlug ?? ''}>
       <ProjectSlugSetter projectSlug={project.projectSlug} />
       <div className="fixed inset-0 -z-10 mainBackground" />
       <Navbar />

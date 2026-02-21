@@ -1,9 +1,13 @@
 'use client';
 
 import { useState, useRef, useEffect } from 'react';
+import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import MaterialIcon from '../MaterialIcon/MaterialIcon';
 import ProgressTab from './ProgressTab';
+import '../MagazineFlipViewer/MagazineFlipViewer.css';
+
+const MagazineFlipViewer = dynamic(() => import('../MagazineFlipViewer/MagazineFlipViewer'), { ssr: false });
 
 function paragraphWithBold(text, boldPhrases = []) {
   if (!boldPhrases.length) return text;
@@ -158,14 +162,142 @@ export default function ProjectHeroTabs({ project, activeTab: controlledTab, onT
                     <p className="projectHeroDetailsIntro">{project.introParagraph}</p>
                   )
                 )}
-                {project.designRationaleTitle && project.designRationaleParagraph && (
-                  <>
-                    <h3 className="projectHeroDetailsDesignRationaleTitle">
-                      {project.designRationaleTitle}
-                    </h3>
-                    <div className="projectHeroDetailsDesignRationaleUnderline" aria-hidden />
+                {project.introSketchesBlock && (
+                  <div className="projectHeroIntroSketchesBlock">
+                    <div className="projectHeroDetailsTitleBlock">
+                      <h3 className="projectHeroIntroSketchesTitle">{project.introSketchesBlock.title}</h3>
+                      <div className="projectHeroDetailsUnderline" aria-hidden />
+                    </div>
+                    <div className="projectHeroIntroSketchesGrid">
+                      {project.introSketchesBlock.images?.map((src, i) => (
+                        <div key={i} className="projectHeroIntroSketchesCard">
+                          <Image
+                            src={src}
+                            alt={`First sketch ${i + 1}`}
+                            width={400}
+                            height={300}
+                            className="projectHeroIntroSketchesImage"
+                          />
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+                {project.designRationaleBlock ? (
+                  <div className="projectHeroDesignRationaleBlock">
+                    <div className="projectHeroDetailsTitleBlock">
+                      <h3 className="projectHeroDetailsDesignRationaleTitle">
+                        {project.designRationaleBlock.title}
+                      </h3>
+                      <div className="projectHeroDetailsUnderline" aria-hidden />
+                    </div>
+                    <p className="projectHeroDetailsIntro">{project.designRationaleBlock.intro}</p>
+                    <h4 className="projectHeroDesignRationaleSubhead">For the Traveler:</h4>
+                    <p className="projectHeroDetailsIntro">{project.designRationaleBlock.forTheTraveler}</p>
+                    <h4 className="projectHeroDesignRationaleSubhead">Key Design Choices:</h4>
+                    <ol className="projectHeroDesignRationaleChoices">
+                      {project.designRationaleBlock.keyDesignChoices.map((choice, i) => (
+                        <li key={i} className="projectHeroDesignRationaleChoice">
+                          <strong>{choice.title}:</strong> {choice.text}
+                        </li>
+                      ))}
+                    </ol>
+                  </div>
+                ) : null}
+                {project.magazinePdfUrl && (
+                  <div className="projectHeroMagazineFlipWrap">
+                    <MagazineFlipViewer
+                      pdfUrl={project.magazinePdfUrl}
+                      mockupImage={project.magazineMockupImage}
+                      className="projectHeroMagazineFlip"
+                    />
+                  </div>
+                )}
+                {!project.designRationaleBlock && project.designRationaleTitle && project.designRationaleParagraph ? (
+                  <div className="projectHeroDesignRationaleBlock">
+                    <div className="projectHeroDetailsTitleBlock">
+                      <h3 className="projectHeroDetailsDesignRationaleTitle">
+                        {project.designRationaleTitle}
+                      </h3>
+                      <div className="projectHeroDetailsUnderline" aria-hidden />
+                    </div>
                     <p className="projectHeroDetailsIntro">{project.designRationaleParagraph}</p>
-                  </>
+                  </div>
+                ) : null}
+                {project.introBrandBlock && (
+                  <div className="projectHeroIntroBrandBlock">
+                    <div className="projectHeroIntroBrandContent">
+                      <h4 className="projectHeroIntroBrandTitle">{project.introBrandBlock.title}</h4>
+                      <p className="projectHeroDetailsIntro">{project.introBrandBlock.text}</p>
+                    </div>
+                    <div className="projectHeroIntroBrandLogoWrap">
+                      <Image
+                        src={project.introBrandBlock.logoPath}
+                        alt="TeaTiny"
+                        width={213}
+                        height={89}
+                        className="projectHeroIntroBrandLogo"
+                      />
+                    </div>
+                  </div>
+                )}
+                {project.introMascotsBlock && (
+                  <div className="projectHeroIntroMascotsBlock">
+                    <div className="projectHeroIntroMascotsCard">
+                      {project.introMascotsBlock.images?.map((src, i) => (
+                        <Image
+                          key={i}
+                          src={src}
+                          alt="TeaTiny floral mascots"
+                          width={400}
+                          height={300}
+                          className="projectHeroIntroMascotsImage"
+                        />
+                      ))}
+                    </div>
+                    <div className="projectHeroIntroMascotsContent">
+                      <h4 className="projectHeroIntroMascotsTitle">{project.introMascotsBlock.title}</h4>
+                      <p className="projectHeroDetailsIntro">{project.introMascotsBlock.text}</p>
+                    </div>
+                  </div>
+                )}
+                {project.introColourBlock && (
+                  <div className="projectHeroIntroColourBlock">
+                    <h4 className="projectHeroIntroColourTitle">{project.introColourBlock.title}</h4>
+                    <p className="projectHeroDetailsIntro">{project.introColourBlock.text}</p>
+                    <div className="projectHeroIntroColourPalette">
+                      <Image
+                        src={project.introColourBlock.paletteImage}
+                        alt="TeaTiny colour palette"
+                        width={800}
+                        height={200}
+                        className="projectHeroIntroColourPaletteImage"
+                      />
+                    </div>
+                  </div>
+                )}
+                {project.keyAchievements?.outcome && project.projectSlug !== 'the-unseen-vietnam' && (
+                  <div className="projectHeroIntroOutcome">
+                    <fieldset className="projectHeroIntroOutcomeFieldset">
+                      <legend className="projectHeroIntroOutcomeLegend">
+                        {project.keyAchievements.outcome.title}
+                      </legend>
+                      <div className="projectHeroIntroOutcomeContent">
+                        <p className="projectHeroIntroOutcomeText">{project.keyAchievements.outcome.text}</p>
+                      </div>
+                    </fieldset>
+                  </div>
+                )}
+                {project.introFooterImage && (
+                  <div className="projectHeroIntroFooterImageWrap">
+                    <Image
+                      src={project.introFooterImage}
+                      alt=""
+                      width={1920}
+                      height={400}
+                      className="projectHeroIntroFooterImage"
+                    />
+                  </div>
                 )}
                 {(project.roleBullets?.length || project.roleParagraph) && (
                   <>
@@ -229,18 +361,6 @@ export default function ProjectHeroTabs({ project, activeTab: controlledTab, onT
                 </article>
               ))}
             </div>
-            {project.keyAchievements.outcome && (
-              <div className="projectKeyAchievementsOutcome">
-                <h3 className="projectKeyAchievementsOutcomeTitle">
-                  {project.keyAchievements.outcome.title}
-                </h3>
-                <div className="projectKeyAchievementsOutcomeBox">
-                  <p className="projectKeyAchievementsOutcomeText">
-                    {project.keyAchievements.outcome.text}
-                  </p>
-                </div>
-              </div>
-            )}
           </div>
         ) : (
           <div className="projectHeroTabPanel projectHeroTabPanelPlaceholder">

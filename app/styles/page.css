@@ -2,6 +2,11 @@
   background: var(--background);
 }
 
+/* TeaTiny project page: dark purple background (#280048) */
+main[data-project-slug='teatiny'] .mainBackground {
+  background: #280048;
+}
+
 /* Mobile: prevent horizontal overflow and ensure touch-friendly spacing */
 @media (max-width: 640px) {
   main {
