@@ -1,12 +1,11 @@
 'use client';
 
-import Image from 'next/image';
 import { useState } from 'react';
 
 export default function AboutPhoto() {
-  const [error, setError] = useState(false);
+  const [hasError, setHasError] = useState(false);
 
-  if (error) {
+  if (hasError) {
     return (
       <div className="aboutPhotoWrap aboutPhotoFallback">
         <span className="aboutPhotoInitials" aria-hidden="true">AD</span>
@@ -16,14 +15,12 @@ export default function AboutPhoto() {
 
   return (
     <div className="aboutPhotoWrap">
-      <Image
-        src="/about/photo.jpg"
+      <img
+        src="/aboutme/angie-image1.jpg"
         alt="Angie Duong"
-        width={400}
-        height={400}
         className="aboutPhoto"
-        priority
-        onError={() => setError(true)}
+        loading="eager"
+        onError={() => setHasError(true)}
       />
     </div>
   );

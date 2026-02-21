@@ -1,0 +1,16 @@
+.typewriterText {
+  display: inline-block;
+}
+
+.typewriterCursor {
+  display: inline-block;
+  margin-left: 2px;
+  color: var(--gradient-accent-end);
+  animation: typewriterBlink 0.8s step-end infinite;
+}
+
+@keyframes typewriterBlink {
+  50% {
+    opacity: 0;
+  }
+}
