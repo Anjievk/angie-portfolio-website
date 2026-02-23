@@ -3402,6 +3402,20 @@
   margin: 0;
 }
 
+.projectKeyFeatureDescription ul {
+  list-style: disc;
+  margin: 0 0 0 1.25em;
+  padding: 0;
+}
+
+.projectKeyFeatureDescription li {
+  margin-bottom: 0.75em;
+}
+
+.projectKeyFeatureDescription li:last-child {
+  margin-bottom: 0;
+}
+
 .projectKeyFeatureMockups {
   position: relative;
   display: flex;

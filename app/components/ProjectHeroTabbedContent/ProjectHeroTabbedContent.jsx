@@ -86,7 +86,7 @@ export default function ProjectHeroTabbedContent({ project }) {
                         <p className="projectKeyFeatureSubtitle">{feature.subtitle}</p>
                       </div>
                     </div>
-                    <p className="projectKeyFeatureDescription">{feature.description}</p>
+                    <div className="projectKeyFeatureDescription" dangerouslySetInnerHTML={{ __html: feature.description }} />
                   </div>
                   <div className="projectKeyFeatureMockups">
                     {feature.images ? (

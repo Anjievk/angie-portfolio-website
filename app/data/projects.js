@@ -328,7 +328,7 @@ export const PROJECTS = [
           title: 'Seamless Nanny Booking',
           subtitle: 'Designing for Trust',
           description:
-            'This feature was designed to transform the proactive planning of nanny care into a visually clear and controlled process. The layout centers on an interactive weekly calendar, providing an immediate overview. Dedicated input zones for child details and special notes are cleanly separated from the calendar, preventing clutter. The overall visual flow intuitively guides the parent from selecting dates → specifying needs → confirming the booking, making future planning feel manageable rather than overwhelming.',
+            'I worked on making this nanny booking flow cleaner and easier to scan. Parents have a lot going on, so I wanted them to get through it quickly. I organized the steps in a simple top-to-bottom flow. I kept everything in one clean column so users don\'t have to jump around the screen. They just select dates, add details, then confirm—one step after the next. The goal was to make booking feel like a quick checklist, not a complicated form.',
           layout: 'phoneLeft',
           image: '/Tandem/nanny-booking.png',
         },
@@ -337,7 +337,7 @@ export const PROJECTS = [
           title: 'Secure Nanny Sharing',
           subtitle: 'Designing for clarity',
           description:
-            'This interface was designed to function as a clean, trustworthy board for discovering and joining shared nanny arrangements. I gave each shared time slot a consistent card-based layout, making it easy to scan and compare key details like cost, age group, and available spots. To build visual trust and community, each card features a clear profile section for the host parent. Important actions, such as "Request to join," are highlighted with our brand`s action color, creating a clear path from discovery to participation. The structured layout and repeated visual patterns transform the concept of nanny sharing from a complex coordination task into a simple, browsable, and secure process.',
+            '<ul><li><strong>My Requests page:</strong> I designed a tag and added a green dot on the top right of it. This simple visual circle lets parents know right away that someone has already asked to join their share. No need to open each one to check, just a quick glance can tell them there\'s activity.</li><li><strong>Available page:</strong> I kept everything clean and scannable. Each share slot shows the key info at once: date, time, nanny name, and how many spots are open. Same layout for every card so users know where to look. The "Request to join" button is easy to find when they\'re ready.</li></ul>',
           layout: 'textLeft',
           images: ['/Tandem/Nanny-sharing.png'],
         },
@@ -487,7 +487,7 @@ export const PROJECTS = [
           title: 'Colors',
           intro: 'Our color palette was designed to reflect our core values of Trust, Balance, and Support.',
           items: [
-            { name: 'Blue', hex: '#3373cc', line: 'Our main color. Calm, safety, and reliability—helping users feel secure as they manage their family\'s schedule.' },
+            { name: 'Blue', hex: '#3373cc', line: 'Our main color. Calm, safety, and reliability, helping users feel secure as they manage their family\'s schedule.' },
             { name: 'Green', hex: '#92f189', line: 'Balance and growth. We use it for work-related features and action buttons, giving a sense of control and progress.' },
             { name: 'Light blue & gradient', hex: '#68d5ff', line: 'Light blue and the gentle gradient between blue and green blend care and work into one visual theme. Efficient and warm.' },
           ],
@@ -504,14 +504,14 @@ export const PROJECTS = [
         typography: {
           title: 'Typography',
           paragraph:
-            'Alan Sans (headings) and Omnes (body) work together to make the app easy to read and navigate. The clear headings help users scan quickly, while the friendly body text makes reading details comfortable and approachable.',
+            'We chose Alan Sans (headings) and Omnes (body), they work together to make the app easy to read and navigate. The clear headings help users scan quickly, while the friendly body text makes reading details comfortable and approachable.',
           image: '/Tandem/Progress/typo.png',
         },
         appDesign: {
           title: 'App Design (Lofi - Hifi)',
           paragraphs: [
             'Our design process evolved from initial ideas to the finished interface. I started with rough interface sketches, focusing on user flow, layout logic, and core functionality.',
-            'For the high-fidelity phase, I led the redesign in collaboration with one other designer. We rebuilt the visual interface from scratch—modern, clean, intuitive—and refined every element for a coherent, user-friendly experience. The result was both visually appealing and highly functional.',
+            'For the high-fidelity phase, I led the redesign in collaboration with one other designer. We rebuilt the visual interface from scratch to modern, clean, intuitive, and refined every element for a coherent, user-friendly experience. The result was both visually appealing and highly functional.',
           ],
           lofiEmbedUrl: 'https://embed.figma.com/design/bWRgTxuwvtrP8XxNSehRkL/Tandem-Mid-fi--Copy-?node-id=2533-3139&embed-host=share',
           hifiEmbedUrl: 'https://embed.figma.com/design/bWGbW5Heq2LaMCX1FVoUz5/Tandem-High-fi?node-id=7635-13393&embed-host=share',
@@ -548,7 +548,7 @@ export const PROJECTS = [
         promotionVideo: {
           title: 'Promotion Video',
           paragraph:
-            'To reach more people, I worked on a promotion video for Tandem. We filmed and edited the shoots using Premiere Pro, crafting a video that captures the real-life challenges and relief Tandem brings to parents in the trades.',
+            'To reach more people, I also contributed on a promotion video for Tandem. We filmed and edited the shoots using Premiere Pro, crafting a video that captures the real-life challenges and relief Tandem brings to parents in the trades.',
           videoUrl: '/Tandem/Progress/promotion-video.mp4',
         },
         tandemBlog: {
@@ -561,7 +561,7 @@ export const PROJECTS = [
         socialMedia: {
           title: 'Social Media',
           paragraph:
-            "I also designed and managed Tandem's social media strategy. This included designing all visual posts and managing daily content on Facebook and Instagram to foster community, share user stories, and communicate brand values of support and trust to our target audience.",
+            "I also designed posts and managed Tandem's social media strategy. This included designing all visual posts and managing daily content on Facebook and Instagram to foster community, share user stories, and communicate brand values of support and trust to our target audience.",
           image: '/Tandem/Progress/social-media.png',
           facebookUrl: 'https://www.facebook.com/profile.php?id=61583428771048',
           instagramUrl: 'https://www.instagram.com/the.tandem.app?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==',
