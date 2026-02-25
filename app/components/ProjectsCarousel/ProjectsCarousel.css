@@ -434,14 +434,17 @@ background: var(--surface-glass);
 }
 
 .projectsCarouselSliderPill .projectsCarouselArrowButton {
+  flex-shrink: 0;
   width: 1.75rem;
   height: 1.75rem;
+  min-height: 1.75rem;
   border-radius: 50%;
   border: none;
   background: transparent;
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 0;
   transition: background-color 0.2s;
   color: var(--foreground);
 }
@@ -451,9 +454,15 @@ background: var(--surface-glass);
 }
 
 .projectsCarouselSliderPill .projectsCarouselArrowIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   width: 1rem;
   height: 1rem;
+  line-height: 1;
   color: var(--foreground);
+  /* Material Symbols glyphs sit slightly high – nudge down to align with text */
+  transform: translateY(1px);
 }
 
 .projectsCarouselSliderPill .projectsCarouselPageIndicator {

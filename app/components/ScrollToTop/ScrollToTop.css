@@ -68,6 +68,16 @@
   box-shadow: 0 6px 24px rgba(184, 69, 60, 0.5);
 }
 
+/* Space Animal: lime gradient #9FDF31 → #BFFF41 */
+.scroll-to-top--space-animal {
+  background: linear-gradient(to right, #9FDF31 0%, #BFFF41 100%);
+  box-shadow: 0 4px 20px rgba(191, 255, 65, 0.4);
+}
+
+.scroll-to-top--space-animal.scroll-to-top--visible:hover {
+  box-shadow: 0 6px 24px rgba(191, 255, 65, 0.5);
+}
+
 .scroll-to-top .material-symbols-rounded {
   flex-shrink: 0;
 }

@@ -25,7 +25,15 @@ function paragraphWithBold(text, boldPhrases = []) {
   return parts;
 }
 
-const KEY_ACHIEVEMENT_ICON_MAP = { document: 'description', refresh: 'refresh', 'thumbs-up': 'thumb_up', grid: 'grid_view' };
+const KEY_ACHIEVEMENT_ICON_MAP = {
+  document: 'description',
+  refresh: 'refresh',
+  'thumbs-up': 'thumb_up',
+  grid: 'grid_view',
+  palette: 'palette',
+  layers: 'layers',
+  favorite: 'favorite',
+};
 
 function KeyAchievementsIcon({ type, className }) {
   const c = className ? `projectKeyAchievementsIcon ${className}` : 'projectKeyAchievementsIcon';
@@ -168,6 +176,17 @@ export default function ProjectHeroTabs({ project, activeTab: controlledTab, onT
                   project.introParagraph && (
                     <p className="projectHeroDetailsIntro">{project.introParagraph}</p>
                   )
+                )}
+                {project.projectSlug === 'space-animal' && (
+                  <div className="projectHeroOverviewImageWrap">
+                    <Image
+                      src="/Space-animal/figjam.png"
+                      alt="Space Animals game"
+                      width={1200}
+                      height={800}
+                      className="projectHeroOverviewImage"
+                    />
+                  </div>
                 )}
                 {project.introSketchesBlock && (
                   <div className="projectHeroIntroSketchesBlock">
@@ -388,13 +407,57 @@ export default function ProjectHeroTabs({ project, activeTab: controlledTab, onT
                     ))}
                   </div>
                 ) : null}
-                {(project.roleBullets?.length || project.roleParagraph) && (
+                {(project.roleBullets?.length || project.roleParagraph || project.whatIDidSections?.length) && (
                   <>
-                    <h3 className="projectHeroDetailsRoleTitle">My Role</h3>
-                    {project.roleBullets?.length ? (
+                    {!project.whatIDidSections?.length && (
+                      <h3 className="projectHeroDetailsRoleTitle">{project.roleSectionTitle ?? 'My Role'}</h3>
+                    )}
+                    {project.whatIDidSections?.length > 0 ? (
+                      <div className="projectHeroWhatIDidSections">
+                        {project.whatIDidSections.map((section) => (
+                          <section
+                            key={section.id}
+                            className={`projectHeroWhatIDidSection${section.image ? ' projectHeroWhatIDidSectionHasImage' : ''}`}
+                            data-section={section.id}
+                          >
+                            <div className="projectHeroWhatIDidSectionContent">
+                              <h4 className="projectHeroWhatIDidSectionTitle">{section.title}</h4>
+                              {section.intro != null && (
+                                <p className="projectHeroWhatIDidSectionIntro">{section.intro}</p>
+                              )}
+                              {section.items?.length > 0 ? (
+                                <ul className="projectHeroWhatIDidSectionList">
+                                  {section.items.map((item, i) => (
+                                    <li key={i} className="projectHeroWhatIDidSectionItem">
+                                      <strong>{item.title}:</strong> {item.text}
+                                    </li>
+                                  ))}
+                                </ul>
+                              ) : section.text != null ? (
+                                <p className="projectHeroWhatIDidSectionText">{section.text}</p>
+                              ) : null}
+                            </div>
+                            {section.image && (
+                              <div className="projectHeroWhatIDidSectionImageWrap">
+                                <Image
+                                  src={section.image}
+                                  alt=""
+                                  width={1200}
+                                  height={800}
+                                  className="projectHeroWhatIDidSectionImage"
+                                />
+                              </div>
+                            )}
+                          </section>
+                        ))}
+                      </div>
+                    ) : project.roleBullets?.length ? (
                       <ul className="projectHeroDetailsRoleList">
                         {project.roleBullets.map((item, i) => (
-                          <li key={i} className="projectHeroDetailsRoleListItem">
+                          <li
+                            key={i}
+                            className={`projectHeroDetailsRoleListItem${item.subItem ? ' projectHeroDetailsRoleListItemSub' : ''}`}
+                          >
                             <strong>{item.title}:</strong> {item.text}
                           </li>
                         ))}
@@ -416,6 +479,24 @@ export default function ProjectHeroTabs({ project, activeTab: controlledTab, onT
                     )}
                   </>
                 )}
+                {/* Key Features in Introduction (Space Animal only) */}
+                {project.projectSlug === 'space-animal' && project.keyAchievements?.achievements?.length > 0 && (
+                  <div className="projectHeroIntroKeyFeatures" data-project="space-animal">
+                    <h3 className="projectHeroIntroKeyFeaturesTitle">Key Features</h3>
+                    <div className="projectHeroIntroKeyFeaturesUnderline" aria-hidden />
+                    <ul className="projectHeroIntroKeyFeaturesList">
+                      {project.keyAchievements.achievements.map((achievement) => (
+                        <li key={achievement.id} className="projectHeroIntroKeyFeaturesItem">
+                          <KeyAchievementsIcon type={achievement.icon} className="projectHeroIntroKeyFeaturesIcon" />
+                          <div className="projectHeroIntroKeyFeaturesItemContent">
+                            <h4 className="projectHeroIntroKeyFeaturesItemTitle">{achievement.title}</h4>
+                            <p className="projectHeroIntroKeyFeaturesItemText">{achievement.text}</p>
+                          </div>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
               </div>
             </div>
           </div>
@@ -433,14 +514,34 @@ export default function ProjectHeroTabs({ project, activeTab: controlledTab, onT
       )}
 
       {activeTab === 'achievements' && (
-        project.keyAchievements ? (
+        project.whatILearned?.length > 0 ? (
+          <div className="projectKeyAchievementsSection">
+            <div className="projectKeyAchievementsHead">
+              <h2 className="projectKeyAchievementsTitle">What I Learned</h2>
+              <div className="projectKeyAchievementsUnderline" aria-hidden />
+            </div>
+            <div className="projectKeyAchievementsGrid">
+              {project.whatILearned.map((item) => (
+                <article key={item.id} className="projectKeyAchievementsCard">
+                  <KeyAchievementsIcon type={item.icon} className="projectKeyAchievementsCardIcon" />
+                  <h3 className="projectKeyAchievementsCardTitle">{item.title}</h3>
+                  <p className="projectKeyAchievementsCardText">{item.text}</p>
+                </article>
+              ))}
+            </div>
+          </div>
+        ) : project.keyAchievements ? (
           <div className="projectKeyAchievementsSection">
             <div className="projectKeyAchievementsHead">
               <h2 className="projectKeyAchievementsTitle">{project.keyAchievements.title}</h2>
-              <p className="projectKeyAchievementsSubtitle">{project.keyAchievements.subtitle}</p>
+              {project.keyAchievements.subtitle ? (
+                <p className="projectKeyAchievementsSubtitle">{project.keyAchievements.subtitle}</p>
+              ) : null}
               <div className="projectKeyAchievementsUnderline" aria-hidden />
             </div>
-            <p className="projectKeyAchievementsIntro">{project.keyAchievements.intro}</p>
+            {project.keyAchievements.intro ? (
+              <p className="projectKeyAchievementsIntro">{project.keyAchievements.intro}</p>
+            ) : null}
             <div className="projectKeyAchievementsGrid">
               {project.keyAchievements.achievements.map((achievement) => (
                 <article key={achievement.id} className="projectKeyAchievementsCard">

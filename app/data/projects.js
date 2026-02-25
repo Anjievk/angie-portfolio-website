@@ -11,7 +11,7 @@ export const RECENT_PROJECTS = [
   { id: 'rp-2', title: 'TeaTiny', tags: ['Product Design', 'Packaging'], image: '/Recent-project/Teatiny-can.jpg', category: 'graphic', description: 'Premium flower tea can series with playful character illustrations.', projectSlug: 'teatiny' },
   { id: 'rp-3', title: 'The Unseen Vietnam', tags: ['Product Design', 'Editorial'], image: '/Recent-project/vietnamese magazine mock up.jpg', category: 'graphic', description: 'A 12-day luxury tour magazine from Hanoi to the Mekong Delta.', projectSlug: 'the-unseen-vietnam' },
   { id: 'rp-4', title: 'Crimson & Gold', tags: ['Branding', 'Visual Design'], image: '/Recent-project/Crimpson&gold.jpg', category: 'graphic', description: "A visual celebration of Vietnam's royal attire from Huế.", projectSlug: 'crimson-gold' },
-  { id: 'rp-5', title: 'Space Animal', tags: ['UI/UX', 'Visual Design'], image: '/Recent-project/Space-animal.jpg', category: 'ux-ui', description: 'User experience and visual design.', projectSlug: null },
+  { id: 'rp-5', title: 'Space Animal', tags: ['UI/UX', 'Visual Design'], image: '/Recent-project/Space-animal.jpg', category: 'ux-ui', description: 'User experience and visual design.', projectSlug: 'space-animal' },
 ];
 
 export const PROJECTS = [
@@ -250,6 +250,119 @@ export const PROJECTS = [
         },
       ],
     },
+  },
+  {
+    id: 6,
+    title: 'Space Animals Game',
+    projectSlug: 'space-animal',
+    tags: ['Graphic Art', 'Front-end Development', 'Game Design'],
+    image: '/Recent-project/Space-animal.jpg',
+    category: 'ux-ui',
+    description:
+      'Space Animals is a browser-based game I designed and helped build. Players choose an animal character like Space Dog, Space Pig&Capypara, or SpaceCat and run through space while avoiding obstacles. The goal is to survive as long as you can. Hit a space rock and it\'s game over.',
+    layout: 'hero',
+    role: 'Graphic Artist & Front-end Developer',
+    team: '4 members',
+    timeline: 'Nov 2023 - Apr 2024',
+    industry: 'Browser Game',
+    tools: 'Procreate, HTML, CSS, JavaScript, GitHub',
+    subtitle: 'Choose your animal, dodge space rocks, survive as long as you can.',
+    featureBannerImage: '/Recent-project/Space-animal.jpg',
+    playGameUrl: 'https://space-animals.vercel.app/',
+    tabs: [
+      { id: 'introduction', label: 'Introduction' },
+      { id: 'achievements', label: 'Key Achievements' },
+    ],
+    overviewTitle: 'Project Overview',
+    overviewParagraphs: [
+      'Space Animals is a browser-based game I designed and helped build. Players choose an animal character like Space Dog, Space Pig&Capypara, or SpaceCat and run through space while avoiding obstacles. The goal is to survive as long as you can. Hit a space rock and it\'s game over.',
+    ],
+    roleParagraph: '',
+    roleParagraphBold: [],
+    roleSectionTitle: 'What I Did',
+    whatIDidSections: [
+      {
+        id: 'art-design',
+        title: '🎨 Art & Design (Lead Artist)',
+        intro: 'I created all the visual elements for the game:',
+        image: '/Space-animal/drawing.png',
+        items: [
+          { title: 'Characters', text: 'Designed and drew the three animal heroes Space Dog, Space Pig&Capypara, or SpaceCat. Each one has its own personality and style.' },
+          { title: 'Background', text: 'Illustrated a horizontal scrolling space scene that loops as the game runs.' },
+          { title: 'Obstacles', text: 'Designed the space rocks that players need to avoid.' },
+        ],
+      },
+      {
+        id: 'frontend',
+        title: '💻 Front-end Development',
+        text: 'I also worked closely with the development team to bring my designs to life. I helped with implementing the character selection flow, making sure the visuals worked smoothly with the game code. I was involved in testing and giving feedback on how the game felt, and I made sure the art assets were properly integrated. My focus was on keeping the visual experience strong while supporting the development process.',
+      },
+      {
+        id: 'game-logic',
+        title: 'Game logic',
+        text: 'Score increases by 10 for each obstacle passed, game over when you hit one, then Restart functionality to play again.',
+      },
+    ],
+    roleBullets: [],
+    introductionPhoneImage: '',
+    introFooterImages: [],
+    keyAchievements: {
+      title: 'Key Achievements',
+      subtitle: '',
+      intro: '',
+      achievements: [
+        {
+          id: 'characters',
+          icon: 'document',
+          title: 'Three playable characters with unique designs',
+          text: 'Space Dog, Space Pig&Capypara, and SpaceCat, each with its own personality and style.',
+        },
+        {
+          id: 'controls',
+          icon: 'grid',
+          title: 'Simple one-click controls (up/down to move)',
+          text: 'Easy to pick up and play.',
+        },
+        {
+          id: 'score',
+          icon: 'thumbs-up',
+          title: 'Score tracking',
+          text: 'Score increases by 10 for each obstacle passed.',
+        },
+        {
+          id: 'game-over',
+          icon: 'refresh',
+          title: 'Game over screen with restart button',
+          text: 'Hit a space rock and it\'s game over, then restart to play again.',
+        },
+        {
+          id: 'art-style',
+          icon: 'grid',
+          title: 'Clean, hand-drawn art style throughout',
+          text: 'All visuals created for a cohesive, friendly look.',
+        },
+      ],
+    },
+    whatILearned: [
+      {
+        id: 'seeing-art-move',
+        icon: 'palette',
+        title: 'Seeing My Art Move',
+        text: "There's something special about seeing drawings you made come to life on screen. When I saw my characters running and my space rocks scrolling by, I realized why I love design. It's not just about making things look good, it's about creating experiences people can enjoy.",
+      },
+      {
+        id: 'keeping-consistent',
+        icon: 'layers',
+        title: 'Keeping Things Consistent',
+        text: 'I designed characters, backgrounds, obstacles, buttons, and screens and I had to make sure they all felt like they belonged in the same world. That taught me about building a visual system, even for a small game.',
+      },
+      {
+        id: 'what-stuck',
+        icon: 'favorite',
+        title: 'What Stuck With Me',
+        text: "This project showed me that I love the mix of art and interaction. Drawing is fun, but seeing people actually play with something I created? That's the best feeling.",
+      },
+    ],
   },
   // {
   //   id: 2,

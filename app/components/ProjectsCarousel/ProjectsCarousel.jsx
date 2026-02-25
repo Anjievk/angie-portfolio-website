@@ -11,7 +11,7 @@ const projects = [
   { id: 2, category: 'Product Design', title: 'TeaTiny', description: 'Premium flower tea can series with playful character illustrations', image: '/Recent-project/Teatiny-can.jpg', projectSlug: 'teatiny' },
   { id: 3, category: 'Magazine Design', title: 'The Unseen Vietnam', description: 'A 12-day luxury tour magazine from Hanoi to the Mekong Delta', image: '/Recent-project/vietnamese magazine mock up.jpg', projectSlug: 'the-unseen-vietnam' },
   { id: 4, category: 'Branding', title: 'Crimson & Gold', description: "A visual celebration of Vietnam's royal attire from Huế", image: '/Recent-project/Crimpson&gold.jpg', projectSlug: 'crimson-gold' },
-  { id: 5, category: 'UI/UX', title: 'Space Animal', description: 'User experience and visual design', image: '/Recent-project/Space-animal.jpg', projectSlug: null },
+  { id: 5, category: 'UI/UX', title: 'Space Animal', description: 'Browser-based game with hand-drawn characters—dodge space rocks and survive.', image: '/Recent-project/Space-animal.jpg', projectSlug: 'space-animal' },
 ];
 
 function useCarouselLayout() {

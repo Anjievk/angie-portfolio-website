@@ -46,6 +46,16 @@ function HeroLayout({ project, suggestedProjects }) {
               <span className="projectHeroCtaText">View Hifi Prototype</span>
             </a>
           )}
+          {project.playGameUrl && (
+            <a
+              href={project.playGameUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="projectHeroCta projectHeroCtaPlayGame"
+            >
+              <span className="projectHeroCtaPlayGameText">Play Game</span>
+            </a>
+          )}
         </div>
 
         {/* Metadata pills – two rows */}
@@ -71,7 +81,7 @@ function HeroLayout({ project, suggestedProjects }) {
           <div className="projectHeroFeatureBannerWrap">
             <Image
               src={project.featureBannerImage}
-              alt={project.projectSlug === 'teatiny' ? 'TeaTiny can design' : project.projectSlug === 'the-unseen-vietnam' ? 'The Unseen Vietnam magazine mock up' : project.projectSlug === 'crimson-gold' ? 'Crimson & Gold poster series' : 'Project overview'}
+              alt={project.projectSlug === 'teatiny' ? 'TeaTiny can design' : project.projectSlug === 'the-unseen-vietnam' ? 'The Unseen Vietnam magazine mock up' : project.projectSlug === 'crimson-gold' ? 'Crimson & Gold poster series' : project.projectSlug === 'space-animal' ? 'Space Animals game' : 'Project overview'}
               width={1200}
               height={600}
               className="projectHeroFeatureBanner"
