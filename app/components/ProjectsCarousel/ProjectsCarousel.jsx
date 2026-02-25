@@ -12,6 +12,8 @@ const projects = [
   { id: 3, category: 'Magazine Design', title: 'The Unseen Vietnam', description: 'A 12-day luxury tour magazine from Hanoi to the Mekong Delta', image: '/Recent-project/vietnamese magazine mock up.jpg', projectSlug: 'the-unseen-vietnam' },
   { id: 4, category: 'Branding', title: 'Crimson & Gold', description: "A visual celebration of Vietnam's royal attire from Huế", image: '/Recent-project/Crimpson&gold.jpg', projectSlug: 'crimson-gold' },
   { id: 5, category: 'UI/UX', title: 'Space Animal', description: 'Browser-based game with hand-drawn characters—dodge space rocks and survive.', image: '/Recent-project/Space-animal.jpg', projectSlug: 'space-animal' },
+  { id: 6, category: 'Coming Soon', title: 'NeXfer', description: 'Coming soon.', image: '/NeXfer/Banner.jpg', projectSlug: null },
+  { id: 7, category: 'Coming Soon', title: 'SporkShare', description: 'Coming soon.', image: '/Sporkshare/banner.png', projectSlug: null },
 ];
 
 function useCarouselLayout() {
@@ -129,7 +131,7 @@ export default function ProjectsCarousel() {
                                   {project.category} – {project.title}
                                 </span>
                                 <span className="projectsCarouselOverlayButton">
-                                  View Project
+                                  {project.projectSlug ? 'View Project' : 'Coming Soon'}
                                 </span>
                               </span>
                             </Link>

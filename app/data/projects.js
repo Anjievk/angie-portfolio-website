@@ -12,6 +12,8 @@ export const RECENT_PROJECTS = [
   { id: 'rp-3', title: 'The Unseen Vietnam', tags: ['Product Design', 'Editorial'], image: '/Recent-project/vietnamese magazine mock up.jpg', category: 'graphic', description: 'A 12-day luxury tour magazine from Hanoi to the Mekong Delta.', projectSlug: 'the-unseen-vietnam' },
   { id: 'rp-4', title: 'Crimson & Gold', tags: ['Branding', 'Visual Design'], image: '/Recent-project/Crimpson&gold.jpg', category: 'graphic', description: "A visual celebration of Vietnam's royal attire from Huế.", projectSlug: 'crimson-gold' },
   { id: 'rp-5', title: 'Space Animal', tags: ['UI/UX', 'Visual Design'], image: '/Recent-project/Space-animal.jpg', category: 'ux-ui', description: 'User experience and visual design.', projectSlug: 'space-animal' },
+  { id: 'rp-6', title: 'NeXfer', tags: ['Coming Soon'], image: '/NeXfer/Banner.jpg', category: 'ux-ui', description: 'Coming soon.', projectSlug: null },
+  { id: 'rp-7', title: 'SporkShare', tags: ['Coming Soon'], image: '/Sporkshare/banner.png', category: 'ux-ui', description: 'Coming soon.', projectSlug: null },
 ];
 
 export const PROJECTS = [
