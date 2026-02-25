@@ -309,6 +309,151 @@
   margin: 0;
 }
 
+/* ========== Project suggestions (You might also like) ========== */
+.projectSuggestionsSection {
+  margin-top: 4rem;
+  padding-top: 3rem;
+  border-top: 1px solid rgba(158, 47, 255, 0.2);
+}
+
+.projectSuggestionsTitle {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--foreground);
+  margin: 0 0 0.25rem;
+  line-height: 1.3;
+}
+
+.projectSuggestionsSubtitle {
+  font-size: 0.9375rem;
+  color: var(--foreground-secondary);
+  margin: 0 0 1.75rem;
+}
+
+.projectSuggestionsGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@media (min-width: 640px) {
+  .projectSuggestionsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .projectSuggestionsGrid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.75rem;
+  }
+}
+
+.projectSuggestionsCard {
+  background: rgba(45, 25, 70, 0.65);
+  border-radius: 1.25rem;
+  border: 1px solid rgba(158, 47, 255, 0.25);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.projectSuggestionsCard:hover {
+  border-color: rgba(158, 47, 255, 0.4);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25);
+}
+
+.projectSuggestionsCardImageWrap {
+  margin: 1rem;
+  padding: 0;
+  background: #ffffff;
+  border-radius: 0.75rem;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.projectSuggestionsCardImageLink {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
+.projectSuggestionsCardImageInner {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  position: relative;
+  overflow: hidden;
+}
+
+.projectSuggestionsCardImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.projectSuggestionsCardContent {
+  padding: 1rem 1.25rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.projectSuggestionsCardTitle {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--foreground);
+  margin: 0 0 0.5rem;
+  line-height: 1.3;
+}
+
+.projectSuggestionsCardTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.projectSuggestionsCardTag {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: #ffffff;
+  background: rgba(30, 10, 46, 0.95);
+  padding: 0.25rem 0.6rem;
+  border-radius: 9999px;
+}
+
+.projectSuggestionsCardButton {
+  display: inline-block;
+  width: 100%;
+  max-width: 100%;
+  margin-top: auto;
+  padding: 0.6rem 1.25rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--foreground);
+  background: linear-gradient(to right, #b366ff, #e879f9, var(--gradient-accent-end));
+  border-radius: 9999px;
+  text-align: center;
+  text-decoration: none;
+  box-sizing: border-box;
+  transition: opacity 0.2s, transform 0.2s;
+  font-family: var(--font-family);
+}
+
+.projectSuggestionsCardButton:hover {
+  opacity: 0.95;
+  transform: translateY(-1px);
+}
+
+.projectSuggestionsCardButtonDisabled {
+  cursor: default;
+  opacity: 0.85;
+  background: rgba(158, 47, 255, 0.2);
+  pointer-events: none;
+}
+
 /* ========== Hero layout (e.g. Tandem project page) ========== */
 /* Tandem gradient: left to right #3272CB → #569BB9 → #7CC8A5 */
 .projectHeroSection {
@@ -558,6 +703,201 @@
 
 .projectHeroSection[data-project="crimson-gold"] .projectHeroIntroSketchesTitle {
   color: #ffffff;
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  margin-bottom: 0.25rem;
+}
+
+.projectHeroSection[data-project="crimson-gold"] .projectHeroIntroSketchesBlock .projectHeroDetailsUnderline {
+  background: var(--crimson-gold-gradient);
+  width: 8rem;
+  height: 3px;
+  border-radius: 2px;
+  margin-top: 0.5rem;
+}
+
+/* Poster Mockup section (e.g. Crimson & Gold): title + full-width stacked images */
+.projectHeroPosterMockupSection {
+  margin-top: 2.5rem;
+  text-align: center;
+}
+
+.projectHeroPosterMockupSection .projectHeroDetailsTitleBlock {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.projectHeroPosterMockupTitle {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--foreground);
+  margin: 0.5rem 0 0.25rem;
+  line-height: 1.3;
+}
+
+.projectHeroPosterMockupSection .projectHeroDetailsUnderline {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Crimson & Gold: Poster Mockup block – stronger title and CTA card */
+.projectHeroSection[data-project="crimson-gold"] .projectHeroPosterMockupTitle {
+  color: #ffffff;
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  margin-bottom: 0.25rem;
+}
+
+.projectHeroSection[data-project="crimson-gold"] .projectHeroPosterMockupSection .projectHeroDetailsUnderline {
+  background: var(--crimson-gold-gradient);
+  width: 8rem;
+  height: 3px;
+  border-radius: 2px;
+  margin-top: 0.5rem;
+}
+
+/* Design viewer overlay (expand icon opens this) */
+.projectHeroDesignViewerOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  min-width: 100vw;
+  min-height: 100vh;
+  z-index: 9999;
+  background: rgba(0, 0, 0, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 5rem;
+  box-sizing: border-box;
+}
+
+.projectHeroDesignViewerClose {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  width: 3rem;
+  height: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.projectHeroDesignViewerClose:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.projectHeroDesignViewerArrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 3.5rem;
+  height: 3.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background 0.2s;
+  flex-shrink: 0;
+}
+
+.projectHeroDesignViewerArrow:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.projectHeroDesignViewerArrowPrev {
+  left: 1.5rem;
+}
+
+.projectHeroDesignViewerArrowNext {
+  right: 1.5rem;
+}
+
+.projectHeroDesignViewerImageWrap {
+  max-width: calc(100% - 10rem);
+  max-height: calc(100vh - 6rem);
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.projectHeroDesignViewerImage {
+  width: 100%;
+  height: auto;
+  max-height: calc(100vh - 6rem);
+  object-fit: contain;
+  display: block;
+}
+
+.projectHeroPosterMockupImages {
+  margin-top: 1.5rem;
+  display: block;
+}
+
+.projectHeroPosterMockupImageWrap {
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: 0;
+  overflow: hidden;
+  border-radius: 0;
+}
+
+.projectHeroPosterMockupImageWrap + .projectHeroPosterMockupImageWrap {
+  margin-top: 0;
+}
+
+.projectHeroPosterMockupExpandBtn {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  width: 2.25rem;
+  height: 2.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.4);
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background 0.2s;
+  z-index: 2;
+}
+
+.projectHeroPosterMockupExpandBtn:hover {
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.projectHeroPosterMockupImage {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 0;
+}
+
+/* Bigger screens: cap poster mockup width like footer images */
+@media (min-width: 1440px) {
+  .projectHeroPosterMockupImageWrap {
+    max-width: 1400px;
+  }
 }
 
 .projectHeroContainer {
@@ -814,10 +1154,14 @@
 .projectHeroTabsBar {
   position: relative;
   display: flex;
+  align-items: center;
   justify-content: center;
   gap: 0;
   margin-bottom: 2rem;
-  padding: 0.25rem;
+  padding-top: 0.3rem;
+  padding-bottom: 0.4rem;
+  padding-left: 0.35rem;
+  padding-right: 0.35rem;
   background: transparent;
   border: 1px solid rgba(255, 255, 255, 0.95);
   border-radius: 9999px;
@@ -843,9 +1187,16 @@
   z-index: 1;
   flex: 1;
   min-width: 0;
-  padding: 0.6rem 1.25rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 0.55rem;
+  padding-bottom: 0.65rem;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
   font-size: 0.9375rem;
   font-weight: 600;
+  line-height: 1.2;
   color: rgba(255, 255, 255, 0.7);
   background: transparent;
   border: none;
@@ -1344,6 +1695,19 @@
   line-height: 1.3;
 }
 
+.projectHeroIntroSketchesIntro {
+  margin: 1rem auto 0;
+  max-width: 36rem;
+  text-align: center;
+  font-size: 0.9375rem;
+  line-height: 1.55;
+  color: var(--foreground);
+}
+
+.projectHeroSection[data-project="crimson-gold"] .projectHeroIntroSketchesIntro {
+  color: rgba(255, 255, 255, 0.92);
+}
+
 .projectHeroIntroSketchesGrid {
   display: flex;
   flex-wrap: wrap;
@@ -1456,21 +1820,39 @@
 }
 
 /* Full-width footer image under Outcome */
+/* Single wrapper so parent flex gap doesn’t add space between images */
+.projectHeroIntroFooterImages {
+  margin-top: 2.5rem;
+  display: block;
+}
+
 .projectHeroIntroFooterImageWrap {
   width: 100vw;
   position: relative;
   left: 50%;
   transform: translateX(-50%);
-  margin-top: 2.5rem;
+  margin-top: 0;
   overflow: hidden;
-  border-radius: 1.5rem;
+  border-radius: 0;
+}
+
+/* Bigger screens (e.g. Mac): cap width so images aren’t full viewport */
+@media (min-width: 1440px) {
+  .projectHeroIntroFooterImageWrap {
+    max-width: 1400px;
+  }
+}
+
+/* No gap between consecutive footer images */
+.projectHeroIntroFooterImageWrap + .projectHeroIntroFooterImageWrap {
+  margin-top: 0;
 }
 
 .projectHeroIntroFooterImage {
   width: 100%;
   height: auto;
   display: block;
-  border-radius: 1.5rem;
+  border-radius: 0;
 }
 
 /* Image in details section (Introduction tab) – floats right so text wraps */

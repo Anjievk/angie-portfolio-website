@@ -5,13 +5,14 @@ import Navbar from '../../components/Navbar/Navbar';
 import ProjectHeroScrollEffect from '../../components/ProjectHeroScrollEffect/ProjectHeroScrollEffect';
 import ProjectHeroTabbedContent from '../../components/ProjectHeroTabbedContent/ProjectHeroTabbedContent';
 import ProjectSlugSetter from '../../components/ProjectSlugSetter/ProjectSlugSetter';
-import { getProjectById, getCategoryLabel } from '../../data/projects';
+import { getProjectById, getCategoryLabel, getSuggestedProjects } from '../../data/projects';
+import ProjectSuggestions from '../../components/ProjectSuggestions/ProjectSuggestions';
 import '../../styles/page.css';
 import '../../styles/projects.css';
 
 export const dynamic = 'force-dynamic';
 
-function HeroLayout({ project }) {
+function HeroLayout({ project, suggestedProjects }) {
   const metaRow1 = [project.role, project.team, project.timeline].filter(Boolean);
   const metaRow2 = [project.industry, project.tools].filter(Boolean);
   const featuresLeft = project.features?.filter((f) => f.side === 'left') ?? [];
@@ -122,12 +123,14 @@ function HeroLayout({ project }) {
         {project.tabs && (
           <ProjectHeroTabbedContent project={project} />
         )}
+
+        <ProjectSuggestions suggestedProjects={suggestedProjects} />
       </div>
     </section>
   );
 }
 
-function DefaultLayout({ project, categoryLabel }) {
+function DefaultLayout({ project, categoryLabel, suggestedProjects }) {
   return (
     <section className="projectDetailSection">
       <div className="projectDetailContainer">
@@ -158,6 +161,7 @@ function DefaultLayout({ project, categoryLabel }) {
         <div className="projectDetailDescription">
           <p>{project.description}</p>
         </div>
+        <ProjectSuggestions suggestedProjects={suggestedProjects} />
       </div>
     </section>
   );
@@ -172,6 +176,7 @@ export default async function ProjectDetailPage({ params }) {
   }
 
   const categoryLabel = getCategoryLabel(project.category);
+  const suggestedProjects = getSuggestedProjects(project);
   const useHeroLayout = project.layout === 'hero';
 
   return (
@@ -181,9 +186,9 @@ export default async function ProjectDetailPage({ params }) {
       <Navbar />
       {useHeroLayout && <ProjectHeroScrollEffect />}
       {useHeroLayout ? (
-        <HeroLayout project={project} />
+        <HeroLayout project={project} suggestedProjects={suggestedProjects} />
       ) : (
-        <DefaultLayout project={project} categoryLabel={categoryLabel} />
+        <DefaultLayout project={project} categoryLabel={categoryLabel} suggestedProjects={suggestedProjects} />
       )}
     </main>
   );

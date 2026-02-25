@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useRef, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import MaterialIcon from '../MaterialIcon/MaterialIcon';
@@ -47,6 +48,12 @@ export default function ProjectHeroTabs({ project, activeTab: controlledTab, onT
   const isControlled = controlledTab !== undefined && onTabChange != null;
   const activeTab = isControlled ? controlledTab : internalTab;
   const setActiveTab = isControlled ? onTabChange : setInternalTab;
+
+  const [showDesignViewer, setShowDesignViewer] = useState(false);
+  const [designViewerIndex, setDesignViewerIndex] = useState(0);
+  const viewDesignsImages = project.posterMockupSection?.viewDesignsImages ?? [];
+  const goToPrevDesign = () => setDesignViewerIndex((i) => (i <= 0 ? viewDesignsImages.length - 1 : i - 1));
+  const goToNextDesign = () => setDesignViewerIndex((i) => (i >= viewDesignsImages.length - 1 ? 0 : i + 1));
 
   const barRef = useRef(null);
   const activeTabRef = useRef(activeTab);
@@ -168,6 +175,9 @@ export default function ProjectHeroTabs({ project, activeTab: controlledTab, onT
                       <h3 className="projectHeroIntroSketchesTitle">{project.introSketchesBlock.title}</h3>
                       <div className="projectHeroDetailsUnderline" aria-hidden />
                     </div>
+                    {project.introSketchesBlock.intro && (
+                      <p className="projectHeroIntroSketchesIntro">{project.introSketchesBlock.intro}</p>
+                    )}
                     <div className="projectHeroIntroSketchesGrid">
                       {project.introSketchesBlock.images?.map((src, i) => (
                         <div key={i} className="projectHeroIntroSketchesCard">
@@ -183,6 +193,81 @@ export default function ProjectHeroTabs({ project, activeTab: controlledTab, onT
                     </div>
                   </div>
                 )}
+                {project.posterMockupSection?.images?.length ? (
+                  <div className="projectHeroPosterMockupSection">
+                    <div className="projectHeroDetailsTitleBlock">
+                      <h3 className="projectHeroPosterMockupTitle">{project.posterMockupSection.title}</h3>
+                      <div className="projectHeroDetailsUnderline" aria-hidden />
+                    </div>
+                    {showDesignViewer && viewDesignsImages.length > 0 && createPortal(
+                      <div
+                        className="projectHeroDesignViewerOverlay"
+                        role="dialog"
+                        aria-modal="true"
+                        aria-label="Design viewer"
+                        onClick={(e) => e.target === e.currentTarget && setShowDesignViewer(false)}
+                      >
+                        <button
+                          type="button"
+                          className="projectHeroDesignViewerClose"
+                          onClick={() => setShowDesignViewer(false)}
+                          aria-label="Close"
+                        >
+                          <MaterialIcon icon="close" size={28} />
+                        </button>
+                        <button
+                          type="button"
+                          className="projectHeroDesignViewerArrow projectHeroDesignViewerArrowPrev"
+                          onClick={(e) => { e.stopPropagation(); goToPrevDesign(); }}
+                          aria-label="Previous design"
+                        >
+                          <MaterialIcon icon="chevron_left" size={40} />
+                        </button>
+                        <div className="projectHeroDesignViewerImageWrap" onClick={(e) => e.stopPropagation()}>
+                          <Image
+                            src={viewDesignsImages[designViewerIndex]}
+                            alt={`Design ${designViewerIndex + 1} of ${viewDesignsImages.length}`}
+                            width={1200}
+                            height={800}
+                            className="projectHeroDesignViewerImage"
+                          />
+                        </div>
+                        <button
+                          type="button"
+                          className="projectHeroDesignViewerArrow projectHeroDesignViewerArrowNext"
+                          onClick={(e) => { e.stopPropagation(); goToNextDesign(); }}
+                          aria-label="Next design"
+                        >
+                          <MaterialIcon icon="chevron_right" size={40} />
+                        </button>
+                      </div>,
+                      document.body
+                    )}
+                    <div className="projectHeroPosterMockupImages">
+                      {project.posterMockupSection.images.map((src, i) => (
+                        <div key={i} className="projectHeroPosterMockupImageWrap">
+                          <Image
+                            src={src}
+                            alt=""
+                            width={1920}
+                            height={800}
+                            className="projectHeroPosterMockupImage"
+                          />
+                          {viewDesignsImages.length > 0 && (
+                            <button
+                              type="button"
+                              className="projectHeroPosterMockupExpandBtn"
+                              onClick={() => { setDesignViewerIndex(0); setShowDesignViewer(true); }}
+                              aria-label="View designs"
+                            >
+                              <MaterialIcon icon="open_in_full" size={20} />
+                            </button>
+                          )}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                ) : null}
                 {project.designRationaleBlock ? (
                   <div className="projectHeroDesignRationaleBlock">
                     <div className="projectHeroDetailsTitleBlock">
@@ -288,17 +373,21 @@ export default function ProjectHeroTabs({ project, activeTab: controlledTab, onT
                     </fieldset>
                   </div>
                 )}
-                {project.introFooterImage && (
-                  <div className="projectHeroIntroFooterImageWrap">
-                    <Image
-                      src={project.introFooterImage}
-                      alt=""
-                      width={1920}
-                      height={400}
-                      className="projectHeroIntroFooterImage"
-                    />
+                {project.introFooterImages?.length ? (
+                  <div className="projectHeroIntroFooterImages">
+                    {project.introFooterImages.map((src, i) => (
+                      <div key={i} className="projectHeroIntroFooterImageWrap">
+                        <Image
+                          src={src}
+                          alt=""
+                          width={1920}
+                          height={400}
+                          className="projectHeroIntroFooterImage"
+                        />
+                      </div>
+                    ))}
                   </div>
-                )}
+                ) : null}
                 {(project.roleBullets?.length || project.roleParagraph) && (
                   <>
                     <h3 className="projectHeroDetailsRoleTitle">My Role</h3>

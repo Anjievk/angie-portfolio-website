@@ -95,7 +95,15 @@ export const PROJECTS = [
         text: 'The TeaTiny design successfully communicates premium quality and natural ingredients through a whimsical, illustrated lens. It transforms a simple tea can into a delightful object that appeals to both the eye and the desire for a pure, peaceful moment.',
       },
     },
-    introFooterImage: '/Teatiny/foreground-flowers.png',
+    introFooterImages: [
+      '/Teatiny/foreground-flowers.png',
+      '/Teatiny/Chamomile mockup.jpg',
+      '/Teatiny/Chamomile-design.jpg',
+      '/Teatiny/Mallow mockup.jpg',
+      '/Teatiny/Mallow-design.jpg',
+      '/Teatiny/Sakura mockup.jpg',
+      '/Teatiny/Sakura-design.jpg',
+    ],
   },
   {
     id: 3,
@@ -199,12 +207,17 @@ export const PROJECTS = [
     ],
     overviewTitle: 'Overview',
     overviewParagraphs: [
-      "A personal project celebrating the beauty of Vietnam's royal attire from Huế. Each poster highlights a different historical costume, set against the Imperial City's iconic backdrop. I wanted to show that Vietnamese fashion is more than just the modern áo dài — it's rich, diverse, and deeply elegant.",
-      "The typography draws inspiration from old Vietnamese books, giving it a timeless feel. This series is my visual love letter to our culture and history.",
+      "“Crimson & Gold” is a personal passion project: a series of documentary posters I created to showcase the elegance and diversity of Vietnam’s royal attire from Huế. More than just promoting a film, these posters are a visual love letter to my heritage. The goal was to show the world that Vietnamese attire is not just the modern áo dài, but includes many other beautiful, elegant, and historically rich styles from the old royal courts of Huế. Each poster highlights a different color theme and a unique costume detail, set against the iconic backdrop of the Imperial City and other historic sites. I designed the typography to feel like it came from old history books and classic Vietnamese publications, creating a look that feels both timeless and distinctly Vietnamese. Through this work, I wanted to share my deep pride in our country’s history, beauty, and cultural identity with a global audience.",
     ],
     introSketchesBlock: {
       title: 'First Sketches',
+      intro: 'Early poster concepts exploring composition and the "Crimson & Gold" wordmark. These sketches led to the final documentary poster series.',
       images: ['/crimson-gold/sketch%201.png', '/crimson-gold/sketch%202.png', '/crimson-gold/sketch%203.png'],
+    },
+    posterMockupSection: {
+      title: 'Poster Mockup',
+      images: ['/crimson-gold/red mock up.jpg', '/crimson-gold/purple mock up.jpg', '/crimson-gold/yellow mock up.jpg'],
+      viewDesignsImages: ['/crimson-gold/documentary movie a.jpg', '/crimson-gold/documentary movie b.jpg', '/crimson-gold/documentary movie c.jpg'],
     },
     introParagraph:
       "A personal project celebrating the beauty of Vietnam's royal attire from Huế. Each poster highlights a different historical costume, set against the Imperial City's iconic backdrop. I wanted to show that Vietnamese fashion is more than just the modern áo dài — it's rich, diverse, and deeply elegant. The typography draws inspiration from old Vietnamese books, giving it a timeless feel. This series is my visual love letter to our culture and history.",
@@ -258,7 +271,7 @@ export const PROJECTS = [
       'An app for parents in the trades that helps balance work and childcare.',
     layout: 'hero',
     role: 'Lead UX/UI Designer - Social Media Marketing',
-    team: 'Team of 5 designers & 5 developers',
+    team: 'Team of 5 designers & 3 developers',
     timeline: 'Sept 5th - Dec 5th, 2025',
     industry: 'Tradeworkers Industry Support',
     tools: 'Figma - Figjam - Trello - VScode',
@@ -591,4 +604,13 @@ export function getProjectById(idOrSlug) {
 
 export function getCategoryLabel(categoryId) {
   return CATEGORIES.find((c) => c.id === categoryId)?.label ?? categoryId;
+}
+
+/** Get other projects to suggest (same category first, then rest), excluding current. */
+export function getSuggestedProjects(currentProject, limit = 3) {
+  const rest = PROJECTS.filter((p) => p.id !== currentProject.id);
+  const sameCategory = rest.filter((p) => p.category === currentProject.category);
+  const otherCategory = rest.filter((p) => p.category !== currentProject.category);
+  const combined = [...sameCategory, ...otherCategory];
+  return combined.slice(0, limit);
 }
