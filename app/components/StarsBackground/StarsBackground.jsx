@@ -26,17 +26,21 @@ export default function StarsBackground() {
         return;
       }
       
-      // Find where Portfolio banner starts - stars end right before it
+      const headerRect = headerSection.getBoundingClientRect();
       const portfolioBanner = headerSection.querySelector('.heroPortfolioBanner');
       let headerHeight;
       
       if (portfolioBanner) {
         const portfolioRect = portfolioBanner.getBoundingClientRect();
-        const headerRect = headerSection.getBoundingClientRect();
-        headerHeight = Math.max(100, portfolioRect.top - headerRect.top);
+        const isPhone = window.innerWidth <= 640;
+        // Phone: extend stars down past gradient so they’re not cut off
+        if (isPhone) {
+          const bannerHeight = portfolioRect.height;
+          headerHeight = Math.max(100, portfolioRect.top - headerRect.top + bannerHeight * 0.6);
+        } else {
+          headerHeight = Math.max(100, portfolioRect.top - headerRect.top);
+        }
       } else {
-        // Fallback: use header section height
-        const headerRect = headerSection.getBoundingClientRect();
         headerHeight = headerRect.height;
       }
       
@@ -51,9 +55,10 @@ export default function StarsBackground() {
     let startTime = performance.now();
 
     // Create stars evenly across background (grid + jitter)
-    const cols = 6;
-    const rows = 5;
+    const isPhone = () => window.innerWidth <= 640;
     const createStars = () => {
+      const cols = isPhone() ? 4 : 6;
+      const rows = isPhone() ? 3 : 5;
       stars.length = 0; // Clear existing stars
       const cellW = canvas.width / cols;
       const cellH = canvas.height / rows;

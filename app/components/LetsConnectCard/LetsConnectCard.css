@@ -57,9 +57,15 @@
   text-align: left;
 }
 
+@media (max-width: 640px) {
+  .connectCardContent {
+    padding-top: 0.625rem;
+  }
+}
+
 @media (max-width: 480px) {
   .connectCardContent {
-    padding: 2rem 1.5rem 2rem;
+    padding: 0.5rem 1.5rem 2rem;
   }
 }
 

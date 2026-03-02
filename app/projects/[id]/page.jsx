@@ -5,6 +5,7 @@ import Navbar from '../../components/Navbar/Navbar';
 import ProjectHeroScrollEffect from '../../components/ProjectHeroScrollEffect/ProjectHeroScrollEffect';
 import ProjectHeroTabbedContent from '../../components/ProjectHeroTabbedContent/ProjectHeroTabbedContent';
 import ProjectSlugSetter from '../../components/ProjectSlugSetter/ProjectSlugSetter';
+import ScrollToTopOnMount from '../../components/ScrollToTopOnMount/ScrollToTopOnMount';
 import { getProjectById, getCategoryLabel, getSuggestedProjects } from '../../data/projects';
 import ProjectSuggestions from '../../components/ProjectSuggestions/ProjectSuggestions';
 import '../../styles/page.css';
@@ -191,6 +192,7 @@ export default async function ProjectDetailPage({ params }) {
 
   return (
     <main className="relative min-h-screen" data-project-slug={project.projectSlug ?? ''}>
+      <ScrollToTopOnMount />
       <ProjectSlugSetter projectSlug={project.projectSlug} />
       <div className="fixed inset-0 -z-10 mainBackground" />
       <Navbar />

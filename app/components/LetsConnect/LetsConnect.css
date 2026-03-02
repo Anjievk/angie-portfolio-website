@@ -91,6 +91,18 @@
   box-sizing: border-box;
 }
 
+@media (max-width: 768px) {
+  .readyTagsWrap {
+    padding-top: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .readyTagsWrap {
+    padding-top: 1.30rem;
+  }
+}
+
 /* After collapse (tags absolute), fixed height so clientHeight is reliable for physics */
 .readyTagsWrap[data-physics-ready],
 .readyTagsWrap[data-physics-ready="true"] {
@@ -157,6 +169,18 @@
   z-index: 1;
   margin-top: 0;
   min-height: 220px;
+}
+
+@media (max-width: 768px) {
+  .readyFooter {
+    margin-top: 7rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .readyFooter {
+    margin-top: 6rem;
+  }
 }
 
 .readyFooterSvgWrap {

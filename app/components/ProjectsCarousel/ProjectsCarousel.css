@@ -2,11 +2,12 @@
    PROJECTS CAROUSEL STYLES
    ============================================ */
 
-/* Main carousel section – dark purple gradient */
+/* Main carousel section – no background */
 .projectsCarouselSection {
   position: relative;
   padding: 0 2rem 7rem 2rem;
   margin-top: -2rem;
+  background: transparent;
 }
 
 @media (max-width: 640px) {
@@ -138,6 +139,14 @@
 .projectsCarouselCardActive {
   background: linear-gradient(165deg, #0d9488 0%, #14b8a6 50%, #2dd4bf 100%);
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+@media (max-width: 640px) {
+  /* Semi-transparent so glow can show through on phone */
+  .projectsCarouselCardActive {
+    background: linear-gradient(165deg, rgba(13, 148, 136, 0.88) 0%, rgba(20, 184, 166, 0.88) 50%, rgba(45, 212, 191, 0.88) 100%);
+    backdrop-filter: blur(8px);
+  }
 }
 
 .projectsCarouselCardActiveInner {

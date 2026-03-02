@@ -129,7 +129,11 @@ function initPhysics(containerEl, tagEls) {
   Matter.World.add(world, [leftWall, rightWall]);
 
   // Curve at bottom of container: depth scales with height (larger = cong hơn)
-  const curveDepth = Math.max(100, Math.min(160, height * 0.88));
+  // Phone: flatter curve to match visual curve background
+  const isPhone = width <= 768;
+  const curveDepth = isPhone
+    ? Math.max(40, Math.min(50, height * 0.25))
+    : Math.max(100, Math.min(160, height * 0.88));
   const curveOffset = 115; // positive = move curve down (px)
   const floorSegments = getCurveFloorSegments(width, height, curveDepth, 52, curveOffset);
   const floorBodies = floorSegments.map((seg) =>
@@ -447,10 +451,10 @@ export default function LetsConnect({ showFooter = true }) {
               fill="#1E0038"
               stroke="white"
             />
-            {/* Mobile: flatter curve (ít cong hơn) */}
+            {/* Mobile: flatter curve, matches tags and background */}
             <path
               className="readyFooterCurvePath readyFooterCurvePathMobile"
-              d="M1440.5 506.958H-0.5V0.730957L0.178711 0.990723C513.065 105 926.437 105 1439.82 0.990723L1440.5 0.729004V506.958Z"
+              d="M1440.5 506.958H-0.5V0.730957L0.178711 0.990723C513.065 35 926.437 35 1439.82 0.990723L1440.5 0.729004V506.958Z"
               fill="#1E0038"
               stroke="white"
             />

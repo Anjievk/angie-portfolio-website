@@ -120,6 +120,7 @@ export default function ProjectsCarousel() {
                               href={project.projectSlug ? `/projects/${project.projectSlug}` : '/projects'}
                               className="projectsCarouselCardImageWrap projectsCarouselCardImageLink"
                               aria-label={`View project: ${project.title}`}
+                              scroll={true}
                             >
                               <img
                                 src={project.image}

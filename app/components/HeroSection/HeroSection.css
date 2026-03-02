@@ -38,7 +38,7 @@ section {
 
 @media (max-width: 640px) {
   .heroGreetingContainer {
-    padding-top: 1rem;
+    padding-top: 6rem;
   }
 }
 
@@ -64,7 +64,7 @@ section {
 
 .heroNameText {
   font-family: var(--font-family);
-  font-size: 8rem;
+  font-size: 11rem;
   font-weight: 900;
   color: var(--foreground);
   letter-spacing: -0.0015em;
@@ -77,34 +77,42 @@ section {
     2px 2px 4px rgba(0, 0, 0, 0.12);
 }
 
-/* Mobile: smaller name so it fits */
+/* Mobile: large dominant name to match reference */
 @media (max-width: 480px) {
   .heroNameText {
-    font-size: 3.25rem;
+    font-size: 5.25rem;
   }
 }
 
 @media (min-width: 481px) and (max-width: 639px) {
   .heroNameText {
-    font-size: 4.5rem;
+    font-size: 6.5rem;
   }
 }
 
 @media (min-width: 640px) and (max-width: 767px) {
   .heroNameText {
-    font-size: 5.5rem;
+    font-size: 7.5rem;
   }
 }
 
 @media (min-width: 768px) {
   .heroNameText {
-    font-size: 7rem;
+    font-size: 9.5rem;
   }
 }
 
-@media (min-width: 1024px) {
+/* Laptop screens (typical 1024–1439px) */
+@media (min-width: 1024px) and (max-width: 1439px) {
   .heroNameText {
-    font-size: 8rem;
+    font-size: 8.5rem;
+  }
+}
+
+/* Desktop / large screens */
+@media (min-width: 1440px) {
+  .heroNameText {
+    font-size: 11rem;
   }
 }
 
@@ -116,6 +124,15 @@ section {
   margin-top: 0;
   margin-bottom: 0;
   overflow-y: visible;
+}
+
+@media (max-width: 640px) {
+  /* Full-bleed: break out of section padding so banner spans full viewport width */
+  .heroPortfolioBanner {
+    width: 100vw;
+    max-width: none;
+    margin-left: calc(-1 * (100vw - 100%) / 2);
+  }
 }
 
 /* 1. Gradient wave – aspect ratio from viewBox (1564×433) to avoid squishing on zoom/resize */
@@ -140,10 +157,19 @@ section {
 
 @media (max-width: 640px) {
   .heroPortfolioCurveBlock {
-    min-height: 160px;
-    max-height: min(280px, 55vw);
+    min-height: 340px;
+    max-height: min(580px, 95vw);
     margin-top: -24px;
-    margin-bottom: -36px;
+    margin-bottom: -45px;
+    width: calc(100% + 1rem);
+    max-width: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .heroPortfolioCurveBlock {
+    min-height: 320px;
+    max-height: min(520px, 100vw);
   }
 }
 
@@ -180,7 +206,7 @@ section {
   }
 }
 
-/* 2. Dark bar (roller line) – sits on top of gradient shape */
+/* 2. Dark bar (roller line) – sits directly below gradient, no gap */
 .heroPortfolioDarkBar {
   position: relative;
   z-index: 10;
@@ -188,12 +214,21 @@ section {
   background-color: rgb(19, 0, 36);
   padding: 0.65rem 1.5rem;
   overflow-x: hidden;
+  margin-top: -2px;
+}
+
+@media (max-width: 640px) {
+  /* Ensure full viewport width, eliminate gap on right */
+  .heroPortfolioDarkBar {
+    width: calc(100% + 1rem);
+    margin-left: -0.5rem;
+  }
 }
 
 @media (max-width: 480px) {
   .heroPortfolioDarkBar {
-    padding-left: 1rem;
-    padding-right: 1rem;
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
   }
 }
 
