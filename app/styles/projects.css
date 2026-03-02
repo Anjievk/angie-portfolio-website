@@ -953,15 +953,19 @@
 }
 
 .projectHeroBlock {
+  margin-bottom: 2rem;
+}
+
+.projectHeroTextBlock {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
   gap: 1.5rem 2rem;
-  margin-bottom: 2rem;
 }
 
-.projectHeroText {
+.projectHeroText,
+.projectHeroTitleTaglineUnderline {
   flex: 1 1 min(100%, 32rem);
 }
 
@@ -1022,6 +1026,26 @@
 .projectHeroCta:hover {
   background: rgba(60, 25, 95, 0.98);
   border-color: #4a8ad4;
+}
+
+/* Phone: View Hifi Prototype before gradient underline */
+@media (max-width: 640px) {
+  .projectHeroTextBlock {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .projectHeroTitleTaglineUnderline {
+    display: contents;
+  }
+
+  .projectHeroTextBlock .projectHeroCta {
+    order: 2;
+  }
+
+  .projectHeroTextBlock .projectHeroUnderline {
+    order: 3;
+  }
 }
 
 /* Play Game button (e.g. Space Animal) – dark purple fill, lime border & text */
@@ -1289,6 +1313,45 @@
   color: var(--foreground);
 }
 
+@media (max-width: 640px) {
+  .projectHeroTabsSection {
+    margin-top: 2.5rem;
+  }
+
+  .projectHeroTabsBar {
+    padding: 0.25rem 0.2rem;
+    margin-bottom: 1.5rem;
+    max-width: 100%;
+    min-width: 0;
+    gap: 0;
+  }
+
+  .projectHeroTab {
+    padding: 0.5rem 0.9rem;
+    font-size: 0.8125rem;
+    white-space: nowrap;
+    flex: 1 1 0;
+    min-width: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .projectHeroTabsSection {
+    margin-top: 2rem;
+  }
+
+  .projectHeroTabsBar {
+    padding: 0.2rem 0.15rem;
+    margin-bottom: 1.25rem;
+    gap: 0;
+  }
+
+  .projectHeroTab {
+    padding: 0.45rem 0.75rem;
+    font-size: 0.75rem;
+  }
+}
+
 /* Tab panel: smooth enter animation when switching tabs */
 @keyframes projectHeroTabPanelEnter {
   from {
@@ -1387,6 +1450,13 @@
 @media (min-width: 768px) {
   .projectHeroQuoteText {
     font-size: 1.75rem;
+  }
+}
+
+/* Hide quote block (card + quotation marks) on phone */
+@media (max-width: 640px) {
+  .projectHeroQuote {
+    display: none;
   }
 }
 
@@ -3748,6 +3818,13 @@
   white-space: nowrap;
 }
 
+/* Allow subtitle to wrap on phone so it doesn't cut off */
+@media (max-width: 640px) {
+  .projectCoreValuesSection[data-project="Tandem"] .projectCoreValuesSubtitle {
+    white-space: normal;
+  }
+}
+
 .projectCoreValuesSection[data-project="Tandem"] .projectCoreValuesCard {
   background: #381e5f;
   border-radius: 1.5rem;
@@ -3973,6 +4050,12 @@
   margin-top: 15rem;
 }
 
+@media (max-width: 640px) {
+  .projectKeyFeaturesSection {
+    margin-top: 4rem;
+  }
+}
+
 .projectKeyFeaturesTitle {
   font-size: 2.25rem;
   font-weight: 700;
@@ -4005,6 +4088,12 @@
   border-radius: 2px;
 }
 
+@media (max-width: 640px) {
+  .projectKeyFeaturesUnderline {
+    margin: 0 auto 1.5rem;
+  }
+}
+
 .projectKeyFeatureBlock {
   display: grid;
   grid-template-columns: 1fr;
@@ -4015,6 +4104,19 @@
 
 .projectKeyFeatureBlock:last-child {
   margin-bottom: 0;
+}
+
+@media (max-width: 640px) {
+  .projectKeyFeatureBlock {
+    gap: 1rem;
+    margin-bottom: 3rem;
+  }
+  .projectKeyFeatureBlock:last-child {
+    margin-bottom: 0;
+  }
+  .projectKeyFeatureNumber {
+    font-size: 3.5rem;
+  }
 }
 
 @media (min-width: 900px) {
@@ -4043,7 +4145,7 @@
 }
 
 .projectKeyFeatureNumber {
-  font-size: 3.5rem;
+  font-size: 4.25rem;
   line-height: 1;
   font-weight: 800;
   flex-shrink: 0;
@@ -4055,7 +4157,7 @@
 
 @media (min-width: 768px) {
   .projectKeyFeatureNumber {
-    font-size: 4.5rem;
+    font-size: 5.5rem;
   }
 }
 
@@ -4351,6 +4453,12 @@
   position: absolute;
   pointer-events: none;
   z-index: 0;
+}
+
+@media (max-width: 640px) {
+  .projectAppInteractionIcon {
+    display: none;
+  }
 }
 
 .projectAppInteractionIconCircleArrow {

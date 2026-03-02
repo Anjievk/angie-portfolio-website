@@ -30,33 +30,35 @@ function HeroLayout({ project, suggestedProjects }) {
             ← Back to Projects
           </Link>
 
-          {/* Hero: title, tagline, underline, CTA */}
+          {/* Hero: title, tagline, underline, CTA – on phone: CTA before underline */}
           <div className="projectHeroBlock">
-          <div className="projectHeroText">
-            <h1 className="projectHeroTitle">{project.title}</h1>
-            <p className="projectHeroTagline">{project.subtitle ?? project.description}</p>
-            <div className="projectHeroUnderline" aria-hidden />
+          <div className="projectHeroTextBlock">
+            <div className="projectHeroText projectHeroTitleTaglineUnderline">
+              <h1 className="projectHeroTitle">{project.title}</h1>
+              <p className="projectHeroTagline">{project.subtitle ?? project.description}</p>
+              <div className="projectHeroUnderline" aria-hidden />
+            </div>
+            {project.prototypeUrl && (
+              <a
+                href={project.prototypeUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="projectHeroCta"
+              >
+                <span className="projectHeroCtaText">View Hifi Prototype</span>
+              </a>
+            )}
+            {project.playGameUrl && (
+              <a
+                href={project.playGameUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="projectHeroCta projectHeroCtaPlayGame"
+              >
+                <span className="projectHeroCtaPlayGameText">Play Game</span>
+              </a>
+            )}
           </div>
-          {project.prototypeUrl && (
-            <a
-              href={project.prototypeUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="projectHeroCta"
-            >
-              <span className="projectHeroCtaText">View Hifi Prototype</span>
-            </a>
-          )}
-          {project.playGameUrl && (
-            <a
-              href={project.playGameUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="projectHeroCta projectHeroCtaPlayGame"
-            >
-              <span className="projectHeroCtaPlayGameText">Play Game</span>
-            </a>
-          )}
         </div>
 
         {/* Metadata pills – two rows */}
