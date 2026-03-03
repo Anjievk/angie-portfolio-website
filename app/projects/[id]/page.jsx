@@ -2,6 +2,8 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import Navbar from '../../components/Navbar/Navbar';
+import { ProjectImageExpandProvider } from '../../contexts/ProjectImageExpandContext';
+import ExpandableImage from '../../components/ExpandableImage/ExpandableImage';
 import ProjectHeroScrollEffect from '../../components/ProjectHeroScrollEffect/ProjectHeroScrollEffect';
 import ProjectHeroTabbedContent from '../../components/ProjectHeroTabbedContent/ProjectHeroTabbedContent';
 import ProjectSlugSetter from '../../components/ProjectSlugSetter/ProjectSlugSetter';
@@ -82,7 +84,7 @@ function HeroLayout({ project, suggestedProjects }) {
         {/* Feature showcase – banner image or legacy two-slot layout */}
         {project.featureBannerImage ? (
           <div className="projectHeroFeatureBannerWrap">
-            <Image
+            <ExpandableImage
               src={project.featureBannerImage}
               alt={project.projectSlug === 'teatiny' ? 'TeaTiny can design' : project.projectSlug === 'the-unseen-vietnam' ? 'The Unseen Vietnam magazine mock up' : project.projectSlug === 'crimson-gold' ? 'Crimson & Gold poster series' : project.projectSlug === 'space-animal' ? 'Space Animals game' : 'Project overview'}
               width={1200}
@@ -97,7 +99,7 @@ function HeroLayout({ project, suggestedProjects }) {
               <div className="projectHeroFeatureImages">
                 <div className="projectHeroFeatureImageWrap projectHeroFeatureImageLeft">
                   {project.featureImageLeft ? (
-                    <Image src={project.featureImageLeft} alt="" width={260} height={520} className="projectHeroFeatureImage" />
+                    <ExpandableImage src={project.featureImageLeft} alt="" width={260} height={520} className="projectHeroFeatureImage" wrapClassName="projectHeroFeatureImageExpandWrap" />
                   ) : (
                     <div className="projectHeroFeaturePlaceholder" aria-hidden />
                   )}
@@ -112,7 +114,7 @@ function HeroLayout({ project, suggestedProjects }) {
                 </div>
                 <div className="projectHeroFeatureImageWrap projectHeroFeatureImageRight">
                   {project.featureImageRight ? (
-                    <Image src={project.featureImageRight} alt="" width={260} height={520} className="projectHeroFeatureImage" />
+                    <ExpandableImage src={project.featureImageRight} alt="" width={260} height={520} className="projectHeroFeatureImage" wrapClassName="projectHeroFeatureImageExpandWrap" />
                   ) : (
                     <div className="projectHeroFeaturePlaceholder" aria-hidden />
                   )}
@@ -151,7 +153,7 @@ function DefaultLayout({ project, categoryLabel, suggestedProjects }) {
           ← Back to Projects
         </Link>
         <div className="projectDetailImageWrap">
-          <Image
+          <ExpandableImage
             src={project.image}
             alt=""
             width={900}
@@ -199,11 +201,13 @@ export default async function ProjectDetailPage({ params }) {
       <div className="fixed inset-0 -z-10 mainBackground" />
       <Navbar />
       {useHeroLayout && <ProjectHeroScrollEffect />}
-      {useHeroLayout ? (
-        <HeroLayout project={project} suggestedProjects={suggestedProjects} />
-      ) : (
-        <DefaultLayout project={project} categoryLabel={categoryLabel} suggestedProjects={suggestedProjects} />
-      )}
+      <ProjectImageExpandProvider>
+        {useHeroLayout ? (
+          <HeroLayout project={project} suggestedProjects={suggestedProjects} />
+        ) : (
+          <DefaultLayout project={project} categoryLabel={categoryLabel} suggestedProjects={suggestedProjects} />
+        )}
+      </ProjectImageExpandProvider>
     </main>
   );
 }

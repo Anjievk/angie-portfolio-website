@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Image from 'next/image';
+import ExpandableImage from '../ExpandableImage/ExpandableImage';
 
 function bulletWithBold(text, boldPhrases = []) {
   if (!boldPhrases.length) return text;
@@ -180,7 +181,7 @@ export default function ProgressTab({ project }) {
                           <article key={p.id ?? `persona-${i}`} className="progressPersonaCard progressPersonaCardImageOnly">
                             <div className="progressPersonaImageWrap">
                               {p.image ? (
-                                <Image src={p.image} alt={p.name || 'Persona'} width={832} height={832} className="progressPersonaImage" />
+                                <ExpandableImage src={p.image} alt={p.name || 'Persona'} width={832} height={832} className="progressPersonaImage" wrapClassName="progressPersonaImageWrapClickable" />
                               ) : (
                                 <div className="progressPlaceholder progressPlaceholderCircle" aria-hidden />
                               )}
@@ -311,12 +312,13 @@ export default function ProgressTab({ project }) {
                     )}
                     {progress.design.typography.image && (
                       <div className="progressTypographyImageWrap">
-                        <Image
+                        <ExpandableImage
                           src={progress.design.typography.image}
                           alt="Typography style guide — Alan Sans and Omnes"
                           width={800}
                           height={500}
                           className="progressTypographyImage"
+                          wrapClassName="progressImageExpandWrap"
                         />
                       </div>
                     )}
@@ -390,16 +392,25 @@ export default function ProgressTab({ project }) {
                     {(progress.printed.logo.image || (progress.printed.logo.images ?? []).length > 0) && (
                       <div className="progressLogoRow">
                         {progress.printed.logo.image ? (
-                          <Image
+                          <ExpandableImage
                             src={progress.printed.logo.image}
                             alt="Tandem logo — hammer with connecting handle in brand colors"
                             width={800}
                             height={400}
                             className="progressLogoImage"
+                            wrapClassName="progressImageExpandWrap"
                           />
                         ) : (
                           (progress.printed.logo.images ?? []).map((src, i) => (
-                            <Image key={i} src={src} alt="" width={200} height={200} className="progressLogoImage" />
+                            <ExpandableImage
+                              key={i}
+                              src={src}
+                              alt=""
+                              width={200}
+                              height={200}
+                              className="progressLogoImage"
+                              wrapClassName="progressImageExpandWrap"
+                            />
                           ))
                         )}
                       </div>
@@ -421,12 +432,13 @@ export default function ProgressTab({ project }) {
                 {progress.printed.stickersShowcaseImage && (
                   <div className="progressContentBlock progressPrintedShowcaseBlock">
                     <div className="progressPrintedShowcase">
-                      <Image
+                      <ExpandableImage
                         src={progress.printed.stickersShowcaseImage}
                         alt="Tandem stickers and business cards on display"
                         width={1200}
                         height={700}
                         className="progressPrintedShowcaseImage"
+                        wrapClassName="progressImageExpandWrap"
                       />
                     </div>
                   </div>
@@ -437,12 +449,13 @@ export default function ProgressTab({ project }) {
                     <p className="progressPrintedSectionParagraph">{progress.printed.brochure.paragraph}</p>
                     {progress.printed.brochure.image && (
                       <div className="progressBrochureShowcase">
-                        <Image
+                        <ExpandableImage
                           src={progress.printed.brochure.image}
                           alt="Tandem brochure — app stories, benefits and features"
                           width={1200}
                           height={700}
                           className="progressBrochureShowcaseImage"
+                          wrapClassName="progressImageExpandWrap"
                         />
                       </div>
                     )}
@@ -489,12 +502,13 @@ export default function ProgressTab({ project }) {
                       <div className="progressTandemBlogImageCol">
                         {progress.marketing.tandemBlog.image && (
                           <div className="progressTandemBlogImageWrap">
-                            <Image
+                            <ExpandableImage
                               src={progress.marketing.tandemBlog.image}
                               alt="Tandem blog — companion to the app"
                               width={600}
                               height={400}
                               className="progressTandemBlogImage"
+                              wrapClassName="progressImageExpandWrap"
                             />
                           </div>
                         )}
@@ -533,12 +547,13 @@ export default function ProgressTab({ project }) {
                       {progress.marketing.socialMedia.image && (
                         <div className="progressSocialMediaImageCol">
                           <div className="progressSocialMediaImageWrap">
-                            <Image
+                            <ExpandableImage
                               src={progress.marketing.socialMedia.image}
                               alt="Tandem social media — Facebook and Instagram"
                               width={600}
                               height={400}
                               className="progressSocialMediaImage"
+                              wrapClassName="progressImageExpandWrap"
                             />
                           </div>
                         </div>

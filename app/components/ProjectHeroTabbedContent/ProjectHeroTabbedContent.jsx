@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Image from 'next/image';
+import ExpandableImage from '../ExpandableImage/ExpandableImage';
 import MaterialIcon from '../MaterialIcon/MaterialIcon';
 import ProjectHeroTabs from '../ProjectHeroTabs/ProjectHeroTabs';
 import ScrollReveal from '../ScrollReveal/ScrollReveal';
@@ -93,7 +94,7 @@ export default function ProjectHeroTabbedContent({ project }) {
                       feature.images.map((src, i) => (
                         <div key={i} className="projectKeyFeatureImageWrap">
                           {src ? (
-                            <Image src={src} alt="" width={500} height={1000} className="projectKeyFeatureImage" />
+                            <ExpandableImage src={src} alt="" width={500} height={1000} className="projectKeyFeatureImage" wrapClassName="projectKeyFeatureImageExpandWrap" />
                           ) : (
                             <div className="projectKeyFeaturePlaceholder" aria-hidden />
                           )}
@@ -102,7 +103,7 @@ export default function ProjectHeroTabbedContent({ project }) {
                     ) : (
                       <div className="projectKeyFeatureImageWrap">
                         {feature.image ? (
-                          <Image src={feature.image} alt="" width={500} height={1000} className="projectKeyFeatureImage" />
+                          <ExpandableImage src={feature.image} alt="" width={500} height={1000} className="projectKeyFeatureImage" wrapClassName="projectKeyFeatureImageExpandWrap" />
                         ) : (
                           <div className="projectKeyFeaturePlaceholder" aria-hidden />
                         )}
@@ -124,13 +125,14 @@ export default function ProjectHeroTabbedContent({ project }) {
                 {project.finalProduct.screens.map((screen) => (
                   <div key={screen.id} className="projectFinalProductItem">
                     {screen.image ? (
-                      <Image
+                      <ExpandableImage
                         src={screen.image}
                         alt={screen.label}
                         width={400}
                         height={800}
                         className="projectFinalProductImage"
                         sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 400px"
+                        wrapClassName="projectFinalProductImageExpandWrap"
                       />
                     ) : (
                       <div className="projectFinalProductPlaceholder" aria-hidden>

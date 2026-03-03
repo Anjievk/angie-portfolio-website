@@ -4,6 +4,7 @@ import { useState, useRef, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
+import ExpandableImage from '../ExpandableImage/ExpandableImage';
 import MaterialIcon from '../MaterialIcon/MaterialIcon';
 import ProgressTab from './ProgressTab';
 import '../MagazineFlipViewer/MagazineFlipViewer.css';
@@ -156,12 +157,13 @@ export default function ProjectHeroTabs({ project, activeTab: controlledTab, onT
             >
               {project.introductionPhoneImage && (
                 <div className="projectHeroDetailsImageWrap">
-                  <Image
+                  <ExpandableImage
                     src={project.introductionPhoneImage}
                     alt="Project introduction"
                     width={920}
                     height={1840}
                     className="projectHeroDetailsImage"
+                    wrapClassName="projectHeroDetailsImageExpandWrap"
                   />
                 </div>
               )}
@@ -179,12 +181,13 @@ export default function ProjectHeroTabs({ project, activeTab: controlledTab, onT
                 )}
                 {project.projectSlug === 'space-animal' && (
                   <div className="projectHeroOverviewImageWrap">
-                    <Image
+                    <ExpandableImage
                       src="/Space-animal/figjam.png"
                       alt="Space Animals game"
                       width={1200}
                       height={800}
                       className="projectHeroOverviewImage"
+                      wrapClassName="projectHeroOverviewImageExpandWrap"
                     />
                   </div>
                 )}
@@ -200,12 +203,13 @@ export default function ProjectHeroTabs({ project, activeTab: controlledTab, onT
                     <div className="projectHeroIntroSketchesGrid">
                       {project.introSketchesBlock.images?.map((src, i) => (
                         <div key={i} className="projectHeroIntroSketchesCard">
-                          <Image
+                          <ExpandableImage
                             src={src}
                             alt={`First sketch ${i + 1}`}
                             width={400}
                             height={300}
                             className="projectHeroIntroSketchesImage"
+                            wrapClassName="projectHeroIntroSketchesImageExpandWrap"
                           />
                         </div>
                       ))}
@@ -335,12 +339,13 @@ export default function ProjectHeroTabs({ project, activeTab: controlledTab, onT
                       <p className="projectHeroDetailsIntro">{project.introBrandBlock.text}</p>
                     </div>
                     <div className="projectHeroIntroBrandLogoWrap">
-                      <Image
+                      <ExpandableImage
                         src={project.introBrandBlock.logoPath}
                         alt="TeaTiny"
                         width={213}
                         height={89}
                         className="projectHeroIntroBrandLogo"
+                        wrapClassName="projectHeroIntroBrandLogoExpandWrap"
                       />
                     </div>
                   </div>
@@ -349,13 +354,14 @@ export default function ProjectHeroTabs({ project, activeTab: controlledTab, onT
                   <div className="projectHeroIntroMascotsBlock">
                     <div className="projectHeroIntroMascotsCard">
                       {project.introMascotsBlock.images?.map((src, i) => (
-                        <Image
+                        <ExpandableImage
                           key={i}
                           src={src}
                           alt="TeaTiny floral mascots"
                           width={400}
                           height={300}
                           className="projectHeroIntroMascotsImage"
+                          wrapClassName="projectHeroIntroMascotsImageExpandWrap"
                         />
                       ))}
                     </div>
@@ -370,12 +376,13 @@ export default function ProjectHeroTabs({ project, activeTab: controlledTab, onT
                     <h4 className="projectHeroIntroColourTitle">{project.introColourBlock.title}</h4>
                     <p className="projectHeroDetailsIntro">{project.introColourBlock.text}</p>
                     <div className="projectHeroIntroColourPalette">
-                      <Image
+                      <ExpandableImage
                         src={project.introColourBlock.paletteImage}
                         alt="TeaTiny colour palette"
                         width={800}
                         height={200}
                         className="projectHeroIntroColourPaletteImage"
+                        wrapClassName="projectHeroIntroColourPaletteImageExpandWrap"
                       />
                     </div>
                   </div>
@@ -396,12 +403,13 @@ export default function ProjectHeroTabs({ project, activeTab: controlledTab, onT
                   <div className="projectHeroIntroFooterImages">
                     {project.introFooterImages.map((src, i) => (
                       <div key={i} className="projectHeroIntroFooterImageWrap">
-                        <Image
+                        <ExpandableImage
                           src={src}
                           alt=""
                           width={1920}
                           height={400}
                           className="projectHeroIntroFooterImage"
+                          wrapClassName="projectHeroIntroFooterImageExpandWrap"
                         />
                       </div>
                     ))}
@@ -439,12 +447,13 @@ export default function ProjectHeroTabs({ project, activeTab: controlledTab, onT
                             </div>
                             {section.image && (
                               <div className="projectHeroWhatIDidSectionImageWrap">
-                                <Image
+                                <ExpandableImage
                                   src={section.image}
                                   alt=""
                                   width={1200}
                                   height={800}
                                   className="projectHeroWhatIDidSectionImage"
+                                  wrapClassName="projectHeroWhatIDidSectionImageExpandWrap"
                                 />
                               </div>
                             )}
