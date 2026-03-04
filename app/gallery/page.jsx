@@ -48,10 +48,22 @@ const GALLERY_ITEMS = [
 
 const SCROLL_SECTION_HEIGHT = 8; // Scroll distance for Design & Artwork section
 
+function useIsPhone() {
+  const [isPhone, setIsPhone] = useState(false);
+  useEffect(() => {
+    const check = () => setIsPhone(typeof window !== 'undefined' && window.innerWidth <= 768);
+    check();
+    window.addEventListener('resize', check);
+    return () => window.removeEventListener('resize', check);
+  }, []);
+  return isPhone;
+}
+
 export default function Gallery() {
   const [scrollProgress, setScrollProgress] = useState(0);
   const [allArtworkShown, setAllArtworkShown] = useState(false);
   const designSectionRef = useRef(null);
+  const isPhone = useIsPhone();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -110,7 +122,34 @@ export default function Gallery() {
           {/* Glowing pink divider */}
           <div className="galleryDivider" aria-hidden />
 
-          {/* Design & Artwork - sticky section, scroll drives images */}
+          {/* Design & Artwork: on phone = SVG + list; on desktop = sticky scroll section */}
+          {isPhone ? (
+            <div className="designArtworkPhoneSection">
+              <div className="designArtworkPhoneSvgWrap">
+                <Image
+                  src="/Design&artwork.svg"
+                  alt="Design & Artwork"
+                  width={300}
+                  height={90}
+                  className="designArtworkSvg"
+                />
+              </div>
+              <ul className="designArtworkPhoneList">
+                {GALLERY_ITEMS.map((item) => (
+                  <li key={item.id} className="designArtworkPhoneListItem">
+                    <Image
+                      src={item.imageSrc}
+                      alt={item.title}
+                      width={800}
+                      height={600}
+                      className="designArtworkPhoneListImage"
+                      sizes="(max-width: 768px) 100vw, 800px"
+                    />
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ) : (
           <div
             ref={designSectionRef}
             className="designArtworkScrollSection"
@@ -137,6 +176,7 @@ export default function Gallery() {
               </div>
             </div>
           </div>
+          )}
         </div>
       </section>
     </main>

@@ -8,7 +8,7 @@ const CONNECT_ITEMS = [
   { label: 'EMAIL', href: 'mailto:angieduong.vk@gmail.com', external: true },
   { label: 'LINKEDIN', href: 'https://www.linkedin.com/in/angie-duong-vk', external: true },
   { label: 'BEHANCE', href: 'https://www.behance.net/angieduong3', external: true },
-  { label: 'RESUME', href: '/resume', external: false },
+  { label: 'RESUME', href: '/Resume - Angie Duong.pdf', download: true },
 ];
 
 function ArrowIcon() {
@@ -27,7 +27,7 @@ export default function LetsConnectCard() {
           Let&apos;s Connect!
         </legend>
         <div className="connectCardContent">
-          {CONNECT_ITEMS.map(({ label, href, external }) => (
+          {CONNECT_ITEMS.map(({ label, href, external, download }) => (
             <div key={label} className="connectCardRowWrapper">
               {external ? (
                 <a
@@ -36,6 +36,11 @@ export default function LetsConnectCard() {
                   rel="noopener noreferrer"
                   className="connectCardRow"
                 >
+                  <span className="connectCardLabel">{label}</span>
+                  <ArrowIcon />
+                </a>
+              ) : download ? (
+                <a href={href} download="Resume - Angie Duong.pdf" className="connectCardRow">
                   <span className="connectCardLabel">{label}</span>
                   <ArrowIcon />
                 </a>
