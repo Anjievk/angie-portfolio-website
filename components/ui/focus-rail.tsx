@@ -24,35 +24,12 @@ interface FocusRailProps {
   className?: string;
 }
 
-/**
- * Helper to wrap indices (e.g., -1 becomes length-1)
- */
-function wrap(min: number, max: number, v: number) {
-  const rangeSize = max - min;
-  return ((((v - min) % rangeSize) + rangeSize) % rangeSize) + min;
+function wrapIndex(index: number, length: number): number {
+  return ((index % length) + length) % length;
 }
 
-/**
- * Physics Configuration
- * Base spring for spatial movement (x/z)
- */
-const BASE_SPRING = {
-  type: "spring" as const,
-  stiffness: 300,
-  damping: 30,
-  mass: 1,
-};
-
-/**
- * Scale Spring
- * Bouncier spring specifically for the visual "Click/Tap" feedback on the center card
- */
-const TAP_SPRING = {
-  type: "spring" as const,
-  stiffness: 450,
-  damping: 18,
-  mass: 1,
-};
+const CARD_OFFSETS = [-2, -1, 0, 1, 2] as const;
+const DRAG_THRESHOLD = 80;
 
 export function FocusRail({
   items,
@@ -64,46 +41,33 @@ export function FocusRail({
 }: FocusRailProps) {
   const [active, setActive] = React.useState(initialIndex);
   const [isHovering, setIsHovering] = React.useState(false);
-
   const count = items.length;
 
-  const handlePrev = React.useCallback(() => {
-    if (!loop && active === 0) return;
-    setActive((p) => p - 1);
-  }, [loop, active]);
+  const goPrev = React.useCallback(() => {
+    setActive((p) => (loop ? wrapIndex(p - 1, count) : Math.max(0, p - 1)));
+  }, [loop, count]);
 
-  const handleNext = React.useCallback(() => {
-    if (!loop && active === count - 1) return;
-    setActive((p) => p + 1);
-  }, [loop, active, count]);
+  const goNext = React.useCallback(() => {
+    setActive((p) => (loop ? wrapIndex(p + 1, count) : Math.min(count - 1, p + 1)));
+  }, [loop, count]);
 
   React.useEffect(() => {
     if (!autoPlay || isHovering) return;
-    const timer = setInterval(() => handleNext(), interval);
+    const timer = setInterval(goNext, interval);
     return () => clearInterval(timer);
-  }, [autoPlay, isHovering, handleNext, interval]);
+  }, [autoPlay, isHovering, goNext, interval]);
+
+  const onDragEnd = (_: unknown, info: PanInfo) => {
+    if (info.offset.x < -DRAG_THRESHOLD) goNext();
+    else if (info.offset.x > DRAG_THRESHOLD) goPrev();
+  };
 
   const onKeyDown = (e: React.KeyboardEvent) => {
-    if (e.key === "ArrowLeft") handlePrev();
-    if (e.key === "ArrowRight") handleNext();
+    if (e.key === "ArrowLeft") goPrev();
+    if (e.key === "ArrowRight") goNext();
   };
 
-  const swipeConfidenceThreshold = 10000;
-  const swipePower = (offset: number, velocity: number) => {
-    return Math.abs(offset) * velocity;
-  };
-
-  const onDragEnd = (e: MouseEvent | TouchEvent | PointerEvent, { offset, velocity }: PanInfo) => {
-    const swipe = swipePower(offset.x, velocity.x);
-
-    if (swipe < -swipeConfidenceThreshold) {
-      handleNext();
-    } else if (swipe > swipeConfidenceThreshold) {
-      handlePrev();
-    }
-  };
-
-  const visibleIndices = [-2, -1, 0, 1, 2];
+  const transition = { type: "tween" as const, duration: 0.35 };
 
   return (
     <div
@@ -124,58 +88,36 @@ export function FocusRail({
           dragElastic={0.2}
           onDragEnd={onDragEnd}
         >
-          {visibleIndices.map((offset) => {
-            const absIndex = active + offset;
-            const index = wrap(0, count, absIndex);
+          {CARD_OFFSETS.map((offset) => {
+            const index = loop ? wrapIndex(active + offset, count) : active + offset;
+            if (!loop && (index < 0 || index >= count)) return null;
+
             const item = items[index];
-
-            if (!loop && (absIndex < 0 || absIndex >= count)) return null;
-
             const isCenter = offset === 0;
             const dist = Math.abs(offset);
 
-            const xOffset = offset * 280;
-            const zOffset = -dist * 180;
-            const yOffset = isCenter ? 0 : -dist * 55;
-            const scale = isCenter ? 1 : 0.7;
-            const rotateY = offset * -20;
-
-            const opacity = isCenter ? 1 : Math.max(0.5, 1 - dist * 0.25);
-            const blur = isCenter ? 0 : dist * 3;
-            const brightness = isCenter ? 1 : Math.max(0.65, 1 - dist * 0.2);
+            const animate = {
+              x: offset * 280,
+              y: isCenter ? 0 : -dist * 55,
+              z: -dist * 180,
+              scale: isCenter ? 1 : 0.7,
+              rotateY: offset * -20,
+              opacity: isCenter ? 1 : Math.max(0.5, 1 - dist * 0.25),
+              filter: `blur(${dist * 3}px) brightness(${isCenter ? 1 : Math.max(0.65, 1 - dist * 0.2)})`,
+            };
 
             return (
               <motion.div
-                key={absIndex}
+                key={`${offset}-${item.id}`}
                 className={cn(
                   "absolute aspect-[3/4] w-[260px] md:w-[300px] rounded-2xl overflow-hidden",
                   isCenter ? "z-20" : "z-10"
                 )}
                 initial={false}
-                animate={{
-                  x: xOffset,
-                  y: yOffset,
-                  z: zOffset,
-                  scale: scale,
-                  rotateY: rotateY,
-                  opacity: opacity,
-                  filter: `blur(${blur}px) brightness(${brightness})`,
-                }}
-                transition={{
-                  scale: TAP_SPRING,
-                  x: BASE_SPRING,
-                  y: BASE_SPRING,
-                  z: BASE_SPRING,
-                  rotateY: BASE_SPRING,
-                  opacity: BASE_SPRING,
-                  filter: { duration: 0.3 },
-                }}
-                style={{
-                  transformStyle: "preserve-3d",
-                }}
-                onClick={() => {
-                  if (offset !== 0) setActive((p) => p + offset);
-                }}
+                animate={animate}
+                transition={transition}
+                style={{ transformStyle: "preserve-3d" }}
+                onClick={() => !isCenter && setActive((p) => p + offset)}
               >
                 <img
                   src={item.imageSrc}
@@ -187,22 +129,11 @@ export function FocusRail({
           })}
         </motion.div>
 
-        {/* Arrow controls - pill-shaped purple buttons with white border and arrows */}
         <div className="focusRailArrowControls">
-          <button
-            type="button"
-            onClick={handlePrev}
-            className="focusRailArrowBtn"
-            aria-label="Previous"
-          >
+          <button type="button" onClick={goPrev} className="focusRailArrowBtn" aria-label="Previous">
             <ChevronLeft strokeWidth={2.5} />
           </button>
-          <button
-            type="button"
-            onClick={handleNext}
-            className="focusRailArrowBtn"
-            aria-label="Next"
-          >
+          <button type="button" onClick={goNext} className="focusRailArrowBtn" aria-label="Next">
             <ChevronRight strokeWidth={2.5} />
           </button>
         </div>
