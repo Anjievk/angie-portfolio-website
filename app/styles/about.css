@@ -38,10 +38,28 @@
 
 .aboutTitleTyping {
   display: inline;
+  /* Fallback for mobile where gradient text can be invisible */
+  color: var(--gradient-accent-end);
   background: linear-gradient(90deg, var(--gradient-accent-start), var(--gradient-accent-end));
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+
+/* Ensure gradient text is visible on mobile WebKit – use solid color fallback */
+@media (max-width: 767px) {
+  .aboutTitleTyping {
+    color: var(--gradient-accent-end);
+    -webkit-text-fill-color: var(--gradient-accent-end);
+    background: none;
+    background-clip: unset;
+    -webkit-background-clip: unset;
+  }
+
+  .aboutTitleTyping .typewriterCursor {
+    -webkit-text-fill-color: var(--gradient-accent-end);
+    color: var(--gradient-accent-end);
+  }
 }
 
 .aboutTitleTyping .typewriterCursor {
