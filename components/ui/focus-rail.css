@@ -34,3 +34,87 @@
   width: 1.5rem;
   height: 1.5rem;
 }
+
+.focusRailRoot {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 480px;
+  width: 100%;
+  overflow: visible;
+  background: transparent;
+  color: #fff;
+  outline: none;
+  user-select: none;
+}
+
+.focusRailRoot:focus {
+  outline: none;
+}
+
+.focusRailInner {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+@media (min-width: 768px) {
+  .focusRailInner {
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+}
+
+.focusRailViewport {
+  position: relative;
+  display: flex;
+  height: 360px;
+  width: 100%;
+  max-width: 72rem; /* Tailwind max-w-6xl */
+  align-items: center;
+  justify-content: center;
+  perspective: 1200px;
+  cursor: grab;
+  transform-style: preserve-3d;
+}
+
+.focusRailViewport:active {
+  cursor: grabbing;
+}
+
+.focusRailCard {
+  position: absolute;
+  aspect-ratio: 3 / 4;
+  width: 260px;
+  border-radius: 16px; /* Tailwind rounded-2xl */
+  overflow: hidden;
+}
+
+@media (min-width: 768px) {
+  .focusRailCard {
+    width: 300px;
+  }
+}
+
+.focusRailCardCenter {
+  z-index: 20;
+}
+
+.focusRailCardSide {
+  z-index: 10;
+}
+
+.focusRailCardImage {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  pointer-events: none;
+  display: block;
+}

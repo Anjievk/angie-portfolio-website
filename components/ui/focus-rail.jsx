@@ -59,7 +59,7 @@ export function FocusRail({
   return (
     <div
       className={cn(
-        'group relative flex h-[480px] w-full flex-col overflow-visible bg-transparent text-white outline-none select-none',
+        'focusRailRoot',
         className
       )}
       onMouseEnter={() => setIsHovering(true)}
@@ -67,9 +67,9 @@ export function FocusRail({
       tabIndex={0}
       onKeyDown={onKeyDown}
     >
-      <div className="relative z-10 flex flex-1 flex-col items-center justify-center w-full px-4 md:px-8">
+      <div className="focusRailInner">
         <motion.div
-          className="relative flex h-[360px] w-full max-w-6xl items-center justify-center perspective-[1200px] cursor-grab active:cursor-grabbing"
+          className="focusRailViewport"
           drag="x"
           dragConstraints={{ left: 0, right: 0 }}
           dragElastic={0.2}
@@ -99,8 +99,8 @@ export function FocusRail({
               <motion.div
                 key={`${offset}-${item.id}`}
                 className={cn(
-                  'absolute aspect-[3/4] w-[260px] md:w-[300px] rounded-2xl overflow-hidden',
-                  isCenter ? 'z-20' : 'z-10'
+                  'focusRailCard',
+                  isCenter ? 'focusRailCardCenter' : 'focusRailCardSide'
                 )}
                 initial={false}
                 animate={animate}
@@ -111,7 +111,7 @@ export function FocusRail({
                 <img
                   src={item.imageSrc}
                   alt={item.title}
-                  className="h-full w-full object-cover pointer-events-none"
+                  className="focusRailCardImage"
                 />
               </motion.div>
             );
