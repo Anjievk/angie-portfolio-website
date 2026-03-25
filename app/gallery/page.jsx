@@ -113,7 +113,7 @@ export default function Gallery() {
             <div className="focusRailWrapper">
               <FocusRail
                 items={GALLERY_ITEMS}
-                autoPlay={false}
+                autoPlay
                 loop={true}
               />
             </div>

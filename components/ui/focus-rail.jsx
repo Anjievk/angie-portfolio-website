@@ -1,34 +1,16 @@
-"use client";
+'use client';
 
-import * as React from "react";
-import { motion, PanInfo } from "framer-motion";
-import { ChevronLeft, ChevronRight } from "lucide-react";
-import { cn } from "@/lib/utils";
-import "./focus-rail.css";
+import { useState, useEffect, useCallback } from 'react';
+import { motion } from 'framer-motion';
+import { ChevronLeft, ChevronRight } from 'lucide-react'; //icon library
+import { cn } from '@/lib/utils';
+import './focus-rail.css';
 
-export type FocusRailItem = {
-  id: string | number;
-  title: string;
-  description?: string;
-  imageSrc: string;
-  href?: string;
-  meta?: string;
-};
-
-interface FocusRailProps {
-  items: FocusRailItem[];
-  initialIndex?: number;
-  loop?: boolean;
-  autoPlay?: boolean;
-  interval?: number;
-  className?: string;
-}
-
-function wrapIndex(index: number, length: number): number {
+function wrapIndex(index, length) {
   return ((index % length) + length) % length;
 }
 
-const CARD_OFFSETS = [-2, -1, 0, 1, 2] as const;
+const CARD_OFFSETS = [-2, -1, 0, 1, 2];
 const DRAG_THRESHOLD = 80;
 
 export function FocusRail({
@@ -38,41 +20,46 @@ export function FocusRail({
   autoPlay = false,
   interval = 4000,
   className,
-}: FocusRailProps) {
-  const [active, setActive] = React.useState(initialIndex);
-  const [isHovering, setIsHovering] = React.useState(false);
+}) {
+  const [active, setActive] = useState(initialIndex);
+  const [isHovering, setIsHovering] = useState(false);
   const count = items.length;
 
-  const goPrev = React.useCallback(() => {
+  const goPrev = useCallback(() => {
     setActive((p) => (loop ? wrapIndex(p - 1, count) : Math.max(0, p - 1)));
   }, [loop, count]);
 
-  const goNext = React.useCallback(() => {
+  const goNext = useCallback(() => {
     setActive((p) => (loop ? wrapIndex(p + 1, count) : Math.min(count - 1, p + 1)));
   }, [loop, count]);
 
-  React.useEffect(() => {
+  // for this loop, if true after the last card, it will go back to the first (and the other way around)
+
+  useEffect(() => {
     if (!autoPlay || isHovering) return;
     const timer = setInterval(goNext, interval);
     return () => clearInterval(timer);
   }, [autoPlay, isHovering, goNext, interval]);
 
-  const onDragEnd = (_: unknown, info: PanInfo) => {
+  //interval, move to the next card every few seconds but while the mouse is hovering over the carousel, the autoplay will pause
+
+  const onDragEnd = (_, info) => {
     if (info.offset.x < -DRAG_THRESHOLD) goNext();
     else if (info.offset.x > DRAG_THRESHOLD) goPrev();
   };
 
-  const onKeyDown = (e: React.KeyboardEvent) => {
-    if (e.key === "ArrowLeft") goPrev();
-    if (e.key === "ArrowRight") goNext();
+  const onKeyDown = (e) => {
+    if (e.key === 'ArrowLeft') goPrev();
+    if (e.key === 'ArrowRight') goNext();
   };
 
-  const transition = { type: "tween" as const, duration: 0.35 };
+  const transition = { type: 'tween', duration: 0.35 };
+  //animation
 
   return (
     <div
       className={cn(
-        "group relative flex h-[480px] w-full flex-col overflow-visible bg-transparent text-white outline-none select-none",
+        'group relative flex h-[480px] w-full flex-col overflow-visible bg-transparent text-white outline-none select-none',
         className
       )}
       onMouseEnter={() => setIsHovering(true)}
@@ -96,6 +83,8 @@ export function FocusRail({
             const isCenter = offset === 0;
             const dist = Math.abs(offset);
 
+
+          //3D look of the carousel
             const animate = {
               x: offset * 280,
               y: isCenter ? 0 : -dist * 55,
@@ -110,13 +99,13 @@ export function FocusRail({
               <motion.div
                 key={`${offset}-${item.id}`}
                 className={cn(
-                  "absolute aspect-[3/4] w-[260px] md:w-[300px] rounded-2xl overflow-hidden",
-                  isCenter ? "z-20" : "z-10"
+                  'absolute aspect-[3/4] w-[260px] md:w-[300px] rounded-2xl overflow-hidden',
+                  isCenter ? 'z-20' : 'z-10'
                 )}
                 initial={false}
                 animate={animate}
                 transition={transition}
-                style={{ transformStyle: "preserve-3d" }}
+                style={{ transformStyle: 'preserve-3d' }}
                 onClick={() => !isCenter && setActive((p) => p + offset)}
               >
                 <img
