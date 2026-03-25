@@ -32,7 +32,6 @@ export function FocusRail({
   const goNext = useCallback(() => {
     setActive((p) => (loop ? wrapIndex(p + 1, count) : Math.min(count - 1, p + 1)));
   }, [loop, count]);
-
   // for this loop, if true after the last card, it will go back to the first (and the other way around)
 
   useEffect(() => {
@@ -118,6 +117,8 @@ export function FocusRail({
           })}
         </motion.div>
 
+
+{/* arrow controls */}
         <div className="focusRailArrowControls">
           <button type="button" onClick={goPrev} className="focusRailArrowBtn" aria-label="Previous">
             <ChevronLeft strokeWidth={2.5} />
