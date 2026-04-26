@@ -3,6 +3,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import { motion } from 'framer-motion';
 import { ChevronLeft, ChevronRight } from 'lucide-react'; //icon library
+import Image from 'next/image';
 import { cn } from '@/lib/utils';
 import './focus-rail.css';
 
@@ -58,7 +59,7 @@ export function FocusRail({
   return (
     <div
       className={cn(
-        'focusRailRoot',
+        'focus-rail',
         className
       )}
       onMouseEnter={() => setIsHovering(true)}
@@ -66,9 +67,9 @@ export function FocusRail({
       tabIndex={0}
       onKeyDown={onKeyDown}
     >
-      <div className="focusRailInner">
+      <div className="focus-rail__inner">
         <motion.div
-          className="focusRailViewport"
+          className="focus-rail__viewport"
           drag="x"
           dragConstraints={{ left: 0, right: 0 }}
           dragElastic={0.2}
@@ -98,8 +99,8 @@ export function FocusRail({
               <motion.div
                 key={`${offset}-${item.id}`}
                 className={cn(
-                  'focusRailCard',
-                  isCenter ? 'focusRailCardCenter' : 'focusRailCardSide'
+                  'focus-rail__card',
+                  isCenter ? 'focus-rail__card--center' : 'focus-rail__card--side'
                 )}
                 initial={false}
                 animate={animate}
@@ -107,10 +108,14 @@ export function FocusRail({
                 style={{ transformStyle: 'preserve-3d' }}
                 onClick={() => !isCenter && setActive((p) => p + offset)}
               >
-                <img
+                <Image
                   src={item.imageSrc}
                   alt={item.title}
-                  className="focusRailCardImage"
+                  fill
+                  className="focus-rail__card-image"
+                  sizes="(max-width: 767px) 230px, 300px"
+                  quality={70}
+                  priority={isCenter}
                 />
               </motion.div>
             );
@@ -119,11 +124,11 @@ export function FocusRail({
 
 
 {/* arrow controls */}
-        <div className="focusRailArrowControls">
-          <button type="button" onClick={goPrev} className="focusRailArrowBtn" aria-label="Previous">
+        <div className="focus-rail__arrow-controls">
+          <button type="button" onClick={goPrev} className="focus-rail__arrow-button" aria-label="Previous">
             <ChevronLeft strokeWidth={2.5} />
           </button>
-          <button type="button" onClick={goNext} className="focusRailArrowBtn" aria-label="Next">
+          <button type="button" onClick={goNext} className="focus-rail__arrow-button" aria-label="Next">
             <ChevronRight strokeWidth={2.5} />
           </button>
         </div>

@@ -1,6 +1,6 @@
 /* FocusRail carousel arrow controls */
 
-.focusRailArrowControls {
+.focus-rail__arrow-controls {
   margin: 2.5rem auto 0;
   display: flex;
   align-items: center;
@@ -9,7 +9,7 @@
   pointer-events: auto;
 }
 
-.focusRailArrowBtn {
+.focus-rail__arrow-button {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -22,20 +22,20 @@
   transition: background-color 0.2s ease, transform 0.2s ease;
 }
 
-.focusRailArrowBtn:hover {
+.focus-rail__arrow-button:hover {
   background-color: rgba(110, 63, 157, 0.6);
 }
 
-.focusRailArrowBtn:active {
+.focus-rail__arrow-button:active {
   transform: scale(0.95);
 }
 
-.focusRailArrowBtn svg {
+.focus-rail__arrow-button svg {
   width: 1.5rem;
   height: 1.5rem;
 }
 
-.focusRailRoot {
+.focus-rail {
   position: relative;
   display: flex;
   flex-direction: column;
@@ -48,11 +48,11 @@
   user-select: none;
 }
 
-.focusRailRoot:focus {
+.focus-rail:focus {
   outline: none;
 }
 
-.focusRailInner {
+.focus-rail__inner {
   position: relative;
   z-index: 10;
   display: flex;
@@ -66,13 +66,13 @@
 }
 
 @media (min-width: 768px) {
-  .focusRailInner {
+  .focus-rail__inner {
     padding-left: 32px;
     padding-right: 32px;
   }
 }
 
-.focusRailViewport {
+.focus-rail__viewport {
   position: relative;
   display: flex;
   height: 360px;
@@ -85,11 +85,11 @@
   transform-style: preserve-3d;
 }
 
-.focusRailViewport:active {
+.focus-rail__viewport:active {
   cursor: grabbing;
 }
 
-.focusRailCard {
+.focus-rail__card {
   position: absolute;
   aspect-ratio: 3 / 4;
   width: 260px;
@@ -98,20 +98,20 @@
 }
 
 @media (min-width: 768px) {
-  .focusRailCard {
+  .focus-rail__card {
     width: 300px;
   }
 }
 
-.focusRailCardCenter {
+.focus-rail__card--center {
   z-index: 20;
 }
 
-.focusRailCardSide {
+.focus-rail__card--side {
   z-index: 10;
 }
 
-.focusRailCardImage {
+.focus-rail__card-image {
   height: 100%;
   width: 100%;
   object-fit: cover;

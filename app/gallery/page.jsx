@@ -143,7 +143,8 @@ export default function Gallery() {
                       width={800}
                       height={600}
                       className="designArtworkPhoneListImage"
-                      sizes="(max-width: 768px) 100vw, 800px"
+                      sizes="(max-width: 768px) 92vw, 800px"
+                      quality={70}
                     />
                   </li>
                 ))}

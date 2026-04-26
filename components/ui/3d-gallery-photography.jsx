@@ -8,6 +8,19 @@ import * as THREE from 'three';
 const DEFAULT_DEPTH_RANGE = 50;
 const MAX_HORIZONTAL_OFFSET = 8;
 const MAX_VERTICAL_OFFSET = 8;
+const TEXTURE_WIDTH = 1200;
+const TEXTURE_QUALITY = 65;
+const SHOULD_USE_NEXT_IMAGE_TEXTURES = process.env.NODE_ENV === 'production';
+
+function toOptimizedTextureUrl(src) {
+  if (!src || typeof src !== 'string' || !src.startsWith('/')) return src;
+  const encodedPath = src
+    .split('/')
+    .map((segment, index) => (index === 0 ? segment : encodeURIComponent(segment)))
+    .join('/');
+  if (!SHOULD_USE_NEXT_IMAGE_TEXTURES) return encodedPath;
+  return `/_next/image?url=${encodeURIComponent(encodedPath)}&w=${TEXTURE_WIDTH}&q=${TEXTURE_QUALITY}`;
+}
 
 const createClothMaterial = () => {
   return new THREE.ShaderMaterial({
@@ -116,7 +129,11 @@ function GalleryScene({
     [images]
   );
 
-  const textures = useTexture(normalizedImages.map((img) => img.src));
+  const textureSources = useMemo(
+    () => normalizedImages.map((img) => toOptimizedTextureUrl(img.src)),
+    [normalizedImages]
+  );
+  const textures = useTexture(textureSources);
 
   const materials = useMemo(
     () => Array.from({ length: visibleCount }, () => createClothMaterial()),
