@@ -1,7 +1,6 @@
 import "./globals.css";
 import GSAPInit from "./components/GSAPInit/GSAPInit";
 import ScrollToTop from "./components/ScrollToTop/ScrollToTop";
-import UnderConstruction from "./components/UnderConstruction/UnderConstruction";
 import FooterWrapper from "./components/Footer/FooterWrapper";
 import { ProjectSlugProvider } from "./context/ProjectSlugContext";
 
@@ -36,7 +35,6 @@ export default function RootLayout({ children }) {
       </head>
       <body>
         <GSAPInit />
-        <UnderConstruction />
         <ProjectSlugProvider>
           {children}
           <FooterWrapper />

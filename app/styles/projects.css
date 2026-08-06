@@ -764,6 +764,64 @@
   color: #fff;
 }
 
+/* SporkShare Promotional Video – bright → dark green gradient (#7FB64D → #1A2A27) */
+.projectHeroSection[data-project="sporkshare-promotional-video"] {
+  --sporkshare-gradient: linear-gradient(to right, #0e580c 0%, #7FB64D 100%);
+  --sporkshare-accent: #7FB64D;
+}
+
+.projectHeroSection[data-project="sporkshare-promotional-video"] .projectHeroTitle {
+  background: var(--sporkshare-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.projectHeroSection[data-project="sporkshare-promotional-video"] .projectHeroUnderline {
+  background: var(--sporkshare-gradient);
+}
+
+.projectHeroSection[data-project="sporkshare-promotional-video"] .projectHeroTabActive {
+  background: transparent;
+  color: #fff;
+}
+
+.projectHeroSection[data-project="sporkshare-promotional-video"] .projectHeroTabPill {
+  background: var(--sporkshare-accent);
+}
+
+.projectHeroSection[data-project="sporkshare-promotional-video"] .projectHeroDetailsUnderline {
+  background: var(--sporkshare-gradient);
+}
+
+.projectHeroSection[data-project="sporkshare-promotional-video"] .projectKeyAchievementsUnderline {
+  background: var(--sporkshare-gradient);
+}
+
+.projectHeroSection[data-project="sporkshare-promotional-video"] .projectHeroDetailsUnderline,
+.projectHeroSection[data-project="sporkshare-promotional-video"] .projectHeroDetailsDesignRationaleUnderline {
+  background: var(--sporkshare-gradient);
+}
+
+.projectHeroSection[data-project="sporkshare-promotional-video"] .projectKeyAchievementsCardIcon {
+  color: var(--sporkshare-accent);
+}
+
+/* Vietnam motion graphic – rose red theme (#AB274F) */
+.projectHeroSection[data-project="vietnam-motion-graphic"] {
+  --vietnam-motion-accent: #AB274F;
+}
+
+.projectHeroSection[data-project="vietnam-motion-graphic"] .projectHeroTitle {
+  color: var(--vietnam-motion-accent);
+  background: none;
+  -webkit-text-fill-color: var(--vietnam-motion-accent);
+}
+
+.projectHeroSection[data-project="vietnam-motion-graphic"] .projectHeroUnderline {
+  background: var(--vietnam-motion-accent);
+}
+
 /* Poster Mockup section (e.g. Crimson & Gold): title + full-width stacked images */
 .projectHeroPosterMockupSection {
   margin-top: 2.5rem;
@@ -1136,6 +1194,18 @@
   height: auto;
   display: block;
   border-radius: 1.5rem;
+}
+
+.projectHeroFeatureVideoWrap {
+  background: #000;
+}
+
+.projectHeroFeatureVideo {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 1.5rem;
+  background: #000;
 }
 
 /* Feature block – gradient box (legacy two-slot layout), Tandem gradient */

@@ -14,16 +14,12 @@ const navItems = [
 
 export default function Navbar() {
   const pathname = usePathname();
-  const [theme, setTheme] = useState('dark');
   const [scrolled, setScrolled] = useState(false);
-  const [mounted, setMounted] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
-    setMounted(true);
     const savedTheme = localStorage.getItem('theme');
     if (savedTheme) {
-      setTheme(savedTheme);
       document.documentElement.classList.toggle('light', savedTheme === 'light');
     } else {
       document.documentElement.classList.add('dark');
@@ -35,14 +31,6 @@ export default function Navbar() {
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-
-  const toggleTheme = () => {
-    const newTheme = theme === 'dark' ? 'light' : 'dark';
-    setTheme(newTheme);
-    localStorage.setItem('theme', newTheme);
-    document.documentElement.classList.toggle('light', newTheme === 'light');
-    document.documentElement.classList.toggle('dark', newTheme === 'dark');
-  };
 
   const closeMenu = () => setMenuOpen(false);
 
@@ -88,7 +76,6 @@ export default function Navbar() {
             />
           </span>
         </a>
-        {/* Desktop: links + theme toggle */}
         <div className="navbarLinksContainer">
           {navItems.map(({ href, label }) => {
             const isActive = pathname === href;
@@ -103,33 +90,6 @@ export default function Navbar() {
               </Link>
             );
           })}
-          {mounted && (
-            <button
-              onClick={toggleTheme}
-              className="navbarThemeToggle"
-              aria-label="Toggle theme"
-            >
-              <Image
-                src="/Icon/Sun.svg"
-                alt=""
-                width={18}
-                height={18}
-                className={`navbarSunIcon ${theme === 'dark' ? 'navbarSunIconInactive' : 'navbarSunIconActive'}`}
-                aria-hidden
-              />
-              <Image
-                src="/Icon/Moon.svg"
-                alt=""
-                width={18}
-                height={18}
-                className={`navbarMoonIcon ${theme === 'dark' ? 'navbarMoonIconActive' : 'navbarMoonIconInactive'}`}
-                aria-hidden
-              />
-              <div
-                className={`navbarToggleIndicator ${theme === 'dark' ? 'navbarToggleIndicatorDark' : 'navbarToggleIndicatorLight'}`}
-              />
-            </button>
-          )}
         </div>
         {/* Mobile: hamburger button */}
         <button
@@ -165,33 +125,6 @@ export default function Navbar() {
               </Link>
             );
           })}
-          {mounted && (
-            <button
-              onClick={toggleTheme}
-              className="navbarThemeToggle navbarMobileThemeToggle"
-              aria-label="Toggle theme"
-            >
-              <Image
-                src="/Icon/Sun.svg"
-                alt=""
-                width={18}
-                height={18}
-                className={`navbarSunIcon ${theme === 'dark' ? 'navbarSunIconInactive' : 'navbarSunIconActive'}`}
-                aria-hidden
-              />
-              <Image
-                src="/Icon/Moon.svg"
-                alt=""
-                width={18}
-                height={18}
-                className={`navbarMoonIcon ${theme === 'dark' ? 'navbarMoonIconActive' : 'navbarMoonIconInactive'}`}
-                aria-hidden
-              />
-              <div
-                className={`navbarToggleIndicator ${theme === 'dark' ? 'navbarToggleIndicatorDark' : 'navbarToggleIndicatorLight'}`}
-              />
-            </button>
-          )}
         </div>
       </div>
       <div className="navbarGlowLine" aria-hidden />

@@ -14,6 +14,8 @@ export default function ScrollToTop() {
   const isVietnam = projectSlug === 'the-unseen-vietnam';
   const isCrimsonGold = projectSlug === 'crimson-gold';
   const isSpaceAnimal = projectSlug === 'space-animal';
+  const isSporksharePromo = projectSlug === 'sporkshare-promotional-video';
+  const isVietnamMotion = projectSlug === 'vietnam-motion-graphic';
 
   useEffect(() => {
     function handleScroll() {
@@ -31,7 +33,7 @@ export default function ScrollToTop() {
   return (
     <button
       type="button"
-      className={`scroll-to-top ${visible ? 'scroll-to-top--visible' : ''} ${isTeatiny ? 'scroll-to-top--teatiny' : ''} ${isVietnam ? 'scroll-to-top--the-unseen-vietnam' : ''} ${isCrimsonGold ? 'scroll-to-top--crimson-gold' : ''} ${isSpaceAnimal ? 'scroll-to-top--space-animal' : ''}`}
+      className={`scroll-to-top ${visible ? 'scroll-to-top--visible' : ''} ${isTeatiny ? 'scroll-to-top--teatiny' : ''} ${isVietnam ? 'scroll-to-top--the-unseen-vietnam' : ''} ${isCrimsonGold ? 'scroll-to-top--crimson-gold' : ''} ${isSpaceAnimal ? 'scroll-to-top--space-animal' : ''} ${isSporksharePromo ? 'scroll-to-top--sporkshare-promotional-video' : ''} ${isVietnamMotion ? 'scroll-to-top--vietnam-motion-graphic' : ''}`}
       onClick={scrollToTop}
       aria-label="Scroll to top"
       aria-hidden={!visible}

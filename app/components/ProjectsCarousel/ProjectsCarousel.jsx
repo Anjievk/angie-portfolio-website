@@ -12,8 +12,6 @@ const projects = [
   { id: 3, category: 'Magazine Design', title: 'The Unseen Vietnam', description: 'A 12-day luxury tour magazine from Hanoi to the Mekong Delta', image: '/Recent-project/vietnamese magazine mock up.jpg', projectSlug: 'the-unseen-vietnam' },
   { id: 4, category: 'Branding', title: 'Crimson & Gold', description: "A visual celebration of Vietnam's royal attire from Huế", image: '/Recent-project/Crimpson&gold.jpg', projectSlug: 'crimson-gold' },
   { id: 5, category: 'UI/UX', title: 'Space Animal', description: 'Browser-based game with hand-drawn characters—dodge space rocks and survive.', image: '/Recent-project/Space-animal.jpg', projectSlug: 'space-animal' },
-  { id: 6, category: 'Coming Soon', title: 'NeXfer', description: 'Coming soon.', image: '/NeXfer/Banner.jpg', projectSlug: null },
-  { id: 7, category: 'Coming Soon', title: 'SporkShare', description: 'Coming soon.', image: '/Sporkshare/banner.png', projectSlug: null },
 ];
 
 function useCarouselLayout() {
@@ -46,6 +44,17 @@ export default function ProjectsCarousel() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const { cardWidth } = useCarouselLayout();
 
+  const normalizedIndex = projects.length
+    ? ((currentIndex % projects.length) + projects.length) % projects.length
+    : 0;
+  const currentProject = projects[normalizedIndex];
+
+  useEffect(() => {
+    if (currentIndex >= projects.length) {
+      setCurrentIndex(0);
+    }
+  }, [currentIndex]);
+
   const goToPrevious = () => {
     setCurrentIndex((prev) => (prev === 0 ? projects.length - 1 : prev - 1));
   };
@@ -54,7 +63,7 @@ export default function ProjectsCarousel() {
     setCurrentIndex((prev) => (prev === projects.length - 1 ? 0 : prev + 1));
   };
 
-  const currentProject = projects[currentIndex];
+  if (!currentProject) return null;
 
   return (
     <section className="projectsCarouselSection">
@@ -79,7 +88,7 @@ export default function ProjectsCarousel() {
           {/* Project Cards – circular loop: always 3 slots (prev, current, next) */}
           <div className="projectsCarouselCardsContainer">
             {[-1, 0, 1].map((offset) => {
-              const projectIndex = (currentIndex + offset + projects.length) % projects.length;
+              const projectIndex = (normalizedIndex + offset + projects.length) % projects.length;
               const project = projects[projectIndex];
               const isActive = offset === 0;
 
@@ -204,7 +213,7 @@ export default function ProjectsCarousel() {
                   <MaterialIcon icon="chevron_left" size={24} className="projectsCarouselArrowIcon" />
                 </button>
                 <span className="projectsCarouselPageIndicator">
-                  {currentIndex + 1} / {projects.length}
+                  {normalizedIndex + 1} / {projects.length}
                 </span>
                 <button
                   onClick={goToNext}

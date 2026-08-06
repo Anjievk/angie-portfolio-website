@@ -81,8 +81,22 @@ function HeroLayout({ project, suggestedProjects }) {
           </div>
         </div>
 
-        {/* Feature showcase – banner image or legacy two-slot layout */}
-        {project.featureBannerImage ? (
+        {/* Feature showcase – video, banner image, or legacy two-slot layout */}
+        {project.videoUrl ? (
+          <div className="projectHeroFeatureBannerWrap projectHeroFeatureVideoWrap">
+            <video
+              className="projectHeroFeatureVideo"
+              src={project.videoUrl}
+              controls
+              playsInline
+              preload="metadata"
+              poster={project.featureBannerImage}
+              aria-label={`${project.title} motion graphic video`}
+            >
+              Your browser does not support the video tag.
+            </video>
+          </div>
+        ) : project.featureBannerImage ? (
           <div className="projectHeroFeatureBannerWrap">
             <ExpandableImage
               src={project.featureBannerImage}

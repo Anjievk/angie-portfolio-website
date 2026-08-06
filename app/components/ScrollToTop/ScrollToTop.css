@@ -78,6 +78,28 @@
   box-shadow: 0 6px 24px rgba(191, 255, 65, 0.5);
 }
 
+/* SporkShare Promotional Video: bright → dark green gradient */
+.scroll-to-top--sporkshare-promotional-video {
+  background: linear-gradient(to right, #7FB64D 0%, #1A2A27 100%);
+  color: #fff;
+  box-shadow: 0 4px 20px rgba(127, 182, 77, 0.4);
+}
+
+.scroll-to-top--sporkshare-promotional-video.scroll-to-top--visible:hover {
+  box-shadow: 0 6px 24px rgba(127, 182, 77, 0.5);
+}
+
+/* Vietnam motion graphic: rose red #AB274F */
+.scroll-to-top--vietnam-motion-graphic {
+  background: #AB274F;
+  color: #fff;
+  box-shadow: 0 4px 20px rgba(171, 39, 79, 0.4);
+}
+
+.scroll-to-top--vietnam-motion-graphic.scroll-to-top--visible:hover {
+  box-shadow: 0 6px 24px rgba(171, 39, 79, 0.5);
+}
+
 .scroll-to-top .material-symbols-rounded {
   flex-shrink: 0;
 }

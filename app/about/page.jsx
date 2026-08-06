@@ -18,8 +18,14 @@ const nutshellItems = [
 const truthParagraph = `I feel so much. About everything. And design is how I let it all out. Right now, I'm more passionate than ever, excited about every project, every problem to solve, every story to tell. This is exactly where I'm meant to be.`;
 
 const experience = [
-  { role: 'Digital Design & Development', company: 'British Columbia Institution of Technology', period: 'Sept 2024 – Jun 2026', description: 'A two-year diploma program (110.5 credits) that covers UX/UI design, graphic design, front-end development, typography, branding, and interactive media, which gives me a strong foundation to bring ideas to life.' },
-  { role: 'Secondary School', company: 'Thomas Haney Secondary School', period: 'Sept 2022 – Jun 2024', description: 'Graduated with a 97% average in grade 12. The school is a member of the Canadian Coalition for Self-Directed Learning (SDL), which gave me the space to take ownership of my learning and grow on my own terms.' },
+  {
+  role: 'Computer Science',
+  company: 'Seneca Polytechnic',
+  period: 'Sept 2026 – June 2029',
+  description: 'A three-year bachelor’s degree program focused on software development, programming, algorithms, databases, and computer systems, building a strong foundation in computer science and emerging technologies.'
+},
+  { role: 'Digital Design & Development', company: 'British Columbia Institution of Technology', period: 'Sept 2024 – June 2026', description: 'Graduated with Distinction. A two-year diploma program (110.5 credits) that covers UX/UI design, graphic design, front-end development, typography, branding, and interactive media, providing a strong foundation to bring creative ideas to life.' },
+  { role: 'Secondary School', company: 'Thomas Haney Secondary School', period: 'Sept 2022 – June 2024', description: 'Graduated with a 97% average in grade 12. The school is a member of the Canadian Coalition for Self-Directed Learning (SDL), which gave me the space to take ownership of my learning and grow on my own terms.' },
   { role: 'Move to Canada', company: '', period: 'Aug 2022', description: 'Moved to Canada alone at a young age to study and build a new life. Leaving everything familiar behind wasn’t easy, but it pushed me to grow, become independent, and chase the design career I’d always dreamed of.' },
 ];
 

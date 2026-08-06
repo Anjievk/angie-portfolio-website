@@ -14,6 +14,8 @@ export const RECENT_PROJECTS = [
   { id: 'rp-5', title: 'Space Animal', tags: ['UI/UX', 'Visual Design'], image: '/Recent-project/Space-animal.jpg', category: 'ux-ui', description: 'User experience and visual design.', projectSlug: 'space-animal' },
   { id: 'rp-6', title: 'NeXfer', tags: ['Coming Soon'], image: '/NeXfer/Banner.jpg', category: 'ux-ui', description: 'Coming soon.', projectSlug: null },
   { id: 'rp-7', title: 'SporkShare', tags: ['Coming Soon'], image: '/Sporkshare/banner.png', category: 'ux-ui', description: 'Coming soon.', projectSlug: null },
+  { id: 'rp-8', title: 'SporkShare Promotional Video', tags: ['Motion Graphic', 'Promotional Video'], image: '/motion-graphic/Sporkshare_Promotion_banner.png', category: 'motion', description: 'A motion graphic promotional video for SporkShare.', projectSlug: 'sporkshare-promotional-video' },
+  { id: 'rp-9', title: 'Vietnam Graphic Video', tags: ['Motion Graphic', 'Travel'], image: '/motion-graphic/Vietnam-video-banner.png', category: 'motion', description: 'A motion graphic video showcasing the beauty of Vietnam.', projectSlug: 'vietnam-motion-graphic' },
 ];
 
 export const PROJECTS = [
@@ -696,6 +698,77 @@ export const PROJECTS = [
         },
       },
     },
+  },
+  {
+    id: 7,
+    title: 'SporkShare Promotional Video',
+    projectSlug: 'sporkshare-promotional-video',
+    tags: ['Motion Graphic', 'Promotional Video'],
+    image: '/motion-graphic/Sporkshare_Promotion_banner.png',
+    category: 'motion',
+    description:
+      'A motion graphic promotional video created for SporkShare, featuring dynamic typography, transitions, and brand visuals.',
+    layout: 'hero',
+    role: 'Motion Designer & Video Editor',
+    timeline: '2 weeks',
+    industry: 'Promotional · Brand',
+    tools: 'Adobe After Effects · Adobe Premiere Pro · Adobe Illustrator',
+    subtitle: 'A motion graphic promotional video for SporkShare.',
+    featureBannerImage: '/Sporkshare/banner.png',
+    videoUrl: '/motion-graphic/Sporkshare_Promotional_Video.mp4',
+    tabs: [
+      { id: 'introduction', label: 'Introduction' },
+      { id: 'achievements', label: 'Key Achievements' },
+    ],
+    overviewTitle: 'Overview',
+    overviewParagraphs: [
+      'This motion graphic promotional video was created for SporkShare. It combines dynamic typography, smooth transitions, and bold visuals to deliver a short, engaging piece suited for social media and brand promotion.',
+      'From concept to final export, the focus was on pacing, clarity, and visual impact — making every second count in a fast-scrolling feed.',
+    ],
+    keyAchievements: {
+      title: 'Design Rationale & Key Decisions',
+      subtitle: 'Motion built for promotion',
+      intro:
+        'The goal was to produce a concise, energetic promo that communicates the brand message quickly and memorably.',
+      achievements: [
+        {
+          id: 'storytelling',
+          icon: 'document',
+          title: '1. Clear Visual Storytelling',
+          text: 'The video uses a focused narrative structure with visual metaphors and motion cues to guide viewers through the message beat by beat.',
+        },
+        {
+          id: 'brand-motion',
+          icon: 'grid',
+          title: '2. Cohesive Motion Language',
+          text: 'Typography, colour, and animation timing work together to create a consistent, polished look that feels modern and on-brand.',
+        },
+        {
+          id: 'pacing',
+          icon: 'thumbs-up',
+          title: '3. Pacing for Short-Form Viewing',
+          text: 'The edit hooks attention early and delivers the core message before viewers scroll away — optimised for promotional use.',
+        },
+      ],
+    },
+  },
+  {
+    id: 8,
+    title: 'Vietnam Graphic Video',
+    projectSlug: 'vietnam-motion-graphic',
+    tags: ['Motion Graphic', 'Travel'],
+    image: '/motion-graphic/Vietnam-video-banner.png',
+    category: 'motion',
+    description:
+      'A motion graphic video showcasing the landscapes, culture, and visual richness of Vietnam.',
+    layout: 'hero',
+    role: 'Motion Designer & Video Editor',
+    timeline: '2 weeks',
+    industry: 'Travel · Motion',
+    tools: 'Adobe After Effects · Adobe Premiere Pro · Adobe Photoshop',
+    subtitle: 'A motion graphic journey through Vietnam.',
+    videoUrl: '/motion-graphic/Vietnam.mp4',
+    featureBannerImage: '/motion-graphic/Vietnam-video-banner.png',
   },
   // {
   //   id: 5,
