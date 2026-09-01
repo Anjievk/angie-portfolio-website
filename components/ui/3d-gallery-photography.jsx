@@ -9,7 +9,7 @@ const DEFAULT_DEPTH_RANGE = 50;
 const MAX_HORIZONTAL_OFFSET = 8;
 const MAX_VERTICAL_OFFSET = 8;
 const TEXTURE_WIDTH = 1200;
-const TEXTURE_QUALITY = 65;
+const TEXTURE_QUALITY = 70;
 const SHOULD_USE_NEXT_IMAGE_TEXTURES = process.env.NODE_ENV === 'production';
 
 function toOptimizedTextureUrl(src) {
